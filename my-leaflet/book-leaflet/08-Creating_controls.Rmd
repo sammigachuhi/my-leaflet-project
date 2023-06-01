@@ -1,0 +1,284 @@
+# Layer groups and controls
+
+## Purpose of layer groups and controls
+
+Sometimes, one may wish their webmap to consist of several baselayers or overlay maps. This not only add, counter, or enhance the information provided, but they also allow additional interactive features apart from the usual clicking, dragging and zooming. Suppose you want your leaflet to have two basemap layers, with the option of switching to either, and same case to overlays, how would you proceed?
+
+## Set up the basemaps
+
+In order to create controls, we have to set the variables in JavaScript Objects. Thereafter, the `L.controls.layers` class is used to parse the object values to the Leaflet map and show a UI control. To demonstrate this, open a new JavaScript file and name it `groups_controls.js`. Insert the following code which will save our basemaps to the respective variables of `osm` and `cyclOSM`. 
+
+```
+var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+});
+
+var cyclOSM = L.tileLayer('https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png', {
+	maxZoom: 20,
+	attribution: '<a href="https://github.com/cyclosm/cyclosm-cartocss-style/releases" title="CyclOSM - Open Bicycle render">CyclOSM</a> | Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}); // the CyclOSM tile layer available from Leaflet servers
+
+```
+
+We will pass the above two variables of `osm` and `cyclOSM` to the `L.map` class which has an option of `layers` in which one can parse the layers they wish to be displayed on the map.
+
+```
+var map = L.map('myMap', {
+    layers: [osm, cyclOSM]
+}).setView([-1.295287148, 36.81984753], 7);
+
+```
+
+However, that will only add the first basemap variable that appears, that is of `osm` and blocking out that of `cylcOSM`. This is shown below.
+
+```{r}
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/no-control.jpg'))
+
+```
+
+
+## Creating the controls
+
+However, in order to give `cyclOSM` a fair chance, we need to store them in an object say `var basemaps` and parse it to `L.controls.layer` which shall create a checkbutton for each basemap. The below code does just that.
+
+```
+// Set object for the basemaps
+var basemaps = {
+    "OpenStreetMap": osm,
+    'cycleOsm': cyclOSM,
+}
+
+L.control.layers(basemaps).addTo(map);
+
+
+```
+
+This is what you get as a result.
+
+```{r}
+
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/controls.jpg'))
+```
+
+## Adding overlay maps
+
+Now we have seen how to add more than one basemap and make all of them appear in the layer control. As was the case for the `basemaps` variable, it can also be replicated for the overlay maps as well. 
+
+The first overlay we would like to create is a choropleth map display the percentage of conventional households with access to main sewers as per the [2019 census](https://housingfinanceafrica.org/app/uploads/VOLUME-IV-KPHC-2019.pdf). For simplicity purposes and to bypass errors we faced, we shall reuse the Ajax plugin for fetching GeoJSON files from online servers. As a reminder, we load Ajax into leaflet by insertint the following `<script>` tags into our `map.html`.
+
+```
+<script src="leaflet-ajax-gh-pages\dist\leaflet.ajax.js"></script>
+
+<script src="leaflet-ajax-gh-pages\dist\leaflet.ajax.min.js"></script>
+        <script src="leaflet-ajax-gh-pages\example\leaflet.spin.js"></script>
+        <script src="leaflet-ajax-gh-pages\example\spin.js"></script> 
+```
+
+I initially tried to load the json file for the sanitation overlay map layer using old `fetch` but the errors were too complex to solve. As they say, when life gives you bees, make honey, we decided to safely retreat to the young turk Ajax plugin. The following chunks of code will add the color function and styling for our countrywide sanitation map.
+
+```
+//// Adding some color
+function getColor(d) {
+    return d > 20 ? '#3288bd' :
+            d > 10 ? '#99d594' :
+            d > 6 ? '#e6f598' :
+            d > 4 ? '#fee08b' :
+            d >  2 ? '#fc8d59':
+                     '#d53e4f';
+                       
+}
+
+// Function for setting color (using arrow function)
+var style = ((feature)=> {
+    return {
+        fillColor: getColor(feature.properties.Human_waste_disposal),
+        weight: 2,
+        opacity: 1,
+        color: 'gray',
+        fillOpacity: 0.9
+    }
+})
+
+```
+
+Now let's add the overlay map that will display the accessibility to main sewer sanitation services. Spoiler alert: the statistics are grim.
+
+```
+// Adding the first overlay - map of household access to main sewer
+var countySanitation = new L.geoJson.ajax("https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/counties_sanitation.json", {
+    style: style
+})
+.bindPopup(function (layer) {
+            return `<b>County Name: </b> ${layer.feature.properties.ADM1_EN} <br>
+            <b>Total County Population: </b><br> 
+            ${layer.feature.properties.County_pop.toString()} <br><br>
+            <b>% of Conventional Households with access to main sewer: </b><br><br>
+            ${layer.feature.properties.Human_waste_disposal.toString()}`
+        }).addTo(map);
+
+```
+
+Let's add an accompanying legend for the above map. If you did the last [Chapter][Creating an interactive choropleth map] of interactive choropleths, this should not be new.
+
+```
+
+// Create a legend
+var legend = L.control({position: 'bottomright'});
+
+legend.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'info legend'),
+    grades = [0, 2, 4, 6, 10, 20],
+    labels = [];
+
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML += 
+            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' + 
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+    }
+    return div;
+}
+
+legend.addTo(map);
+```
+
+Just a stick and paste.
+
+Now set an object to hold on of our two overlay maps. Don't worry, the second will come in no time.
+
+```
+var overlays = {
+    'countySanitation': countySanitation,
+}
+
+```
+
+Finally parse it to the `L.controls.layer` class.
+
+```
+// Add layer controls
+L.control.layers(basemaps, overlays).addTo(map);
+```
+
+```{r}
+
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/controls-overlay.jpg'))
+```
+
+
+If you click anyone of the counties, you will see popups appear.
+
+There is one more overaly we will add to our display to bring our experimentation with layer controls full circle. Remember the geojson of our `cities` variable? Let's call it to action again. Load the custom icon markers first that will differentiate the populations of our cities.
+
+```
+// Color icons
+// Yellow Icon
+var yellowIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-yellow.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  });
+
+// Orange Icon
+var orangeIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-orange.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  });
+
+// Red Icon
+var redIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  });
+
+```
+
+Let's load the `cities` geojson.
+
+```
+var cities = L.geoJson.ajax("https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/cities-geojson2.geojson.txt", {
+    pointToLayer: function (feature, latlng) {
+            if (feature.properties.Population <= 250000) {
+              return L.marker(latlng, {
+                icon: yellowIcon 
+              });
+            } else if (feature.properties.Population <= 800000) {
+              return L.marker(latlng, {
+                icon: orangeIcon 
+              });
+            } else {
+              return L.marker(latlng, {
+                icon: redIcon 
+              });
+            }
+            
+          }
+}).bindPopup(function (layer) {
+      return `City: ${layer.feature.properties.City},<br>
+      Population: ${layer.feature.properties.Population}`;
+    }).addTo(map);
+    
+```
+
+Add the `cities` variable as one of the keys to our `overlays` variable and finally parse the overlays object to `L.control.layers`.
+
+```
+// Set object for the overlay maps
+var overlays = {
+    'countySanitation': countySanitation,
+    'cities': cities
+}
+
+// Add layer controls
+L.control.layers(basemaps, overlays).addTo(map);
+
+```
+
+In the previous [chapter][Creating an interactive choropleth map], we ended by saying that we strive to make our choropleths map challenge, charge rather than merely informing. This seems a sketchy type, but it shows the discrepancy as well as the effort needed for Kenya to bring a centralized sanitation system to every household. Sanitation matters may always sound insensitive, but the true barometer of any civilization is its sanitation.
+
+Finally, we tried playing around with the options available to the `L.controls.layer` including the simple one as changing position, but everytime a new option was provided in to the parenthesis, as in `L.control.layers(basemap, overlaymap, {options})`, the control would disappear.
+
+```{r}
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/controls-all.jpg'))
+```
+
+## Add a scale bar
+
+Adding a small reactive scale with an option to demonstrate will not hurt!
+
+```
+// Add scale
+L.control.scale({position:'bottomleft'}).addTo(map);
+```
+
+```{r}
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/controls-scale.jpg'))
+```
+
+
+All the files and scripts used in this chapter can be accessed [here](https://www.dropbox.com/scl/fo/0njhl757vantwggnsidks/h?dl=0&rlkey=18m27j58agq6209lkppkdtgqo).
+
+
+
+
+
+
+
+
+
+
+
+
+

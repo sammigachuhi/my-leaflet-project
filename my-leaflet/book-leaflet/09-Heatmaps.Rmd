@@ -1,0 +1,215 @@
+# Heatmaps
+
+## What are heatmaps?
+
+[Heatmaps](https://www.gislounge.com/heat-maps-in-gis/) are a type of maps that geographically visualize locations with patterns of higher than average occurrence of particular variables say crime, disease, service centres and et cetera. 
+
+## Loading the heatmap plugin
+
+A tool for drawing heatmaps does not come prepackaged in leaflet. We therefore have to use an external plugin by the name of [Leaflet.heat](https://github.com/Leaflet/Leaflet.heat). Yours truly downloaded it from the site hyperlinked in the aforementioned sentence. In case you missed it, the link is [here](https://codeload.github.com/Leaflet/Leaflet.heat/zip/refs/heads/gh-pages). Download and extract the folder in the same directory as your `map.html`.
+
+Once you have extracted, open your `map.html` and add another `<script>` tag within your `<head>` element. 
+
+```
+<script src="Leaflet.heat-gh-pages\Leaflet.heat-gh-pages\dist\leaflet-heat.js"></script>
+```
+
+Thereafter, we will have to think of a way of loading the GeoJson to our `heatmap.js` file, which we shall use as the JavaScript file for our heatmap code. You may thin of using `fetch` or `L.geoJson.ajax` for this purpose but not so fast. Yours truly tried all the above and even though they are proven ways of loading a JavaScript file as we have seen so far it didn't work in creating a heatmap. This is even when we stored the `fetch` and `L.geoJson.ajax` functions into variables to pass them to `L.heatLayer`. `L.heatLayer` is a function that is made possible from the Leaflet.heat plugin we parsed into `map.html` above.
+
+So, what method works in creating a heatmap?
+
+After much internet searching, I came across a code in Stack Overflow. However, it only works after inserting another Ajax plugin. Luckily no download is needed so insert this new `<script>` into your `map.html`.
+
+```
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+```
+
+## Creating the Leaflet heatmap
+
+Let's call the usual suspects of adding a basemap.
+
+```
+var map = L.map('myMap').setView([0.3556, 37.5833], 6.5);
+
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+```
+
+Thereafter, we add the following large code chunks.
+
+```
+var geoJsonUrl = "https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/selected_hospitals.json"
+
+    var geojsonLayer = $.ajax({
+    url : geoJsonUrl,
+    dataType : 'json',
+    jsonpCallback: 'getJson',
+    success : console.log("Data successfully loaded!"),
+    });
+
+geoJson2heat = ((geojson) => {
+        return geojson.features.map(function(feature) {
+        return [parseFloat(feature.geometry.coordinates[1]), 
+                parseFloat(feature.geometry.coordinates[0])];
+        });
+        });
+
+
+$.when(geojsonLayer).done(function() {
+        // var kill = L.geoJSON(geojsonLayer.responseJSON);
+        var layer = geoJson2heat(geojsonLayer.responseJSON, 4);
+        var heatMap = L.heatLayer(layer, { 
+                radius: 40,
+                blur: 10, 
+                gradient: {
+                        '0': 'Navy', '0.25': 'Navy',
+                        '0.26': 'Green',
+                        '0.5': 'Green',
+                        '0.51': 'Yellow',
+                        '0.75': 'Yellow',
+                        '0.76': 'Red',
+                        '1': 'Red'
+                      },
+                maxZoom: 13});
+        map.addLayer(heatMap);
+        });
+
+```
+
+To give credit where it is due, the code chunks were taken from [this Stack Overflow question](https://gis.stackexchange.com/questions/337294/heatmap-with-geojson-leaflet-and-leaflet-heat-plugin?utm_source=pocket_reader) and modified a bit.
+
+I will do everyone justice by going through the preceding code bit by bit.
+
+```
+var geoJsonUrl = "https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/selected_hospitals.json"
+
+    var geojsonLayer = $.ajax({
+    url : geoJsonUrl,
+    dataType : 'json',
+    jsonpCallback: 'getJson',
+    success : console.log("Data successfully loaded!"),
+    });
+
+
+```
+
+The `var geoJsonUrl` gets the link to our hospitals json file. The `var geojsonLayer` uses the Asynchronous Javascript And Xml (Ajax) method to load data from our Github server. If successfull, we get the message "Data successfully loaded!" in our browser console. 
+
+
+```
+geoJson2heat = ((geojson) => {
+        return geojson.features.map(function(feature) {
+        return [parseFloat(feature.geometry.coordinates[1]), 
+                parseFloat(feature.geometry.coordinates[0])];
+        });
+        });
+        
+```
+
+The above code chunk is fairly easy to understand. The function passed to `geoJson2heat` uses the `map` method to iterate over every element, such as cities in the json file and retrieve the longitude and latitude coordinates. Notice the format has been inverted. Rathater than [0]... [1] for Lat-Lon, we use [1]...[0]. 
+
+The final is a jQuery function that will return the heatmap layer.
+
+```
+$.when(geojsonLayer).done(function() {
+        // var kill = L.geoJSON(geojsonLayer.responseJSON);
+        var layer = geoJson2heat(geojsonLayer.responseJSON, 4);
+        var heatMap = L.heatLayer(layer, { 
+                radius: 40,
+                blur: 10, 
+                gradient: {
+                        '0': 'Navy', '0.25': 'Navy',
+                        '0.26': 'Green',
+                        '0.5': 'Green',
+                        '0.51': 'Yellow',
+                        '0.75': 'Yellow',
+                        '0.76': 'Red',
+                        '1': 'Red'
+                      },
+                maxZoom: 13});
+        map.addLayer(heatMap);
+        });
+
+```
+
+Honestly the last was a bit of a stretch as yours truly is yet to encounter use of jQuery that much nowadays.
+
+```{r}
+
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/heatmap.jpg'))
+```
+
+The full code files are available from [here](https://www.dropbox.com/scl/fo/cgfftdcw8u7lqyqfu38gu/h?dl=0&rlkey=7ywjiud4vo24llrx192rvgf4d).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

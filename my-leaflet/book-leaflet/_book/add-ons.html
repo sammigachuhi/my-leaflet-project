@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Add ons | Leaflet book</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Add ons | Leaflet book" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Add ons | Leaflet book" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="Samuel Gachuhi Ngugi" />
+
+
+<meta name="date" content="2023-05-31" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="first-leaflet-map.html"/>
+<link rel="next" href="embedding-leaflet-map-to-an-external-website.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#usage"><i class="fa fa-check"></i>Usage</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#render-book"><i class="fa fa-check"></i>Render book</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#preview-book"><i class="fa fa-check"></i>Preview book</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#what-is-leaflet"><i class="fa fa-check"></i><b>1.1</b> What is Leaflet?</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#how-does-it-work"><i class="fa fa-check"></i><b>1.2</b> How does it work?</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#javascript"><i class="fa fa-check"></i><b>1.3</b> JavaScript</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#css-files"><i class="fa fa-check"></i><b>1.4</b> CSS files</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="first-leaflet-map.html"><a href="first-leaflet-map.html"><i class="fa fa-check"></i><b>2</b> First Leaflet Map</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="first-leaflet-map.html"><a href="first-leaflet-map.html#setting-the-superstructure"><i class="fa fa-check"></i><b>2.1</b> Setting the superstructure</a></li>
+<li class="chapter" data-level="2.2" data-path="first-leaflet-map.html"><a href="first-leaflet-map.html#beautifying-the-house"><i class="fa fa-check"></i><b>2.2</b> Beautifying the house</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="add-ons.html"><a href="add-ons.html"><i class="fa fa-check"></i><b>3</b> Add ons</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="add-ons.html"><a href="add-ons.html#a-marker"><i class="fa fa-check"></i><b>3.1</b> A marker</a></li>
+<li class="chapter" data-level="3.2" data-path="add-ons.html"><a href="add-ons.html#a-marker-with-a-popup"><i class="fa fa-check"></i><b>3.2</b> A marker with a popup</a></li>
+<li class="chapter" data-level="3.3" data-path="add-ons.html"><a href="add-ons.html#other-markers-and-different-popup-creation-methods"><i class="fa fa-check"></i><b>3.3</b> Other markers and different popup creation methods</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="embedding-leaflet-map-to-an-external-website.html"><a href="embedding-leaflet-map-to-an-external-website.html"><i class="fa fa-check"></i><b>4</b> Embedding leaflet map to an external website</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="embedding-leaflet-map-to-an-external-website.html"><a href="embedding-leaflet-map-to-an-external-website.html#the-html-webpage"><i class="fa fa-check"></i><b>4.1</b> The html webpage</a></li>
+<li class="chapter" data-level="4.2" data-path="embedding-leaflet-map-to-an-external-website.html"><a href="embedding-leaflet-map-to-an-external-website.html#the-css"><i class="fa fa-check"></i><b>4.2</b> The CSS</a></li>
+<li class="chapter" data-level="4.3" data-path="embedding-leaflet-map-to-an-external-website.html"><a href="embedding-leaflet-map-to-an-external-website.html#the-leaflet-js-code-for-our-website"><i class="fa fa-check"></i><b>4.3</b> The leaflet js code for our website</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="using-geojson-in-leaflet.html"><a href="using-geojson-in-leaflet.html"><i class="fa fa-check"></i><b>5</b> Using GeoJSON in Leaflet</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="using-geojson-in-leaflet.html"><a href="using-geojson-in-leaflet.html#creating-a-.geojson-file"><i class="fa fa-check"></i><b>5.1</b> Creating a <code>.geojson</code> file</a></li>
+<li class="chapter" data-level="5.2" data-path="using-geojson-in-leaflet.html"><a href="using-geojson-in-leaflet.html#what-are-.geojson-files"><i class="fa fa-check"></i><b>5.2</b> What are <code>.geojson</code> files?</a></li>
+<li class="chapter" data-level="5.3" data-path="using-geojson-in-leaflet.html"><a href="using-geojson-in-leaflet.html#why-geojson"><i class="fa fa-check"></i><b>5.3</b> Why <code>geojson</code>?</a></li>
+<li class="chapter" data-level="5.4" data-path="using-geojson-in-leaflet.html"><a href="using-geojson-in-leaflet.html#creating-a-geojson-file"><i class="fa fa-check"></i><b>5.4</b> Creating a geojson file</a></li>
+<li class="chapter" data-level="5.5" data-path="using-geojson-in-leaflet.html"><a href="using-geojson-in-leaflet.html#saving-the-geojson-to-github"><i class="fa fa-check"></i><b>5.5</b> Saving the Geojson to Github</a></li>
+<li class="chapter" data-level="5.6" data-path="using-geojson-in-leaflet.html"><a href="using-geojson-in-leaflet.html#loading-the-geojson-into-leaflet"><i class="fa fa-check"></i><b>5.6</b> Loading the GeoJSON into Leaflet</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="using-geojson-in-leaflet.html"><a href="using-geojson-in-leaflet.html#the-easy-way"><i class="fa fa-check"></i><b>5.6.1</b> The easy way</a></li>
+<li class="chapter" data-level="5.6.2" data-path="using-geojson-in-leaflet.html"><a href="using-geojson-in-leaflet.html#using-the-ajax-plugin"><i class="fa fa-check"></i><b>5.6.2</b> Using the Ajax Plugin</a></li>
+<li class="chapter" data-level="5.6.3" data-path="using-geojson-in-leaflet.html"><a href="using-geojson-in-leaflet.html#using-fetch-api"><i class="fa fa-check"></i><b>5.6.3</b> Using Fetch API</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html"><i class="fa fa-check"></i><b>6</b> Create your own custom markers</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html#the-icons"><i class="fa fa-check"></i><b>6.1</b> The icons</a></li>
+<li class="chapter" data-level="6.2" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html#differentiate-custom-markers-on-a-webmap"><i class="fa fa-check"></i><b>6.2</b> Differentiate custom markers on a webmap</a></li>
+<li class="chapter" data-level="6.3" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html#using-fetch"><i class="fa fa-check"></i><b>6.3</b> Using fetch</a></li>
+<li class="chapter" data-level="6.4" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html#unique-custom-markers"><i class="fa fa-check"></i><b>6.4</b> Unique custom markers</a></li>
+<li class="chapter" data-level="6.5" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html#image-overlays"><i class="fa fa-check"></i><b>6.5</b> Image overlays</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="creating-an-interactive-choropleth-map.html"><a href="creating-an-interactive-choropleth-map.html"><i class="fa fa-check"></i><b>7</b> Creating an interactive choropleth map</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="creating-an-interactive-choropleth-map.html"><a href="creating-an-interactive-choropleth-map.html#what-is-a-choropleth-map"><i class="fa fa-check"></i><b>7.1</b> What is a choropleth map?</a></li>
+<li class="chapter" data-level="7.2" data-path="creating-an-interactive-choropleth-map.html"><a href="creating-an-interactive-choropleth-map.html#creating-a-choropleth-map-the-start"><i class="fa fa-check"></i><b>7.2</b> Creating a choropleth map: the start</a></li>
+<li class="chapter" data-level="7.3" data-path="creating-an-interactive-choropleth-map.html"><a href="creating-an-interactive-choropleth-map.html#coloring-the-counties"><i class="fa fa-check"></i><b>7.3</b> Coloring the counties</a></li>
+<li class="chapter" data-level="7.4" data-path="creating-an-interactive-choropleth-map.html"><a href="creating-an-interactive-choropleth-map.html#highlight-features"><i class="fa fa-check"></i><b>7.4</b> Highlight features</a></li>
+<li class="chapter" data-level="7.5" data-path="creating-an-interactive-choropleth-map.html"><a href="creating-an-interactive-choropleth-map.html#creating-a-custom-info"><i class="fa fa-check"></i><b>7.5</b> Creating a custom info</a></li>
+<li class="chapter" data-level="7.6" data-path="creating-an-interactive-choropleth-map.html"><a href="creating-an-interactive-choropleth-map.html#create-a-legend"><i class="fa fa-check"></i><b>7.6</b> Create a legend</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="layer-groups-and-controls.html"><a href="layer-groups-and-controls.html"><i class="fa fa-check"></i><b>8</b> Layer groups and controls</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="layer-groups-and-controls.html"><a href="layer-groups-and-controls.html#purpose-of-layer-groups-and-controls"><i class="fa fa-check"></i><b>8.1</b> Purpose of layer groups and controls</a></li>
+<li class="chapter" data-level="8.2" data-path="layer-groups-and-controls.html"><a href="layer-groups-and-controls.html#set-up-the-basemaps"><i class="fa fa-check"></i><b>8.2</b> Set up the basemaps</a></li>
+<li class="chapter" data-level="8.3" data-path="layer-groups-and-controls.html"><a href="layer-groups-and-controls.html#creating-the-controls"><i class="fa fa-check"></i><b>8.3</b> Creating the controls</a></li>
+<li class="chapter" data-level="8.4" data-path="layer-groups-and-controls.html"><a href="layer-groups-and-controls.html#adding-overlay-maps"><i class="fa fa-check"></i><b>8.4</b> Adding overlay maps</a></li>
+<li class="chapter" data-level="8.5" data-path="layer-groups-and-controls.html"><a href="layer-groups-and-controls.html#add-a-scale-bar"><i class="fa fa-check"></i><b>8.5</b> Add a scale bar</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="heatmaps.html"><a href="heatmaps.html"><i class="fa fa-check"></i><b>9</b> Heatmaps</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="heatmaps.html"><a href="heatmaps.html#what-are-heatmaps"><i class="fa fa-check"></i><b>9.1</b> What are heatmaps?</a></li>
+<li class="chapter" data-level="9.2" data-path="heatmaps.html"><a href="heatmaps.html#loading-the-heatmap-plugin"><i class="fa fa-check"></i><b>9.2</b> Loading the heatmap plugin</a></li>
+<li class="chapter" data-level="9.3" data-path="heatmaps.html"><a href="heatmaps.html#creating-the-leaflet-heatmap"><i class="fa fa-check"></i><b>9.3</b> Creating the Leaflet heatmap</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="cluster-to-reduce-the-clutter.html"><a href="cluster-to-reduce-the-clutter.html"><i class="fa fa-check"></i><b>10</b> Cluster to reduce the clutter</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="cluster-to-reduce-the-clutter.html"><a href="cluster-to-reduce-the-clutter.html#a-map-full-of-clutter"><i class="fa fa-check"></i><b>10.1</b> A map full of clutter</a></li>
+<li class="chapter" data-level="10.2" data-path="cluster-to-reduce-the-clutter.html"><a href="cluster-to-reduce-the-clutter.html#preparations"><i class="fa fa-check"></i><b>10.2</b> Preparations</a></li>
+<li class="chapter" data-level="10.3" data-path="cluster-to-reduce-the-clutter.html"><a href="cluster-to-reduce-the-clutter.html#behold-a-cluster-marker-map"><i class="fa fa-check"></i><b>10.3</b> Behold, a cluster marker map!</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Leaflet book</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="add-ons" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Add ons<a href="add-ons.html#add-ons" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>So we have a plain looking webmap like the one shown below.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="add-ons.html#cb16-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/kisumu-leaflet.jpg&quot;</span>))</span></code></pre></div>
+<p><img src="../kisumu-leaflet.jpg" width="400" /></p>
+<p>However, though a cool looking webmap, it offers no sort of information to the viewer except that it is an interactive map interface. In order to create some information, such as the location of Kisumu and other features you want to highlight, markers are one way of displaying this kind of information.</p>
+<p>First things, first, we had last left our <code>main.js</code> file looking like this. Ensure yours is also the same, but we encourage to explore with other leaflet layers available from <a href="https://leaflet-extras.github.io/leaflet-providers/preview/">here</a>.</p>
+<div id="a-marker" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> A marker<a href="add-ons.html#a-marker" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Many people could possible not know where Kisumu, is, so lets indicate its location with a simple pin marker. To be more specific since the name Kisumu may infer a large area, let’s pinpoint Kisumu International Airport.</p>
+<pre><code>// Location of Kisumu International Airport
+var marker = L.marker([-0.0819301, 34.7260167]).addTo(map);</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="add-ons.html#cb18-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/kisumu-international-airport.jpg&quot;</span>))</span></code></pre></div>
+<p><img src="../kisumu-international-airport.jpg" width="958" /></p>
+<p>Can you try creating a marker for your home location, not forgetting to change the <code>setView</code> method you had initially started with in this map creating journey?</p>
+<p>Alright, we have a marker. But as they say, going the extra mile is what counts in both the corporate as well as personal goals. Let’s try to make this marker have some information, called attributes in GIS, of um, let’s say the name of the airport and other auxillary data.</p>
+</div>
+<div id="a-marker-with-a-popup" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> A marker with a popup<a href="add-ons.html#a-marker-with-a-popup" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To create popups, leaflet provides the <code>bindPopup</code> method. It is especially easy if you already have a marker variable in place, as in our case. Let’s exploit this advantage.</p>
+<pre><code>// Create popup of Kisumu international Airport
+marker.bindPopup(&quot;Kisumu International Airport.&quot;).openPopup();</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="add-ons.html#cb20-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/kisumu-airport-popup.jpg&quot;</span>))</span></code></pre></div>
+<p><img src="../kisumu-airport-popup.jpg" width="952" /></p>
+<p>What has just happened is that <code>bindPopup</code> binds the popup content “Kisumu International Airport” to the marker. The following <code>popUp</code> method chained to the method <em>opens</em> the popup at that specified latitude longitude. If you remove, or comment <code>//</code> out the <code>popUp</code> method, you will have to click the marker to see the popup content. Try it out.</p>
+<p>Markers can also work with hmtl elements, such as when you want to display additional metadata, say the owner of the place, size of land et ceterra. In the below case, we have added the lat-lon coordinates of Kisumu airport location. I would advise not to include lengthy information in an HTML marker element.</p>
+<pre><code>// With html content
+marker.bindPopup(&quot;&lt;br&gt;Name: Kisumu International Airport&lt;/br&gt;&lt;br&gt;Latitude: -0.0819301&lt;/br&gt;&lt;br&gt;Longitude: 34.7260167&lt;/br&gt;&quot;).openPopup();</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="add-ons.html#cb22-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/marker-html.jpg&quot;</span>))</span></code></pre></div>
+<p><img src="../marker-html.jpg" width="958" /></p>
+</div>
+<div id="other-markers-and-different-popup-creation-methods" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Other markers and different popup creation methods<a href="add-ons.html#other-markers-and-different-popup-creation-methods" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>So far you have seen pin markers, but there are also other kinds of markers, circles and rectangles even. Unlike the pin markers we have been experimenting with, these other markers require additional options, such as radius for circle and lat-long cooordinates for rectangles. Let’s have a go with each.</p>
+<p>Starting with a circle, let’s start by inserting a circle to show the location of Kisumu Museum.</p>
+<pre><code>// Circle over Kisumu Museum
+var circle = L.circle([-0.107637, 34.7435975]).setRadius(2000).addTo(map);</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="add-ons.html#cb24-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/kisumu-museum-circle.jpg&quot;</span>))</span></code></pre></div>
+<p><img src="../kisumu-museum-circle.jpg" width="954" /></p>
+<p>The below code will also create a slightly similar circle marker, the only difference is that in the preceding one we didn’t insert <code>{options}</code> and we set radius using the <code>setRadius</code> method. In the second one below, we have been very specific in what we want –our specifications going into the curly brackets {} before adding the circle marker to our map. Brackets in javascript denote <a href="https://flexiple.com/javascript/javascript-dictionary/">dictionaries</a>. Dictionaries in javascript and even in python are used to denote key-value pairs. Best for look-ups.</p>
+<pre><code>var circle = L.circle([-0.107637, 34.7435975], {
+    color: &#39;blue&#39;,
+    fillColor: &#39;blue&#39;,
+    fillOpacity: .5,
+    radius: 2000
+}).addTo(map);</code></pre>
+<p>As we had mentioned earlier, other marker elements such as circles and rectangles can have popups attached to them. Ready for something cool, we will attach a popup into our circle. Not just any other ordinary hard coded popup but one in which relies on other methods to generate an output. In our case, we want a pop up that shows the radius of our circle without necessarily typing it in.</p>
+<pre><code>// Circle marker pop up for Kisumu Museum
+var getRadius = circle.getRadius();
+circle.bindPopup(&quot;Radius is: &quot; + getRadius.toString() + &quot; metres&quot;);</code></pre>
+<p>In our above code, <code>getRadius</code> gets the radius of our circle marker. <code>bindPopup</code> has it has already been severally explained <em>binds</em> the popup content to our circle marker. But there is a catch. The variable <code>getRadius</code> is used to print out the results, which is 2000 of course. However, <code>bindPopup</code> only understands strings so we convert our variable result to a string using <code>toString()</code>. We also added other strings to give the popup a wholesome result that is understandable to every Tom, Dick, Harry and Harriet.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="add-ons.html#cb27-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/circle-radius.jpg&quot;</span>))</span></code></pre></div>
+<p><img src="../circle-radius.jpg" width="956" /></p>
+<p>Finally, let’s try with a rectangle. Actually, leaflet allows us to create polygons, and with a polygon, you can also create rectangles. Let’s work with the polygon class instead.</p>
+<p>Copy the following coordinates.</p>
+<pre><code>// Draw rectangle around Kisumu Wildlife Impala Park
+var impalaParkCoordinates = [
+    [-0.1144753, 34.743418],
+    [-0.115097, 34.745242],
+    [-0.114238, 34.745071],
+    [-0.114002, 34.746101],
+    [-0.115054, 34.746787],
+    [-0.115998, 34.745586],
+    [-0.118444, 34.746208],
+    [-0.121255, 34.744684]
+]</code></pre>
+<p>Now using the <code>L.polygon</code> class and a few optional parameters, let’s showcase where the Kisumu Wildlife Impala Park is situated.</p>
+<pre><code>// Create a polygon using the above coordinates
+var impalaParkPolygon = L.polygon(impalaParkCoordinates, {
+    color: &#39;brown&#39;,
+    fillOpacity: 0.4
+}).addTo(map);</code></pre>
+<p>You will notice that the Kisumu Museum circle overlaps the location of the Kisumu Impala Park but that is no problem. We will make our popup content appear by default as soon as you load the map. Just like we did for the circle marker, we will make our popup content rely on another variable, in this case <code>getCenter</code> which gets the centroid coordinates of our polygon. We were looking for something cooler such as <code>getArea</code> but we were unable to find it.</p>
+<pre><code>// Add popup to the polygon of Kisumu Impala Park
+var getCenter = impalaParkPolygon.getCenter();
+impalaParkPolygon.bindPopup(&quot;Centre is at Lat-Lon: &quot; + getCenter.toString()).openPopup();
+</code></pre>
+<p>If you find the circle marker radius too obstracting you can comment out it and its dependancies using <code>//</code>.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="add-ons.html#cb31-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/polygon-marker.jpg&quot;</span>))</span></code></pre></div>
+<p><img src="../polygon-marker.jpg" width="960" /></p>
+<p>You can get the files used in this exercise <a href="https://www.dropbox.com/scl/fo/qznia963vaq8s4ca51p51/h?dl=0&amp;rlkey=glj4ew599c4v9fikq11wn1fje">here</a>.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="first-leaflet-map.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="embedding-leaflet-map-to-an-external-website.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/03-Add_ons.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

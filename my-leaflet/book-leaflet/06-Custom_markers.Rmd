@@ -1,0 +1,456 @@
+# Create your own custom markers
+
+Full codes and files are [here](https://www.dropbox.com/scl/fo/ecidt41insvnzpwvmj9iw/h?dl=0&rlkey=yy4w9p76osxs913p19wvnsjez).
+
+Hope you didn't trash away the cities we created in the last [chapter][Using GeoJSON in Leaflet]. In this chapter, we shall focus on creating your own custom markers. We love a clean job, so we will create a new JavaScript file and name it `custom-markers.js`. We understand the previous [chapter][Using GeoJSON in Leaflet] was quite long but believe you me, although creating custom markers sounds easier, it took us way longer to get the hang around it. Sounds ironic but its the truth. Good news, we received enough punches on the face to teach you how to dodge the pain points.
+
+The very first thing is to create a basemap. 
+
+```
+var map = L.map('myMap').setView([-1.295287148, 36.81984753], 7);
+
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+```
+
+We will create a new variable called `cities` that mimics the geojson file saved to github only these time the population values have been tweaked a bit. Paste the below code to your `custom-markers.js`.
+
+```
+var cities = {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "City": "Nairobi",
+          "Population": 4300000
+        },
+        "geometry": {
+          "coordinates": [
+            36.8198475311531,
+            -1.2952871483350066
+          ],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "City": "Kisumu",
+          "Population": 610082
+        },
+        "geometry": {
+          "coordinates": [
+            34.74657469430895,
+            -0.10402992528247523
+          ],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "City": "Mombasa",
+          "Population": 1440000
+        },
+        "geometry": {
+          "coordinates": [
+            39.66358575335434,
+            -4.041883912902392
+          ],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "City": "Nakuru",
+          "Population": 422000
+        },
+        "geometry": {
+          "coordinates": [
+            36.06412271026528,
+            -0.2754534004690896
+          ],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "City": "Nyeri",
+          "Population": 759164
+        },
+        "geometry": {
+          "coordinates": [
+            36.957036675396154,
+            -0.42345404217887506
+          ],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "City": "Machakos",
+          "Population": 1422000
+        },
+        "geometry": {
+          "coordinates": [
+            37.25780808801821,
+            -1.518874011494134
+          ],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "City": "Malindi",
+          "Population": 119859
+        },
+        "geometry": {
+          "coordinates": [
+            40.10521499751357,
+            -3.2138767356491655
+          ],
+          "type": "Point"
+        }
+      }
+    ]
+  }
+
+```
+
+Can you notice any difference on the `Population` property compared to the code [Chapter 5][Using GeoJSON in Leaflet]? If you are hawkeyed, you will see the Population values this time round are integers compared to strings in the previous chapter. It sounds superflous to create population values as strings only to convert them to integers now, but please do remember the geojson.io site did that for us, not this author. Here is the [raw geojson script](https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/cities-geojson2.geojson.txt) customized for this chapter.
+
+Just a small note before going on. When the GeoJSON file has the population values enclosed in strings `""`, they are automatically rendered on a map on the Github server. 
+
+```{r}
+knitr::include_graphics(rep("D:/gachuhi/my-leaflet/geojson-webmap.jpg"))
+```
+
+However, when the strings are removed, and the population values remain as integers, they are no longer rendered on a webmap as shown below.
+
+```{r}
+knitr::include_graphics(rep("D:/gachuhi/my-leaflet/geojson-nowebmap.jpg"))
+```
+
+It's just a dictionary of lists and other dictionaries.
+
+
+## The icons
+
+Alright. Let's create a map of our cities but with custom markers this time round. The below code creates our custom markers.
+
+```
+// Yellow Icon
+var yellowIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-yellow.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  });
+
+// Orange Icon
+var orangeIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-orange.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  });
+
+// Red Icon
+var redIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  });
+
+```
+
+We created three markers in order of importance. One is yellow, the other orange, the other red. You will see the significance (not so much) of these colors later.
+
+Time to create GeoJSON markers out of this.
+
+```
+L.geoJSON(cities, {
+    pointToLayer(feature, latlng) {
+        return L.marker(latlng, {icon: yellowIcon});
+    }
+}).bindPopup(function (layer) {
+    return layer.feature.properties.City;
+}).addTo(map);
+
+```
+
+We got this.
+
+```{r}
+knitr::include_graphics(rep("D:/gachuhi/my-leaflet/geojson-markers.jpg"))
+```
+
+
+All cities were marked yellow, irrespective of their population or jurisdictional significance. But before we raise the alarm on this, what was the purpose of the `pointToLayer()` function? According to the Leaflet guide, the `pointToLayer()` function is a special function for GeoJSON variables that species how they should be drawn. In this case and in any other case, it passes the commands in the body, such as `return L.marker...` for every marker point at its Lat-Lon coordinates. 
+
+## Differentiate custom markers on a webmap
+
+Now to our spirited arguments. Not all cities are equal. We would appreciate if the markers would differentiate the cities to a particular variable, say population. By the way, size of cities is determined by population. The below code shall differiante cities by circle markers before we go back to normal markers when we touch the `fetch()` function again.
+
+Comment out the earlier code and insert this:
+
+```
+L.geoJSON(cities, {
+  pointToLayer: function (feature, latlng) {
+    if (feature.properties.Population <= 250000) {
+      return L.circleMarker(latlng, {
+        radius: 4,
+        fillColor: '#FFFF00',
+        color: '#000',
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 0.8  
+      });
+    } else if (feature.properties.Population <= 800000) {
+      return L.circleMarker(latlng, {
+        radius: 8,
+        fillColor: '#ff9900',
+        color: '#000',
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 0.8  
+      });
+    } else {
+      return L.circleMarker(latlng, {
+        radius: 12,
+        fillColor: '#FF0000',
+        color: '#000',
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 0.8  
+      });
+    }
+    
+  }
+}).bindPopup(function (layer) {
+  return `City: ${layer.feature.properties.City},<br>
+  Population: ${layer.feature.properties.Population}`;
+}).addTo(map);
+
+```
+
+What you get is a map that has different circle markers according to the respective city's population. This time round, the `pointToLayer()` function body worked with **if/else if** statement to differentiate the radius and color of each circle marker. Under the **if/else if** code statement block, different circle marker specifications of radius and fillColor were inserted for each population category. Any city with a population beyond 800000 was fitted into the `else` block.
+
+```{r}
+knitr::include_graphics(rep("D:/gachuhi/my-leaflet/geojson-diff1.jpg"))
+```
+
+This brings us to why we changed the population values from strings to integers. If we were to work with their former values of strings, any value beyond 1, 000, 000 would receive the settings of `feature.properties.Population <= 250000` that is, color yellow and radius yellow. This is because even though 1 million is by far larger than 250, 000 or 800, 000, because it starts with a 1, it shall be considered even less than 250, 000! This is because when ordering strings in JavaScript, they are by default ordered by the first character. The same case applies to digits 1 to 9. Value 1 will always be inferior to 2, 7, 9 and any other number in between irrespective of whether its a million or a billion.
+
+In the next code sample, we shall create city markers but their populations differentiated with new markers icons we created of yellow, orange and red.
+
+```
+L.geoJSON(cities, {
+  pointToLayer: function (feature, latlng) {
+    if (feature.properties.Population <= 250000) {
+      return L.marker(latlng, {
+        icon: yellowIcon 
+      });
+    } else if (feature.properties.Population <= 800000) {
+      return L.marker(latlng, {
+        icon: orangeIcon 
+      });
+    } else {
+      return L.marker(latlng, {
+        icon: redIcon 
+      });
+    }
+    
+  }
+}).bindPopup(function (layer) {
+  return `City: ${layer.feature.properties.City},<br>
+  Population: ${layer.feature.properties.Population}`;
+}).addTo(map);
+```
+```{r}
+knitr::include_graphics(rep("D:/gachuhi/my-leaflet/geojson-diff2.jpg"))
+```
+
+In the above map, our preceding code has differentiated large cities with populations above 800, 000 with a red marker, those with populations below 250, 000 with a yellow marker and those between with an orange marker. In all cases, our `bindPopup()` still contains the same settings to show both the city name and population.
+
+The `pointToLayer()` function was passed function that return a specific `L.marker` with Lat-Lon coordinates for each respective marker retrieved of course, only that the `icon` key was assigned a different marker icon variable corresponding to each city's population as the value. That's the trick that assigns a different marker to each city as per its population.
+
+
+## Using fetch
+
+Remember how `fetch` helped us retrieve data from a server in a previous chapter. Whereas we won't repeat the entire process again (you can breathe a sigh of relief), the same iterations of differentiating a marker icon can also be inserted in `fetch`, right within the options of `L.geoJson(data, {options})`. 
+
+```
+fetch("https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/cities-geojson2.geojson.txt")
+    .then((response) =>{
+        return response.json()
+    })
+    .then((data) => {
+        L.geoJson(data, {
+          pointToLayer: function (feature, latlng) {
+            if (feature.properties.Population <= 250000) {
+              return L.marker(latlng, {
+                icon: yellowIcon 
+              });
+            } else if (feature.properties.Population <= 800000) {
+              return L.marker(latlng, {
+                icon: orangeIcon 
+              });
+            } else {
+              return L.marker(latlng, {
+                icon: redIcon 
+              });
+            }
+            
+          }
+        }).bindPopup((layer) => {
+            return `City: ${layer.feature.properties.City},<br>
+            Population: ${layer.feature.properties.Population}`}).addTo(map);
+    })
+    .catch((error) => {
+        console.log(`This is the error: ${error}`)
+    })
+
+```
+
+It works but don't take my word for it. Just paste and see.
+
+## Unique custom markers
+
+This part may not be necessary, but it is just to show you that there are various markers apart from the defaults provided by Leaflet. One can create custom markers outside of leaflet using the [Leaflet.Awesome.Markers plugin]. Just like in the case of Ajax, you will need to install the path to the dependencies in the html document `map.html` using `<script>`. Insert the following `<script>` tags into `map.html`.
+
+```
+<script src="Leaflet.awesome-markers-2.0-develop\Leaflet.awesome-markers-2.0-develop\dist\leaflet.awesome-markers.js"></script>
+
+<script src="Leaflet.awesome-markers-2.0-develop\Leaflet.awesome-markers-2.0-develop\dist\leaflet.awesome-markers.css"></script>
+
+```
+
+And also this `<link>` tag:
+
+```
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet"> 
+
+```
+
+To make the best use of time, following the example on their site, we simply replace our `icon` values with the new `L.AwesomeMarkers.icon` for each population category, and also tweaked the colors for each to match those of our previous markers. We assumed that big cities have the best malls, the medium cities, those with above a population of 250, 000 but a peak of 800, 000 to also have good coffee places, and those with populations of less than a quarter million have respectable industries. We assume fair play has been exercised in our assumptions. Here is the code.
+
+```
+L.geoJSON(cities, {
+    pointToLayer: function (feature, latlng) {
+      if (feature.properties.Population <= 250000) {
+        return L.marker(latlng, {
+          icon: L.AwesomeMarkers.icon({icon: 'cog', prefix: 'fa', markerColor: 'purple', iconColor: 'yellow'}) 
+        });
+      } else if (feature.properties.Population <= 800000) {
+        return L.marker(latlng, {
+          icon: L.AwesomeMarkers.icon({icon: 'coffee', prefix: 'fa', markerColor: 'red', iconColor: 'orange'}) 
+        });
+      } else {
+        return L.marker(latlng, {
+          icon: L.AwesomeMarkers.icon({icon: 'shopping-cart', prefix: 'fa', markerColor: 'blue', iconColor: 'red'})
+        });
+      }
+      
+    }
+  }).bindPopup(function (layer) {
+    return `City: ${layer.feature.properties.City},<br>
+    Population: ${layer.feature.properties.Population}`;
+  }).addTo(map);
+
+```
+
+```{r}
+knitr::include_graphics(rep("D:/gachuhi/my-leaflet/extra-markers.jpg"))
+```
+
+The custom markers are also clickable!
+
+## Image overlays
+
+Sometimes an image can act as good a marker as any other displayed so far. Overlaying images on a map is fairly easy, and if in a rush, here is the code:
+
+```
+// Image overlays
+var imageUrl = 'https://pbs.twimg.com/media/DddQBk5WsAAlbdJ?format=jpg&name=large';
+var errorOverlayUrl = 'https://pbs.twimg.com/media/DddQBk5WsAAlbdJ?format=jpg&name=large';
+var altText = 'The Galton - Fenzi Memorial: Source: Google and Twitter';
+var latLngBounds = L.latLngBounds([[-1.2861259,36.8172709], [-1.2886193,36.8230413]]);
+
+var imageOverlay = L.imageOverlay(imageUrl, latLngBounds, {
+    opacity: 0.8,
+    errorOverlayUrl: errorOverlayUrl,
+    alt: altText,
+    interactive: true
+}).addTo(map);
+
+
+```
+
+However, find an image of one location over the wide earth can be tricky and tiring, so we envelope it with a rectangle plus use `map.fitBounds` to zoom to where our image is placed. 
+
+```
+L.rectangle(latLngBounds).addTo(map);
+map.fitBounds(latLngBounds);
+
+```
+
+```{r}
+knitr::include_graphics(rep("D:/gachuhi/my-leaflet/geltan-fenzi.jpg"))
+```
+
+
+Mind you that landmark was set up in 1939 in honour of Lionel Douglas Galton-Fenzi who was the first motorist to drive from Nairobi to Mombasa when all that existed was dirt track laden with wild animals. Yours truly has also heard it contains bearings to various East African cities. Despite being at a point where I normally alight, I've never paid much attention to it nor its bearings. Next time, I will be keen.
+
+Anyway, here is a quick breakdown of the attributes used in `L.imageOverlay`. We understand we have taken a lot of your time on so much a simple chapter, so we will be swift. The `var latLngBounds` uses the `L.latLngBounds` class to set the lat-lon coordinates. Notice they are two coordinate lists bound with a single `[]`. Your brain will get used to this in time. If you don't enclose the two coordinates with `[]` an error may result. `var ImageUrl` is self explanatory --its the image source and for the rest, here they are:
+
+
+1. `opacity` - defines the opacity of the image overlay, it equals to 1.0 by default. Decrease this value to make an image overlay transparent and to expose the underlying map layer.
+
+2. `errorOverlayUrl` - is a URL to the overlay image to show in place of the overlay that failed to load.
+
+3. `alt` - sets the HTML alt attribute to provide an alternative text description of the image. Alternative text is essential information for screen reader users. It can also benefit people during poor network connectivity, in the case the image fails to load. Moreover, it can improve the SEO of a website.
+
+4. `interactive` - is false by default. If true, the image overlay will emit mouse events when clicked or hovered.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
