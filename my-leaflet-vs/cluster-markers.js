@@ -14,7 +14,7 @@ var markers = L.markerClusterGroup();
 
 L.geoJson.ajax(url, {
     pointToLayer: ((feature, latLng) => {
-        return markers.addLayer(L.marker(latLng));
+        return markers.addLayer(L.circleMarker(latLng));
     }),
 
     onEachFeature: ((feature, layer) => {

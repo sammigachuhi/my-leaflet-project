@@ -3,6 +3,9 @@
     <head>
         <title>Leaflet Maps</title>
         <meta charset="utf-8">
+        <!-- For mobile browsers -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
         <link rel="stylesheet" href="styles.css">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
         integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
@@ -14,6 +17,7 @@
         <!-- For cluster markers -->
         <!-- <link rel="stylesheet" href="Leaflet.markercluster-1.4.1\Leaflet.markercluster-1.4.1\dist\MarkerCluster.css"> -->
         <link rel="stylesheet" href="Leaflet.markercluster-master\Leaflet.markercluster-master\dist\MarkerCluster.Default.css">  
+
         <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
         integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
         crossorigin=""></script>
@@ -28,14 +32,11 @@
         <!-- Cluster markers -->
         <script src="Leaflet.markercluster-1.4.1\Leaflet.markercluster-1.4.1\dist\leaflet.markercluster.js"></script>
         <!-- <script src="Leaflet.markercluster-1.4.1\Leaflet.markercluster-1.4.1\dist\leaflet.markercluster-src.js"></script>  -->
-        <!-- Dependancies for loading a raster into Leaflet -->
-        <script src="leaflet-geotiff-master\leaflet-geotiff-master\leaflet-geotiff-plotty.js"></script>
-        <script src="leaflet-geotiff-master\leaflet-geotiff-master\leaflet-geotiff-vector-arrows.js"></script>
-        <script src="leaflet-geotiff-master\leaflet-geotiff-master\leaflet-geotiff.js"></script>
+       
     </head>
     <body>
         <div id="myMap">
-            <script src="cluster-markers.js">
+            <script src="mobile-friendly.js">
             </script> 
         </div>  
         
