@@ -4,7 +4,7 @@
         <title>Leaflet Maps</title>
         <meta charset="utf-8">
         <!-- For mobile browsers -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> -->
 
         <link rel="stylesheet" href="styles.css">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
@@ -35,8 +35,34 @@
        
     </head>
     <body>
-        <div id="myMap">
-            <script src="cluster-markers.js">
+        <div id="map">
+            <script type="javascript">
+            var map = L.map('map').setView([-1.295287148, 36.81984753], 7);
+
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+
+            // url = 'selected_hospitals.geojson'
+
+            // var markers = L.markerClusterGroup();
+            // const geojsonGroup = L.geoJson(url, {
+            //     onEachFeature : function(feature, layer){
+            //         var popupContent =  '<h4 class = "text-primary">Street Light</h4>' +
+            //                             '<div class="container"><table class="table table-striped">' +
+            //                             '<thead><tr><th>Properties</th><th>Value</th></tr></thead>' +
+            //                             '<tbody><tr><td> Facility Name </td><td>'+ feature.properties.Facility_N +'</td></tr>' +
+            //                             '<tr><td>Type </td><td>' + feature.properties.Type +'</td></tr>' 
+            //         layer.bindPopup(popupContent)
+            //     },
+            //     pointToLayer: function (feature, latlng) {
+            //         return L.circleMarker(latlng);
+            //     }
+            // });
+            // markers.addLayer(geojsonGroup);
+            // map.addLayer(markers);
+
             </script> 
         </div>  
         

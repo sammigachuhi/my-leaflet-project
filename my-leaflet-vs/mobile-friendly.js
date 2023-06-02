@@ -19,22 +19,56 @@ var map = L.map('myMap', {
 
 url = 'https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/selected_hospitals.json'
 
-var markers = L.markerClusterGroup();
+///////////
 
-var hospitals = L.geoJson.ajax(url, {
-    pointToLayer: ((feature, latlng) => {
-        return markers.addLayer(L.circleMarker(latlng));
-    }),
+// var markers = L.markerClusterGroup();
+// const geojsonGroup = L.geoJson.ajax(url, {
+//     onEachFeature : function(feature, layer){
+//         var popupContent =  '<h4 class = "text-primary">Street Light</h4>' +
+//                             '<div class="container"><table class="table table-striped">' +
+//                             '<thead><tr><th>Properties</th><th>Value</th></tr></thead>' +
+//                             '<tbody><tr><td> Facility Name </td><td>'+ feature.properties.Facility_N +'</td></tr>' +
+//                             '<tr><td>Type </td><td>' + feature.properties.Type +'</td></tr>' 
+//         layer.bindPopup(popupContent)
+//     },
+//     pointToLayer: function (feature, latlng) {
+//         return L.circleMarker(latlng);
+//     }
+// });
+// markers.addLayer(geojsonGroup);
+// map.addLayer(markers);
 
-    onEachFeature: ((feature, layer) => {
-        layer.bindPopup(`<b>Facility Name:</b> ${feature.properties.Facility_N} <br>
-        <b>Type:</b> ${feature.properties.Type}`)
+//////////////////////////////////////////
+
+// var markers = L.markerClusterGroup();
+
+var cluster = fetch(url)
+    .then((response) =>{
+        return response.json()
     })
-}).addTo(map);
+    .then((data) => {
+        var markers = L.markerClusterGroup();
 
-// ... Add more layers ...
+        var geojsonGroup = L.geoJSON(data, {
+            onEachFeature : function(feature, layer){
+                var popupContent =  `<b>Facility Name:</b> ${feature.properties.Facility_N} <br>
+                <b>Type:</b> ${feature.properties.Type}`;
+                layer.bindPopup(popupContent)
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng);
+            }
+        });
 
-map.addLayer(markers);
+        markers.addLayer(geojsonGroup);
+        map.addLayer(markers);
+
+    })
+    .catch((error) => {
+        console.log(`This is the error: ${error}`)
+    })
+// markers.addLayer(geojsonGroup);
+// map.addLayer(markers);
 
 // Set object for the basemaps
 var basemaps = {
@@ -43,12 +77,12 @@ var basemaps = {
 }
 
 // Set object for the overlay maps
-var overlays = {
-    'Hospitals': hospitals
-}
+// var overlays = {
+//     'Hospitals': cluster
+// }
 
 // Add layer controls
-L.control.layers(basemaps, overlays).addTo(map);
+L.control.layers(basemaps).addTo(map);
 
 // Add scale
 L.control.scale({position:'bottomleft'}).addTo(map);

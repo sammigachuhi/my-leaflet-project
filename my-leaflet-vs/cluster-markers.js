@@ -10,24 +10,48 @@ url = 'https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/selecte
 
 // L.geoJson.ajax(url).addTo(map);
 
-var markers = L.markerClusterGroup();
+// var markers = L.markerClusterGroup();
 
-L.geoJson.ajax(url, {
-    pointToLayer: ((feature, latLng) => {
-        return markers.addLayer(L.circleMarker(latLng));
-    }),
+// L.geoJson.ajax(url, {
+//     pointToLayer: ((feature, latLng) => {
+//         return markers.addLayer(L.circleMarker(latLng));
+//     }),
 
-    onEachFeature: ((feature, layer) => {
-        layer.bindPopup(`<b>Facility Name:</b> ${feature.properties.Facility_N} <br>
-        <b>Type:</b> ${feature.properties.Type}`)
-    })
-}).addTo(map);
+//     onEachFeature: ((feature, layer) => {
+//         layer.bindPopup(`<b>Facility Name:</b> ${feature.properties.Facility_N} <br>
+//         <b>Type:</b> ${feature.properties.Type}`)
+//     })
+// }).addTo(map);
 
 // ... Add more layers ...
 
-map.addLayer(markers);
+// map.addLayer(markers);
 
+/////////////////
+fetch(url)
+    .then((response) =>{
+        return response.json()
+    })
+    .then((data) => {
+        var markers = L.markerClusterGroup();
 
+        var geojsonGroup = L.geoJSON(data, {
+            onEachFeature : function(feature, layer){
+                layer.bindPopup(`<b>Facility Name:</b> ${feature.properties.Facility_N} <br>
+                <b>Type:</b> ${feature.properties.Type}`);
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng);
+            }
+        });
+
+        markers.addLayer(geojsonGroup);
+        map.addLayer(markers);
+
+    })
+    .catch((error) => {
+        console.log(`This is the error: ${error}`)
+    })
 
 
 

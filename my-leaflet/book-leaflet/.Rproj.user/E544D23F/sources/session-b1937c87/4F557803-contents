@@ -1,0 +1,143 @@
+# Cluster to reduce the clutter
+
+## A map full of clutter
+
+There comes a time when it is convenient to coalesce several points into single multi-cluster point. Consider the following example: you have a geojson file with over 10000 points of houses within a densely populated region, say an island of 5km by 5km, if by any chance such a scenario exists. Will you want to display such a gigantic number of points within such a small area? That would be an overkill! Moreover, it will seem incomprehensible to the viewer. Consider the following example we set up in a new JavaScript file which we fondly called `cluster-markers.js`. 
+
+```
+var map = L.map('myMap').setView([-1.295287148, 36.81984753], 7);
+
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+
+url = 'https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/selected_hospitals.json'
+
+L.geoJson.ajax(url).addTo(map);
+
+var markers = L.markerClusterGroup();
+
+```
+
+The following is the result we got.
+
+```{r}
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/clutter-points.jpg'))
+```
+
+Not good at all. The `Leaflet.markercluster` plugin is what transforms a clutter map into one of neatly arranged clustered marker points.
+
+## Preparations
+
+Creating a cluster marker map is fairly easy. You will first have to insert the `Leaflet.markerCluster` plugin into `map.html`. The plugin is available from [here](https://github.com/Leaflet/Leaflet.markercluster/archive/refs/heads/master.zip). Insert the following `<script>` tag into the `<head>` element of your `map.html`.
+
+```
+<script src="Leaflet.markercluster-1.4.1\Leaflet.markercluster-1.4.1\dist\leaflet.markercluster.js"></script>
+```
+
+You will also have to insert the `Leaflet.markercluster` CSS properties via the `<link>` tag too. Add the following `<link>` tag for `Leaflet.markercluster` after the other `<link>` properties.
+
+```
+<link rel="stylesheet" href="Leaflet.markercluster-master\Leaflet.markercluster-master\dist\MarkerCluster.Default.css"> 
+```
+
+Don't underestimate them. These CSS properties are necessary to style your cluster points in a nice way -to make it easy on the eye.
+
+Hope you also referenced your `map.html` to the `cluster-markers.js` in the `<script>` file inside the `<body>` element!
+
+
+If you had done the small exercise at the beginning of the chapter, the following code should be present.
+
+```
+var map = L.map('myMap').setView([-1.295287148, 36.81984753], 7);
+
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+
+url = 'https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/selected_hospitals.json'
+
+```
+
+## Behold, a cluster marker map!
+
+Delete the `L.geoJson.ajax(url).addTo(map);`, we won't need it now. Our real work of creating a cluster marker map begins with the `markerClusterGroup`. Let's proceed!
+
+```
+var markers = L.markerClusterGroup();
+
+```
+
+We shall use Ajax again but this time round we shall pass in some functions to customize the appearance and functionalities of our GeoJson markers.
+
+```
+
+L.geoJson.ajax(url, {
+    pointToLayer: ((feature, latLng) => {
+        return markers.addLayer(L.circleMarker(latLng));
+    }),
+
+    onEachFeature: ((feature, layer) => {
+        layer.bindPopup(`<b>Facility Name:</b> ${feature.properties.Facility_N} <br>
+        <b>Type:</b> ${feature.properties.Type}`)
+    })
+}).addTo(map);
+```
+
+Remember `pointToLayer`? It defines how the GeoJson file will appear. The `pointToLayer` retrieves the Latitude-Longitude coordinates, creates circle markers out of them before finally parsing to the `markers` variable in the return keyword.
+
+How about for `onEachFeature`. You can guess. *O*n *E*ach *F*eature, do this and that. In our case we bind a popup of facility name and type which will appear when a circle marker is clicked on.
+
+Actually, the above code sort of finished the work for us.
+
+```{r}
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/cluster-marker-map.jpg'))
+
+```
+
+Zoom in and out and watch the circle markers *spidefy* to individual points with a popup. I have restrained from tweaking because the defaults are already good enough. See them from this [Github Page](https://github.com/Leaflet/Leaflet.markercluster). 
+
+However, as good practice, we need to add the `markers` global variable to the map. We do so by using the following code.
+
+```
+map.addLayer(markers)
+
+```
+
+`addLayers`, just like the name suggests, adds the given layer to the map.
+
+The `L.circleMarker` in the `pointToLayer` key of the ajax function can be replaced with `L.marker()`. However, lone hospitals especially to the northeast of Kenya, and when clusters are specified to their individual points will resort to the default marker style of Leaflet. Below is how they would look, and is far from aesthetic.
+
+```{r}
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/cluster-marker-plain.jpg'))
+
+```
+
+Most of the ajax code was inspired by this [video](https://www.youtube.com/watch?v=R-V7XFUbrkw&t=625s). 
+
+
+The code files used for this chapter are available from [here](https://www.dropbox.com/scl/fo/vbyxk75jodchlgxb4obkl/h?dl=0&rlkey=x5jya8iwtj431uwxte7usdvpa).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
