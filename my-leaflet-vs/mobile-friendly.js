@@ -84,8 +84,8 @@ var basemaps = {
 // Add layer controls
 L.control.layers(basemaps).addTo(map);
 
-// Add scale
-L.control.scale({position:'bottomleft'}).addTo(map);
+// // Add scale
+// L.control.scale({position:'bottomleft'}).addTo(map);
 
 // Zoom to your location
 map.locate({setView: true, maxZoom: 16});

@@ -51,3 +51,10 @@ cluster-to-reduce-the-clutter
 a-map-full-of-clutter
 preparations
 behold-a-cluster-marker-map
+additional-features-of-cluster-marker-plugin
+mobile-friendly-webapps
+the-basemaps
+adding-the-features
+zooming-to-mobile-users-location
+add-marker-to-mobile-users-geolocation
+the-mobile-webmap-app-in-action
