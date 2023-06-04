@@ -3,7 +3,7 @@
     "path": "D:/gachuhi/my-leaflet/book-leaflet/05-Using_geojson_files_in_Leaflet.Rmd",
     "project_path": "05-Using_geojson_files_in_Leaflet.Rmd",
     "type": "r_markdown",
-    "hash": "1914719027",
+    "hash": "361106983",
     "contents": "",
     "dirty": false,
     "created": 1682863515241.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "127,399",
-        "scrollLine": "0"
+        "cursorPosition": "416,0",
+        "scrollLine": "405"
     },
     "folds": "",
-    "lastKnownWriteTime": 1684877303,
+    "lastKnownWriteTime": 1685899086,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1684877303235,
+    "last_content_update": 1685899086580,
     "read_only": false,
     "read_only_alternatives": []
 }

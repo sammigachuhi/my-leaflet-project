@@ -1,6 +1,6 @@
 # Embedding leaflet map to an external website
 
-Now, we have succeeded in making a stand alone leaflet map. However, we want to do something that will upscale from a novice to a pro. That is, we just do one leaflet exercise that will give us that entry to the IT department. If we convince our boss that we could embed a webmap of their branch locations, they could consider us a webmapping guru rather than just another cog in the organization's wheel.
+Now, we have succeeded in making a stand alone leaflet map. However, we want to do something that will quickly upscale you, dear reader--from a novice to a pro. That is, we just do one leaflet exercise that will give us that entry to the coveted IT department. If we convince our boss that we could embed a webmap of their branch locations to their website, they could consider us a webmapping guru rather than just another cog in the organization's wheel.
 
 An example of what we want is shown below, which is a snapshot from the [HDX website](https://data.humdata.org/dataset/cod-ab-ken).
 
@@ -122,9 +122,9 @@ Before we head there, let's insert the CSS file, which looks like this.
 }
 ```
 
-## The leaflet js code for our website
+## The leaflet JavaScript code for our website
 
-Back to the leaflet map of our dummy Pro-GMO Alliance webpage. How did we put the leaflet in there. Nothing complicated, just inserting the same leaflet code, with some additional javascript and referencing it within the html file with `<script src="example-main.js"></script>`. The Javascript file used is shown below.
+Back to the leaflet map of our dummy Pro-GMO Alliance webpage. How did we put the leaflet in there? Nothing complicated, just inserting the same leaflet code, with some additional JavaScript and referencing it within the html file with `<script src="example-main.js"></script>`. The Javascript file used is shown below.
 
 ```
 var map = L.map('map').setView([-0.302765, 36.146147], 12);
@@ -151,7 +151,7 @@ for (var i = 0; i < branches.length; i++) {
 
 The only new thing in the above script is the `for` loop. In javascript, the `for` loop is used to iterate over items. In this case, and remembering that indexing in javascript arrays begins from 0 just is does for Python, the marker popups will read the latitudes and longitudes which are at index 1 and 2 respectively. The popup strings, which appear as the first elements in the `branches` array, are at index 0. At the end of the chain the markers are added to the map with `.addTo`. Alright, how about keyword `new`?
 
-The `new` keyword is a constructor, it creates an empty object. Many instances of the variable `marker` can be created from the instance of `new` object. For more information on the `new` keyword constructor, see this [website](https://www.programiz.com/javascript/constructor-function). Suffice to know the keyword is mandatory to make the webmap to work in this case, but its helpful to know another javascript trick.
+The `new` keyword is a constructor --it creates an empty object. Many instances of the variable `marker` can be created from the instance of `new` object. For more information on the `new` keyword constructor, see this [website](https://www.programiz.com/javascript/constructor-function). Be rest assured that the `new` keyword isn't mandatory to make the webmap to work in this case, but its helpful to know another JavaScript trick.
 
 Below is a snapshot of how the dummy Pro-GMO website looks like with our webmap embedded. 
 
@@ -159,7 +159,7 @@ Below is a snapshot of how the dummy Pro-GMO website looks like with our webmap 
 knitr::include_graphics(rep("D:/gachuhi/my-leaflet/embedded.jpg"))
 ```
 
-Part of the success of making the webmap aligned to the left of our address text is the CSS property `display: flex`. This property aligns the element to fill or shrink according to the space available. The padding CSS property just creates space all around the element, thus creating a neat space between the leaflet map and the address text. Removing this will just make the address text and the leaflet map touch each other edge to edge. 
+Part of the success of making the webmap aligned to the left of our address text is the CSS property `display: flex`. This property aligns the element to fill or shrink according to the space available within its assigned portion in the webpage. The CSS property `padding-left` just creates space all around the element, thus creating a neat space between the leaflet map and the address text. Removing this will just make the address text and the leaflet map touch each other edge to edge. 
 
 The inspiration to place the map and text side by side was from this [site](https://www.w3docs.com/snippets/css/how-to-vertically-align-text-next-to-an-image.html?utm_source=pocket_saves).
 

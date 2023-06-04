@@ -2,9 +2,9 @@
 
 ## Setting the superstructure
 
-We had earlier mentioned that Javascript, otherwise shorted to JS is the life of the party when it comes to webpages. In other words, it makes your web pages interactive. It's like the additional component that makes you HTML pages move from static to responsive. 
+We had earlier mentioned that Javascript, otherwise shortened to JS is the life of the party when it comes to webpages. In other words, it makes your web pages interactive. It's like the additional component that makes you HTML pages move from static to responsive. 
 
-Creating a leaflet map is not like creating any other HTML web page. Conventional JS will not do. You have to set up the leaflet essentials in your HTML page first. Create a new html document called `map.html`. This will be the html document that will act as the structure which will house our webpage to be created using JS. Using VS Code, create `map.html` and type, or rather, paste the following code.
+Creating a leaflet map is not like creating any other HTML web page. You have to set up the leaflet essentials in your HTML page first. Create a new html document called `map.html`. This will be the html document that will act as the structure which will house our webpage to be created using JS. Using VS Code, create `map.html` and paste, or preferably, type the following code.
 
 ```
 <!DOCTYPE html>
@@ -31,7 +31,7 @@ Creating a leaflet map is not like creating any other HTML web page. Conventiona
 
 ```
 
-You may be wondering why we have two `<link>` tags. "Won't they confuse the webpage or something?" You may wonder. Same thing for the two `<script>` tags, one at the head and the other at the `<body>` tag. The answers is No in terms of confusing and yes in having more than one `<link>` tag in a webpage. Once a html script is loaded in our browser, assuming its the `map.html` we've created, the browser reads it from top to bottom. In our html script, the browser will apply the styles in `styles.css` to those html elements that have been referenced in that stylesheet. To make matters clearer, the following script is what is contained in the `styles.css`:
+You may be wondering why we have two `<link>` tags. "Won't they confuse the webpage or something?" You may wonder. Same thing for the two `<script>` tags, one at the head and the other at the `<body>` tag. The answers is 'No'. Once a html script is loaded in our browser, assuming its the `map.html` we've created, the browser reads it from top to bottom. In our html script, the browser will apply the styles defined in `styles.css` to the html elements. To make matters clearer, the following script is what is contained in the `styles.css`:
 
 ```
 #myMap { 
@@ -39,13 +39,13 @@ You may be wondering why we have two `<link>` tags. "Won't they confuse the webp
 }
 ```
 
-Therefore, the browser will display everything contained in the `<div>` inside the `<body>` tag at a height of 500px. This is because the <div> contains the ID `myMap` which has been referenced in the local stylesheet as `#myMap`. Don't fret about what how things outside the `<div>` will be displayed since for our webmap making purposes, hardly will we code anything outside the `<div>` tag.
+Therefore, the browser will display everything contained in the `<div>` inside the `<body>` tag at a height of 500px. This is because the `<div>` contains the ID `myMap` which has been referenced in the local stylesheet as `#myMap`. Don't fret about what how things outside the `<div>` will be displayed since for our webmap making purposes, hardly will we code anything outside the `<div>` tag.
 
-Now to the two `<script>` tags. One refers to the online javascript library. The `src` is in fact linking to a webpage as you can see from the protocol https. The second, housed under the `<div>` tag, references to our local javascript file which shall contain all the code to transform our html page to a webmap ninja --lines, polygons and other cool stuff.
+Now to the two `<script>` tags. One refers to the online JavaScript library. The `src` attribute is in fact linking to a webpage as you can see from the protocol https. The second, housed under the `<div>` tag, references to our local JavaScript file which shall contain all the code to transform our html page to a webmap ninja --lines, polygons and other cool stuff.
 
 ## Beautifying the house
 
-Think of the html document as the superstructure, like a huge multistorey building just finished. Though the structure has the best architectural design, it just looks all grey with no life unless we call some interior and exterior designers to add some color. That's what `main.js`, pointed to by the `<script>` tag in the html document will precisely do.
+Think of the html document as the superstructure, like a huge multistorey building just finished. Though the structure has the best architectural design, it just looks all grey with no life unless we call some interior and exterior designers to add some color. That's what `main.js` file, pointed to by the `<script>` tag in the html document will precisely do.
 
 Open your VS Code, and assuming you had already created `main.js` already, (if not, create one now), insert the following code into the `.js` file.
 
@@ -61,13 +61,13 @@ You will learn something very important here. In fact, it is the crux of what ma
 
 The `L.map()` class we just used is what initializes the leaflet map. Everything within the `<div>` is displayed thanks to this class function. It is referred to as a factory function because it uses the method `map` to return an object.
 
-The `setView` method *sets the view of the map (geographical center and zoom) with the given animation options*. It's properties are Latitude-Longitude, zoom number and other options. If you would like to view the humungous leaflet reference, get it [here](https://leafletjs.com/reference.html).
+The `setView` method *sets the view of the map (geographical center and zoom) with the given animation options*. It's properties are Latitude-Longitude, zoom number and other options. If you would like to view the humongous leaflet reference, get it [here](https://leafletjs.com/reference.html).
 
 In our case we just inserted the Lat-Long and zoom number.
 
 Try loading your `map.html`. All you see is a grey canvas with zoom options. This is because we haven't added a tilelayer yet. A [tileLayer](https://pro.arcgis.com/en/pro-app/latest/help/data/services/use-tiled-web-layers.htm) is a set of web-accessible tiles that reside on a server. A tile is an individual image or vector file from a server which are collectively joined together to form the webmap. If you've zoomed into a webmap, say Google Maps and noticed boxes appearing as you zoomed in or out, those are *tiles*.
 
-Let's load an example of a common tile layer, the Open StreetMap into Leaflet.
+Let's load an example of a common tile layer--the Open StreetMap--into Leaflet.
 
 ```
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -82,9 +82,9 @@ Reload your html page again. What do you see?
 knitr::include_graphics(rep("D:/gachuhi/my-leaflet/kisumu-leaflet.jpg"))
 ```
 
-What `L.tileLayer` has done is retrieve the web tiles from the url source provided, and within the dictionary, zoom and attribution have been provided. When working with leaflet, the dictionary, indicated by the curly braces `{}` houses most of the additional class options other than the key one(s). In this case we used the additional options of `maxZoom` and `attribution`. Finally, the method `addTo` adds the layer to the given map or layer group. Here, or webtile is added to the `var map` which only contains the `setView` properties.
+What `L.tileLayer` has done is retrieve the web tiles from the url source provided, and within the dictionary that follows the url, zoom level (`maxZoom`) and map attribution (`attribution`) have been provided. When working with leaflet, the dictionary, indicated by the curly braces `{}` houses most of the additional class options other than the key one(s). In this case we used the additional options of `maxZoom` and `attribution`. Finally, the method `addTo` adds the layer to the given map or layer group. Here, our webtile is added to the `var map` which only contains the `setView` properties.
 
-A very influential person said Kisumu located in Kenya is a town with great potential. How about dispalying it to the whole world to realist it!
+A very influential person said Kisumu located in Kenya is a town with great potential. How about dispalying it to the whole world to realise it!
 
 
 

@@ -117,8 +117,119 @@ knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/cluster-marker-plain.j
 
 ```
 
+Coming back full circle, circle markers are way better.
+
 Most of the ajax code was inspired by this [video](https://www.youtube.com/watch?v=R-V7XFUbrkw&t=625s). 
 
+But wait! Hold your horses, there is a bug. Try to click on any of the spiderfied or lone hospitals and you will notice something that will raise eyebrows. All hospitals display the following popup when clicked:
+
+```
+Facility Name: Wajir Tb Manyatta Sub - District Hospital
+Type: Sub-District Hospital
+```
+
+```{r}
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/cluster-marker-bug.jpg'))
+
+```
+
+Unless a developer would like to be left with an egg on the face for assigning wrong place names, this should be dealt with expeditiously. Our code is alright, since it works in other scenarios such as [here](https://gis.stackexchange.com/questions/346104/popup-with-leaflet-markercluster-in-leaflet-map?utm_source=pocket_reader). Yours truly suspects that the Ajax plugin is the issue, since `L.geoJSON` works perfectly in displaying the correct popup for each hospital.
+
+Time to try a different strategy: using `fetch` API. At least `fetch` will use `L.geoJSON()` as it is, without spoilers such as Ajax and each marker will display the correct popup.
+
+We have worked with `fetch` before so I will not explain it that much here. Feel free to google a refresher.
+
+Comment out the earlier code beginning from `var markers` to `map.addLayer(markers)` and replace it with the following code chunk.
+
+```
+fetch(url)
+    .then((response) =>{
+        return response.json()
+    })
+    .then((data) => {
+        var markers = L.markerClusterGroup();
+
+        var geojsonGroup = L.geoJSON(data, {
+            onEachFeature : function(feature, layer){
+                layer.bindPopup(`<b>Facility Name:</b> ${feature.properties.Facility_N} <br>
+                <b>Type:</b> ${feature.properties.Type}`);
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng);
+            }
+        });
+
+        markers.addLayer(geojsonGroup);
+        map.addLayer(markers);
+
+    })
+    .catch((error) => {
+        console.log(`This is the error: ${error}`)
+    })
+
+```
+
+```{r}
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/cluster-marker-map-fixed.jpg'))
+
+```
+
+Now all points have their rightful and respective names.
+
+## Additional features of Cluster marker plugin
+
+The official documentation of the plugin lists many other features that come along with the tool. We can't go through all of them, neither is there the will but let's summise just one important one: the `mouseover` event. The same way that leaflet's markers can have events triggered on them also applies to the Cluster marker plugin. Below is an example in their webpage
+
+```
+// We won't use this
+
+markers.on('click', function (a) {
+	console.log('marker ' + a.layer);
+});
+```
+
+Let's demonstrate adding a hover event to our cluster marker map, thanks to this [answer](https://gnisitricks.de/2019/03/Adding-Click-and-Mouseover-Events-simultaneously-to-GeoJson-Markers-on-a-Leaflet-Map/).
+
+```
+/////// Added `mouseover` event
+
+fetch(url)
+    .then((response) =>{
+        return response.json()
+    })
+    .then((data) => {
+        var markers = L.markerClusterGroup({chunkedLoading: true}); // Splits the add layers to small intervals to prevent page freezing
+
+        var geojsonGroup = L.geoJSON(data, {
+            onEachFeature : function(feature, layer){
+                layer.bindPopup(`<b>Facility Name:</b> ${feature.properties.Facility_N} <br>
+                <b>Type:</b> ${feature.properties.Type}`);
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng).on('mouseover', function(){
+                    this.bindPopup(`Nearest_Center: ${feature.properties.Nearest_To}`).openPopup(); // Add mouseover event
+                });
+            }
+        });
+
+        markers.addLayer(geojsonGroup);
+        map.addLayer(markers);
+
+    })
+    .catch((error) => {
+        console.log(`This is the error: ${error}`)
+    })
+
+```
+
+From the above code, we added the `mouseover` event to each marker point using the `on` method. This was thanks to `this` keyword which refers to the object in the current code chunk --`geojsonGroup`. We also sped the rendering of our Leaflet map by adding `chunkedLoading: true` parameter to `L.markerCluster()` function.
+
+Hovering over each marker point will show an attribute of the centre in closest proximity from the `Nearest_To` properties of the Json Layer.
+
+```{r}
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/cluster-marker-mouseover.jpg'))
+
+```
 
 The code files used for this chapter are available from [here](https://www.dropbox.com/scl/fo/vbyxk75jodchlgxb4obkl/h?dl=0&rlkey=x5jya8iwtj431uwxte7usdvpa).
 

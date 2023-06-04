@@ -3,7 +3,7 @@
     "path": "D:/gachuhi/my-leaflet/book-leaflet/11-Mobile_friendly_web_apps.Rmd",
     "project_path": "11-Mobile_friendly_web_apps.Rmd",
     "type": "r_markdown",
-    "hash": "3205996711",
+    "hash": "2235730775",
     "contents": "",
     "dirty": false,
     "created": 1685650964572.0,
@@ -13,15 +13,15 @@
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "0,0",
-        "scrollLine": "0"
+        "cursorPosition": "184,0",
+        "scrollLine": "176"
     },
     "folds": "",
-    "lastKnownWriteTime": 1685651014,
+    "lastKnownWriteTime": 1685743087,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1685651014192,
+    "last_content_update": 1685743087640,
     "read_only": false,
     "read_only_alternatives": []
 }

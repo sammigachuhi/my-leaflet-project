@@ -9,11 +9,11 @@ beautifying-the-house
 add-ons
 a-marker
 a-marker-with-a-popup
-other-markers-and-different-popup-creation-methods
+different-markers-and-popups
 embedding-leaflet-map-to-an-external-website
 the-html-webpage
 the-css
-the-leaflet-js-code-for-our-website
+the-leaflet-javascript-code-for-our-website
 using-geojson-in-leaflet
 creating-a-.geojson-file
 what-are-.geojson-files

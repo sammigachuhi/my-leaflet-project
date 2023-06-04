@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Samuel Gachuhi Ngugi" />
 
 
-<meta name="date" content="2023-06-03" />
+<meta name="date" content="2023-06-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -164,13 +164,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="3.1" data-path="add-ons.html"><a href="add-ons.html#a-marker"><i class="fa fa-check"></i><b>3.1</b> A marker</a></li>
 <li class="chapter" data-level="3.2" data-path="add-ons.html"><a href="add-ons.html#a-marker-with-a-popup"><i class="fa fa-check"></i><b>3.2</b> A marker with a popup</a></li>
-<li class="chapter" data-level="3.3" data-path="add-ons.html"><a href="add-ons.html#other-markers-and-different-popup-creation-methods"><i class="fa fa-check"></i><b>3.3</b> Other markers and different popup creation methods</a></li>
+<li class="chapter" data-level="3.3" data-path="add-ons.html"><a href="add-ons.html#different-markers-and-popups"><i class="fa fa-check"></i><b>3.3</b> Different markers and popups</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="embedding-leaflet-map-to-an-external-website.html"><a href="embedding-leaflet-map-to-an-external-website.html"><i class="fa fa-check"></i><b>4</b> Embedding leaflet map to an external website</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="embedding-leaflet-map-to-an-external-website.html"><a href="embedding-leaflet-map-to-an-external-website.html#the-html-webpage"><i class="fa fa-check"></i><b>4.1</b> The html webpage</a></li>
 <li class="chapter" data-level="4.2" data-path="embedding-leaflet-map-to-an-external-website.html"><a href="embedding-leaflet-map-to-an-external-website.html#the-css"><i class="fa fa-check"></i><b>4.2</b> The CSS</a></li>
-<li class="chapter" data-level="4.3" data-path="embedding-leaflet-map-to-an-external-website.html"><a href="embedding-leaflet-map-to-an-external-website.html#the-leaflet-js-code-for-our-website"><i class="fa fa-check"></i><b>4.3</b> The leaflet js code for our website</a></li>
+<li class="chapter" data-level="4.3" data-path="embedding-leaflet-map-to-an-external-website.html"><a href="embedding-leaflet-map-to-an-external-website.html#the-leaflet-javascript-code-for-our-website"><i class="fa fa-check"></i><b>4.3</b> The leaflet JavaScript code for our website</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="using-geojson-in-leaflet.html"><a href="using-geojson-in-leaflet.html"><i class="fa fa-check"></i><b>5</b> Using GeoJSON in Leaflet</a>
 <ul>
@@ -254,55 +254,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="add-ons" class="section level1 hasAnchor" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Add ons<a href="add-ons.html#add-ons" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Like in the ultimate finale of a series where the episode begins with “Previously on…”, this chapter shall be a continuation of <a href="first-leaflet-map.html#first-leaflet-map">Chapter 2</a>.</p>
 <p>So we have a plain looking webmap like the one shown below.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="add-ons.html#cb16-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/kisumu-leaflet.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../kisumu-leaflet.jpg" width="400" /></p>
-<p>However, though a cool looking webmap, it offers no sort of information to the viewer except that it is an interactive map interface. In order to create some information, such as the location of Kisumu and other features you want to highlight, markers are one way of displaying this kind of information.</p>
-<p>First things, first, we had last left our <code>main.js</code> file looking like this. Ensure yours is also the same, but we encourage to explore with other leaflet layers available from <a href="https://leaflet-extras.github.io/leaflet-providers/preview/">here</a>.</p>
+<p>However, although a cool looking webmap, it offers no sort of information to the viewer except that it is an interactive map interface. In order to create some information, such as the location of Kisumu and other features you want to highlight, markers are one way of displaying this kind of information.</p>
+<p>In the last chapter we had last left our <code>main.js</code> file looking like in the image above. Ensure yours is also the same, but we encourage to explore with other leaflet layers available from <a href="https://leaflet-extras.github.io/leaflet-providers/preview/">here</a>.</p>
 <div id="a-marker" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> A marker<a href="add-ons.html#a-marker" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Many people could possible not know where Kisumu, is, so lets indicate its location with a simple pin marker. To be more specific since the name Kisumu may infer a large area, let’s pinpoint Kisumu International Airport.</p>
+<p>Many people could possible not know where Kisumu, is, so lets indicate its location with a simple pin marker. To be more specific, let’s pinpoint Kisumu International Airport.</p>
 <pre><code>// Location of Kisumu International Airport
 var marker = L.marker([-0.0819301, 34.7260167]).addTo(map);</code></pre>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="add-ons.html#cb18-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/kisumu-international-airport.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../kisumu-international-airport.jpg" width="958" /></p>
 <p>Can you try creating a marker for your home location, not forgetting to change the <code>setView</code> method you had initially started with in this map creating journey?</p>
-<p>Alright, we have a marker. But as they say, going the extra mile is what counts in both the corporate as well as personal goals. Let’s try to make this marker have some information, called attributes in GIS, of um, let’s say the name of the airport and other auxillary data.</p>
+<p>Alright, we have a marker. But as they say, going the extra mile is what counts in both the career as well as personal goals. Let’s try to make this marker have some information, called attributes in GIS. Let’s say the attributes we want to add are the name of the airport and other auxillary data.</p>
 </div>
 <div id="a-marker-with-a-popup" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> A marker with a popup<a href="add-ons.html#a-marker-with-a-popup" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To create popups, leaflet provides the <code>bindPopup</code> method. It is especially easy if you already have a marker variable in place, as in our case. Let’s exploit this advantage.</p>
+<p>To create popups, leaflet provides the <code>bindPopup</code> method. It is especially easy if you already have a marker variable in place, as in our case.</p>
 <pre><code>// Create popup of Kisumu international Airport
 marker.bindPopup(&quot;Kisumu International Airport.&quot;).openPopup();</code></pre>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="add-ons.html#cb20-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/kisumu-airport-popup.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../kisumu-airport-popup.jpg" width="952" /></p>
-<p>What has just happened is that <code>bindPopup</code> binds the popup content “Kisumu International Airport” to the marker. The following <code>popUp</code> method chained to the method <em>opens</em> the popup at that specified latitude longitude. If you remove, or comment <code>//</code> out the <code>popUp</code> method, you will have to click the marker to see the popup content. Try it out.</p>
-<p>Markers can also work with hmtl elements, such as when you want to display additional metadata, say the owner of the place, size of land et ceterra. In the below case, we have added the lat-lon coordinates of Kisumu airport location. I would advise not to include lengthy information in an HTML marker element.</p>
+<p>What has just happened is that <code>bindPopup</code> binds the popup content– “Kisumu International Airport” to the marker. The following <code>openPopup</code> method chained to the method <em>opens</em> the popup at that specified latitude longitude. If you remove, or comment <code>//</code> out the <code>popUp</code> method, you will have to click the marker to see the popup content. Try it out.</p>
+<p>Markers can also work with html elements, such as when you want to display additional metadata, say the owner of the place, size of land et cetera. In the below case, we have added the lat-lon coordinates of Kisumu airport location. I would advise not to include lengthy information in an HTML marker element.</p>
 <pre><code>// With html content
 marker.bindPopup(&quot;&lt;br&gt;Name: Kisumu International Airport&lt;/br&gt;&lt;br&gt;Latitude: -0.0819301&lt;/br&gt;&lt;br&gt;Longitude: 34.7260167&lt;/br&gt;&quot;).openPopup();</code></pre>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="add-ons.html#cb22-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/marker-html.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../marker-html.jpg" width="958" /></p>
 </div>
-<div id="other-markers-and-different-popup-creation-methods" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> Other markers and different popup creation methods<a href="add-ons.html#other-markers-and-different-popup-creation-methods" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>So far you have seen pin markers, but there are also other kinds of markers, circles and rectangles even. Unlike the pin markers we have been experimenting with, these other markers require additional options, such as radius for circle and lat-long cooordinates for rectangles. Let’s have a go with each.</p>
+<div id="different-markers-and-popups" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Different markers and popups<a href="add-ons.html#different-markers-and-popups" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>So far you have seen pin markers, but there are also other kinds of markers, such as circles and rectangles! Unlike the pin markers we have been experimenting with, these other markers require additional options, such as radius for circle and lat-long cooordinates for rectangles. Let’s have a go with each.</p>
 <p>Starting with a circle, let’s start by inserting a circle to show the location of Kisumu Museum.</p>
 <pre><code>// Circle over Kisumu Museum
 var circle = L.circle([-0.107637, 34.7435975]).setRadius(2000).addTo(map);</code></pre>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="add-ons.html#cb24-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/kisumu-museum-circle.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../kisumu-museum-circle.jpg" width="954" /></p>
-<p>The below code will also create a slightly similar circle marker, the only difference is that in the preceding one we didn’t insert <code>{options}</code> and we set radius using the <code>setRadius</code> method. In the second one below, we have been very specific in what we want –our specifications going into the curly brackets {} before adding the circle marker to our map. Brackets in javascript denote <a href="https://flexiple.com/javascript/javascript-dictionary/">dictionaries</a>. Dictionaries in javascript and even in python are used to denote key-value pairs. Best for look-ups.</p>
+<p>The below code will also create a slightly similar circle marker, the only difference is that in the preceding one we didn’t insert <code>{options}</code> and we set radius using the <code>setRadius</code> method. In the second one below, we have been very specific in what we want –our specifications going into the curly brackets {} before adding the circle marker to our map. Brackets in JavaScript denote <a href="https://flexiple.com/javascript/javascript-dictionary/">dictionaries</a>. Dictionaries in javascript and even in python are used to denote key-value pairs. Best for look-ups.</p>
 <pre><code>var circle = L.circle([-0.107637, 34.7435975], {
     color: &#39;blue&#39;,
     fillColor: &#39;blue&#39;,
     fillOpacity: .5,
     radius: 2000
 }).addTo(map);</code></pre>
-<p>As we had mentioned earlier, other marker elements such as circles and rectangles can have popups attached to them. Ready for something cool, we will attach a popup into our circle. Not just any other ordinary hard coded popup but one in which relies on other methods to generate an output. In our case, we want a pop up that shows the radius of our circle without necessarily typing it in.</p>
+<p>As we had mentioned earlier, other marker elements such as circles and rectangles can have popups attached to them. Ready for something cool? We will attach a popup into our circle. Not just any other ordinary hard coded popup but one which relies on other Leaflet JavaScript methods to generate an output. In our case, we want a pop up that shows the radius of our circle automatically.</p>
 <pre><code>// Circle marker pop up for Kisumu Museum
 var getRadius = circle.getRadius();
 circle.bindPopup(&quot;Radius is: &quot; + getRadius.toString() + &quot; metres&quot;);</code></pre>
-<p>In our above code, <code>getRadius</code> gets the radius of our circle marker. <code>bindPopup</code> has it has already been severally explained <em>binds</em> the popup content to our circle marker. But there is a catch. The variable <code>getRadius</code> is used to print out the results, which is 2000 of course. However, <code>bindPopup</code> only understands strings so we convert our variable result to a string using <code>toString()</code>. We also added other strings to give the popup a wholesome result that is understandable to every Tom, Dick, Harry and Harriet.</p>
+<p>In our above code, <code>getRadius</code> gets the radius of our circle marker. <code>bindPopup</code> as has already been severally explained <em>binds</em> the popup content to our circle marker. But there is a catch. The variable <code>getRadius</code> is used to print out the results, which is 2000 of course. However, <code>bindPopup</code> only understands strings so we convert our variable result to a string using <code>toString()</code>. We also added other strings to give the popup a wholesome result that is understandable to every Tom, Dick, Harry and Harriet.</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="add-ons.html#cb27-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/circle-radius.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../circle-radius.jpg" width="956" /></p>
 <p>Finally, let’s try with a rectangle. Actually, leaflet allows us to create polygons, and with a polygon, you can also create rectangles. Let’s work with the polygon class instead.</p>
@@ -324,12 +325,12 @@ var impalaParkPolygon = L.polygon(impalaParkCoordinates, {
     color: &#39;brown&#39;,
     fillOpacity: 0.4
 }).addTo(map);</code></pre>
-<p>You will notice that the Kisumu Museum circle overlaps the location of the Kisumu Impala Park but that is no problem. We will make our popup content appear by default as soon as you load the map. Just like we did for the circle marker, we will make our popup content rely on another variable, in this case <code>getCenter</code> which gets the centroid coordinates of our polygon. We were looking for something cooler such as <code>getArea</code> but we were unable to find it.</p>
+<p>You will notice that the Kisumu Museum circle overlaps the location of the Kisumu Impala Park but that is no problem. We will make our popup content appear by default as soon as you load the map. Just like we did for the circle marker, we will make our popup content rely on another variable, in this case <code>getCenter</code> which gets the centroid coordinates of our polygon. We were looking for something cooler such as <code>getArea</code> in Leaflet, one that automatically prints out the area of a polygon in a popup. Unfortunately, we were unable to find it.</p>
 <pre><code>// Add popup to the polygon of Kisumu Impala Park
 var getCenter = impalaParkPolygon.getCenter();
 impalaParkPolygon.bindPopup(&quot;Centre is at Lat-Lon: &quot; + getCenter.toString()).openPopup();
 </code></pre>
-<p>If you find the circle marker radius too obstracting you can comment out it and its dependancies using <code>//</code>.</p>
+<p>If you find the circle marker radius as an obstraction you can comment out it and its dependancies using <code>//</code>.</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="add-ons.html#cb31-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/polygon-marker.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../polygon-marker.jpg" width="960" /></p>
 <p>You can get the files used in this exercise <a href="https://www.dropbox.com/scl/fo/qznia963vaq8s4ca51p51/h?dl=0&amp;rlkey=glj4ew599c4v9fikq11wn1fje">here</a>.</p>

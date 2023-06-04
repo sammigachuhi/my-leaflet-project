@@ -1,19 +1,184 @@
+# Mobile Friendly Webapps
+
+Short story. Not too long ago I was the proud owner of a famous phone brand on the decline. The phone was like an extension of my personality for I understood its shortcomings, while on the other hand, it perfectly blended, nearing understanding what I wanted and needed, and providing exactly that. 
+
+One time, when taking a photo of the iconic Ngong Hills for Wikipedia's Africa Climate photo contest, the phone just died. That was it. A quick visit to the authorized dealer was greeted with the unbelievable and bemusing words of, "We no longer ship the motherboard to the country anymore." Some healing has taken place, but I was totally heartbroken, and occasionaly suffer some nostalgia of the 'good times' I had with my phone.
+
+It's been a long ride with leaflet, you need a breather. Anyway, webapps can be heavy, and they can load slowly on smaller devices such as smartphones. Apps that load slow can put off your web app users, so it is prudent to customize your webapp for your user's phones. 
+
+"Well, what the heck?", you may ask, "It will just test their patience for a couple few second..." Alright, I get it. Why the hustle to make the app mobile friendly just to appease someone's impatience. If you think that your user's will only be using your webapp on a laptop, you are wrong. If they won't find it friendly on their smartphone they may not think twice on using it on a laptop either.
+
+Let's get on with making our cluster marker app mobile friendly. We shall also add other functionalities to make the web app heavy, and thus test our mobile-friendly web map making to destruction.
+
+## The basemaps
+
+If you have gone through the [Chapter 8][Layer groups and controls] of creating controls the following will look familiar. We will add some basemaps and later on create their control widgets.
+
+```
+// Basemaps
+var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+});
+
+var cyclOSM = L.tileLayer('https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png', {
+	maxZoom: 20,
+	attribution: '<a href="https://github.com/cyclosm/cyclosm-cartocss-style/releases" title="CyclOSM - Open Bicycle render">CyclOSM</a> | Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}); // the CyclOSM tile layer available from Leaflet servers
+
+```
+
+Let's add our basemaps to Leaflet.
+
+```
+// Add the Leaflet basemaps
+var map = L.map('myMap', {
+    layers: [osm, cyclOSM]
+}).setView([-1.295287148, 36.81984753], 7);
+
+```
+
+## Adding the features
+
+Remember our hospital json layer. Let's call it again and transform it to a cluster marker with `fetch`.
+
+```
+// Add hospital dataset
+
+url = 'https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/selected_hospitals.json'
+
+var cluster = fetch(url)
+    .then((response) =>{
+        return response.json()
+    })
+    .then((data) => {
+        var markers = L.markerClusterGroup();
+
+        var geojsonGroup = L.geoJSON(data, {
+            onEachFeature : function(feature, layer){
+                var popupContent =  `<b>Facility Name:</b> ${feature.properties.Facility_N} <br>
+                <b>Type:</b> ${feature.properties.Type}`;
+                layer.bindPopup(popupContent)
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng);
+            }
+        });
+
+        markers.addLayer(geojsonGroup);
+        map.addLayer(markers);
+
+    })
+    .catch((error) => {
+        console.log(`This is the error: ${error}`)
+    })
+
+```
+
+Why assing the `fetch` code to the variable `var cluster`. Well, we were aiming for the stars. We wanted to have a layer control for our `cluster` variable too but unfortunately this plan failed. You will see later on.
+
+Let's put our `basemaps` and `cluster` variables into JavaScript objects to create a layer control for each.
+
+```
+// Set object for the basemaps
+var basemaps = {
+    "OpenStreetMap": osm,
+    'cycleOsm': cyclOSM,
+}
+
+////Don't add the 'overlays' object. For demonstration purposes only
+// Set object for the overlay maps
+var overlays = {
+    'Hospitals': cluster
+}
+```
+
+Before you head on any further, let me tell you the result of inserting the `overlays` object into the `L.control.Layers()` class. A liturgy of errors results. 
+
+```{r}
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/mobile-friendly-error.jpg'))
+
+```
+
+The webmap works alright, showing popups and all, but there is a list of errors on our console. The one listed as `<anonymous> mobile-friendly.js:85` actually refers to our `L.control.Layers()` class, and it is without a doubt (no) thanks to the `overlays` argument. It's because `overlays` contains `fetch` which we suspect is behind all these problems. Removing the `overlays` argument and the object altogether eliminates this error.
+
+Incase you had jumped headlong into the pit with me, comment out the `overlays` object and add `L.controLayers()`.
+
+## Zooming to mobile user's location
+
+According to the Leaflet official documentation, Leaflet has a handy shortcut of zooming in to the user's location, if not a geofence of his exact position.
+
+```
+// Zoom to your location
+map.locate({setView: true, maxZoom: 16});
+
+```
+
+## Add marker to mobile user's geolocation
+
+Even if the location is off by a couple of miles, at least a marker to show the triangulated position will help. At least you will not be *all over* the map! The following code adds a marker to the mobile user's triangulated Latitude-Longitude coordinates, and displays a message showing the radius in which the mobile user is most likely to be found from the marker point.
+
+```
+// Add marker at your location
+function onLocationFound(e) {
+    var radius = e.accuracy;
+
+    L.marker(e.latlng).addTo(map)
+        .bindPopup("You are within " + Number((radius/1000).toFixed(2)) + " kilometers from this point").openPopup();
+
+    L.circle(e.latlng, radius).addTo(map);
+}
+
+```
+
+Incase you forgot, the `on` method adds listeners. As a gentle reminder, listeners are codes that run when an event, as simple as hovering or as intensive as double clicking are triggered. In the below code, the listener `'locationfound'` it triggers the `onLocationFound` function in case approximating the mobile user's location went successfully.
+
+```
+map.on('locationfound', onLocationFound);
+```
+
+The `locationfound` listener is responsible for the message bounded in red when I first load my map. Clicking **Allow** will give the browser the heads up to zoom to my location as it best can.
+
+```{r}
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/location-found.jpg'))
+
+```
+
+What if, getting the mobile user's geolocation is unsuccessful? We will create a function that outputs the error event to our console, as shown below.
+
+```
+// Error displayed after finding location failed
+function onLocationError(e) {
+    alert(e.message);
+}
+
+```
+
+Actually, `message` is an error event that displays the error message of a parameter, in this case the layer. We finally add this `onLocationError` function to the map. It will be triggered if the `'locationerror'` event is true!
+
+```
+map.on('locationerror', onLocationError);
+
+```
+
+## The mobile webmap app in action!
+
+Yours truly has save you the hustle of detailing how this chapter's files have been saved to Github, and converted into a webpage. However, I provide the link to view the web app on your phone. Chances are high it will not fail on you like mine did to me ;). Below is the link. Try it on your phone!
 
 
+https://sammigachuhi.github.io/hospitals_webapp/
+
+```{r}
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/mobile-app.jpg'))
+
+```
 
 
+Remember me mentioning I was aiming for the stars by wanting to add the hospital markers as a layer control? Well, I landed on the skies since you can see that only the basemaps could be added to the layers control widget. 
 
+However, this looks like a good hospital locations app! The sky was only the baseline!
 
-
-
-
-
-
-
-
-
-
-
+The full code script is available from [here](https://www.dropbox.com/scl/fo/lu6xoy9vcwrtruc838e29/h?dl=0&rlkey=suuajpnxon0axc7y4r5s3yh0f).
 
 
 
