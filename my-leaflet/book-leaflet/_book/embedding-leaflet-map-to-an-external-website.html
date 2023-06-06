@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Samuel Gachuhi Ngugi" />
 
 
-<meta name="date" content="2023-06-04" />
+<meta name="date" content="2023-06-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -232,6 +232,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.4" data-path="mobile-friendly-webapps.html"><a href="mobile-friendly-webapps.html#add-marker-to-mobile-users-geolocation"><i class="fa fa-check"></i><b>11.4</b> Add marker to mobile user’s geolocation</a></li>
 <li class="chapter" data-level="11.5" data-path="mobile-friendly-webapps.html"><a href="mobile-friendly-webapps.html#the-mobile-webmap-app-in-action"><i class="fa fa-check"></i><b>11.5</b> The mobile webmap app in action!</a></li>
 </ul></li>
+<li class="chapter" data-level="12" data-path="web-map-service-layers.html"><a href="web-map-service-layers.html"><i class="fa fa-check"></i><b>12</b> Web Map Service Layers</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="web-map-service-layers.html"><a href="web-map-service-layers.html#what-are-web-map-service-wms-layers"><i class="fa fa-check"></i><b>12.1</b> What are Web Map Service (WMS) Layers?</a></li>
+<li class="chapter" data-level="12.2" data-path="web-map-service-layers.html"><a href="web-map-service-layers.html#loading-a-wms-server"><i class="fa fa-check"></i><b>12.2</b> Loading a WMS server</a></li>
+<li class="chapter" data-level="12.3" data-path="web-map-service-layers.html"><a href="web-map-service-layers.html#adding-wms-to-layer-control"><i class="fa fa-check"></i><b>12.3</b> Adding WMS to layer control</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -256,8 +262,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 4</span> Embedding leaflet map to an external website<a href="embedding-leaflet-map-to-an-external-website.html#embedding-leaflet-map-to-an-external-website" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Now, we have succeeded in making a stand alone leaflet map. However, we want to do something that will quickly upscale you, dear reader–from a novice to a pro. That is, we just do one leaflet exercise that will give us that entry to the coveted IT department. If we convince our boss that we could embed a webmap of their branch locations to their website, they could consider us a webmapping guru rather than just another cog in the organization’s wheel.</p>
 <p>An example of what we want is shown below, which is a snapshot from the <a href="https://data.humdata.org/dataset/cod-ab-ken">HDX website</a>.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="embedding-leaflet-map-to-an-external-website.html#cb32-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/webmap-in-web.jpg&quot;</span>))</span></code></pre></div>
-<p><img src="../webmap-in-web.jpg" width="938" /></p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="embedding-leaflet-map-to-an-external-website.html#cb32-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/webmap-in-web.jpg&quot;</span>))</span></code></pre></div>
+<p><img src="../images/webmap-in-web.jpg" width="938" /></p>
 <p>For this exercise, we shall embed a leaflet map to a simple html webpage. This webpage doesn’t look grand, but it serves the purpose of our exercise. Let’s get on to it. Here are the <a href="https://www.dropbox.com/scl/fo/2u5xzr83z08rfxnlh8pc9/h?dl=0&amp;rlkey=zcrui1dsi7fzi3s5891yx9rty">files</a>.</p>
 <div id="the-html-webpage" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> The html webpage<a href="embedding-leaflet-map-to-an-external-website.html#the-html-webpage" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -391,8 +397,8 @@ for (var i = 0; i &lt; branches.length; i++) {
 <p>The only new thing in the above script is the <code>for</code> loop. In javascript, the <code>for</code> loop is used to iterate over items. In this case, and remembering that indexing in javascript arrays begins from 0 just is does for Python, the marker popups will read the latitudes and longitudes which are at index 1 and 2 respectively. The popup strings, which appear as the first elements in the <code>branches</code> array, are at index 0. At the end of the chain the markers are added to the map with <code>.addTo</code>. Alright, how about keyword <code>new</code>?</p>
 <p>The <code>new</code> keyword is a constructor –it creates an empty object. Many instances of the variable <code>marker</code> can be created from the instance of <code>new</code> object. For more information on the <code>new</code> keyword constructor, see this <a href="https://www.programiz.com/javascript/constructor-function">website</a>. Be rest assured that the <code>new</code> keyword isn’t mandatory to make the webmap to work in this case, but its helpful to know another JavaScript trick.</p>
 <p>Below is a snapshot of how the dummy Pro-GMO website looks like with our webmap embedded.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="embedding-leaflet-map-to-an-external-website.html#cb36-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/embedded.jpg&quot;</span>))</span></code></pre></div>
-<p><img src="../embedded.jpg" width="944" /></p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="embedding-leaflet-map-to-an-external-website.html#cb36-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/embedded.jpg&quot;</span>))</span></code></pre></div>
+<p><img src="../images/embedded.jpg" width="944" /></p>
 <p>Part of the success of making the webmap aligned to the left of our address text is the CSS property <code>display: flex</code>. This property aligns the element to fill or shrink according to the space available within its assigned portion in the webpage. The CSS property <code>padding-left</code> just creates space all around the element, thus creating a neat space between the leaflet map and the address text. Removing this will just make the address text and the leaflet map touch each other edge to edge.</p>
 <p>The inspiration to place the map and text side by side was from this <a href="https://www.w3docs.com/snippets/css/how-to-vertically-align-text-next-to-an-image.html?utm_source=pocket_saves">site</a>.</p>
 <p>Having done the above, you can consider you are as good a Leaflet mapper to undertake any task!</p>

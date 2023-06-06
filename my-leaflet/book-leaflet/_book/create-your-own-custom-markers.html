@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Samuel Gachuhi Ngugi" />
 
 
-<meta name="date" content="2023-06-04" />
+<meta name="date" content="2023-06-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -232,6 +232,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.4" data-path="mobile-friendly-webapps.html"><a href="mobile-friendly-webapps.html#add-marker-to-mobile-users-geolocation"><i class="fa fa-check"></i><b>11.4</b> Add marker to mobile user’s geolocation</a></li>
 <li class="chapter" data-level="11.5" data-path="mobile-friendly-webapps.html"><a href="mobile-friendly-webapps.html#the-mobile-webmap-app-in-action"><i class="fa fa-check"></i><b>11.5</b> The mobile webmap app in action!</a></li>
 </ul></li>
+<li class="chapter" data-level="12" data-path="web-map-service-layers.html"><a href="web-map-service-layers.html"><i class="fa fa-check"></i><b>12</b> Web Map Service Layers</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="web-map-service-layers.html"><a href="web-map-service-layers.html#what-are-web-map-service-wms-layers"><i class="fa fa-check"></i><b>12.1</b> What are Web Map Service (WMS) Layers?</a></li>
+<li class="chapter" data-level="12.2" data-path="web-map-service-layers.html"><a href="web-map-service-layers.html#loading-a-wms-server"><i class="fa fa-check"></i><b>12.2</b> Loading a WMS server</a></li>
+<li class="chapter" data-level="12.3" data-path="web-map-service-layers.html"><a href="web-map-service-layers.html#adding-wms-to-layer-control"><i class="fa fa-check"></i><b>12.3</b> Adding WMS to layer control</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -370,11 +376,11 @@ L.tileLayer(&#39;https://tile.openstreetmap.org/{z}/{x}/{y}.png&#39;, {
 </code></pre>
 <p>Can you notice any difference on the <code>Population</code> property compared to the code <a href="using-geojson-in-leaflet.html#using-geojson-in-leaflet">Chapter 5</a>? If you are hawkeyed, you will see the Population values this time round are integers compared to strings in the previous chapter. It sounds superflous to create population values as strings only to convert them to integers now, but please do remember the geojson.io site did that for us, not this author. Here is the <a href="https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/cities-geojson2.geojson.txt">raw geojson script</a> customized for this chapter.</p>
 <p>Just a small note before going on. When the GeoJSON file has the population values enclosed in strings <code>""</code>, they are automatically rendered on a map on the Github server.</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="create-your-own-custom-markers.html#cb68-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/geojson-webmap.jpg&quot;</span>))</span></code></pre></div>
-<p><img src="../geojson-webmap.jpg" width="791" /></p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="create-your-own-custom-markers.html#cb68-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/geojson-webmap.jpg&quot;</span>))</span></code></pre></div>
+<p><img src="../images/geojson-webmap.jpg" width="791" /></p>
 <p>However, when the strings are removed, and the population values remain as integers, they are no longer rendered on a webmap as shown below.</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="create-your-own-custom-markers.html#cb69-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/geojson-nowebmap.jpg&quot;</span>))</span></code></pre></div>
-<p><img src="../geojson-nowebmap.jpg" width="790" /></p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="create-your-own-custom-markers.html#cb69-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/geojson-nowebmap.jpg&quot;</span>))</span></code></pre></div>
+<p><img src="../images/geojson-nowebmap.jpg" width="790" /></p>
 <p>It’s just a dictionary of lists and other dictionaries.</p>
 <div id="the-icons" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> The icons<a href="create-your-own-custom-markers.html#the-icons" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -420,8 +426,8 @@ var redIcon = new L.Icon({
 }).addTo(map);
 </code></pre>
 <p>We got this.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="create-your-own-custom-markers.html#cb72-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/geojson-markers.jpg&quot;</span>))</span></code></pre></div>
-<p><img src="../geojson-markers.jpg" width="498" /></p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="create-your-own-custom-markers.html#cb72-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/geojson-markers.jpg&quot;</span>))</span></code></pre></div>
+<p><img src="../images/geojson-markers.jpg" width="498" /></p>
 <p>All cities were marked yellow, irrespective of their population or jurisdictional significance. But before we raise the alarm on this, what was the purpose of the <code>pointToLayer()</code> function? According to the Leaflet guide, the <code>pointToLayer()</code> function is a special function for GeoJSON variables that species how they should be drawn. In this case and in any other case, it passes the commands in the body, such as <code>return L.marker...</code> for every marker point at its Lat-Lon coordinates.</p>
 </div>
 <div id="differentiate-custom-markers-on-a-webmap" class="section level2 hasAnchor" number="6.2">
@@ -466,8 +472,8 @@ var redIcon = new L.Icon({
 }).addTo(map);
 </code></pre>
 <p>What you get is a map that has different circle markers according to the respective city’s population. This time round, the <code>pointToLayer()</code> function body worked with <strong>if/else if</strong> statement to differentiate the radius and color of each circle marker. Under the <strong>if/else if</strong> code statement block, different circle marker specifications of radius and fillColor were inserted for each population category. Any city with a population beyond 800000 was fitted into the <code>else</code> block.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="create-your-own-custom-markers.html#cb74-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/geojson-diff1.jpg&quot;</span>))</span></code></pre></div>
-<p><img src="../geojson-diff1.jpg" width="444" /></p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="create-your-own-custom-markers.html#cb74-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/geojson-diff1.jpg&quot;</span>))</span></code></pre></div>
+<p><img src="../images/geojson-diff1.jpg" width="444" /></p>
 <p>This brings us to why we changed the population values from strings to integers. If we were to work with their former values of strings, any value beyond 1, 000, 000 would receive the settings of <code>feature.properties.Population &lt;= 250000</code> that is, color yellow and radius yellow. This is because even though 1 million is by far larger than 250, 000 or 800, 000, because it starts with a 1, it shall be considered even less than 250, 000! This is because when ordering strings in JavaScript, they are by default ordered by the first character. The same case applies to digits 1 to 9. Value 1 will always be inferior to 2, 7, 9 and any other number in between irrespective of whether its a million or a billion.</p>
 <p>In the next code sample, we shall create city markers but their populations differentiated with new markers icons we created of yellow, orange and red.</p>
 <pre><code>L.geoJSON(cities, {
@@ -491,8 +497,8 @@ var redIcon = new L.Icon({
   return `City: ${layer.feature.properties.City},&lt;br&gt;
   Population: ${layer.feature.properties.Population}`;
 }).addTo(map);</code></pre>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="create-your-own-custom-markers.html#cb76-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/geojson-diff2.jpg&quot;</span>))</span></code></pre></div>
-<p><img src="../geojson-diff2.jpg" width="424" /></p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="create-your-own-custom-markers.html#cb76-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/geojson-diff2.jpg&quot;</span>))</span></code></pre></div>
+<p><img src="../images/geojson-diff2.jpg" width="424" /></p>
 <p>In the above map, our preceding code has differentiated large cities with populations above 800, 000 with a red marker, those with populations below 250, 000 with a yellow marker and those between with an orange marker. In all cases, our <code>bindPopup()</code> still contains the same settings to show both the city name and population.</p>
 <p>The <code>pointToLayer()</code> function was passed function that return a specific <code>L.marker</code> with Lat-Lon coordinates for each respective marker retrieved of course, only that the <code>icon</code> key was assigned a different marker icon variable corresponding to each city’s population as the value. That’s the trick that assigns a different marker to each city as per its population.</p>
 </div>
@@ -564,8 +570,8 @@ var redIcon = new L.Icon({
     Population: ${layer.feature.properties.Population}`;
   }).addTo(map);
 </code></pre>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="create-your-own-custom-markers.html#cb81-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/extra-markers.jpg&quot;</span>))</span></code></pre></div>
-<p><img src="../extra-markers.jpg" width="441" /></p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="create-your-own-custom-markers.html#cb81-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/extra-markers.jpg&quot;</span>))</span></code></pre></div>
+<p><img src="../images/extra-markers.jpg" width="441" /></p>
 <p>The custom markers are also clickable!</p>
 </div>
 <div id="image-overlays" class="section level2 hasAnchor" number="6.5">
@@ -589,8 +595,8 @@ var imageOverlay = L.imageOverlay(imageUrl, latLngBounds, {
 <pre><code>L.rectangle(latLngBounds).addTo(map);
 map.fitBounds(latLngBounds);
 </code></pre>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="create-your-own-custom-markers.html#cb84-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/geltan-fenzi.jpg&quot;</span>))</span></code></pre></div>
-<p><img src="../geltan-fenzi.jpg" width="935" /></p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="create-your-own-custom-markers.html#cb84-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/geltan-fenzi.jpg&quot;</span>))</span></code></pre></div>
+<p><img src="../images/geltan-fenzi.jpg" width="935" /></p>
 <p>Mind you that landmark was set up in 1939 in honour of Lionel Douglas Galton-Fenzi who was the first motorist to drive from Nairobi to Mombasa when all that existed was dirt track laden with wild animals. Yours truly has also heard it contains bearings to various East African cities. Despite being at a point where I normally alight, I’ve never paid much attention to it nor its bearings. Next time, I will be keen.</p>
 <p>Anyway, here is a quick breakdown of the attributes used in <code>L.imageOverlay</code>. We understand we have taken a lot of your time on so much a simple chapter, so we will be swift. The <code>var latLngBounds</code> uses the <code>L.latLngBounds</code> class to set the lat-lon coordinates. Notice they are two coordinate lists bound with a single <code>[]</code>. Your brain will get used to this in time. If you don’t enclose the two coordinates with <code>[]</code> an error may result. <code>var ImageUrl</code> is self explanatory –its the image source and for the rest, here they are:</p>
 <ol style="list-style-type: decimal">

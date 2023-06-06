@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Samuel Gachuhi Ngugi" />
 
 
-<meta name="date" content="2023-06-04" />
+<meta name="date" content="2023-06-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -232,6 +232,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.4" data-path="mobile-friendly-webapps.html"><a href="mobile-friendly-webapps.html#add-marker-to-mobile-users-geolocation"><i class="fa fa-check"></i><b>11.4</b> Add marker to mobile user’s geolocation</a></li>
 <li class="chapter" data-level="11.5" data-path="mobile-friendly-webapps.html"><a href="mobile-friendly-webapps.html#the-mobile-webmap-app-in-action"><i class="fa fa-check"></i><b>11.5</b> The mobile webmap app in action!</a></li>
 </ul></li>
+<li class="chapter" data-level="12" data-path="web-map-service-layers.html"><a href="web-map-service-layers.html"><i class="fa fa-check"></i><b>12</b> Web Map Service Layers</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="web-map-service-layers.html"><a href="web-map-service-layers.html#what-are-web-map-service-wms-layers"><i class="fa fa-check"></i><b>12.1</b> What are Web Map Service (WMS) Layers?</a></li>
+<li class="chapter" data-level="12.2" data-path="web-map-service-layers.html"><a href="web-map-service-layers.html#loading-a-wms-server"><i class="fa fa-check"></i><b>12.2</b> Loading a WMS server</a></li>
+<li class="chapter" data-level="12.3" data-path="web-map-service-layers.html"><a href="web-map-service-layers.html#adding-wms-to-layer-control"><i class="fa fa-check"></i><b>12.3</b> Adding WMS to layer control</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -284,8 +290,8 @@ L.tileLayer(&#39;https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.p
     })
     </code></pre>
 <p>So far, you should get a result like below.</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="creating-an-interactive-choropleth-map.html#cb87-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/kenya_json.jpg&quot;</span>))</span></code></pre></div>
-<p><img src="../kenya_json.jpg" width="936" /></p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="creating-an-interactive-choropleth-map.html#cb87-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/kenya_json.jpg&quot;</span>))</span></code></pre></div>
+<p><img src="../images/kenya_json.jpg" width="936" /></p>
 </div>
 <div id="coloring-the-counties" class="section level2 hasAnchor" number="7.3">
 <h2><span class="header-section-number">7.3</span> Coloring the counties<a href="creating-an-interactive-choropleth-map.html#coloring-the-counties" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -306,8 +312,8 @@ function getColor(d) {
 <p>The above function uses a question mark <code>?</code> to act as the if…else statement. In JavaScript terms, it is known as a <a href="https://www.freecodecamp.org/news/how-the-question-mark-works-in-javascript/">ternary operator</a>. What’s that? How does it work? We can answer the second more arguably. For the former, we can only go as far as the definition.</p>
 <p>How the ternary operator works is that any statement to the right of the <code>?</code> is returned as true if it agrees with the value to the left of the <code>?</code>. Reread that statement again. If the value to the right of the <code>?</code> is false, then the value to the right of the colon <code>:</code> is returned. Reread that last statement again.</p>
 <p>If it still sounds fuzzy, the below image should help (adapted from <a href="https://www.freecodecamp.org/news/how-the-question-mark-works-in-javascript/">FreeCodeCamp</a>).</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="creating-an-interactive-choropleth-map.html#cb89-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/ternary.png&quot;</span>))</span></code></pre></div>
-<p><img src="../ternary.png" width="800" /></p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="creating-an-interactive-choropleth-map.html#cb89-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/ternary.png&quot;</span>))</span></code></pre></div>
+<p><img src="../images/ternary.png" width="800" /></p>
 <p>Now that we’ve created the function of setting colors to our json file on leaflet, we next also have to <em>create</em> a function that does to the GeoJSON file itself. Luckily, we have the <strong>style</strong> <a href="https://leafletjs.com/reference.html#geojson-style">option from Leaflet</a> which is styles GeoJSON lines and polygons using features from the GeoJSON file itself. We saw it in <a href="using-geojson-in-leaflet.html#using-geojson-in-leaflet">Chapter</a> and we shall also use it here.</p>
 <pre><code>var style = ((feature)=&gt; {
     return {
@@ -335,8 +341,8 @@ function getColor(d) {
     </code></pre>
 <p>Since the <strong>style</strong> option is a key (and also a function), the value will be the <code>var style</code> which we created. This value is in and by itself a function that iterates over every county because of the <code>getColor(feature.properties.Pop_Density)</code> contained in it as the <code>fillColor</code> value!</p>
 <p>Enough JavaScript for one day!</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="creating-an-interactive-choropleth-map.html#cb92-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/choropleth-map.jpg&quot;</span>))</span></code></pre></div>
-<p><img src="../choropleth-map.jpg" width="960" /></p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="creating-an-interactive-choropleth-map.html#cb92-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/choropleth-map.jpg&quot;</span>))</span></code></pre></div>
+<p><img src="../images/choropleth-map.jpg" width="960" /></p>
 <p>Our choropleth map is beginning to take shape.</p>
 </div>
 <div id="highlight-features" class="section level2 hasAnchor" number="7.4">
@@ -389,8 +395,8 @@ function getColor(d) {
                     map.fitBounds(e.target.getBounds())
                 }))
 </code></pre>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="creating-an-interactive-choropleth-map.html#cb97-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/highlightable-map.jpg&#39;</span>))</span></code></pre></div>
-<p><img src="../highlightable-map.jpg" width="960" /></p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="creating-an-interactive-choropleth-map.html#cb97-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/highlightable-map.jpg&#39;</span>))</span></code></pre></div>
+<p><img src="../images/highlightable-map.jpg" width="960" /></p>
 <p>Your code within the <code>fetch</code> API should look like this.</p>
 <pre><code>fetch(&quot;https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/counties_json.json&quot;)
     .then((response) =&gt;{
@@ -462,8 +468,8 @@ info.addTo(map);</code></pre>
     return this.div;
 };</code></pre>
 <p>Returns the DOM element for the control and creates a <code>&lt;div&gt;</code> with class <code>info</code>. This is done through the help of <code>L.DomUtil</code> which, according to the Leaflet website, provides utility functions to work with the DOM<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. Actually, this new <code>&lt;div&gt;</code> of class <code>info</code> is created when you fire up your browser but obviously not in your actual <code>map.html</code> file.</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="creating-an-interactive-choropleth-map.html#cb101-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/div-info-element.jpg&#39;</span>))</span></code></pre></div>
-<p><img src="../div-info-element.jpg" width="541" /></p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="creating-an-interactive-choropleth-map.html#cb101-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/div-info-element.jpg&#39;</span>))</span></code></pre></div>
+<p><img src="../images/div-info-element.jpg" width="541" /></p>
 <p>Trust me it wasn’t there before. What <code>this.update()</code> does is return the update function that follows with the properties for each county, and then returns it.</p>
 <pre><code>// Method that we will use to update the control based on feature properties passed
 info.update = function (props) {
@@ -532,8 +538,8 @@ legend.addTo(map);
 
 </code></pre>
 <p>The legend is done and is finally added to the map.</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="creating-an-interactive-choropleth-map.html#cb106-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/choropleth-legend.jpg&#39;</span>)</span></code></pre></div>
-<p><img src="../choropleth-legend.jpg" width="960" /></p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="creating-an-interactive-choropleth-map.html#cb106-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/choropleth-legend.jpg&#39;</span>)</span></code></pre></div>
+<p><img src="../images/choropleth-legend.jpg" width="960" /></p>
 <p>The full code files are available from <a href="https://www.dropbox.com/scl/fo/d8cwl9t1ay144vvy73pq6/h?dl=0&amp;rlkey=mardh4rwlqegfvf0vupbj0c28">here</a>.</p>
 <p>When creating choropleth maps, aim for challenging, impacting rather than merely informing.</p>
 

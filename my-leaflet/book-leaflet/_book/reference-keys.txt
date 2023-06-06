@@ -58,3 +58,7 @@ adding-the-features
 zooming-to-mobile-users-location
 add-marker-to-mobile-users-geolocation
 the-mobile-webmap-app-in-action
+web-map-service-layers
+what-are-web-map-service-wms-layers
+loading-a-wms-server
+adding-wms-to-layer-control

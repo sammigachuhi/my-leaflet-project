@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Samuel Gachuhi Ngugi" />
 
 
-<meta name="date" content="2023-06-04" />
+<meta name="date" content="2023-06-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -232,6 +232,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.4" data-path="mobile-friendly-webapps.html"><a href="mobile-friendly-webapps.html#add-marker-to-mobile-users-geolocation"><i class="fa fa-check"></i><b>11.4</b> Add marker to mobile user’s geolocation</a></li>
 <li class="chapter" data-level="11.5" data-path="mobile-friendly-webapps.html"><a href="mobile-friendly-webapps.html#the-mobile-webmap-app-in-action"><i class="fa fa-check"></i><b>11.5</b> The mobile webmap app in action!</a></li>
 </ul></li>
+<li class="chapter" data-level="12" data-path="web-map-service-layers.html"><a href="web-map-service-layers.html"><i class="fa fa-check"></i><b>12</b> Web Map Service Layers</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="web-map-service-layers.html"><a href="web-map-service-layers.html#what-are-web-map-service-wms-layers"><i class="fa fa-check"></i><b>12.1</b> What are Web Map Service (WMS) Layers?</a></li>
+<li class="chapter" data-level="12.2" data-path="web-map-service-layers.html"><a href="web-map-service-layers.html#loading-a-wms-server"><i class="fa fa-check"></i><b>12.2</b> Loading a WMS server</a></li>
+<li class="chapter" data-level="12.3" data-path="web-map-service-layers.html"><a href="web-map-service-layers.html#adding-wms-to-layer-control"><i class="fa fa-check"></i><b>12.3</b> Adding WMS to layer control</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -277,8 +283,8 @@ var cyclOSM = L.tileLayer(&#39;https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm
 }).setView([-1.295287148, 36.81984753], 7);
 </code></pre>
 <p>However, that will only add the first basemap variable that appears, that is of <code>osm</code> and blocking out that of <code>cylcOSM</code>. This is shown below.</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="layer-groups-and-controls.html#cb109-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/no-control.jpg&#39;</span>))</span></code></pre></div>
-<p><img src="../no-control.jpg" width="958" /></p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="layer-groups-and-controls.html#cb109-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/no-control.jpg&#39;</span>))</span></code></pre></div>
+<p><img src="../images/no-control.jpg" width="958" /></p>
 </div>
 <div id="creating-the-controls" class="section level2 hasAnchor" number="8.3">
 <h2><span class="header-section-number">8.3</span> Creating the controls<a href="layer-groups-and-controls.html#creating-the-controls" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -293,8 +299,8 @@ L.control.layers(basemaps).addTo(map);
 
 </code></pre>
 <p>This is what you get as a result.</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="layer-groups-and-controls.html#cb111-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/controls.jpg&#39;</span>))</span></code></pre></div>
-<p><img src="../controls.jpg" width="956" /></p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="layer-groups-and-controls.html#cb111-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/controls.jpg&#39;</span>))</span></code></pre></div>
+<p><img src="../images/controls.jpg" width="956" /></p>
 </div>
 <div id="adding-overlay-maps" class="section level2 hasAnchor" number="8.4">
 <h2><span class="header-section-number">8.4</span> Adding overlay maps<a href="layer-groups-and-controls.html#adding-overlay-maps" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -370,8 +376,8 @@ legend.addTo(map);</code></pre>
 <p>Finally parse it to the <code>L.controls.layer</code> class.</p>
 <pre><code>// Add layer controls
 L.control.layers(basemaps, overlays).addTo(map);</code></pre>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="layer-groups-and-controls.html#cb118-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/controls-overlay.jpg&#39;</span>))</span></code></pre></div>
-<p><img src="../controls-overlay.jpg" width="960" /></p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="layer-groups-and-controls.html#cb118-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/controls-overlay.jpg&#39;</span>))</span></code></pre></div>
+<p><img src="../images/controls-overlay.jpg" width="960" /></p>
 <p>If you click anyone of the counties, you will see popups appear.</p>
 <p>There is one more overaly we will add to our display to bring our experimentation with layer controls full circle. Remember the geojson of our <code>cities</code> variable? Let’s call it to action again. Load the custom icon markers first that will differentiate the populations of our cities.</p>
 <pre><code>// Color icons
@@ -440,16 +446,16 @@ L.control.layers(basemaps, overlays).addTo(map);
 </code></pre>
 <p>In the previous <a href="creating-an-interactive-choropleth-map.html#creating-an-interactive-choropleth-map">chapter</a>, we ended by saying that we strive to make our choropleths map challenge, charge rather than merely informing. This seems a sketchy type, but it shows the discrepancy as well as the effort needed for Kenya to bring a centralized sanitation system to every household. Sanitation matters may always sound insensitive, but the true barometer of any civilization is its sanitation.</p>
 <p>Finally, we tried playing around with the options available to the <code>L.controls.layer</code> including the simple one as changing position, but everytime a new option was provided in to the parenthesis, as in <code>L.control.layers(basemap, overlaymap, {options})</code>, the control would disappear.</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="layer-groups-and-controls.html#cb122-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/controls-all.jpg&#39;</span>))</span></code></pre></div>
-<p><img src="../controls-all.jpg" width="960" /></p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="layer-groups-and-controls.html#cb122-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/controls-all.jpg&#39;</span>))</span></code></pre></div>
+<p><img src="../images/controls-all.jpg" width="960" /></p>
 </div>
 <div id="add-a-scale-bar" class="section level2 hasAnchor" number="8.5">
 <h2><span class="header-section-number">8.5</span> Add a scale bar<a href="layer-groups-and-controls.html#add-a-scale-bar" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Adding a small reactive scale with an option to demonstrate will not hurt!</p>
 <pre><code>// Add scale
 L.control.scale({position:&#39;bottomleft&#39;}).addTo(map);</code></pre>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="layer-groups-and-controls.html#cb124-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/controls-scale.jpg&#39;</span>))</span></code></pre></div>
-<p><img src="../controls-scale.jpg" width="960" /></p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="layer-groups-and-controls.html#cb124-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/controls-scale.jpg&#39;</span>))</span></code></pre></div>
+<p><img src="../images/controls-scale.jpg" width="960" /></p>
 <p>All the files and scripts used in this chapter can be accessed <a href="https://www.dropbox.com/scl/fo/0njhl757vantwggnsidks/h?dl=0&amp;rlkey=18m27j58agq6209lkppkdtgqo">here</a>.</p>
 
 </div>
