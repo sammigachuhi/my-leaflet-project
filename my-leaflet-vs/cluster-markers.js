@@ -65,8 +65,9 @@ fetch(url)
         var geojsonGroup = L.geoJSON(data, {
             onEachFeature : function(feature, layer){
                 layer.bindPopup(`<b>Facility Name:</b> ${feature.properties.Facility_N} <br>
-                <b>Type:</b> ${feature.properties.Type}`);
+                <b>Type:</b> ${feature.properties.Type}`)
             },
+            
             pointToLayer: function (feature, latlng) {
                 return L.circleMarker(latlng)
                 // .on('mouseover', function(){
