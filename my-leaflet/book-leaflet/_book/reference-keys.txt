@@ -62,3 +62,16 @@ web-map-service-layers
 what-are-web-map-service-wms-layers
 loading-a-wms-server
 adding-wms-to-layer-control
+standard-website-with-leaflet-project
+get-the-html-template
+insert-leaflet-to-standard-html-website
+editing-the-css
+adding-leaflet-to-every-webpage
+posting-the-html-website-to-the-world
+leaflet-in-esri
+esri-leaflet-plugins
+creating-an-esri-leaflet-map
+geocode-search
+add-search-bar
+make-the-search-bar-functional
+conclusion

@@ -1,4 +1,5 @@
-const apiKey = "AAPK2ebf5b4cecc748e0b3b63c07e5136eefdqTFQtnVgwj1BzXnXzlhfkDvDq9wBRXvPV402956sglVQeXpKLUAFbT5XobTbE-M";
+const apiKey = "Your API Key";
+// const basemapEnum = "ArcGIS:Streets";
 const basemapEnum = "ArcGIS:Navigation";
 
 const map = L.map("myMap", {
@@ -35,6 +36,7 @@ const searchControl = L.esri.Geocoding.geosearch({
     placeholder: "Enter an address or place e.g. 1 York St",
     useMapBounds: false,
 
+    // Add provider
     providers: [
         L.esri.Geocoding.arcgisOnlineProvider({
           apikey: apiKey,
@@ -67,37 +69,3 @@ searchControl.on("results", (data) => {
       }
 
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
