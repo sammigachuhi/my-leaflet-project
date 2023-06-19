@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Samuel Gachuhi Ngugi" />
 
 
-<meta name="date" content="2023-06-17" />
+<meta name="date" content="2023-06-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -154,6 +154,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#how-does-it-work"><i class="fa fa-check"></i><b>1.2</b> How does it work?</a></li>
 <li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#javascript"><i class="fa fa-check"></i><b>1.3</b> JavaScript</a></li>
 <li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#css-files"><i class="fa fa-check"></i><b>1.4</b> CSS files</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#summary"><i class="fa fa-check"></i><b>1.5</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="first-leaflet-map.html"><a href="first-leaflet-map.html"><i class="fa fa-check"></i><b>2</b> First Leaflet Map</a>
 <ul>
@@ -316,12 +317,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Let’s go through the above tags one by one.</p>
 <ol style="list-style-type: decimal">
 <li><p><code>&lt;!DOCTYPE html&gt;</code> - It is an “information” to the browser about what document type to expect.</p></li>
-<li><p><code>&lt;html lang="en"&gt;</code> - It is the container for all other HTML elements (except for the &lt;!DOCTYPE&gt; tag). The <code>lang</code> attribute is used to assist web engines know which language the website uses.</p></li>
+<li><p><code>&lt;html lang="en"&gt;</code> - It is the container for all other HTML elements (except for the <code>&lt;!DOCTYPE&gt;</code> tag). The <code>lang</code> attribute is used to assist web engines know which language the website uses.</p></li>
 <li><p><code>&lt;head&gt;</code> - It is not displayed on the webpage as other tags, but contains the metadata of the webpage.</p></li>
 <li><p><code>&lt;title&gt;</code> - Can you guess? You had it right. Defines the title of the document. In our case, if you open the webpage assuming you created it in VS Code, the webpage shall be titled <em>A basic html webpage</em> at the tab of your web-browser.</p></li>
-<li><p><code>&lt;meta charset="utf-8"&gt;</code> - This is one of the metadata hosted by the</p>
-<head>
-<p>tag. We had mentioned earlier that the <code>&lt;head&gt;</code> contains the metadata of the webpage. Now here we would like to add that the <code>&lt;meta&gt;</code> tag found <em>within</em> the <code>&lt;head&gt;</code> is what <em>defines</em> the metadata. You can think of it as <strong>README</strong> text file that comes with any software you download. The <code>&lt;meta&gt;</code> tag in our case defines the encoding of our HTML5 document with the attribute <code>charset="utf-8"</code>. Don’t think about this too much. HTML5 documents have <code>utf-8</code> as their encoding. You can try to look up what encoding is but it’s not useful for this tutorial!</p></li>
+<li><p><code>&lt;meta charset="utf-8"&gt;</code> - This is one of the metadata hosted by the <code>&lt;head&gt;</code> tag. We had mentioned earlier that the <code>&lt;head&gt;</code> contains the metadata of the webpage. Now here we would like to add that the <code>&lt;meta&gt;</code> tag found <em>within</em> the <code>&lt;head&gt;</code> is what <em>defines</em> the metadata. You can think of it as <strong>README</strong> text file that comes with any software you download. The <code>&lt;meta&gt;</code> tag in our case defines the encoding of our HTML5 document with the attribute <code>charset="utf-8"</code>. Don’t think about this too much. HTML5 documents have <code>utf-8</code> as their encoding. You can try to look up what encoding is but it’s not useful for this tutorial!</p></li>
 <li><p><code>&lt;link&gt;</code> - Defines the relationship between a document and an external resource. It has various attributes but <code>rel</code> and <code>href</code> have been used. The former specifies the relationship between the current document and the linked document/resource. The <code>rel</code> here references the <code>styles.css</code> file as the style sheet for our html. That is, the styles for our html are found in the <code>styles.css</code> file. <code>href</code> on the other hand points the html document to the path of the stylesheet –the <code>styles.css</code> file.</p></li>
 <li><p><code>&lt;body&gt;</code> - This is the crux of your webpage. If nothing is within the <code>&lt;body&gt;</code> tags, your webpage will be as empty as a blank sheet of paper. This tag is the home for all the other contents of the webpage such as headings, paragraphs, images, tables etc.</p></li>
 <li><p><code>&lt;div&gt;</code> - This is a special element that lets you group similar sets of content together on a web page. You can use it as a generic container for associating similar content. In the above html script, we have included an <code>&lt;id&gt;</code> attribute that is in other words, a unique identifier for this section of the webpage. <code>&lt;id&gt;s</code> are useful if you want to customize the appearance of a certain part of the webpage. <code>&lt;class&gt;</code>es behave in a similar way, but the difference between <code>&lt;id&gt;</code> and <code>&lt;class&gt;</code> is that <code>&lt;id&gt;</code> has to be unique, while <code>&lt;class&gt;</code>es can be used more than once.</p></li>
@@ -366,6 +365,17 @@ prperty2: value2}</code></pre>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="introduction.html#cb10-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/elements2.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../images/elements2.jpg" width="400" /></p>
 <p>The <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/How_CSS_is_structured">MDN website</a> provides a lot of information on HTML and CSS.</p>
+</div>
+<div id="summary" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Summary<a href="introduction.html#summary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This chapter was an introduction to Hyper Text Markup Language (HTML), JavaScript and Cascading Style Sheets (CSS) languages. You learnt the following:</p>
+<ul>
+<li><p>You can work with leaflet in either a html or JavaScript file. In html,
+the JavaScript code must appear under the <code>&lt;script&gt;</code> tag.</p></li>
+<li><p>HTML files are made up of elements called tags. Tags are features that introduce any form of content into a webpage.</p></li>
+<li><p>JavaScript is the main language of the web. It is the language responsible for the interactivity in most websites.</p></li>
+<li><p>CSS stands for Cascading Style Sheet (CSS). CSS defines how your HTML is to appear, such as color and size of text, background color and even the structure of your HTML page.</p></li>
+</ul>
 
 </div>
 </div>

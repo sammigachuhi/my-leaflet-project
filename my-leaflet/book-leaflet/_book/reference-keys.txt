@@ -3,6 +3,7 @@ what-is-leaflet
 how-does-it-work
 javascript
 css-files
+summary
 first-leaflet-map
 setting-the-superstructure
 beautifying-the-house
