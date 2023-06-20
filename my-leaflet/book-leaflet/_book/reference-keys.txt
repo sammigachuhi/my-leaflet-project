@@ -12,6 +12,7 @@ add-ons
 a-marker
 a-marker-with-a-popup
 different-markers-and-popups
+summary-2
 embedding-leaflet-map-to-an-external-website
 the-html-webpage
 the-css
