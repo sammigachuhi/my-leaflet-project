@@ -1,0 +1,254 @@
+# Cluster to reduce the clutter
+
+## A map full of clutter
+
+There comes a time when it is convenient to coalesce several points into single multi-cluster point. Consider the following example: you have a geojson file with over 10000 points of houses within a densely populated region, say an island of 5km by 5km, if by any chance such a scenario exists. Will you want to display such a gigantic number of points within such a small area? That would be an overkill! Moreover, it will seem incomprehensible to the viewer. Consider the following example we set up in a new JavaScript file which we fondly called `cluster-markers.js`. 
+
+```
+var map = L.map('myMap').setView([-1.295287148, 36.81984753], 7);
+
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+
+url = 'https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/selected_hospitals.json'
+
+L.geoJson.ajax(url).addTo(map);
+
+var markers = L.markerClusterGroup();
+
+```
+
+The following is the result we got.
+
+```{r}
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/clutter-points.jpg'))
+```
+
+Not good at all. The `Leaflet.markercluster` plugin is what transforms a clutter map into one of neatly arranged clustered marker points.
+
+## Preparations
+
+Creating a cluster marker map is fairly easy. You will first have to insert the `Leaflet.markerCluster` plugin into `map.html`. The plugin is available from [here](https://github.com/Leaflet/Leaflet.markercluster/archive/refs/heads/master.zip). Insert the following `<script>` tag into the `<head>` element of your `map.html`.
+
+```
+<script src="Leaflet.markercluster-1.4.1\Leaflet.markercluster-1.4.1\dist\leaflet.markercluster.js"></script>
+```
+
+You will also have to insert the `Leaflet.markercluster` CSS properties via the `<link>` tag too. Add the following `<link>` tag for `Leaflet.markercluster` after the other `<link>` properties.
+
+```
+<link rel="stylesheet" href="Leaflet.markercluster-master\Leaflet.markercluster-master\dist\MarkerCluster.Default.css"> 
+```
+
+Don't underestimate them. These CSS properties are necessary to style your cluster points in a nice way -to make it easy on the eye.
+
+Hope you also referenced your `map.html` to the `cluster-markers.js` in the `<script>` file inside the `<body>` element!
+
+
+If you had done the small exercise at the beginning of the chapter, the following code should be present.
+
+```
+var map = L.map('myMap').setView([-1.295287148, 36.81984753], 7);
+
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+
+url = 'https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/selected_hospitals.json'
+
+```
+
+## Behold, a cluster marker map!
+
+Delete the `L.geoJson.ajax(url).addTo(map);`, we won't need it now. Our real work of creating a cluster marker map begins with the `markerClusterGroup`. Let's proceed!
+
+```
+var markers = L.markerClusterGroup();
+
+```
+
+We shall use Ajax again but this time round we shall pass in some functions to customize the appearance and functionalities of our GeoJson markers.
+
+```
+
+L.geoJson.ajax(url, {
+    pointToLayer: ((feature, latLng) => {
+        return markers.addLayer(L.circleMarker(latLng));
+    }),
+
+    onEachFeature: ((feature, layer) => {
+        layer.bindPopup(`<b>Facility Name:</b> ${feature.properties.Facility_N} <br>
+        <b>Type:</b> ${feature.properties.Type}`)
+    })
+}).addTo(map);
+```
+
+Remember `pointToLayer`? It defines how the GeoJson file will appear. The `pointToLayer` retrieves the Latitude-Longitude coordinates, creates circle markers out of them before finally parsing to the `markers` variable in the return keyword.
+
+How about for `onEachFeature`. You can guess. *O*n *E*ach *F*eature, do this and that. In our case we bind a popup of facility name and type which will appear when a circle marker is clicked on.
+
+Actually, the above code sort of finished the work for us.
+
+```{r}
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/cluster-marker-map.jpg'))
+
+```
+
+Zoom in and out and watch the circle markers *spidefy* to individual points with a popup. I have restrained from tweaking because the defaults are already good enough. See them from this [Github Page](https://github.com/Leaflet/Leaflet.markercluster). 
+
+However, as good practice, we need to add the `markers` global variable to the map. We do so by using the following code.
+
+```
+map.addLayer(markers)
+
+```
+
+`addLayers`, just like the name suggests, adds the given layer to the map.
+
+The `L.circleMarker` in the `pointToLayer` key of the ajax function can be replaced with `L.marker()`. However, lone hospitals especially to the northeast of Kenya, and when clusters are specified to their individual points will resort to the default marker style of Leaflet. Below is how they would look, and is far from aesthetic.
+
+```{r}
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/cluster-marker-plain.jpg'))
+
+```
+
+Coming back full circle, circle markers are way better.
+
+Most of the ajax code was inspired by this [video](https://www.youtube.com/watch?v=R-V7XFUbrkw&t=625s). 
+
+But wait! Hold your horses, there is a bug. Try to click on any of the spiderfied or lone hospitals and you will notice something that will raise eyebrows. All hospitals display the following popup when clicked:
+
+```
+Facility Name: Wajir Tb Manyatta Sub - District Hospital
+Type: Sub-District Hospital
+```
+
+```{r}
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/cluster-marker-bug.jpg'))
+
+```
+
+Unless a developer would like to be left with an egg on the face for assigning wrong place names, this should be dealt with expeditiously. Our code is alright, since it works in other scenarios such as [here](https://gis.stackexchange.com/questions/346104/popup-with-leaflet-markercluster-in-leaflet-map?utm_source=pocket_reader). Yours truly suspects that the Ajax plugin is the issue, since `L.geoJSON` works perfectly in displaying the correct popup for each hospital.
+
+Time to try a different strategy: using `fetch` API. At least `fetch` will use `L.geoJSON()` as it is, without spoilers such as Ajax and each marker will display the correct popup.
+
+We have worked with `fetch` before so I will not explain it that much here. Feel free to google a refresher.
+
+Comment out the earlier code beginning from `var markers` to `map.addLayer(markers)` and replace it with the following code chunk.
+
+```
+fetch(url)
+    .then((response) =>{
+        return response.json()
+    })
+    .then((data) => {
+        var markers = L.markerClusterGroup();
+
+        var geojsonGroup = L.geoJSON(data, {
+            onEachFeature : function(feature, layer){
+                layer.bindPopup(`<b>Facility Name:</b> ${feature.properties.Facility_N} <br>
+                <b>Type:</b> ${feature.properties.Type}`);
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng);
+            }
+        });
+
+        markers.addLayer(geojsonGroup);
+        map.addLayer(markers);
+
+    })
+    .catch((error) => {
+        console.log(`This is the error: ${error}`)
+    })
+
+```
+
+```{r}
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/cluster-marker-map-fixed.jpg'))
+
+```
+
+Now all points have their rightful and respective names.
+
+## Additional features of Cluster marker plugin
+
+The official documentation of the plugin lists many other features that come along with the tool. We can't go through all of them, neither is there the will but let's summise just one important one: the `mouseover` event. The same way that leaflet's markers can have events triggered on them also applies to the Cluster marker plugin. Below is an example in their webpage
+
+```
+// We won't use this
+
+markers.on('click', function (a) {
+	console.log('marker ' + a.layer);
+});
+```
+
+Let's demonstrate adding a hover event to our cluster marker map, thanks to this [answer](https://gnisitricks.de/2019/03/Adding-Click-and-Mouseover-Events-simultaneously-to-GeoJson-Markers-on-a-Leaflet-Map/).
+
+```
+/////// Added `mouseover` event
+
+fetch(url)
+    .then((response) =>{
+        return response.json()
+    })
+    .then((data) => {
+        var markers = L.markerClusterGroup({chunkedLoading: true}); // Splits the add layers to small intervals to prevent page freezing
+
+        var geojsonGroup = L.geoJSON(data, {
+            onEachFeature : function(feature, layer){
+                layer.bindPopup(`<b>Facility Name:</b> ${feature.properties.Facility_N} <br>
+                <b>Type:</b> ${feature.properties.Type}`);
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng).on('mouseover', function(){
+                    this.bindPopup(`Nearest_Center: ${feature.properties.Nearest_To}`).openPopup(); // Add mouseover event
+                });
+            }
+        });
+
+        markers.addLayer(geojsonGroup);
+        map.addLayer(markers);
+
+    })
+    .catch((error) => {
+        console.log(`This is the error: ${error}`)
+    })
+
+```
+
+From the above code, we added the `mouseover` event to each marker point using the `on` method. This was thanks to `this` keyword which refers to the object in the current code chunk --`geojsonGroup`. We also sped the rendering of our Leaflet map by adding `chunkedLoading: true` parameter to `L.markerCluster()` function.
+
+Hovering over each marker point will show an attribute of the centre in closest proximity from the `Nearest_To` properties of the Json Layer.
+
+```{r}
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/cluster-marker-mouseover.jpg'))
+
+```
+
+The code files used for this chapter are available from [here](https://www.dropbox.com/scl/fo/vbyxk75jodchlgxb4obkl/h?dl=0&rlkey=x5jya8iwtj431uwxte7usdvpa).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

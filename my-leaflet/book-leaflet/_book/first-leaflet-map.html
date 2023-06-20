@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Samuel Gachuhi Ngugi" />
 
 
-<meta name="date" content="2023-06-19" />
+<meta name="date" content="2023-06-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -160,6 +160,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.1" data-path="first-leaflet-map.html"><a href="first-leaflet-map.html#setting-the-superstructure"><i class="fa fa-check"></i><b>2.1</b> Setting the superstructure</a></li>
 <li class="chapter" data-level="2.2" data-path="first-leaflet-map.html"><a href="first-leaflet-map.html#beautifying-the-house"><i class="fa fa-check"></i><b>2.2</b> Beautifying the house</a></li>
+<li class="chapter" data-level="2.3" data-path="first-leaflet-map.html"><a href="first-leaflet-map.html#summary-1"><i class="fa fa-check"></i><b>2.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="add-ons.html"><a href="add-ons.html"><i class="fa fa-check"></i><b>3</b> Add ons</a>
 <ul>
@@ -280,8 +281,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 2</span> First Leaflet Map<a href="first-leaflet-map.html#first-leaflet-map" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="setting-the-superstructure" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Setting the superstructure<a href="first-leaflet-map.html#setting-the-superstructure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We had earlier mentioned that Javascript, otherwise shortened to JS is the life of the party when it comes to webpages. In other words, it makes your web pages interactive. It’s like the additional component that makes you HTML pages move from static to responsive.</p>
-<p>Creating a leaflet map is not like creating any other HTML web page. You have to set up the leaflet essentials in your HTML page first. Create a new html document called <code>map.html</code>. This will be the html document that will act as the structure which will house our webpage to be created using JS. Using VS Code, create <code>map.html</code> and paste, or preferably, type the following code.</p>
+<p>We had earlier mentioned that Javascript, otherwise shortened to JS is the life of the party when it comes to webpages. In other words, it makes your web pages interactive. It’s like the additional component that makes your HTML pages move from static to responsive.</p>
+<p>Creating a leaflet map is not like creating any other HTML web page. You have to set up the leaflet essentials in your HTML page first. To begin with, create a new html document called <code>map.html</code>. This will be the html document that will act as the structure which will house our webpage to be created using JS. Using VS Code, create <code>map.html</code> and paste, or preferably, type the following code.</p>
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
     &lt;head&gt;
@@ -304,7 +305,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<p>You may be wondering why we have two <code>&lt;link&gt;</code> tags. “Won’t they confuse the webpage or something?” You may wonder. Same thing for the two <code>&lt;script&gt;</code> tags, one at the head and the other at the <code>&lt;body&gt;</code> tag. The answers is ‘No’. Once a html script is loaded in our browser, assuming its the <code>map.html</code> we’ve created, the browser reads it from top to bottom. In our html script, the browser will apply the styles defined in <code>styles.css</code> to the html elements. To make matters clearer, the following script is what is contained in the <code>styles.css</code>:</p>
+<p>You may be wondering why we have two <code>&lt;link&gt;</code> tags.</p>
+<p>“Won’t they confuse the webpage or something?” You may wonder.</p>
+<p>Same thing for the two <code>&lt;script&gt;</code> tags, one at the head and the other at the <code>&lt;body&gt;</code> tag. The answers is ‘No’. Once a html script is loaded in our browser, assuming its the <code>map.html</code> we’ve created, the browser reads it from top to bottom. In our html script, the browser will apply the styles defined in <code>styles.css</code> to the html elements. To make matters clearer, the following script is what is contained in the <code>styles.css</code>:</p>
 <pre><code>#myMap { 
     height: 600px; 
 }</code></pre>
@@ -315,10 +318,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">2.2</span> Beautifying the house<a href="first-leaflet-map.html#beautifying-the-house" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Think of the html document as the superstructure, like a huge multistorey building just finished. Though the structure has the best architectural design, it just looks all grey with no life unless we call some interior and exterior designers to add some color. That’s what <code>main.js</code> file, pointed to by the <code>&lt;script&gt;</code> tag in the html document will precisely do.</p>
 <p>Open your VS Code, and assuming you had already created <code>main.js</code> already, (if not, create one now), insert the following code into the <code>.js</code> file.</p>
-<pre><code>var map = L.map(&#39;myMap&#39;).setView([-0.0884105,34.7299038], 13);;</code></pre>
+<pre><code>var map = L.map(&#39;myMap&#39;).setView([-0.0884105,34.7299038], 13);</code></pre>
 <p>Take a pause.</p>
 <p>Breath in, breath out.</p>
-<p>You will learn something very important here. In fact, it is the crux of what makes Leaflet work. Your future of understanding leaflet hinges on this code.</p>
+<p>You are just about to learn something very important here. In fact, it is the crux of what makes Leaflet work. Your future of understanding leaflet hinges on this little code.</p>
 <p>The <code>L.map()</code> class we just used is what initializes the leaflet map. Everything within the <code>&lt;div&gt;</code> is displayed thanks to this class function. It is referred to as a factory function because it uses the method <code>map</code> to return an object.</p>
 <p>The <code>setView</code> method <em>sets the view of the map (geographical center and zoom) with the given animation options</em>. It’s properties are Latitude-Longitude, zoom number and other options. If you would like to view the humongous leaflet reference, get it <a href="https://leafletjs.com/reference.html">here</a>.</p>
 <p>In our case we just inserted the Lat-Long and zoom number.</p>
@@ -334,6 +337,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="../images/kisumu-leaflet.jpg" width="400" /></p>
 <p>What <code>L.tileLayer</code> has done is retrieve the web tiles from the url source provided, and within the dictionary that follows the url, zoom level (<code>maxZoom</code>) and map attribution (<code>attribution</code>) have been provided. When working with leaflet, the dictionary, indicated by the curly braces <code>{}</code> houses most of the additional class options other than the key one(s). In this case we used the additional options of <code>maxZoom</code> and <code>attribution</code>. Finally, the method <code>addTo</code> adds the layer to the given map or layer group. Here, our webtile is added to the <code>var map</code> which only contains the <code>setView</code> properties.</p>
 <p>A very influential person said Kisumu located in Kenya is a town with great potential. How about dispalying it to the whole world to realise it!</p>
+</div>
+<div id="summary-1" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Summary<a href="first-leaflet-map.html#summary-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this chapter, we created our first leaflet map. Here are a couple of things that you have learnt at the first step of this web mapping journey.</p>
+<ul>
+<li><p>Browsers read code scripts from top to bottom, much like skimming down a page.</p></li>
+<li><p>The styles defined in the CSS style sheet, the <code>styles.css</code> in this case,
+will apply to the HTML elements in the <code>map.html</code> file.</p></li>
+<li><p>We use the <code>src</code> attribute to link to a webpage.</p></li>
+<li><p>If HTML is the magnificent building, JavaScript acts like a good interior and exterior designer.</p></li>
+<li><p>The <code>L.map()</code> class is what initializes the leaflet map.</p></li>
+</ul>
 
 </div>
 </div>
