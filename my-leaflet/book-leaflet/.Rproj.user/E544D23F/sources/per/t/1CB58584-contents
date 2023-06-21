@@ -13,13 +13,13 @@ Leaflet can work if every line of code is inside a `html` document, so long as t
 Well, beginning with `html`, which stands for **Hypertext Markup Language**, it is the language that is [used in creating webpages](https://www.tutorialspoint.com/html/index.htm). It is actually the standard of making static webmaps. I am yet to come across any webpage that is made up of everything apart from HTML. If you want to have a view of what HTML looks like, just right click any webpage and click *Inspect* in Google Chrome and Firefox. A toolbar will appear at the bottom or side of the webpage, depending on your settings. 
 
 ```{r}
-knitr::include_graphics(rep("D:/gachuhi/my-leaflet/inspect.jpg"))
+knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/inspect.jpg"))
 ```
 
 Scroll over to the **Element** tab and you will have something that looks like this:
 
 ```{r}
-knitr::include_graphics(rep("D:/gachuhi/my-leaflet/elements.jpg"))
+knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/elements.jpg"))
 ```
 
 The part encircled in red is the `html` that makes up the webpage for the [ProGMO website](https://sammigachuhi.github.io/pro-gmo-website/) in this case. 
@@ -55,13 +55,13 @@ Let's go through the above tags one by one.
 
 1. `<!DOCTYPE html>` - It is an "information" to the browser about what document type to expect.
 
-2. `<html lang="en">` - It is the container for all other HTML elements (except for the <!DOCTYPE> tag). The `lang` attribute is used to assist web engines know which language the website uses. 
+2. `<html lang="en">` - It is the container for all other HTML elements (except for the `<!DOCTYPE>` tag). The `lang` attribute is used to assist web engines know which language the website uses. 
 
 3. `<head>` - It is not displayed on the webpage as other tags, but contains the metadata of the webpage.
 
 4. `<title>` - Can you guess? You had it right. Defines the title of the document. In our case, if you open the webpage assuming you created it in VS Code, the webpage shall be titled *A basic html webpage* at the tab of your web-browser.
 
-5. `<meta charset="utf-8">` - This is one of the metadata hosted by the <head> tag. We had mentioned earlier that the `<head>` contains the metadata of the webpage. Now here we would like to add that the `<meta>` tag found *within* the `<head>` is what *defines* the metadata. You can think of it as **README** text file that comes with any software you download. The `<meta>` tag in our case defines the encoding of our HTML5 document with the attribute `charset="utf-8"`. Don't think about this too much. HTML5 documents have `utf-8` as their encoding. You can try to look up what encoding is but it's not useful for this tutorial!
+5. `<meta charset="utf-8">` - This is one of the metadata hosted by the `<head>` tag. We had mentioned earlier that the `<head>` contains the metadata of the webpage. Now here we would like to add that the `<meta>` tag found *within* the `<head>` is what *defines* the metadata. You can think of it as **README** text file that comes with any software you download. The `<meta>` tag in our case defines the encoding of our HTML5 document with the attribute `charset="utf-8"`. Don't think about this too much. HTML5 documents have `utf-8` as their encoding. You can try to look up what encoding is but it's not useful for this tutorial!
 
 6. `<link>`  - Defines the relationship between a document and an external resource. It has various attributes but `rel` and `href` have been used. The former specifies the relationship between the current document and the linked document/resource. The `rel` here references the `styles.css` file as the style sheet for our html. That is, the styles for our html are found in the `styles.css` file. `href` on the other hand points the html document to the path of the stylesheet --the `styles.css` file. 
 
@@ -131,14 +131,24 @@ prperty2: value2}
 You can view the style of a particular HTML element using the styles tab found in the inspect console. It is shown in yellow bounds for a chrome webpage. Firefox should have a similar one.
 
 ```{r}
-knitr::include_graphics(rep("D:/gachuhi/my-leaflet/elements2.jpg"))
+knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/elements2.jpg"))
 ```
 
 The [MDN website](https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/How_CSS_is_structured) provides a lot of information on HTML and CSS. 
 
 
+## Summary
 
+This chapter was an introduction to Hyper Text Markup Language (HTML), JavaScript and Cascading Style Sheets (CSS) languages. You learnt the following: 
 
+- You can work with leaflet in either a html or JavaScript file. In html, 
+the JavaScript code must appear under the `<script>` tag.
+
+- HTML files are made up of elements called tags. Tags are features that introduce any form of content into a webpage.
+
+- JavaScript is the main language of the web. It is the language responsible for the interactivity in most websites.
+
+- CSS stands for Cascading Style Sheet (CSS). CSS defines how your HTML is to appear, such as color and size of text, background color and even the structure of your HTML page. 
 
 
 

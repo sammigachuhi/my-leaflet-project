@@ -24,7 +24,7 @@ var markers = L.markerClusterGroup();
 The following is the result we got.
 
 ```{r}
-knitr::include_graphics(rep('D:/gachuhi/my-leaflet/clutter-points.jpg'))
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/clutter-points.jpg'))
 ```
 
 Not good at all. The `Leaflet.markercluster` plugin is what transforms a clutter map into one of neatly arranged clustered marker points.

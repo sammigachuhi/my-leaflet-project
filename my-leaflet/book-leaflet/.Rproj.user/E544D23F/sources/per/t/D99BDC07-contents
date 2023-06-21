@@ -139,7 +139,7 @@ Honestly the last was a bit of a stretch as yours truly is yet to encounter use 
 
 ```{r}
 
-knitr::include_graphics(rep('D:/gachuhi/my-leaflet/heatmap.jpg'))
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/heatmap.jpg'))
 ```
 
 The full code files are available from [here](https://www.dropbox.com/scl/fo/cgfftdcw8u7lqyqfu38gu/h?dl=0&rlkey=7ywjiud4vo24llrx192rvgf4d).

@@ -129,13 +129,13 @@ Can you notice any difference on the `Population` property compared to the code 
 Just a small note before going on. When the GeoJSON file has the population values enclosed in strings `""`, they are automatically rendered on a map on the Github server. 
 
 ```{r}
-knitr::include_graphics(rep("D:/gachuhi/my-leaflet/geojson-webmap.jpg"))
+knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/geojson-webmap.jpg"))
 ```
 
 However, when the strings are removed, and the population values remain as integers, they are no longer rendered on a webmap as shown below.
 
 ```{r}
-knitr::include_graphics(rep("D:/gachuhi/my-leaflet/geojson-nowebmap.jpg"))
+knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/geojson-nowebmap.jpg"))
 ```
 
 It's just a dictionary of lists and other dictionaries.
@@ -196,7 +196,7 @@ L.geoJSON(cities, {
 We got this.
 
 ```{r}
-knitr::include_graphics(rep("D:/gachuhi/my-leaflet/geojson-markers.jpg"))
+knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/geojson-markers.jpg"))
 ```
 
 
@@ -251,7 +251,7 @@ L.geoJSON(cities, {
 What you get is a map that has different circle markers according to the respective city's population. This time round, the `pointToLayer()` function body worked with **if/else if** statement to differentiate the radius and color of each circle marker. Under the **if/else if** code statement block, different circle marker specifications of radius and fillColor were inserted for each population category. Any city with a population beyond 800000 was fitted into the `else` block.
 
 ```{r}
-knitr::include_graphics(rep("D:/gachuhi/my-leaflet/geojson-diff1.jpg"))
+knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/geojson-diff1.jpg"))
 ```
 
 This brings us to why we changed the population values from strings to integers. If we were to work with their former values of strings, any value beyond 1, 000, 000 would receive the settings of `feature.properties.Population <= 250000` that is, color yellow and radius yellow. This is because even though 1 million is by far larger than 250, 000 or 800, 000, because it starts with a 1, it shall be considered even less than 250, 000! This is because when ordering strings in JavaScript, they are by default ordered by the first character. The same case applies to digits 1 to 9. Value 1 will always be inferior to 2, 7, 9 and any other number in between irrespective of whether its a million or a billion.
@@ -282,7 +282,7 @@ L.geoJSON(cities, {
 }).addTo(map);
 ```
 ```{r}
-knitr::include_graphics(rep("D:/gachuhi/my-leaflet/geojson-diff2.jpg"))
+knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/geojson-diff2.jpg"))
 ```
 
 In the above map, our preceding code has differentiated large cities with populations above 800, 000 with a red marker, those with populations below 250, 000 with a yellow marker and those between with an orange marker. In all cases, our `bindPopup()` still contains the same settings to show both the city name and population.
@@ -375,7 +375,7 @@ L.geoJSON(cities, {
 ```
 
 ```{r}
-knitr::include_graphics(rep("D:/gachuhi/my-leaflet/extra-markers.jpg"))
+knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/extra-markers.jpg"))
 ```
 
 The custom markers are also clickable!
@@ -410,7 +410,7 @@ map.fitBounds(latLngBounds);
 ```
 
 ```{r}
-knitr::include_graphics(rep("D:/gachuhi/my-leaflet/geltan-fenzi.jpg"))
+knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/geltan-fenzi.jpg"))
 ```
 
 

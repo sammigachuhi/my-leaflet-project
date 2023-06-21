@@ -3,7 +3,7 @@
     "path": "D:/gachuhi/my-leaflet/book-leaflet/10-Clustering_marker_points.Rmd",
     "project_path": "10-Clustering_marker_points.Rmd",
     "type": "r_markdown",
-    "hash": "495803503",
+    "hash": "1882622513",
     "contents": "",
     "dirty": false,
     "created": 1685480443281.0,
@@ -13,15 +13,15 @@
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "229,34",
+        "cursorPosition": "26,58",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1685737383,
+    "lastKnownWriteTime": 1686076305,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1685737383584,
+    "last_content_update": 1686076305722,
     "read_only": false,
     "read_only_alternatives": []
 }

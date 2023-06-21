@@ -5,16 +5,16 @@ Like in the ultimate finale of a series where the episode begins with "Previousl
 So we have a plain looking webmap like the one shown below. 
 
 ```{r}
-knitr::include_graphics(rep("D:/gachuhi/my-leaflet/kisumu-leaflet.jpg"))
+knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/kisumu-leaflet.jpg"))
 ```
 
-However, although a cool looking webmap, it offers no sort of information to the viewer except that it is an interactive map interface. In order to create some information, such as the location of Kisumu and other features you want to highlight, markers are one way of displaying this kind of information.
+However, despite being a cool looking webmap, it offers no sort of information to the viewer except that it is an interactive map interface. In order to pass some information, such as showing the location of Kisumu and *inter alia*, markers are one way of displaying content.
 
-In the last chapter we had last left our `main.js` file looking like in the image above. Ensure yours is also the same, but we encourage to explore with other leaflet layers available from [here](https://leaflet-extras.github.io/leaflet-providers/preview/).
+In the last chapter we had last left our `main.js` file looking like in the image above. Ensure yours is also the same, but we encourage you to explore with other leaflet layers available from [here](https://leaflet-extras.github.io/leaflet-providers/preview/).
 
 ## A marker
 
-Many people could possible not know where Kisumu, is, so lets indicate its location with a simple pin marker. To be more specific, let's pinpoint Kisumu International Airport. 
+Many people could possibly hardly know where Kisumu, is, so lets indicate its location with a simple pin marker. To be more specific, let's pinpoint Kisumu International Airport. 
 
 ```
 // Location of Kisumu International Airport
@@ -22,12 +22,12 @@ var marker = L.marker([-0.0819301, 34.7260167]).addTo(map);
 ```
 
 ```{r}
-knitr::include_graphics(rep("D:/gachuhi/my-leaflet/kisumu-international-airport.jpg"))
+knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/kisumu-international-airport.jpg"))
 ```
 
-Can you try creating a marker for your home location, not forgetting to change the `setView` method you had initially started with in this map creating journey?
+As a simple exercise, can you try creating a marker for your home location, not forgetting to change the `setView` method you had initially started with in this map creating journey?
 
-Alright, we have a marker. But as they say, going the extra mile is what counts in both the career as well as personal goals. Let's try to make this marker have some information, called attributes in GIS. Let's say the attributes we want to add are the name of the airport and other auxillary data.
+Alright, we have a marker. But what's so special about it as a lone pin in the middle of somewhere? Let's try to make this marker have some information, otherwise called attributes in GIS. Let's say the attributes we want to add are the name of the airport and other auxillary data.
 
 ## A marker with a popup
 
@@ -39,12 +39,12 @@ marker.bindPopup("Kisumu International Airport.").openPopup();
 ```
 
 ```{r}
-knitr::include_graphics(rep("D:/gachuhi/my-leaflet/kisumu-airport-popup.jpg"))
+knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/kisumu-airport-popup.jpg"))
 ```
 
 What has just happened is that `bindPopup` binds the popup content-- "Kisumu International Airport" to the marker. The following `openPopup` method chained to the method *opens* the popup at that specified latitude longitude. If you remove, or comment `//` out the `popUp` method, you will have to click the marker to see the popup content. Try it out.
 
-Markers can also work with html elements, such as when you want to display additional metadata, say the owner of the place, size of land et cetera. In the below case, we have added the lat-lon coordinates of Kisumu airport location. I would advise not to include lengthy information in an HTML marker element.
+Markers can also work with HTML elements, such as when you want to display additional metadata, say the owner of the place, size of land et cetera. In the below case, we have added the lat-lon coordinates of Kisumu airport location. I would advise not to include lengthy information in an HTML marker element.
 
 ```
 // With html content
@@ -52,12 +52,12 @@ marker.bindPopup("<br>Name: Kisumu International Airport</br><br>Latitude: -0.08
 ```
 
 ```{r}
-knitr::include_graphics(rep("D:/gachuhi/my-leaflet/marker-html.jpg"))
+knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/marker-html.jpg"))
 ```
 
 ## Different markers and popups
 
-So far you have seen pin markers, but there are also other kinds of markers, such as circles and rectangles! Unlike the pin markers we have been experimenting with, these other markers require additional options, such as radius for circle and lat-long cooordinates for rectangles. Let's have a go with each.
+So far you have seen pin markers, but there are also other kinds of markers, such as circles and rectangles. Unlike the pin markers we have been experimenting with, these other markers require additional options, such as radius for circle and lat-long coordinates for rectangles. Let's have a go with each type.
 
 Starting with a circle, let's start by inserting a circle to show the location of Kisumu Museum. 
 
@@ -67,10 +67,10 @@ var circle = L.circle([-0.107637, 34.7435975]).setRadius(2000).addTo(map);
 ```
 
 ```{r}
-knitr::include_graphics(rep("D:/gachuhi/my-leaflet/kisumu-museum-circle.jpg"))
+knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/kisumu-museum-circle.jpg"))
 ```
 
-The below code will also create a slightly similar circle marker, the only difference is that in the preceding one we didn't insert `{options}` and we set radius using the `setRadius` method. In the second one below, we have been very specific in what we want --our specifications going into the curly brackets {} before adding the circle marker to our map. Brackets in JavaScript denote [dictionaries](https://flexiple.com/javascript/javascript-dictionary/). Dictionaries in javascript and even in python are used to denote key-value pairs. Best for look-ups.
+The below code will also create a slightly similar circle marker, the only difference is that in the preceding one we didn't insert `{options}` and we set radius using the `setRadius` method. In the second one below, we have been very specific in what we want --our specifications going into the curly brackets {} before eventually adding the circle marker to our map. Brackets in JavaScript denote [dictionaries](https://flexiple.com/javascript/javascript-dictionary/). Dictionaries in JavaScript and even in python are used to denote key-value pairs.
 
 ```
 var circle = L.circle([-0.107637, 34.7435975], {
@@ -81,7 +81,7 @@ var circle = L.circle([-0.107637, 34.7435975], {
 }).addTo(map);
 ```
 
-As we had mentioned earlier, other marker elements such as circles and rectangles can have popups attached to them. Ready for something cool? We will attach a popup into our circle. Not just any other ordinary hard coded popup but one which relies on other Leaflet JavaScript methods to generate an output. In our case, we want a pop up that shows the radius of our circle automatically.
+As we had mentioned earlier, other marker elements such as circles and rectangles can have popups attached to them. Ready for something cool? We will attach a popup into our circle. Not just any other ordinary hard coded popup but one which relies on other Leaflet JavaScript methods to generate an output. In our case, we want a pop up that shows the radius of our circle, without us typing it out into the code.
 
 ```
 // Circle marker pop up for Kisumu Museum
@@ -89,13 +89,13 @@ var getRadius = circle.getRadius();
 circle.bindPopup("Radius is: " + getRadius.toString() + " metres");
 ```
 
-In our above code, `getRadius` gets the radius of our circle marker. `bindPopup` as has already been severally explained *binds* the popup content to our circle marker. But there is a catch. The variable `getRadius` is used to print out the results, which is 2000 of course. However, `bindPopup` only understands strings so we convert our variable result to a string using `toString()`. We also added other strings to give the popup a wholesome result that is understandable to every Tom, Dick, Harry and Harriet.
+In our above code, `getRadius` gets the radius of our circle marker. `bindPopup` as has already been explained before *binds* the popup content to our circle marker. But there is a catch. The variable `getRadius` is used to print out the results, which is 2000 of course. However, `bindPopup` only understands strings so we convert our variable result to a string using `toString()`. We also added other strings to give the popup a wholesome result that is understandable to every Tom, Dick, Harry and Harriet.
 
 ```{r}
-knitr::include_graphics(rep("D:/gachuhi/my-leaflet/circle-radius.jpg"))
+knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/circle-radius.jpg"))
 ```
 
-Finally, let's try with a rectangle. Actually, leaflet allows us to create polygons, and with a polygon, you can also create rectangles. Let's work with the polygon class instead.
+Finally, let's try with a rectangle. Actually, leaflet allows us to create polygons, and with a polygon --at least in leaflet, you can also create rectangles. Let's work with the polygon class instead.
 
 Copy the following coordinates.
 
@@ -135,13 +135,26 @@ impalaParkPolygon.bindPopup("Centre is at Lat-Lon: " + getCenter.toString()).ope
 If you find the circle marker radius as an obstraction you can comment out it and its dependancies using `//`.
 
 ```{r}
-knitr::include_graphics(rep("D:/gachuhi/my-leaflet/polygon-marker.jpg"))
+knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/polygon-marker.jpg"))
 ```
 
-You can get the files used in this exercise [here](https://www.dropbox.com/scl/fo/qznia963vaq8s4ca51p51/h?dl=0&rlkey=glj4ew599c4v9fikq11wn1fje).
+You can get the files used in this exercise [here](https://github.com/sammigachuhi/my-leaflet-project/tree/main/my-leaflet-code/chapter-3-markers).
 
+## Summary
 
+This chapter took you further in enriching the content that can be displayed in a webmap. You have seen that a webmap can offer far more useful information than just mere markers and symbols on a web canvas. Popups are one way of displaying information, and they too can be customized further. Through the practicals in this chapter, you have learnt the following:
 
+- To create popups in leaflet, we use the `bindPopup` method.
+
+- `openPopup` automatically opens the popups once the leaflet map is loaded. They only disappear once you close them. 
+
+- Markers can also work with HTML elements.
+
+- Apart from location pins, markers can also be circles and rectangles.
+
+- There exist methods in leaflet that can automatically parse out information in popups without requiring any hardcoding from the programmer. For example, we used `getRadius` to display the circle radius in the popup without necessarily typing it out in the `bindPopup` method.
+
+You comment out JavaScript code with `//`!
 
 
 

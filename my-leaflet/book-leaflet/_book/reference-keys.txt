@@ -14,9 +14,10 @@ a-marker-with-a-popup
 different-markers-and-popups
 summary-2
 embedding-leaflet-map-to-an-external-website
+a-website-with-a-sense-of-direction
 the-html-webpage
-the-css
 the-leaflet-javascript-code-for-our-website
+summary-3
 using-geojson-in-leaflet
 creating-a-.geojson-file
 what-are-.geojson-files

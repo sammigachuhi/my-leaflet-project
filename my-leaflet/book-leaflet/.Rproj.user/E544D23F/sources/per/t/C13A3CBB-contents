@@ -33,7 +33,7 @@ var map = L.map('myMap', {
 However, that will only add the first basemap variable that appears, that is of `osm` and blocking out that of `cylcOSM`. This is shown below.
 
 ```{r}
-knitr::include_graphics(rep('D:/gachuhi/my-leaflet/no-control.jpg'))
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/no-control.jpg'))
 
 ```
 
@@ -58,7 +58,7 @@ This is what you get as a result.
 
 ```{r}
 
-knitr::include_graphics(rep('D:/gachuhi/my-leaflet/controls.jpg'))
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/controls.jpg'))
 ```
 
 ## Adding overlay maps
@@ -163,7 +163,7 @@ L.control.layers(basemaps, overlays).addTo(map);
 
 ```{r}
 
-knitr::include_graphics(rep('D:/gachuhi/my-leaflet/controls-overlay.jpg'))
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/controls-overlay.jpg'))
 ```
 
 
@@ -251,7 +251,7 @@ In the previous [chapter][Creating an interactive choropleth map], we ended by s
 Finally, we tried playing around with the options available to the `L.controls.layer` including the simple one as changing position, but everytime a new option was provided in to the parenthesis, as in `L.control.layers(basemap, overlaymap, {options})`, the control would disappear.
 
 ```{r}
-knitr::include_graphics(rep('D:/gachuhi/my-leaflet/controls-all.jpg'))
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/controls-all.jpg'))
 ```
 
 ## Add a scale bar
@@ -264,7 +264,7 @@ L.control.scale({position:'bottomleft'}).addTo(map);
 ```
 
 ```{r}
-knitr::include_graphics(rep('D:/gachuhi/my-leaflet/controls-scale.jpg'))
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/controls-scale.jpg'))
 ```
 
 

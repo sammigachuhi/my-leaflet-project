@@ -1,6 +1,8 @@
 # Embedding leaflet map to an external website
 
-Now, we have succeeded in making a stand alone leaflet map. However, we want to do something that will quickly upscale you, dear reader--from a novice to a pro. That is, we just do one leaflet exercise that will give us that entry to the coveted IT department. If we convince our boss that we could embed a webmap of their branch locations to their website, they could consider us a webmapping guru rather than just another cog in the organization's wheel.
+## A website with a sense of direction
+
+Now, we have succeeded in making a stand alone leaflet map. However, we want to do something that will quickly upscale you from a novice to a pro. That is, placing the leaflet map into a website. 
 
 An example of what we want is shown below, which is a snapshot from the [HDX website](https://data.humdata.org/dataset/cod-ab-ken).
 
@@ -8,11 +10,11 @@ An example of what we want is shown below, which is a snapshot from the [HDX web
 knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/webmap-in-web.jpg"))
 ```
 
-For this exercise, we shall embed a leaflet map to a simple html webpage. This webpage doesn't look grand, but it serves the purpose of our exercise. Let's get on to it. Here are the [files](https://www.dropbox.com/scl/fo/2u5xzr83z08rfxnlh8pc9/h?dl=0&rlkey=zcrui1dsi7fzi3s5891yx9rty). 
+For this exercise, we shall embed a leaflet map to a simple HTML webpage. This webpage doesn't look grand, but it serves the purpose of our exercise. Let's get on to it. Here are the [files](https://github.com/sammigachuhi/my-leaflet-project/tree/main/my-leaflet-code/chapter-4-embed-leaflet-website). 
 
-## The html webpage
+## The HTML webpage
 
-Create a html page with the following code.
+Create a HTML page with the following code.
 
 ```
 <!DOCTYPE html>
@@ -83,9 +85,8 @@ Create a html page with the following code.
 </html>
 ```
 
-Since this is a geospatial book, we shall not go through every line of the HTML code above. It just a webpage containing some text, some pictures and a webmap. The webmap is the centre of our interest. How do we create a Leaflet map, of which we know how to do it, and fit it inside an existing webpage?
+Since this is a geospatial book, we shall not go through every line of the HTML code above. It just a webpage containing some text, some pictures and a webmap. The webmap is the centre of our interest in this chapter. How do we create a Leaflet map, of which we know how to do, and fit it inside an existing webpage?
 
-## The CSS 
 Before we head there, let's insert the CSS file, which looks like this.
 
 ```
@@ -124,7 +125,7 @@ Before we head there, let's insert the CSS file, which looks like this.
 
 ## The leaflet JavaScript code for our website
 
-Back to the leaflet map of our dummy Pro-GMO Alliance webpage. How did we put the leaflet in there? Nothing complicated, just inserting the same leaflet code, with some additional JavaScript and referencing it within the html file with `<script src="example-main.js"></script>`. The Javascript file used is shown below.
+Back to the leaflet map of our dummy Pro-GMO Alliance webpage. How did we put the leaflet in there? Nothing complicated, just inserting the same leaflet code, with some additional JavaScript and calling it within the HTML file with `<script src="example-main.js"></script>`. The Javascript file used is shown below.
 
 ```
 var map = L.map('map').setView([-0.302765, 36.146147], 12);
@@ -149,23 +150,32 @@ for (var i = 0; i < branches.length; i++) {
 
 ```
 
-The only new thing in the above script is the `for` loop. In javascript, the `for` loop is used to iterate over items. In this case, and remembering that indexing in javascript arrays begins from 0 just is does for Python, the marker popups will read the latitudes and longitudes which are at index 1 and 2 respectively. The popup strings, which appear as the first elements in the `branches` array, are at index 0. At the end of the chain the markers are added to the map with `.addTo`. Alright, how about keyword `new`?
+The only new thing in the above script is the `for` loop. In JavaScript, the `for` loop is used to iterate over items. In this case, and remembering that indexing in arrays begins from 0, the marker popups will read the latitudes and longitudes which are at index 1 and 2 respectively. The lat-lon are indicated by `([branches[i][1], branches[i][2]])`. The popup strings, which appear as the first elements in the `branches` array, are at index 0. The popup strings are indicated by `branches[i][0]`. At the end of the chain the markers are added to the map with `.addTo`. 
 
-The `new` keyword is a constructor --it creates an empty object. Many instances of the variable `marker` can be created from the instance of `new` object. For more information on the `new` keyword constructor, see this [website](https://www.programiz.com/javascript/constructor-function). Be rest assured that the `new` keyword isn't mandatory to make the webmap to work in this case, but its helpful to know another JavaScript trick.
+Alright. How about the keyword `new`?
 
-Below is a snapshot of how the dummy Pro-GMO website looks like with our webmap embedded. 
+The `new` keyword is a constructor. That is, it creates an empty object. Many instances of the variable `marker` can be created from the instance of `new` object. For more information on the `new` keyword constructor, see this [website](https://www.programiz.com/javascript/constructor-function). Be rest assured that the `new` keyword isn't mandatory to make the webmap to work in our case but its helpful to add another JavaScript trick to your hat.
+
+Below is a snapshot of how the dummy Pro-GMO website looks like with our newly embedded webmap. 
 
 ```{r}
 knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/embedded.jpg"))
 ```
 
-Part of the success of making the webmap aligned to the left of our address text is the CSS property `display: flex`. This property aligns the element to fill or shrink according to the space available within its assigned portion in the webpage. The CSS property `padding-left` just creates space all around the element, thus creating a neat space between the leaflet map and the address text. Removing this will just make the address text and the leaflet map touch each other edge to edge. 
-
-The inspiration to place the map and text side by side was from this [site](https://www.w3docs.com/snippets/css/how-to-vertically-align-text-next-to-an-image.html?utm_source=pocket_saves).
+"How are we able to align the webmap to the left and also make other text stand aside to it?" This is all thanks to the CSS property `display: flex`. `display` is a CSS property that deals with how HTML elements are displayed.
+This property aligns the element to fill or shrink according to the space available within its assigned portion in the webpage. On the other hand, the CSS property `padding-left` just creates space all around the element, thus creating a neat space between the leaflet map and the address text. Removing this will just make the address text and the leaflet map touch each other edge to edge. The inspiration to use all these CSS properties and values in placing HTML elements side-by-side enamated from this [example](https://www.w3docs.com/snippets/css/how-to-vertically-align-text-next-to-an-image.html?utm_source=pocket_saves).
 
 Having done the above, you can consider you are as good a Leaflet mapper to undertake any task!
 
+## Summary
 
+This chapter has introduced you on how you can use CSS to customize the appearance and positioning of your webmap. You have also encountered the use of `for` loop in JavaScript code to retrieve geospatial information, particularly from arrays. Here are brief notes of your take aways from this chapter.
+
+- Leaflet maps can be embedded inside a website as demonstrated in the dummy Pro-GMO webpage.
+
+- One can use `for` loops to iterate over elements from an array and retrieve geospatial information. In this chapter, the `for` loop was used to retrieve both latitude-longitude coordinates and text from the `branches` array variable.
+
+- We can use CSS elements, such as `display` and `padding-left` to position and define how webmap shall be displayed on our webpage.
 
 
 

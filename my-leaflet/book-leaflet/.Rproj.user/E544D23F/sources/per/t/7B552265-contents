@@ -43,7 +43,7 @@ fetch("https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/countie
 So far, you should get a result like below.
 
 ```{r}
-knitr::include_graphics(rep("D:/gachuhi/my-leaflet/kenya_json.jpg"))
+knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/kenya_json.jpg"))
 ```
 
 ## Coloring the counties
@@ -75,7 +75,7 @@ How the ternary operator works is that any statement to the right of the `?` is 
 If it still sounds fuzzy, the below image should help (adapted from [FreeCodeCamp](https://www.freecodecamp.org/news/how-the-question-mark-works-in-javascript/)).
 
 ```{r}
-knitr::include_graphics(rep("D:/gachuhi/my-leaflet/ternary.png"))
+knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/ternary.png"))
 ```
 
 Now that we've created the function of setting colors to our json file on leaflet, we next also have to *create* a function that does to the GeoJSON file itself. Luckily, we have the **style** [option from Leaflet](https://leafletjs.com/reference.html#geojson-style) which is styles GeoJSON lines and polygons using features from the GeoJSON file itself. We saw it in [Chapter][Using GeoJSON in Leaflet] and we shall also use it here.
@@ -118,7 +118,7 @@ Since the **style** option is a key (and also a function), the value will be the
 Enough JavaScript for one day!
 
 ```{r}
-knitr::include_graphics(rep("D:/gachuhi/my-leaflet/choropleth-map.jpg"))
+knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/choropleth-map.jpg"))
 ```
 
 Our choropleth map is beginning to take shape.
@@ -197,7 +197,7 @@ layer.on('click', ((e) => {
 ```
 
 ```{r}
-knitr::include_graphics(rep('D:/gachuhi/my-leaflet/highlightable-map.jpg'))
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/highlightable-map.jpg'))
 ```
 
 
@@ -290,7 +290,7 @@ info.onAdd = function (map) {
 Returns the DOM element for the control and creates a `<div>` with class `info`. This is done through the help of `L.DomUtil` which, according to the Leaflet website, provides utility functions to work with the DOM^[The Document Object Model (DOM) is the data representation of the objects that comprise the structure and content of a document on the web.]. Actually, this new `<div>` of class `info` is created when you fire up your browser but obviously not in your actual `map.html` file.  
 
 ```{r}
-knitr::include_graphics(rep('D:/gachuhi/my-leaflet/div-info-element.jpg'))
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/div-info-element.jpg'))
 ```
 
 Trust me it wasn't there before. What `this.update()` does is return the update function that follows with the properties for each county, and then returns it.
@@ -385,7 +385,7 @@ Here's the CSS anyway.
 The legend is done and is finally added to the map.
 
 ```{r}
-knitr::include_graphics('D:/gachuhi/my-leaflet/choropleth-legend.jpg')
+knitr::include_graphics('D:/gachuhi/my-leaflet/images/choropleth-legend.jpg')
 ```
 
 The full code files are available from [here](https://www.dropbox.com/scl/fo/d8cwl9t1ay144vvy73pq6/h?dl=0&rlkey=mardh4rwlqegfvf0vupbj0c28).

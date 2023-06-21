@@ -3,7 +3,7 @@
     "path": "D:/gachuhi/my-leaflet/book-leaflet/06-Custom_markers.Rmd",
     "project_path": "06-Custom_markers.Rmd",
     "type": "r_markdown",
-    "hash": "118362034",
+    "hash": "2825089655",
     "contents": "",
     "dirty": false,
     "created": 1683388563943.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "126,579",
+        "cursorPosition": "412,58",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1685566687,
+    "lastKnownWriteTime": 1686076694,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1685566687488,
+    "last_content_update": 1686076694573,
     "read_only": false,
     "read_only_alternatives": []
 }

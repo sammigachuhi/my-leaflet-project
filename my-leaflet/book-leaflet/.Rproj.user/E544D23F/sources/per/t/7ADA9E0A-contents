@@ -2,9 +2,9 @@
 
 ## Setting the superstructure
 
-We had earlier mentioned that Javascript, otherwise shortened to JS is the life of the party when it comes to webpages. In other words, it makes your web pages interactive. It's like the additional component that makes you HTML pages move from static to responsive. 
+We had earlier mentioned that Javascript, otherwise shortened to JS is the life of the party when it comes to webpages. In other words, it makes your web pages interactive. It's like the additional component that makes your HTML pages move from static to responsive. 
 
-Creating a leaflet map is not like creating any other HTML web page. You have to set up the leaflet essentials in your HTML page first. Create a new html document called `map.html`. This will be the html document that will act as the structure which will house our webpage to be created using JS. Using VS Code, create `map.html` and paste, or preferably, type the following code.
+Creating a leaflet map is not like creating any other HTML web page. You have to set up the leaflet essentials in your HTML page first. To begin with, create a new html document called `map.html`. This will be the html document that will act as the structure which will house our webpage to be created using JS. Using VS Code, create `map.html` and paste, or preferably, type the following code.
 
 ```
 <!DOCTYPE html>
@@ -31,7 +31,11 @@ Creating a leaflet map is not like creating any other HTML web page. You have to
 
 ```
 
-You may be wondering why we have two `<link>` tags. "Won't they confuse the webpage or something?" You may wonder. Same thing for the two `<script>` tags, one at the head and the other at the `<body>` tag. The answers is 'No'. Once a html script is loaded in our browser, assuming its the `map.html` we've created, the browser reads it from top to bottom. In our html script, the browser will apply the styles defined in `styles.css` to the html elements. To make matters clearer, the following script is what is contained in the `styles.css`:
+You may be wondering why we have two `<link>` tags. 
+
+"Won't they confuse the webpage or something?" You may wonder. 
+
+Same thing for the two `<script>` tags, one at the head and the other at the `<body>` tag. The answers is 'No'. Once a html script is loaded in our browser, assuming its the `map.html` we've created, the browser reads it from top to bottom. In our html script, the browser will apply the styles defined in `styles.css` to the html elements. To make matters clearer, the following script is what is contained in the `styles.css`:
 
 ```
 #myMap { 
@@ -50,14 +54,14 @@ Think of the html document as the superstructure, like a huge multistorey buildi
 Open your VS Code, and assuming you had already created `main.js` already, (if not, create one now), insert the following code into the `.js` file.
 
 ```
-var map = L.map('myMap').setView([-0.0884105,34.7299038], 13);;
+var map = L.map('myMap').setView([-0.0884105,34.7299038], 13);
 ```
 
 Take a pause.
 
 Breath in, breath out. 
 
-You will learn something very important here. In fact, it is the crux of what makes Leaflet work. Your future of understanding leaflet hinges on this code.
+You are just about to learn something very important here. In fact, it is the crux of what makes Leaflet work. Your future of understanding leaflet hinges on this little code.
 
 The `L.map()` class we just used is what initializes the leaflet map. Everything within the `<div>` is displayed thanks to this class function. It is referred to as a factory function because it uses the method `map` to return an object.
 
@@ -79,15 +83,27 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 Reload your html page again. What do you see?
 
 ```{r}
-knitr::include_graphics(rep("D:/gachuhi/my-leaflet/kisumu-leaflet.jpg"))
+knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/kisumu-leaflet.jpg"))
 ```
 
 What `L.tileLayer` has done is retrieve the web tiles from the url source provided, and within the dictionary that follows the url, zoom level (`maxZoom`) and map attribution (`attribution`) have been provided. When working with leaflet, the dictionary, indicated by the curly braces `{}` houses most of the additional class options other than the key one(s). In this case we used the additional options of `maxZoom` and `attribution`. Finally, the method `addTo` adds the layer to the given map or layer group. Here, our webtile is added to the `var map` which only contains the `setView` properties.
 
 A very influential person said Kisumu located in Kenya is a town with great potential. How about dispalying it to the whole world to realise it!
 
+## Summary
 
+In this chapter, we created our first leaflet map. Here are a couple of things that you have learnt at the first step of this web mapping journey.
 
+- Browsers read code scripts from top to bottom, much like skimming down a page.
+
+- The styles defined in the CSS style sheet, the `styles.css` in this case,
+will apply to the HTML elements in the `map.html` file.
+
+- We use the `src` attribute to link to a webpage.
+
+- If HTML is the magnificent building, JavaScript acts like a good interior and exterior designer.
+
+- The `L.map()` class is what initializes the leaflet map.
 
 
 
