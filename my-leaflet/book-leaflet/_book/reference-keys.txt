@@ -28,6 +28,7 @@ loading-the-geojson-into-leaflet
 the-easy-way
 using-the-ajax-plugin
 using-fetch-api
+summary-4
 create-your-own-custom-markers
 the-icons
 differentiate-custom-markers-on-a-webmap

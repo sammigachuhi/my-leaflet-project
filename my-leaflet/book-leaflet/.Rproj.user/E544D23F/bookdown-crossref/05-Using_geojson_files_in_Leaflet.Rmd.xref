@@ -8,4 +8,5 @@ h2:loading-the-geojson-into-leaflet Loading the GeoJSON into Leaflet
 h3:the-easy-way The easy way
 h3:using-the-ajax-plugin Using the Ajax Plugin
 h3:using-fetch-api Using Fetch API
+h2:summary Summary
 
