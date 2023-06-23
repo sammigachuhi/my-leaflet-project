@@ -30,11 +30,13 @@ using-the-ajax-plugin
 using-fetch-api
 summary-4
 create-your-own-custom-markers
+setting-the-base
 the-icons
 differentiate-custom-markers-on-a-webmap
 using-fetch
 unique-custom-markers
 image-overlays
+summary-5
 creating-an-interactive-choropleth-map
 what-is-a-choropleth-map
 creating-a-choropleth-map-the-start

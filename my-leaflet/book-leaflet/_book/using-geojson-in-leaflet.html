@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Samuel Gachuhi Ngugi" />
 
 
-<meta name="date" content="2023-06-22" />
+<meta name="date" content="2023-06-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -193,11 +193,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html"><i class="fa fa-check"></i><b>6</b> Create your own custom markers</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html#the-icons"><i class="fa fa-check"></i><b>6.1</b> The icons</a></li>
-<li class="chapter" data-level="6.2" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html#differentiate-custom-markers-on-a-webmap"><i class="fa fa-check"></i><b>6.2</b> Differentiate custom markers on a webmap</a></li>
-<li class="chapter" data-level="6.3" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html#using-fetch"><i class="fa fa-check"></i><b>6.3</b> Using fetch</a></li>
-<li class="chapter" data-level="6.4" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html#unique-custom-markers"><i class="fa fa-check"></i><b>6.4</b> Unique custom markers</a></li>
-<li class="chapter" data-level="6.5" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html#image-overlays"><i class="fa fa-check"></i><b>6.5</b> Image overlays</a></li>
+<li class="chapter" data-level="6.1" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html#setting-the-base"><i class="fa fa-check"></i><b>6.1</b> Setting the base</a></li>
+<li class="chapter" data-level="6.2" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html#the-icons"><i class="fa fa-check"></i><b>6.2</b> The icons</a></li>
+<li class="chapter" data-level="6.3" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html#differentiate-custom-markers-on-a-webmap"><i class="fa fa-check"></i><b>6.3</b> Differentiate custom markers on a webmap</a></li>
+<li class="chapter" data-level="6.4" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html#using-fetch"><i class="fa fa-check"></i><b>6.4</b> Using fetch</a></li>
+<li class="chapter" data-level="6.5" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html#unique-custom-markers"><i class="fa fa-check"></i><b>6.5</b> Unique custom markers</a></li>
+<li class="chapter" data-level="6.6" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html#image-overlays"><i class="fa fa-check"></i><b>6.6</b> Image overlays</a></li>
+<li class="chapter" data-level="6.7" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html#summary-5"><i class="fa fa-check"></i><b>6.7</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="creating-an-interactive-choropleth-map.html"><a href="creating-an-interactive-choropleth-map.html"><i class="fa fa-check"></i><b>7</b> Creating an interactive choropleth map</a>
 <ul>
@@ -485,7 +487,7 @@ L.tileLayer(&#39;https://tile.openstreetmap.org/{z}/{x}/{y}.png&#39;, {
 <p>This file will allow you to add <code>.geojson</code> files to your Leaflet map. However, there is a catch. Both the Ajax and Fetch APIs only work with GeoJson file formats saved on a web server. Based on experience, they will not work with local GeoJson files. As a work around, we saved our GeoJSON file to Github. For convenience, here is the <a href="https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/cities-geojson.geojson">link</a> again to the raw file we had initially created from geojson.io.</p>
 <p>We shall call our GeoJSON file from Github using Ajax as shown in the code below. Please remember to comment out your <code>var cities</code> and <code>L.geoJSON</code> using <code>\\</code> because they are irrelevant in this particular case.</p>
 <pre><code>var geojsonLayer = new L.geoJson.ajax(&quot;https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/cities-geojson.geojson&quot;).addTo(map);</code></pre>
-<p>Your map should now show the markers of our cities. If you are hawk eyed, you may have noticed that the syntax for ajax is different from that of the earlier <code>L.geoJSON</code> from Leaflet. Starting with the latter, we have instead used <code>L.geoJson</code> and unlike in the creators website where he used <code>var geojsonLayer = new L.GeoJSON.AJAX(&lt;your-geojson-file&gt;)</code> we used the following syntax: <code>L.geoJson.ajax()</code> (ajax and geoJson beginning with small case). Actually, that’s what worked after quite a lengthy web search.</p>
+<p>Your map should now show the markers of our cities. If you are hawk eyed, you may have noticed that the syntax for Ajax is different from that of the earlier <code>L.geoJSON</code> from Leaflet. Starting with the latter, we have instead used <code>L.geoJson</code> and unlike in the creators website where he used <code>var geojsonLayer = new L.GeoJSON.AJAX(&lt;your-geojson-file&gt;)</code> we used the following syntax: <code>L.geoJson.ajax()</code> (ajax and geoJson beginning with small case). Actually, that’s what worked after quite a lengthy web search.</p>
 <p>Just like using <code>L.geoJSON</code>, we can also add popups after calling the <code>.ajax</code> method.</p>
 <pre><code>var geojsonLayer = new L.geoJson.ajax(&quot;https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/cities-geojson.geojson&quot;)
     .bindPopup(function (layer) {

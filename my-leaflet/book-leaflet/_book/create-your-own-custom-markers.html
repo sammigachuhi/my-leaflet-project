@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Samuel Gachuhi Ngugi" />
 
 
-<meta name="date" content="2023-06-22" />
+<meta name="date" content="2023-06-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -193,11 +193,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html"><i class="fa fa-check"></i><b>6</b> Create your own custom markers</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html#the-icons"><i class="fa fa-check"></i><b>6.1</b> The icons</a></li>
-<li class="chapter" data-level="6.2" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html#differentiate-custom-markers-on-a-webmap"><i class="fa fa-check"></i><b>6.2</b> Differentiate custom markers on a webmap</a></li>
-<li class="chapter" data-level="6.3" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html#using-fetch"><i class="fa fa-check"></i><b>6.3</b> Using fetch</a></li>
-<li class="chapter" data-level="6.4" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html#unique-custom-markers"><i class="fa fa-check"></i><b>6.4</b> Unique custom markers</a></li>
-<li class="chapter" data-level="6.5" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html#image-overlays"><i class="fa fa-check"></i><b>6.5</b> Image overlays</a></li>
+<li class="chapter" data-level="6.1" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html#setting-the-base"><i class="fa fa-check"></i><b>6.1</b> Setting the base</a></li>
+<li class="chapter" data-level="6.2" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html#the-icons"><i class="fa fa-check"></i><b>6.2</b> The icons</a></li>
+<li class="chapter" data-level="6.3" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html#differentiate-custom-markers-on-a-webmap"><i class="fa fa-check"></i><b>6.3</b> Differentiate custom markers on a webmap</a></li>
+<li class="chapter" data-level="6.4" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html#using-fetch"><i class="fa fa-check"></i><b>6.4</b> Using fetch</a></li>
+<li class="chapter" data-level="6.5" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html#unique-custom-markers"><i class="fa fa-check"></i><b>6.5</b> Unique custom markers</a></li>
+<li class="chapter" data-level="6.6" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html#image-overlays"><i class="fa fa-check"></i><b>6.6</b> Image overlays</a></li>
+<li class="chapter" data-level="6.7" data-path="create-your-own-custom-markers.html"><a href="create-your-own-custom-markers.html#summary-5"><i class="fa fa-check"></i><b>6.7</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="creating-an-interactive-choropleth-map.html"><a href="creating-an-interactive-choropleth-map.html"><i class="fa fa-check"></i><b>7</b> Creating an interactive choropleth map</a>
 <ul>
@@ -282,7 +284,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="create-your-own-custom-markers" class="section level1 hasAnchor" number="6">
 <h1><span class="header-section-number">Chapter 6</span> Create your own custom markers<a href="create-your-own-custom-markers.html#create-your-own-custom-markers" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Full codes and files are <a href="https://www.dropbox.com/scl/fo/ecidt41insvnzpwvmj9iw/h?dl=0&amp;rlkey=yy4w9p76osxs913p19wvnsjez">here</a>.</p>
+<div id="setting-the-base" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Setting the base<a href="create-your-own-custom-markers.html#setting-the-base" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Full codes and files are <a href="https://github.com/sammigachuhi/my-leaflet-project/tree/main/my-leaflet-code/chapter-6-custom-markers">here</a>.</p>
 <p>Hope you didn’t trash away the cities we created in the last <a href="using-geojson-in-leaflet.html#using-geojson-in-leaflet">chapter</a>. In this chapter, we shall focus on creating your own custom markers. We love a clean job, so we will create a new JavaScript file and name it <code>custom-markers.js</code>. We understand the previous <a href="using-geojson-in-leaflet.html#using-geojson-in-leaflet">chapter</a> was quite long but believe you me, although creating custom markers sounds easier, it took us way longer to get the hang around it. Sounds ironic but its the truth. Good news, we received enough punches on the face to teach you how to dodge the pain points.</p>
 <p>The very first thing is to create a basemap.</p>
 <pre><code>var map = L.map(&#39;myMap&#39;).setView([-1.295287148, 36.81984753], 7);
@@ -291,7 +295,7 @@ L.tileLayer(&#39;https://tile.openstreetmap.org/{z}/{x}/{y}.png&#39;, {
     maxZoom: 19,
     attribution: &#39;&amp;copy; &lt;a href=&quot;http://www.openstreetmap.org/copyright&quot;&gt;OpenStreetMap&lt;/a&gt;&#39;
 }).addTo(map);</code></pre>
-<p>We will create a new variable called <code>cities</code> that mimics the geojson file saved to github only these time the population values have been tweaked a bit. Paste the below code to your <code>custom-markers.js</code>.</p>
+<p>We will create a new variable called <code>cities</code> that mimics the GeoJson file saved to Github only this time the population values have been tweaked a bit. Paste the below code to your <code>custom-markers.js</code>.</p>
 <pre><code>var cities = {
     &quot;type&quot;: &quot;FeatureCollection&quot;,
     &quot;features&quot;: [
@@ -396,16 +400,17 @@ L.tileLayer(&#39;https://tile.openstreetmap.org/{z}/{x}/{y}.png&#39;, {
     ]
   }
 </code></pre>
-<p>Can you notice any difference on the <code>Population</code> property compared to the code <a href="using-geojson-in-leaflet.html#using-geojson-in-leaflet">Chapter 5</a>? If you are hawkeyed, you will see the Population values this time round are integers compared to strings in the previous chapter. It sounds superflous to create population values as strings only to convert them to integers now, but please do remember the geojson.io site did that for us, not this author. Here is the <a href="https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/cities-geojson2.geojson.txt">raw geojson script</a> customized for this chapter.</p>
+<p>Can you notice any difference on the <code>Population</code> property compared to the code in <a href="using-geojson-in-leaflet.html#using-geojson-in-leaflet">Chapter 5</a>? If you are hawkeyed, you will notice that the <strong>Population</strong> values this time round are integers compared to the string values used in the previous chapter. It sounds superflous to create population values as strings only to convert them to integers now, but please do remember the geojson.io site did that for us, not this author. Here is the <a href="https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/cities-geojson2.geojson.txt">raw geojson script</a> customized for this chapter. It is also available <a href="https://raw.githubusercontent.com/sammigachuhi/my-leaflet-project/main/geojson_files_updated/cities-geojson2.geojson.txt">here</a>.</p>
 <p>Just a small note before going on. When the GeoJSON file has the population values enclosed in strings <code>""</code>, they are automatically rendered on a map on the Github server.</p>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="create-your-own-custom-markers.html#cb68-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/geojson-webmap.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../images/geojson-webmap.jpg" width="791" /></p>
 <p>However, when the strings are removed, and the population values remain as integers, they are no longer rendered on a webmap as shown below.</p>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="create-your-own-custom-markers.html#cb69-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/geojson-nowebmap.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../images/geojson-nowebmap.jpg" width="790" /></p>
-<p>It’s just a dictionary of lists and other dictionaries.</p>
-<div id="the-icons" class="section level2 hasAnchor" number="6.1">
-<h2><span class="header-section-number">6.1</span> The icons<a href="create-your-own-custom-markers.html#the-icons" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>No map rendered, just a dictionary of lists and other dictionaries.</p>
+</div>
+<div id="the-icons" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> The icons<a href="create-your-own-custom-markers.html#the-icons" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Alright. Let’s create a map of our cities but with custom markers this time round. The below code creates our custom markers.</p>
 <pre><code>// Yellow Icon
 var yellowIcon = new L.Icon({
@@ -450,11 +455,11 @@ var redIcon = new L.Icon({
 <p>We got this.</p>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="create-your-own-custom-markers.html#cb72-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/geojson-markers.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../images/geojson-markers.jpg" width="498" /></p>
-<p>All cities were marked yellow, irrespective of their population or jurisdictional significance. But before we raise the alarm on this, what was the purpose of the <code>pointToLayer()</code> function? According to the Leaflet guide, the <code>pointToLayer()</code> function is a special function for GeoJSON variables that species how they should be drawn. In this case and in any other case, it passes the commands in the body, such as <code>return L.marker...</code> for every marker point at its Lat-Lon coordinates.</p>
+<p>All cities are marked yellow irrespective of their population or jurisdictional significance. But before we raise the alarm on this, what was the purpose of the <code>pointToLayer()</code> function? According to the Leaflet guide, the <code>pointToLayer()</code> function is a special function for GeoJSON variables that specifies how they should be drawn. To be more descriptive, the function parses the <code>return L.marker...</code> function to every Lat-Lon coordinate to make a marker appear at that point.</p>
 </div>
-<div id="differentiate-custom-markers-on-a-webmap" class="section level2 hasAnchor" number="6.2">
-<h2><span class="header-section-number">6.2</span> Differentiate custom markers on a webmap<a href="create-your-own-custom-markers.html#differentiate-custom-markers-on-a-webmap" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Now to our spirited arguments. Not all cities are equal. We would appreciate if the markers would differentiate the cities to a particular variable, say population. By the way, size of cities is determined by population. The below code shall differiante cities by circle markers before we go back to normal markers when we touch the <code>fetch()</code> function again.</p>
+<div id="differentiate-custom-markers-on-a-webmap" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Differentiate custom markers on a webmap<a href="create-your-own-custom-markers.html#differentiate-custom-markers-on-a-webmap" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now to our spirited argument. Not all cities are equal. We would appreciate if the markers would differentiate the cities based on a particular variable, say population. By the way, size of cities is generally determined by population. The below code shall differentiate cities by circle markers whose sizes shall be dependent on the city’s population. If you’ve seen point symbols in Qgis, get ready to see them in action in Leaflet!</p>
 <p>Comment out the earlier code and insert this:</p>
 <pre><code>L.geoJSON(cities, {
   pointToLayer: function (feature, latlng) {
@@ -496,8 +501,8 @@ var redIcon = new L.Icon({
 <p>What you get is a map that has different circle markers according to the respective city’s population. This time round, the <code>pointToLayer()</code> function body worked with <strong>if/else if</strong> statement to differentiate the radius and color of each circle marker. Under the <strong>if/else if</strong> code statement block, different circle marker specifications of radius and fillColor were inserted for each population category. Any city with a population beyond 800000 was fitted into the <code>else</code> block.</p>
 <div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="create-your-own-custom-markers.html#cb74-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/geojson-diff1.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../images/geojson-diff1.jpg" width="444" /></p>
-<p>This brings us to why we changed the population values from strings to integers. If we were to work with their former values of strings, any value beyond 1, 000, 000 would receive the settings of <code>feature.properties.Population &lt;= 250000</code> that is, color yellow and radius yellow. This is because even though 1 million is by far larger than 250, 000 or 800, 000, because it starts with a 1, it shall be considered even less than 250, 000! This is because when ordering strings in JavaScript, they are by default ordered by the first character. The same case applies to digits 1 to 9. Value 1 will always be inferior to 2, 7, 9 and any other number in between irrespective of whether its a million or a billion.</p>
-<p>In the next code sample, we shall create city markers but their populations differentiated with new markers icons we created of yellow, orange and red.</p>
+<p>This brings us to why we changed the population values from strings to integers. If we were to work with the original string values (like “1000000” in quotes), any value beyond 1, 000, 000 would receive the settings of <code>feature.properties.Population &lt;= 250000</code>. That is, it would be displayed in the same color scheme of yellow as a city with a population say, 25, 000 people and below. That would be passing a wrong message. The explanation for this glaring error arising from use of string values is this: when ordering numbers enclosed in strings in JavaScript, they will be ordered by their first character irrespective of the size of the value. In other words, 1 is greater than 9 even though the latter is more. Thus a city of <strong>“<strong>800, 000</strong>”</strong> people will be treated as bigger than a city of <strong>“<strong>1, 000, 000</strong>”</strong>. This explains why we resorted to using a GeoJson file that had the quotes removed from our <strong>Population</strong> values.</p>
+<p>In the next code sample, we shall create city marker icons whose colors shall be determined by the size of the city’s population. We will work with three colors of yellow, orange and red. Yellow shall be the smallest city while red shall be the largest. The below code shows how this categorization based on our GeoJSON file is worked out.</p>
 <pre><code>L.geoJSON(cities, {
   pointToLayer: function (feature, latlng) {
     if (feature.properties.Population &lt;= 250000) {
@@ -521,12 +526,12 @@ var redIcon = new L.Icon({
 }).addTo(map);</code></pre>
 <div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="create-your-own-custom-markers.html#cb76-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/geojson-diff2.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../images/geojson-diff2.jpg" width="424" /></p>
-<p>In the above map, our preceding code has differentiated large cities with populations above 800, 000 with a red marker, those with populations below 250, 000 with a yellow marker and those between with an orange marker. In all cases, our <code>bindPopup()</code> still contains the same settings to show both the city name and population.</p>
-<p>The <code>pointToLayer()</code> function was passed function that return a specific <code>L.marker</code> with Lat-Lon coordinates for each respective marker retrieved of course, only that the <code>icon</code> key was assigned a different marker icon variable corresponding to each city’s population as the value. That’s the trick that assigns a different marker to each city as per its population.</p>
+<p>In the above map, our preceding code has differentiated large cities with populations above 800, 000 with a red marker, those with populations below 250, 000 with a yellow marker and those in between with an orange marker. In all cases, our <code>bindPopup()</code> still contains the same settings of showing both the city name and population as when we created circle markers.</p>
+<p>The value to the <code>pointToLayer()</code> key was assigned a function that checks if a city population is within a specific range, and if it matches the range specified by the <code>if</code> statement, a particular icon –whether <code>yellowIcon</code>, <code>orangeIcone</code> and <code>redIcon</code> is returned by the <code>L.marker()</code> function.</p>
 </div>
-<div id="using-fetch" class="section level2 hasAnchor" number="6.3">
-<h2><span class="header-section-number">6.3</span> Using fetch<a href="create-your-own-custom-markers.html#using-fetch" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Remember how <code>fetch</code> helped us retrieve data from a server in a previous chapter. Whereas we won’t repeat the entire process again (you can breathe a sigh of relief), the same iterations of differentiating a marker icon can also be inserted in <code>fetch</code>, right within the options of <code>L.geoJson(data, {options})</code>.</p>
+<div id="using-fetch" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Using fetch<a href="create-your-own-custom-markers.html#using-fetch" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Remember how <code>fetch</code> helped us retrieve data from a server in a previous chapter? Whereas we won’t repeat the entire process again (you can breathe a sigh of relief), the same iterations of differentiating a marker icon can also be inserted in the <code>fetch</code> API. All this is done right within the options of <code>L.geoJson(data, {options})</code>.</p>
 <pre><code>fetch(&quot;https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/cities-geojson2.geojson.txt&quot;)
     .then((response) =&gt;{
         return response.json()
@@ -559,9 +564,9 @@ var redIcon = new L.Icon({
 </code></pre>
 <p>It works but don’t take my word for it. Just paste and see.</p>
 </div>
-<div id="unique-custom-markers" class="section level2 hasAnchor" number="6.4">
-<h2><span class="header-section-number">6.4</span> Unique custom markers<a href="create-your-own-custom-markers.html#unique-custom-markers" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This part may not be necessary, but it is just to show you that there are various markers apart from the defaults provided by Leaflet. One can create custom markers outside of leaflet using the [Leaflet.Awesome.Markers plugin]. Just like in the case of Ajax, you will need to install the path to the dependencies in the html document <code>map.html</code> using <code>&lt;script&gt;</code>. Insert the following <code>&lt;script&gt;</code> tags into <code>map.html</code>.</p>
+<div id="unique-custom-markers" class="section level2 hasAnchor" number="6.5">
+<h2><span class="header-section-number">6.5</span> Unique custom markers<a href="create-your-own-custom-markers.html#unique-custom-markers" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This part may not be necessary, but it is just to show you that there are various markers apart from the defaults provided by Leaflet. One can create custom markers outside of leaflet using the <a href="https://github.com/lennardv2/Leaflet.awesome-markers">Leaflet.Awesome.Markers plugin</a>. Just like in the case of Ajax, you will need to install the path to the dependencies in the HTML document <code>map.html</code> using <code>&lt;script&gt;</code>. Insert the following <code>&lt;script&gt;</code> tags into <code>map.html</code>.</p>
 <pre><code>&lt;script src=&quot;Leaflet.awesome-markers-2.0-develop\Leaflet.awesome-markers-2.0-develop\dist\leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
 
 &lt;script src=&quot;Leaflet.awesome-markers-2.0-develop\Leaflet.awesome-markers-2.0-develop\dist\leaflet.awesome-markers.css&quot;&gt;&lt;/script&gt;
@@ -569,7 +574,7 @@ var redIcon = new L.Icon({
 <p>And also this <code>&lt;link&gt;</code> tag:</p>
 <pre><code>&lt;link href=&quot;http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css&quot; rel=&quot;stylesheet&quot;&gt; 
 </code></pre>
-<p>To make the best use of time, following the example on their site, we simply replace our <code>icon</code> values with the new <code>L.AwesomeMarkers.icon</code> for each population category, and also tweaked the colors for each to match those of our previous markers. We assumed that big cities have the best malls, the medium cities, those with above a population of 250, 000 but a peak of 800, 000 to also have good coffee places, and those with populations of less than a quarter million have respectable industries. We assume fair play has been exercised in our assumptions. Here is the code.</p>
+<p>To make the best use of time, following the example on their site, we simply replace the value for our <code>icon</code> keys with the new <code>L.AwesomeMarkers.icon</code>. We also tweaked the colors for each icon to match those of our previous markers. We assumed that big cities with a population above 1, 000, 000 have the best malls, those with a population between 250, 000 and 800, 000 have good coffee places, and those with populations below 250, 000 people at least have respectable industries. We assume fair play has been exercised in our assumptions. So here is the code.</p>
 <pre><code>L.geoJSON(cities, {
     pointToLayer: function (feature, latlng) {
       if (feature.properties.Population &lt;= 250000) {
@@ -596,8 +601,8 @@ var redIcon = new L.Icon({
 <p><img src="../images/extra-markers.jpg" width="441" /></p>
 <p>The custom markers are also clickable!</p>
 </div>
-<div id="image-overlays" class="section level2 hasAnchor" number="6.5">
-<h2><span class="header-section-number">6.5</span> Image overlays<a href="create-your-own-custom-markers.html#image-overlays" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="image-overlays" class="section level2 hasAnchor" number="6.6">
+<h2><span class="header-section-number">6.6</span> Image overlays<a href="create-your-own-custom-markers.html#image-overlays" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Sometimes an image can act as good a marker as any other displayed so far. Overlaying images on a map is fairly easy, and if in a rush, here is the code:</p>
 <pre><code>// Image overlays
 var imageUrl = &#39;https://pbs.twimg.com/media/DddQBk5WsAAlbdJ?format=jpg&amp;name=large&#39;;
@@ -613,20 +618,34 @@ var imageOverlay = L.imageOverlay(imageUrl, latLngBounds, {
 }).addTo(map);
 
 </code></pre>
-<p>However, find an image of one location over the wide earth can be tricky and tiring, so we envelope it with a rectangle plus use <code>map.fitBounds</code> to zoom to where our image is placed.</p>
+<p>However, finding an image of one location over the wide earth can be tricky and tiring, so we envelope it with a rectangle. The <code>map.fitBounds</code> function enables the browser to automatically zoom to where our image is placed.</p>
 <pre><code>L.rectangle(latLngBounds).addTo(map);
 map.fitBounds(latLngBounds);
 </code></pre>
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="create-your-own-custom-markers.html#cb84-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/geltan-fenzi.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../images/geltan-fenzi.jpg" width="935" /></p>
-<p>Mind you that landmark was set up in 1939 in honour of Lionel Douglas Galton-Fenzi who was the first motorist to drive from Nairobi to Mombasa when all that existed was dirt track laden with wild animals. Yours truly has also heard it contains bearings to various East African cities. Despite being at a point where I normally alight, I’ve never paid much attention to it nor its bearings. Next time, I will be keen.</p>
-<p>Anyway, here is a quick breakdown of the attributes used in <code>L.imageOverlay</code>. We understand we have taken a lot of your time on so much a simple chapter, so we will be swift. The <code>var latLngBounds</code> uses the <code>L.latLngBounds</code> class to set the lat-lon coordinates. Notice they are two coordinate lists bound with a single <code>[]</code>. Your brain will get used to this in time. If you don’t enclose the two coordinates with <code>[]</code> an error may result. <code>var ImageUrl</code> is self explanatory –its the image source and for the rest, here they are:</p>
+<p>Mind you that landmark was set up in 1939 in honour of Lionel Douglas Galton-Fenzi; the first motorist to drive from Nairobi to Mombasa when all that existed was a dirt track laden with wild animals. Yours truly has also heard it contains bearings to various East African cities. Despite being at a point where I normally alight, I’ve never paid much attention to it nor its bearings. Next time, I will be keen.</p>
+<p>Anyway, here is a quick breakdown of the attributes used in <code>L.imageOverlay</code>. We understand we have taken a lot of your time on so much a simple chapter, so we will be swift. The <code>var latLngBounds</code> uses the <code>L.latLngBounds</code> class to set the lat-lon coordinates. Notice they are two coordinate lists bound with a single <code>[]</code>. Your brain will get used to this in time. If you don’t enclose the two coordinates with <code>[]</code> an error may result. <code>var ImageUrl</code> is self explanatory –its the image source. For the additional options parsed to the <code>L.imageOverlay()</code> class, they are described below:</p>
 <ol style="list-style-type: decimal">
 <li><p><code>opacity</code> - defines the opacity of the image overlay, it equals to 1.0 by default. Decrease this value to make an image overlay transparent and to expose the underlying map layer.</p></li>
 <li><p><code>errorOverlayUrl</code> - is a URL to the overlay image to show in place of the overlay that failed to load.</p></li>
-<li><p><code>alt</code> - sets the HTML alt attribute to provide an alternative text description of the image. Alternative text is essential information for screen reader users. It can also benefit people during poor network connectivity, in the case the image fails to load. Moreover, it can improve the SEO of a website.</p></li>
+<li><p><code>alt</code> - sets the HTML alt attribute to provide an alternative text description of the image. It is quite helpful in describing an image in text form in case it fails to load due to poor network connectivity. Moreover, it can improve the Search Engine Optimization (SEO) of the website it is hosted in.</p></li>
 <li><p><code>interactive</code> - is false by default. If true, the image overlay will emit mouse events when clicked or hovered.</p></li>
 </ol>
+</div>
+<div id="summary-5" class="section level2 hasAnchor" number="6.7">
+<h2><span class="header-section-number">6.7</span> Summary<a href="create-your-own-custom-markers.html#summary-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This was quite a long chapter that rendered justice on how to customize GeoJSON markers in Leaflet. Through the various exercises you encountered in this chapter, you have learnt the following:</p>
+<ul>
+<li><p>GeoJSON files, if in the correct format, can be rendered as standalone map right within Github. An example is <a href="https://github.com/sammigachuhi/geojson_files/blob/main/cities-geojson.geojson">here</a>.</p></li>
+<li><p>One can differentiate markers by color or size based on the attributes of a GeoJSON file. In this chapter, the city population values were used to differentiate markers by size and later on by color.</p></li>
+<li><p>The <code>pointToLayer</code> key when used within a GeoJSON framework, particularly as an option in <code>L.geoJSON</code> parses a particular function to every Lat-Lon coordinate inside a GeoJSON file.</p></li>
+</ul>
+<p>It is also possible to customize markers in the <code>fetch</code> API by simply specifying how they shoud appear, in form of functions, within the <code>L.geoJson</code> options environment.</p>
+<p>There exist plenty of custom made icons outside of, but compatible with Leaflet. One of them is <a href="https://github.com/lennardv2/Leaflet.awesome-markers">Leaflet Awesome Markers</a>.</p>
+<ul>
+<li>Images can also be overlayed on a Leaflet map. This was done in the sub-chapter of <a href="create-your-own-custom-markers.html#image-overlays">Image Overlays</a>.</li>
+</ul>
 
 </div>
 </div>
