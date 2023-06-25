@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Samuel Gachuhi Ngugi" />
 
 
-<meta name="date" content="2023-06-23" />
+<meta name="date" content="2023-06-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -209,6 +209,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.4" data-path="creating-an-interactive-choropleth-map.html"><a href="creating-an-interactive-choropleth-map.html#highlight-features"><i class="fa fa-check"></i><b>7.4</b> Highlight features</a></li>
 <li class="chapter" data-level="7.5" data-path="creating-an-interactive-choropleth-map.html"><a href="creating-an-interactive-choropleth-map.html#creating-a-custom-info"><i class="fa fa-check"></i><b>7.5</b> Creating a custom info</a></li>
 <li class="chapter" data-level="7.6" data-path="creating-an-interactive-choropleth-map.html"><a href="creating-an-interactive-choropleth-map.html#create-a-legend"><i class="fa fa-check"></i><b>7.6</b> Create a legend</a></li>
+<li class="chapter" data-level="7.7" data-path="creating-an-interactive-choropleth-map.html"><a href="creating-an-interactive-choropleth-map.html#summary-6"><i class="fa fa-check"></i><b>7.7</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="layer-groups-and-controls.html"><a href="layer-groups-and-controls.html"><i class="fa fa-check"></i><b>8</b> Layer groups and controls</a>
 <ul>
@@ -302,7 +303,7 @@ L.geoJson.ajax(url).addTo(map);
 var markers = L.markerClusterGroup();
 </code></pre>
 <p>The following is the result we got.</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="cluster-to-reduce-the-clutter.html#cb134-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/clutter-points.jpg&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="cluster-to-reduce-the-clutter.html#cb135-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/clutter-points.jpg&#39;</span>))</span></code></pre></div>
 <p><img src="../images/clutter-points.jpg" width="514" /></p>
 <p>Not good at all. The <code>Leaflet.markercluster</code> plugin is what transforms a clutter map into one of neatly arranged clustered marker points.</p>
 </div>
@@ -346,7 +347,7 @@ L.geoJson.ajax(url, {
 <p>Remember <code>pointToLayer</code>? It defines how the GeoJson file will appear. The <code>pointToLayer</code> retrieves the Latitude-Longitude coordinates, creates circle markers out of them before finally parsing to the <code>markers</code> variable in the return keyword.</p>
 <p>How about for <code>onEachFeature</code>. You can guess. <em>O</em>n <em>E</em>ach <em>F</em>eature, do this and that. In our case we bind a popup of facility name and type which will appear when a circle marker is clicked on.</p>
 <p>Actually, the above code sort of finished the work for us.</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="cluster-to-reduce-the-clutter.html#cb140-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/cluster-marker-map.jpg&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="cluster-to-reduce-the-clutter.html#cb141-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/cluster-marker-map.jpg&#39;</span>))</span></code></pre></div>
 <p><img src="../images/cluster-marker-map.jpg" width="960" /></p>
 <p>Zoom in and out and watch the circle markers <em>spidefy</em> to individual points with a popup. I have restrained from tweaking because the defaults are already good enough. See them from this <a href="https://github.com/Leaflet/Leaflet.markercluster">Github Page</a>.</p>
 <p>However, as good practice, we need to add the <code>markers</code> global variable to the map. We do so by using the following code.</p>
@@ -354,14 +355,14 @@ L.geoJson.ajax(url, {
 </code></pre>
 <p><code>addLayers</code>, just like the name suggests, adds the given layer to the map.</p>
 <p>The <code>L.circleMarker</code> in the <code>pointToLayer</code> key of the ajax function can be replaced with <code>L.marker()</code>. However, lone hospitals especially to the northeast of Kenya, and when clusters are specified to their individual points will resort to the default marker style of Leaflet. Below is how they would look, and is far from aesthetic.</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="cluster-to-reduce-the-clutter.html#cb142-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/cluster-marker-plain.jpg&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="cluster-to-reduce-the-clutter.html#cb143-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/cluster-marker-plain.jpg&#39;</span>))</span></code></pre></div>
 <p><img src="../images/cluster-marker-plain.jpg" width="906" /></p>
 <p>Coming back full circle, circle markers are way better.</p>
 <p>Most of the ajax code was inspired by this <a href="https://www.youtube.com/watch?v=R-V7XFUbrkw&amp;t=625s">video</a>.</p>
 <p>But wait! Hold your horses, there is a bug. Try to click on any of the spiderfied or lone hospitals and you will notice something that will raise eyebrows. All hospitals display the following popup when clicked:</p>
 <pre><code>Facility Name: Wajir Tb Manyatta Sub - District Hospital
 Type: Sub-District Hospital</code></pre>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="cluster-to-reduce-the-clutter.html#cb144-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/cluster-marker-bug.jpg&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="cluster-to-reduce-the-clutter.html#cb145-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/cluster-marker-bug.jpg&#39;</span>))</span></code></pre></div>
 <p><img src="../images/cluster-marker-bug.jpg" width="946" /></p>
 <p>Unless a developer would like to be left with an egg on the face for assigning wrong place names, this should be dealt with expeditiously. Our code is alright, since it works in other scenarios such as <a href="https://gis.stackexchange.com/questions/346104/popup-with-leaflet-markercluster-in-leaflet-map?utm_source=pocket_reader">here</a>. Yours truly suspects that the Ajax plugin is the issue, since <code>L.geoJSON</code> works perfectly in displaying the correct popup for each hospital.</p>
 <p>Time to try a different strategy: using <code>fetch</code> API. At least <code>fetch</code> will use <code>L.geoJSON()</code> as it is, without spoilers such as Ajax and each marker will display the correct popup.</p>
@@ -392,7 +393,7 @@ Type: Sub-District Hospital</code></pre>
         console.log(`This is the error: ${error}`)
     })
 </code></pre>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="cluster-to-reduce-the-clutter.html#cb146-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/cluster-marker-map-fixed.jpg&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="cluster-to-reduce-the-clutter.html#cb147-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/cluster-marker-map-fixed.jpg&#39;</span>))</span></code></pre></div>
 <p><img src="../images/cluster-marker-map-fixed.jpg" width="942" /></p>
 <p>Now all points have their rightful and respective names.</p>
 </div>
@@ -436,7 +437,7 @@ fetch(url)
 </code></pre>
 <p>From the above code, we added the <code>mouseover</code> event to each marker point using the <code>on</code> method. This was thanks to <code>this</code> keyword which refers to the object in the current code chunk –<code>geojsonGroup</code>. We also sped the rendering of our Leaflet map by adding <code>chunkedLoading: true</code> parameter to <code>L.markerCluster()</code> function.</p>
 <p>Hovering over each marker point will show an attribute of the centre in closest proximity from the <code>Nearest_To</code> properties of the Json Layer.</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="cluster-to-reduce-the-clutter.html#cb149-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/cluster-marker-mouseover.jpg&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="cluster-to-reduce-the-clutter.html#cb150-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/cluster-marker-mouseover.jpg&#39;</span>))</span></code></pre></div>
 <p><img src="../images/cluster-marker-mouseover.jpg" width="944" /></p>
 <p>The code files used for this chapter are available from <a href="https://www.dropbox.com/scl/fo/vbyxk75jodchlgxb4obkl/h?dl=0&amp;rlkey=x5jya8iwtj431uwxte7usdvpa">here</a>.</p>
 

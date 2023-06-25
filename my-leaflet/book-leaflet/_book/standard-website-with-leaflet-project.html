@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Samuel Gachuhi Ngugi" />
 
 
-<meta name="date" content="2023-06-23" />
+<meta name="date" content="2023-06-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -209,6 +209,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.4" data-path="creating-an-interactive-choropleth-map.html"><a href="creating-an-interactive-choropleth-map.html#highlight-features"><i class="fa fa-check"></i><b>7.4</b> Highlight features</a></li>
 <li class="chapter" data-level="7.5" data-path="creating-an-interactive-choropleth-map.html"><a href="creating-an-interactive-choropleth-map.html#creating-a-custom-info"><i class="fa fa-check"></i><b>7.5</b> Creating a custom info</a></li>
 <li class="chapter" data-level="7.6" data-path="creating-an-interactive-choropleth-map.html"><a href="creating-an-interactive-choropleth-map.html#create-a-legend"><i class="fa fa-check"></i><b>7.6</b> Create a legend</a></li>
+<li class="chapter" data-level="7.7" data-path="creating-an-interactive-choropleth-map.html"><a href="creating-an-interactive-choropleth-map.html#summary-6"><i class="fa fa-check"></i><b>7.7</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="layer-groups-and-controls.html"><a href="layer-groups-and-controls.html"><i class="fa fa-check"></i><b>8</b> Layer groups and controls</a>
 <ul>
@@ -313,7 +314,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
                 &lt;/div&gt;
 </code></pre>
 <p>Here is where the Gallery in the elearning webpage is situated.</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="standard-website-with-leaflet-project.html#cb168-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/gallery.jpg&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="standard-website-with-leaflet-project.html#cb169-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/gallery.jpg&#39;</span>))</span></code></pre></div>
 <p><img src="../images/gallery.jpg" width="941" /></p>
 <p>Why do we want to change the gallery, or rather, to insert a leaflet map in its place? Well, I decided to be mean on it. Sorry, that wasn’t supposed to come out of my mouth. Candidly speaking, the Gallery section only contained some pretty pictures and personally I felt replacing them with a leaflet map would serve as the best demonstration for this chapter.</p>
 </div>
@@ -322,7 +323,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Since we want to insert a leaflet to the eLearning website, we will have to load the requisite Leaflet links and scripts to the websites <code>&lt;head&gt;</code> element, just like we used to do to our <code>map.html</code>. Thereafter, we shall replace the entire gallery section with just one <code>&lt;div&gt;</code> that references one of our many Leaflet JavaScript files.</p>
 <p>Ready? Let’s go.</p>
 <p>Assuming you are working on VSCode, copy all the plugin files for leaflet, such as <code>Leaflet.markercluster-master</code> folder and others you had extracted prior to parsing them to your javascript files. Perhaps an image will make the instructions clearer. The below files should be in your eLearning template folder.</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="standard-website-with-leaflet-project.html#cb169-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/elearning-plugins.jpg&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="standard-website-with-leaflet-project.html#cb170-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/elearning-plugins.jpg&#39;</span>))</span></code></pre></div>
 <p><img src="../images/elearning-plugins.jpg" width="493" /></p>
 <p>Why are we ensuring that the leaflet plugin folders are in the same directory of our eLearning template files? YOu will know in a tid bit.</p>
 <p>Go to the <code>index.html</code> file of your eLearning template. From the <code>&lt;head&gt;</code> to <code>&lt;/head&gt;</code> tags, replace the existing code with the following:</p>
@@ -422,7 +423,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
                     &lt;/div&gt;
 </code></pre>
 <p>Perhaps an image will clarify matters a bit. This is how it should look:</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="standard-website-with-leaflet-project.html#cb174-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/div_replace.jpg&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="standard-website-with-leaflet-project.html#cb175-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/div_replace.jpg&#39;</span>))</span></code></pre></div>
 <p><img src="../images/div_replace.jpg" width="756" /></p>
 <p>Also as a heads up, remember to replace the <code>&lt;h4&gt;</code> tags with the statement <code>Our Location</code>. It’s no longer a gallery!</p>
 <p>As if that was not enough, going easy on our fingers and all, we have to set the CSS properties for our leaflet map.</p>
@@ -438,7 +439,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 }</code></pre>
 <p>Remember the <code>#</code> and the text that follows references the specifically named <code>id</code> attribute in the tags of our html element. In the above case, it references the <code>&lt;div&gt;</code> with the ID <code>#myMap</code>.</p>
 <p>After reloading <code>index.html</code>, this is how our leaflet map looks inside the eLearning template.</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="standard-website-with-leaflet-project.html#cb177-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/location_elearning.jpg&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="standard-website-with-leaflet-project.html#cb178-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/location_elearning.jpg&#39;</span>))</span></code></pre></div>
 <p><img src="../images/location_elearning.jpg" width="946" /></p>
 <p>Good.</p>
 </div>

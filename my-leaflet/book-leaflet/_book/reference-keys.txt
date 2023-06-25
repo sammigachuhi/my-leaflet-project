@@ -44,6 +44,7 @@ coloring-the-counties
 highlight-features
 creating-a-custom-info
 create-a-legend
+summary-6
 layer-groups-and-controls
 purpose-of-layer-groups-and-controls
 set-up-the-basemaps
