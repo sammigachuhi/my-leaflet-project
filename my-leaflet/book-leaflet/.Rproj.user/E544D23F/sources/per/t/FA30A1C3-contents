@@ -1,6 +1,8 @@
 # Create your own custom markers
 
-Full codes and files are [here](https://www.dropbox.com/scl/fo/ecidt41insvnzpwvmj9iw/h?dl=0&rlkey=yy4w9p76osxs913p19wvnsjez).
+## Setting the base
+
+Full codes and files are [here](https://github.com/sammigachuhi/my-leaflet-project/tree/main/my-leaflet-code/chapter-6-custom-markers).
 
 Hope you didn't trash away the cities we created in the last [chapter][Using GeoJSON in Leaflet]. In this chapter, we shall focus on creating your own custom markers. We love a clean job, so we will create a new JavaScript file and name it `custom-markers.js`. We understand the previous [chapter][Using GeoJSON in Leaflet] was quite long but believe you me, although creating custom markers sounds easier, it took us way longer to get the hang around it. Sounds ironic but its the truth. Good news, we received enough punches on the face to teach you how to dodge the pain points.
 
@@ -15,7 +17,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 ```
 
-We will create a new variable called `cities` that mimics the geojson file saved to github only these time the population values have been tweaked a bit. Paste the below code to your `custom-markers.js`.
+We will create a new variable called `cities` that mimics the GeoJson file saved to Github only this time the population values have been tweaked a bit. Paste the below code to your `custom-markers.js`.
 
 ```
 var cities = {
@@ -124,7 +126,7 @@ var cities = {
 
 ```
 
-Can you notice any difference on the `Population` property compared to the code [Chapter 5][Using GeoJSON in Leaflet]? If you are hawkeyed, you will see the Population values this time round are integers compared to strings in the previous chapter. It sounds superflous to create population values as strings only to convert them to integers now, but please do remember the geojson.io site did that for us, not this author. Here is the [raw geojson script](https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/cities-geojson2.geojson.txt) customized for this chapter.
+Can you notice any difference on the `Population` property compared to the code in [Chapter 5][Using GeoJSON in Leaflet]? If you are hawkeyed, you will notice that the **Population** values this time round are integers compared to the string values used in the previous chapter. It sounds superflous to create population values as strings only to convert them to integers now, but please do remember the geojson.io site did that for us, not this author. Here is the [raw geojson script](https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/cities-geojson2.geojson.txt) customized for this chapter. It is also available [here](https://raw.githubusercontent.com/sammigachuhi/my-leaflet-project/main/geojson_files_updated/cities-geojson2.geojson.txt).
 
 Just a small note before going on. When the GeoJSON file has the population values enclosed in strings `""`, they are automatically rendered on a map on the Github server. 
 
@@ -138,7 +140,7 @@ However, when the strings are removed, and the population values remain as integ
 knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/geojson-nowebmap.jpg"))
 ```
 
-It's just a dictionary of lists and other dictionaries.
+No map rendered, just a dictionary of lists and other dictionaries.
 
 
 ## The icons
@@ -200,11 +202,11 @@ knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/geojson-markers.jpg"))
 ```
 
 
-All cities were marked yellow, irrespective of their population or jurisdictional significance. But before we raise the alarm on this, what was the purpose of the `pointToLayer()` function? According to the Leaflet guide, the `pointToLayer()` function is a special function for GeoJSON variables that species how they should be drawn. In this case and in any other case, it passes the commands in the body, such as `return L.marker...` for every marker point at its Lat-Lon coordinates. 
+All cities are marked yellow irrespective of their population or jurisdictional significance. But before we raise the alarm on this, what was the purpose of the `pointToLayer()` function? According to the Leaflet guide, the `pointToLayer()` function is a special function for GeoJSON variables that specifies how they should be drawn. To be more descriptive, the function parses the  `return L.marker...` function to every Lat-Lon coordinate to make a marker appear at that point. 
 
 ## Differentiate custom markers on a webmap
 
-Now to our spirited arguments. Not all cities are equal. We would appreciate if the markers would differentiate the cities to a particular variable, say population. By the way, size of cities is determined by population. The below code shall differiante cities by circle markers before we go back to normal markers when we touch the `fetch()` function again.
+Now to our spirited argument. Not all cities are equal. We would appreciate if the markers would differentiate the cities based on a particular variable, say population. By the way, size of cities is generally determined by population. The below code shall differentiate cities by circle markers whose sizes shall be dependent on the city's population. If you've seen point symbols in Qgis, get ready to see them in action in Leaflet!
 
 Comment out the earlier code and insert this:
 
@@ -254,9 +256,9 @@ What you get is a map that has different circle markers according to the respect
 knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/geojson-diff1.jpg"))
 ```
 
-This brings us to why we changed the population values from strings to integers. If we were to work with their former values of strings, any value beyond 1, 000, 000 would receive the settings of `feature.properties.Population <= 250000` that is, color yellow and radius yellow. This is because even though 1 million is by far larger than 250, 000 or 800, 000, because it starts with a 1, it shall be considered even less than 250, 000! This is because when ordering strings in JavaScript, they are by default ordered by the first character. The same case applies to digits 1 to 9. Value 1 will always be inferior to 2, 7, 9 and any other number in between irrespective of whether its a million or a billion.
+This brings us to why we changed the population values from strings to integers. If we were to work with the original string values (like "1000000" in quotes), any value beyond 1, 000, 000 would receive the settings of `feature.properties.Population <= 250000`. That is, it would be displayed in the same color scheme of yellow as a city with a population say, 25, 000 people and below. That would be passing a wrong message. The explanation for this glaring error arising from use of string values is this: when ordering numbers enclosed in strings in JavaScript, they will be ordered by their first character irrespective of the size of the value. In other words, 1 is greater than 9 even though the latter is more. Thus a city of **"**800, 000**"** people will be treated as bigger than a city of **"**1, 000, 000**"**. This explains why we resorted to using a GeoJson file that had the quotes removed from our **Population** values.
 
-In the next code sample, we shall create city markers but their populations differentiated with new markers icons we created of yellow, orange and red.
+In the next code sample, we shall create city marker icons whose colors shall be determined by the size of the city's population. We will work with three colors of yellow, orange and red. Yellow shall be the smallest city while red shall be the largest. The below code shows how this categorization based on our GeoJSON file is worked out.
 
 ```
 L.geoJSON(cities, {
@@ -285,14 +287,13 @@ L.geoJSON(cities, {
 knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/geojson-diff2.jpg"))
 ```
 
-In the above map, our preceding code has differentiated large cities with populations above 800, 000 with a red marker, those with populations below 250, 000 with a yellow marker and those between with an orange marker. In all cases, our `bindPopup()` still contains the same settings to show both the city name and population.
+In the above map, our preceding code has differentiated large cities with populations above 800, 000 with a red marker, those with populations below 250, 000 with a yellow marker and those in between with an orange marker. In all cases, our `bindPopup()` still contains the same settings of showing both the city name and population as when we created circle markers.
 
-The `pointToLayer()` function was passed function that return a specific `L.marker` with Lat-Lon coordinates for each respective marker retrieved of course, only that the `icon` key was assigned a different marker icon variable corresponding to each city's population as the value. That's the trick that assigns a different marker to each city as per its population.
-
+The value to the `pointToLayer()` key was assigned a function that checks if a city population is within a specific range, and if it matches the range specified by the `if` statement, a particular icon --whether `yellowIcon`, `orangeIcone` and `redIcon` is returned by the `L.marker()` function.
 
 ## Using fetch
 
-Remember how `fetch` helped us retrieve data from a server in a previous chapter. Whereas we won't repeat the entire process again (you can breathe a sigh of relief), the same iterations of differentiating a marker icon can also be inserted in `fetch`, right within the options of `L.geoJson(data, {options})`. 
+Remember how `fetch` helped us retrieve data from a server in a previous chapter? Whereas we won't repeat the entire process again (you can breathe a sigh of relief), the same iterations of differentiating a marker icon can also be inserted in the `fetch` API. All this is done right within the options of `L.geoJson(data, {options})`. 
 
 ```
 fetch("https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/cities-geojson2.geojson.txt")
@@ -331,7 +332,7 @@ It works but don't take my word for it. Just paste and see.
 
 ## Unique custom markers
 
-This part may not be necessary, but it is just to show you that there are various markers apart from the defaults provided by Leaflet. One can create custom markers outside of leaflet using the [Leaflet.Awesome.Markers plugin]. Just like in the case of Ajax, you will need to install the path to the dependencies in the html document `map.html` using `<script>`. Insert the following `<script>` tags into `map.html`.
+This part may not be necessary, but it is just to show you that there are various markers apart from the defaults provided by Leaflet. One can create custom markers outside of leaflet using the [Leaflet.Awesome.Markers plugin](https://github.com/lennardv2/Leaflet.awesome-markers). Just like in the case of Ajax, you will need to install the path to the dependencies in the HTML document `map.html` using `<script>`. Insert the following `<script>` tags into `map.html`.
 
 ```
 <script src="Leaflet.awesome-markers-2.0-develop\Leaflet.awesome-markers-2.0-develop\dist\leaflet.awesome-markers.js"></script>
@@ -347,7 +348,7 @@ And also this `<link>` tag:
 
 ```
 
-To make the best use of time, following the example on their site, we simply replace our `icon` values with the new `L.AwesomeMarkers.icon` for each population category, and also tweaked the colors for each to match those of our previous markers. We assumed that big cities have the best malls, the medium cities, those with above a population of 250, 000 but a peak of 800, 000 to also have good coffee places, and those with populations of less than a quarter million have respectable industries. We assume fair play has been exercised in our assumptions. Here is the code.
+To make the best use of time, following the example on their site, we simply replace the value for our `icon` keys with the new `L.AwesomeMarkers.icon`. We also tweaked the colors for each icon to match those of our previous markers. We assumed that big cities with a population above 1, 000, 000 have the best malls, those with a population between 250, 000 and 800, 000 have good coffee places, and those with populations below 250, 000 people at least have respectable industries. We assume fair play has been exercised in our assumptions. So here is the code.
 
 ```
 L.geoJSON(cities, {
@@ -401,7 +402,7 @@ var imageOverlay = L.imageOverlay(imageUrl, latLngBounds, {
 
 ```
 
-However, find an image of one location over the wide earth can be tricky and tiring, so we envelope it with a rectangle plus use `map.fitBounds` to zoom to where our image is placed. 
+However, finding an image of one location over the wide earth can be tricky and tiring, so we envelope it with a rectangle. The `map.fitBounds` function enables the browser to automatically zoom to where our image is placed. 
 
 ```
 L.rectangle(latLngBounds).addTo(map);
@@ -414,21 +415,33 @@ knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/geltan-fenzi.jpg"))
 ```
 
 
-Mind you that landmark was set up in 1939 in honour of Lionel Douglas Galton-Fenzi who was the first motorist to drive from Nairobi to Mombasa when all that existed was dirt track laden with wild animals. Yours truly has also heard it contains bearings to various East African cities. Despite being at a point where I normally alight, I've never paid much attention to it nor its bearings. Next time, I will be keen.
+Mind you that landmark was set up in 1939 in honour of Lionel Douglas Galton-Fenzi; the first motorist to drive from Nairobi to Mombasa when all that existed was a dirt track laden with wild animals. Yours truly has also heard it contains bearings to various East African cities. Despite being at a point where I normally alight, I've never paid much attention to it nor its bearings. Next time, I will be keen.
 
-Anyway, here is a quick breakdown of the attributes used in `L.imageOverlay`. We understand we have taken a lot of your time on so much a simple chapter, so we will be swift. The `var latLngBounds` uses the `L.latLngBounds` class to set the lat-lon coordinates. Notice they are two coordinate lists bound with a single `[]`. Your brain will get used to this in time. If you don't enclose the two coordinates with `[]` an error may result. `var ImageUrl` is self explanatory --its the image source and for the rest, here they are:
-
+Anyway, here is a quick breakdown of the attributes used in `L.imageOverlay`. We understand we have taken a lot of your time on so much a simple chapter, so we will be swift. The `var latLngBounds` uses the `L.latLngBounds` class to set the lat-lon coordinates. Notice they are two coordinate lists bound with a single `[]`. Your brain will get used to this in time. If you don't enclose the two coordinates with `[]` an error may result. `var ImageUrl` is self explanatory --its the image source. For the additional options parsed to the `L.imageOverlay()` class, they are described below:
 
 1. `opacity` - defines the opacity of the image overlay, it equals to 1.0 by default. Decrease this value to make an image overlay transparent and to expose the underlying map layer.
 
 2. `errorOverlayUrl` - is a URL to the overlay image to show in place of the overlay that failed to load.
 
-3. `alt` - sets the HTML alt attribute to provide an alternative text description of the image. Alternative text is essential information for screen reader users. It can also benefit people during poor network connectivity, in the case the image fails to load. Moreover, it can improve the SEO of a website.
+3. `alt` - sets the HTML alt attribute to provide an alternative text description of the image. It is quite helpful in describing an image in text form in case it fails to load due to poor network connectivity. Moreover, it can improve the Search Engine Optimization (SEO) of the website it is hosted in.
 
 4. `interactive` - is false by default. If true, the image overlay will emit mouse events when clicked or hovered.
 
+## Summary
 
+This was quite a long chapter that rendered justice on how to customize GeoJSON markers in Leaflet. Through the various exercises you encountered in this chapter, you have learnt the following:
 
+- GeoJSON files, if in the correct format, can be rendered as standalone map right within Github. An example is [here](https://github.com/sammigachuhi/geojson_files/blob/main/cities-geojson.geojson).
+
+- One can differentiate markers by color or size based on the attributes of a GeoJSON file. In this chapter, the city population values were used to differentiate markers by size and later on by color.
+
+- The `pointToLayer` key when used within a GeoJSON framework, particularly as an option in `L.geoJSON` parses a particular function to every Lat-Lon coordinate inside a GeoJSON file.
+
+- It is also possible to customize markers in the `fetch` API by simply specifying how they shoud appear, in form of functions, within the `L.geoJson` options environment.
+
+- There exist plenty of custom made icons outside of, but compatible with Leaflet. One of them is [Leaflet Awesome Markers](https://github.com/lennardv2/Leaflet.awesome-markers).
+
+- Images can also be overlayed on a Leaflet map. This was done in the sub-chapter of [Image Overlays][Image overlays].
 
 
 

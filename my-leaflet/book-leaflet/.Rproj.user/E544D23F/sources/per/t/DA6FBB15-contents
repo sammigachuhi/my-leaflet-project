@@ -1,12 +1,17 @@
+---
+output:
+  html_document: default
+  word_document: default
+---
 # Using GeoJSON in Leaflet
 
 ## Creating a `.geojson` file
 
-So far, we have created a leaflet map, added some aesthetics such as markers, and even embedded a map into a dummy website. Alright, the website wasn't even close to good, but the methodology should be the same when working with other fully functional and better looking websites. That may be enough to give you confidence to start as a webmapper, but not so fast! There is always, and will be some more things to learn and in this case I would like to introduce another format of storing geospatial information. The use of `.geojson` files. 
+So far, we have created a leaflet map, added some aesthetics such as markers, and even embedded a map into a dummy website. Alright, the website wasn't even close to good, but the methodology should be the same when working with other fully functional and better looking websites. That may be enough to give you confidence to start as a webmapper but not so fast! There is still more territory to cover! I would like to introduce another format of storing geospatial information --the use of `.geojson` files. 
 
 ## What are `.geojson` files?
 
-`.geojson` files, according to the GIS leader ESRI, are an [open standard geospatial data interchange format](https://doc.arcgis.com/en/arcgis-online/reference/geojson.htm) that represents simple geographic features and their nonspatial attributes. GeoJSON is based on the JavaScript Object Notation (JSON) file format which is a lightweight data exchange format that is easily interpretable by both man and machine. In very few instances can any format please both sides of the divide but JSON does, and this [site](https://www.oracle.com/ke/database/what-is-json/) provides examples. Anyway, just like you can tell from the name, it is also based from the JavaScript programming language. If you have worked with JavaScript before, it looks very much like a data format based on dictionaries. In essence, JSON is a large dictionary holding other *dictionaries* of data within it. A GeoJSON is a JSON file that follows a certain structure and has spatial index and geometry specifications in it. See this [website](https://datascience.aero/geospatial-data-representation-the-geojson-format/) for a geojson example. 
+`.geojson` files, according to the GIS leader ESRI, are an [open standard geospatial data interchange format](https://doc.arcgis.com/en/arcgis-online/reference/geojson.htm) that represents simple geographic features and their nonspatial attributes. GeoJSON is based on the JavaScript Object Notation (JSON) file format which is a lightweight data exchange format that is easily interpretable by both man and machine. In very few instances does a data format please both sides of the divide but JSON does, and this [site](https://www.oracle.com/ke/database/what-is-json/) provides examples. Anyway, just like you can tell from the name, it is also based from the JavaScript programming language. If you have worked with JavaScript before, it looks very much like a data format based on dictionaries. In essence, JSON is a large dictionary holding other *dictionaries* of data within it. A GeoJSON is a JSON file that follows a certain structure and has spatial index and geometry specifications in it. See this [website](https://datascience.aero/geospatial-data-representation-the-geojson-format/) for a geojson example. 
 
 An example of a GeoJSON file format structure is shown below:
 
@@ -69,28 +74,28 @@ Below is an example of a [json file structure](https://www.oracle.com/ke/databas
 
 ## Why `geojson`?
 
-Yours truly could be wrong, but one advantage of `geojson` and `json` is that it's minimal on size (sometimes) and is more portable than shapefiles. Shapefiles are dependent on other data formats that accompany it, such as `.shx`, `.dbf`, `.prj` and others that provide geospatial orientation, metadata, attributes and others. GeoJSON and JSON formats will come as standalone and holding the same amount of data. 
+Yours truly could be wrong, but one advantage of `geojson` and `json` is that it's minimal on size (sometimes) and is more portable than shapefiles (for sure). Shapefiles are dependent on other data formats that accompany it, such as `.shx`, `.dbf`, `.prj` and others that provide geospatial orientation, metadata, attributes and others. GeoJSON and JSON formats will come as single files but will still hold the same amount of data. Talk of (Geo)JSON being more portable. 
 
 So when do I use shapefiles vis a vis GeoJson? If you want to work with geospatial data in a web interface, `geojson` is the way to go. Period.
 
 ## Creating a geojson file
 
-"Creating a geojson file with several dictionaries in it looks very intimidating. No hope of creating one without errors." You may think to yourself. Precisely, but luckily, we have the [geojson.io](https://geojson.io/#map=2/0/20) website that does the heavylifting for us. We shall head over to it and create a `geojson` file of some cities and their population. 
+"Creating a geojson file with several dictionaries in it looks very intimidating. How am I to create such a large dataset without errors? I will make an error somewhere..." You may think to yourself. Precisely, but luckily, we have the [geojson.io](https://geojson.io/#map=2/0/20) website that does the heavylifting for us. We shall head over to it and create a `geojson` file of some cities and their population. 
 
-First, of all, the website looks like this, a cool global map powered by Mapbox. 
+First, of all, the website looks like below, a cool global map powered by Mapbox. 
 
 ```{r}
 knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/mapbox-front.jpg"))
 ```
 
-On your right, under the **</>JSON** tab, the Mapbox folks have already given you a headstart by indicating what feature type and features will go into your `geojson` file. These are important as any website uses these keywords when parsing information from the GeoJSON file. Zoom to Kenya and click a point on top of the Nairobi dot pin, like shown below. Use the highlighted pin in the image below to create a marker over Nairobi.
+On your right, under the **</>JSON** tab, the Mapbox folks have already given you a head start by indicating what feature type and features will go into your `geojson` file. These are important as any website uses these keywords when parsing information from the GeoJSON file. Zoom to Kenya and click a point on top of the Nairobi dot pin, like shown below. Use the highlighted pin in the image below to create a marker over Nairobi.
 
 
 ```{r}
 knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/nairobi-pin.jpg"))
 ```
 
-By doing so, you will realize that a new dictionary of `type`, `properties` and `geometry` appears within the **features** list. These new keys provide the additional spatial and geometry data in their values in which a website when parsing this information can place them at their appropriate earth locations. 
+By doing so, you will realize that a new dictionary of `type`, `properties` and `geometry` appears within the **features** list. These new keys provide the additional spatial and geometry data in their values which a website uses to place them at their appropriate locations on the webmap. 
 
 Now move over to the **Table** tab and click new column as shown below.
 
@@ -104,13 +109,13 @@ Click on it and in the graphic that appears, give your column the name **City**.
 knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/nairobi-named.jpg"))
 ```
 
-Now create a new pin over *Kisumu* and a new dictionary will appear below that of Nairobi and a new table row will appear in the **Table** tab. Do the rest for the following cities: Mombasa, Nakuru, Nyeri, Machakos and Malindi. Legally speaking, only the first four are cities by law, the rest are just towns but for the sake of this tutorial, let's corporately refer to them as cities.
+Now create a new pin over *Kisumu* and two things will happen: a new dictionary will appear below that of Nairobi and a new table row will appear in the **Table** tab. Create pins over the following cities: Mombasa, Nakuru, Nyeri, Machakos and Malindi. Legally speaking, only the first four are cities by law, the rest are just towns but for the sake of this tutorial, let's corporately refer to them as cities.
 
 ```{r}
 knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/cities-named.jpg"))
 ```
 
-Alright, one process down, one more to go. We will fill these cities with their population statistics. Create a new column with the heading "Population". Fill each of the cities with the following statistics.
+Alright, one process down, one more to go. We will fill these cities with their population statistics. Create a new column with the heading **Population**. Fill each of the cities with the following statistics.
 
 ```{r}
 read.csv("D:/gachuhi/my-leaflet-vs/data/points.csv")[ , 1:2]
@@ -125,9 +130,9 @@ knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/geojson-save.jpg"))
 
 ## Saving the Geojson to Github
 
-Now, based on experience, using a local Geojson file (one within your computer directory) is painful in JavaScript. The error I faced had to do with servers or something. To get a way around this and still be able to display `.geojson` data in Leaflet, the data had to be stored on an online server, in this case Github. We would love to show you how to save data on Github, but this would make this chapter long. Therefore, and with sincere apologies, it would be best if you googled it out. 
+Now, based on experience, using a local Geojson file (one within your computer directory) is painful in JavaScript. The error I faced when trying to do so had to with servers or something. To get a way around this and still be able to display `.geojson` data in Leaflet, the GeoJson file had to be stored on an online server, in this case, Github. We would love to show you how to save data on Github, but this would make this chapter way too long. Therefore, and with sincere apologies, it would be best if you googled it out. 
 
-However, on the bright side, we have provided the GeoJSON we will use accessible from this [link](https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/cities-geojson.geojson). 
+However, on the bright side, we have provided the GeoJSON we will use accessible from this [link](https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/cities-geojson.geojson). This online file will come in handy in the last two sub-chapters of this exercise.
 
 ## Loading the GeoJSON into Leaflet
 
@@ -135,7 +140,7 @@ As they always say, there are many ways of killing a rat. There are around three
 
 ### The easy way
 
-First of all create a blank JavaScript file called `geojson.js`. Thereafter, go to your `map.html` file which you had created last in [Chapter 2][Setting the superstructure] Open it. Change the value in the `src` attribute within the `<script>` tag of the `<body>`--the one inside the `<div>` element with `id="myMap"` to read `"geojson.io"` like below.
+First of all create a blank JavaScript file called `geojson.js`. Thereafter, go to your `map.html` file which you had created last in [Chapter 2][Setting the superstructure]. Open it. Within the `<script>` tag of the `<body>` element, change the `src` attribute to read `"geojson.io"` like below.
 
 ```
 <!DOCTYPE html>
@@ -172,7 +177,7 @@ Okay. Head over to [geojson.io](geojson.io) website and right under the **</>JSO
 ```{r}
 knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/geojson-copy.jpg"))
 ```
-Click it and past it in your `geojson.js` file right above the other `L.map` and `L.tileLayer` classes. Your `geojson.js` should look like below. 
+Click it and past the json code into your `geojson.js` file right above the other `L.map` and `L.tileLayer` classes. The contents of your `geojson.js` should look like below. 
 
 ```
 var cities = {
@@ -220,7 +225,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 ```
 
-Refresh your `map.html`. It's a map of Kenya alright, but none of our `.geojson` features appear yet. We are about to change that. Leaflet offers the `L.geoJSON` class to add GeoJSON data to a map. The class speaks for itself therefore, let's use it to add our GeoJSON features. Add the following code below the other leaflet map class layers.
+Refresh your `map.html`. It's a map of Kenya alright, but none of our `.geojson` features appear yet. We are about to change that. Leaflet offers the `L.geoJSON` class to add GeoJSON data to a map. The class name speaks for itself and therefore let's use it to add our GeoJSON features. Add the following code below the other leaflet map class layers.
 
 ```
 L.geoJSON(cities).addTo(map);
@@ -232,7 +237,7 @@ Refresh your `map.html`. The GeoJSON features should now appear at their exact l
 knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/geojson-leaflet.jpg"))
 ```
 
-How about if we made the markers more interactive, say they display popups as we did in [Chapter 3][A marker with a popup]? We want the city names to appear when the user clicks on the markers. Easy. Just create a function that does so as in the logic provided [here](https://leafletjs.com/reference.html#geojson). We customized it to our case to make sure it references to the `City` key which is part of the dictionary attached to the `properties` key. 
+How about if we made the markers more interactive? Say, like they display popups as we did in [Chapter 3][A marker with a popup]? We want the city names to appear when the user clicks on the markers. Easy. Just create a function that does so as in the logic provided [here](https://leafletjs.com/reference.html#geojson). We customized it to our case to make sure it references to the `City` key which is part of the dictionary attached to the `properties` key. 
 
 ```
 L.geoJSON(cities).bindPopup(function (layer) {
@@ -252,7 +257,7 @@ This brings us to the other two methods, that of using the **Ajax** plugin and u
 
 ### Using the Ajax Plugin
 
-As the term 'plugin' suggests, this is an extension that offers additional functions to the core Leaflet plugin. The Ajax plugin is available from this [link](https://github.com/calvinmetcalf/leaflet-ajax/archive/refs/heads/gh-pages.zip). Download it to your directory preferably within the same directory as your `map.html` and `geojson.js`. Alright. Right under the `src` for `leaflet.js` in your `map.html`. Add the following `<script>` tag. 
+As the term 'plugin' suggests, this is an extension that offers additional functions to the core Leaflet plugin. The Ajax plugin is available from this [link](https://github.com/calvinmetcalf/leaflet-ajax/archive/refs/heads/gh-pages.zip). Download it to your directory and preferably within the same directory as your `map.html` and `geojson.js`. Alright. Right under the `src` for `leaflet.js` in your `map.html`. Add the following `<script>` tag. 
 
 ```
     <head>
@@ -263,15 +268,15 @@ As the term 'plugin' suggests, this is an extension that offers additional funct
     -- snip --
 ```
 
-This file will allow you to add `.geojson` files to your Leaflet map. However, there is a catch, both the Ajax and Fetch APIs only work with GeoJson file formats saved on a web server. Based on experience, they will not work with local GeoJson files. As a work around, we saved our GeoJSON file to Github. Don't worry, here is the [link](https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/cities-geojson.geojson) to the raw `.geojson` file we had created earlier.
+This file will allow you to add `.geojson` files to your Leaflet map. However, there is a catch. Both the Ajax and Fetch APIs only work with GeoJson file formats saved on a web server. Based on experience, they will not work with local GeoJson files. As a work around, we saved our GeoJSON file to Github. For convenience, here is the [link](https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/cities-geojson.geojson) again to the raw file we had initially created from geojson.io.
 
-We shall call our GeoJSON file from Github using Ajax as shown in the code below. Please remember to comment out your `var cities` and `L.geoJSON` using `\\` because they are irrelevant in this particular case. You actually should.
+We shall call our GeoJSON file from Github using Ajax as shown in the code below. Please remember to comment out your `var cities` and `L.geoJSON` using `\\` because they are irrelevant in this particular case. 
 
 ```
 var geojsonLayer = new L.geoJson.ajax("https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/cities-geojson.geojson").addTo(map);
 ```
 
-Your map should now show the markers of our cities. If you are hawk eyed, you may have noticed that the syntax is a bit different, both from the Ajax Website and that of the `L.geoJSON` from Leaflet. Starting with the latter, we have instead used `L.geoJson` and unlike in the creators website where he used `var geojsonLayer = new L.GeoJSON.AJAX(<your-geojson-file>)` we used the following syntax: `L.geoJson.ajax()` (ajax and geoJson begin with small case). Actually, that's what worked after a lengthy web search.
+Your map should now show the markers of our cities. If you are hawk eyed, you may have noticed that the syntax for Ajax is different from that of the earlier `L.geoJSON` from Leaflet. Starting with the latter, we have instead used `L.geoJson` and unlike in the creators website where he used `var geojsonLayer = new L.GeoJSON.AJAX(<your-geojson-file>)` we used the following syntax: `L.geoJson.ajax()` (ajax and geoJson beginning with small case). Actually, that's what worked after quite a lengthy web search.
 
 Just like using `L.geoJSON`, we can also add popups after calling the `.ajax` method. 
 
@@ -282,21 +287,21 @@ var geojsonLayer = new L.geoJson.ajax("https://raw.githubusercontent.com/sammiga
     }).addTo(map);
 ```
 
-Doing so should make the city names appear on click on your leaflet map.
+Doing so should make the city names appear on clicking the markers on your leaflet map.
 
 ### Using Fetch API
 
-Fetch API is  a modern interface that allows you to make HTTP requests to servers from web browsers. In other words, it searches for a resource over the web and retrieves it, thus giving it back to you. Think of it as a dog in which you throw a saucer and tell your faithful hound "Sabre, fetch!". The dog runs after the saucer, grips it with its canines before it touches ground and quickly brings it back to you. Same case with Fetch API!
+Fetch API is  a modern interface that allows you to make HTTP requests to servers from web browsers. In other words, it searches for a resource over the web, retrieves it, and brings it to you. Think of it as a dog in which you throw a saucer and tell your faithful hound: "Sabre, fetch!". The dog runs after the saucer, grips it with its canines mid-air and quickly brings it back to you. Same case with Fetch API!
 
-We had mentioned we will show how to retreive our Github stored GeoJSON data and we shall stick to the script. We shall also attempt to explain how this `fetch` works. 
+I had mentioned I will show you how to retrieve our Github stored GeoJSON data and I shall stick to the script! I shall also attempt to explain how this *mysterious* `fetch` works. 
 
-First things first. We shall call the `fetch` function and pass it our Github url containing our GeoJSON text. Since `fetch` is an API, it retrieves data from Github.io --the server in this case--and brings it to our laptop the -- the client. Enough IT. Let's write it down.
+First things first. The `fetch` function shall be called and passed to our Github url containing our GeoJSON text. Since `fetch` is an API, it retrieves data from Github.io --the server in this case--and brings it to our laptop the -- the client. Enough IT. Let's write it down.
 
 ```
 fetch("https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/cities-geojson.geojson")
 ```
 
-Okay. Next step, once the server beams back the data to us, what do we do with it? According to [Digital Ocean](https://www.digitalocean.com/community/tutorials/js-fetch-api), the response is not *actually* the data in the original format but rather *a series of methods that can be used depending on what you want to do with the information*. We have to convert the object to a specific format. In this case, a JSON format. And to do this data conversion, the `json()` method is used. Actually, a function is created to do this. In the code below the function appears in parenthesis after `.then`.
+Okay, next step. Once the server beams back the data to us, what do we do with it? According to [Digital Ocean](https://www.digitalocean.com/community/tutorials/js-fetch-api), the response is not *actually* the data in the original format but rather *a series of methods that can be used depending on what you want to do with the information*. We have to convert the object to a specific format, in this case, JSON format. And to do this data conversion, the `json()` method is used. Actually, a function is created to do this. In the code below the function appears in parenthesis after `.then`.
 
 ```
 fetch("https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/cities-geojson.geojson")
@@ -305,7 +310,7 @@ fetch("https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/cities-
     })
 ```
 
-The above function takes the `response` argument and convert it to JSON by appending the `.json()` method to it. 
+The above function takes the `response` argument and converts it to JSON by appending the `.json()` method to it. 
 
 After converting our response to JSON, it still needs to be processed further. Processed to what? To a GeoJSON file and subsequently add it to our Leaflet Map.
 
@@ -320,7 +325,7 @@ fetch("https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/cities-
 
 ```
 
-We shall also add one more function --the `catch()` method. `catch()` is a method that returns an action if our response to the server has been rejected. We shall show the code and demonstrate it.
+We shall also add one more function --the `catch()` method. `catch()` is a method that returns an action if our response to the server has been rejected. Let's demonstrate all this.
 
 ```
 fetch("https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/cities-geojson.geojson")
@@ -336,13 +341,13 @@ fetch("https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/cities-
 
 ```
 
-To see the `catch()` in action, omit the last letter in our url so that it reads `cities-geojson.geojso`. You read it right. Just omit the letter 'n' for now for goodness sake. Reload your `map.html`. Right click the webmap page and click on **Inspect** in the small interface that appears. Head over to the console tab and see the error response. It should read like below.
+To see the `catch()` in action, omit the last letter in our url so that it reads `cities-geojson.geojso`. Yeah, you read it right. Just omit the letter 'n' for now and reload your `map.html`. Right click the webmap page and click on **Inspect** in the small interface that appears. Head over to the console tab and see the error response. It should read like in the image below.
 
 ```{r}
 knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/catch-error.jpg"))
 ```
 
-Restore the omitted letter and reload your `map.html`. Your leaflet map should have the city markers overlain just like in the case of using Ajax plugin or hardcoding the Geojson data into `var cities`. To stretch your Javascript skills further, we can shorten our code further by retaining the arguments `response`, `data` and `error` and using the arrow function `=>` to pass on the return statements, like so.
+Restore the omitted letter 'n' and reload your `map.html`. Your leaflet map should have the city markers overlain just like in the case of using Ajax plugin or hardcoding the Geojson data into `var cities`. To stretch your Javascript skills further, we can shorten our code further by retaining the arguments `response`, `data` and `error` and using the arrow function `=>` to pass on the return statements, like so:
 
 ```
 fetch("https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/cities-geojson.geojson")
@@ -357,7 +362,7 @@ fetch("https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/cities-
     })
 ```
 
-It looks cryptic but don't cry! We have only ommitted the `function()` keyword and instead added `=>` between `function()` and the curly brackets `{<code-to-run>}` which is the function body, aka where the magic happens. Just like when using Ajax, we can also add other functionalities within `L.geoJSON`. In here, and thanks to the use of template literals `(``)`, we can even add statements and refer to our GeoJson keys (and in some cases, even variables) using `${}`. Whatever is within the `${}` is executed and passed out as a string to the template literals.
+It looks cryptic but don't cry! We have only ommitted the `function()` keyword and instead added `=>` between `function()` and the curly brackets `{<code-to-run>}` which is the function body aka where the magic happens. Just like when using  Ajax, we can also add other functionalities to `L.geoJSON` within the `fetch` plugin. In here, and thanks to the use of template literals `(``)`, we can even add statements and refer to our GeoJson keys (and in some cases, even variables) using `${}`. Whatever is within the `${}` is executed and passed out as a string to the template literals.
 
 ```
 fetch("https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/cities-geojson.geojson")
@@ -374,18 +379,34 @@ fetch("https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/cities-
     })
 
 ```
-In our case, we added the HTML tag `<br>` to separate the `City` and `Population` keys from our GeoJSON. What we have are neat markers showing both the city name and population figures in two separate lines. 
 
-Phew! Enough Javascript for a day!
+In the `return` statement above, we added the HTML tag `<br>` to separate the `City` and `Population` keys from our GeoJSON. What we have are neat markers showing both the city name and population figures in two separate lines. 
 
+Enough Javascript for a day!
 
 ```{r}
 knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/city-population.jpg"))
 ```
 
-Here are the [full files](https://www.dropbox.com/scl/fo/uj45qo0gmed5xudmw1xja/h?dl=0&rlkey=09mhhfdualbs92f7wg5atgdrx).
+Here are the [full files](https://github.com/sammigachuhi/my-leaflet-project/tree/main/my-leaflet-code/chapter-5-geojson-leaflet).
 
+## Summary
 
+Who thought that simple GeoJSON files would be so complicated to load and see? Honestly, I never thought loading geojson markers would take me to codes hitherto unknown. Away with the terrible poetry, lets recap what we've learnt.
+
+- GeoJSON files are an open standard geospatial data interchange format that represents simple geographic features and their nonspatial attributes.
+
+- GeoJSON is based on the JavaScript Object Notation (JSON) file format known for its lightweight nature.
+
+- GeoJSON files are the *lingua franca* of working with spatial information on the web.
+
+- You can create a geoJson file interactively and intuitively in the [geojson.io](https://geojson.io/#map=2/0/20) website.
+
+- There are three main ways of loading a geojson file in leaflet. One is by hardcoding the dictionary of spatial attributes in JavaScript file. This was the first method that we explored.
+
+- The other method is by using the Ajax plugin. We call Ajax into leaflet by inserting the path to the package into the `<head>` element of your HTML file.
+
+- The third and last method is through use of the `fetch` API. The `fetch` API searches for a resource over the web, retrieves it, and brings it to your computer.
 
 
 

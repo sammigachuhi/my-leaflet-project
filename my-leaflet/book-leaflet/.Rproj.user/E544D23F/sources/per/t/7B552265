@@ -3,7 +3,7 @@
     "path": "D:/gachuhi/my-leaflet/book-leaflet/07-Creating_an_interactive_choropleth_map.Rmd",
     "project_path": "07-Creating_an_interactive_choropleth_map.Rmd",
     "type": "r_markdown",
-    "hash": "4227410196",
+    "hash": "2551123944",
     "contents": "",
     "dirty": false,
     "created": 1684180030321.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "387,54",
-        "scrollLine": "0"
+        "cursorPosition": "424,140",
+        "scrollLine": "415"
     },
     "folds": "",
-    "lastKnownWriteTime": 1686076694,
+    "lastKnownWriteTime": 1687811160,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1686076694687,
+    "last_content_update": 1687811160873,
     "read_only": false,
     "read_only_alternatives": []
 }
