@@ -1,0 +1,242 @@
+# Standard Website with Leaflet Project
+
+## Get the HTML Template
+
+Remember me trying to insert a leaflet map into some lousy looking website to do with GMOs back in [Chapter 4][Embedding leaflet map to an external website]? Well, there is a aphomism in my local lingo that says only the stay at home thinks that their household cooks well. It is until you challenge yourself with something new that you can prove your salt. In this chapter, we would like to demonstrate how leaflet can be added to a standard HTML website. The purpose of this chapter is to train you how you can insert a leaflet map to your company's, client's or even colleague's website if called upon. They heard you are a web mapping master. So why not?
+
+The template used in this exercise was acquired from Free CSS.com and is available [here](https://www.free-css.com/assets/files/free-css-templates/download/page291/elearning.zip). Extract the files and take a look at the html documents. That is, the `index.html`, `about.html`, `contact.html`, `courses.html`, `team.html` and `testimonial.html`. Pay special attention to the `<head>` element and the `<div>` containing the Gallery section of the website. The Gallery `<div>` looks like so:
+
+```
+<div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">Gallery</h4>
+                    <div class="row g-2 pt-2">
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/course-1.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/course-2.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/course-3.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/course-2.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/course-3.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/course-1.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+
+```
+
+Here is where the Gallery in the elearning webpage is situated.
+
+```{r}
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/gallery.jpg'))
+
+```
+
+Why do we want to change the gallery, or rather, to insert a leaflet map in its place? Well, I decided to be mean on it. Sorry, that wasn't supposed to come out of my mouth. Candidly speaking, the Gallery section only contained some pretty pictures and personally I felt replacing them with a leaflet map would serve as the best demonstration for this chapter.
+
+## Insert Leaflet to standard html website
+
+Since we want to insert a leaflet to the eLearning website, we will have to load the requisite Leaflet links and scripts to the websites `<head>` element, just like we used to do to our `map.html`. Thereafter, we shall replace the entire gallery section with just one `<div>` that references one of our many Leaflet JavaScript files. 
+
+Ready? Let's go.
+
+Assuming you are working on VSCode, copy all the plugin files for leaflet, such as `Leaflet.markercluster-master` folder and others you had extracted prior to parsing them to your javascript files. Perhaps an image will make the instructions clearer. The below files should be in your eLearning template folder.
+
+```{r}
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/elearning-plugins.jpg'))
+
+```
+
+Why are we ensuring that the leaflet plugin folders are in the same directory of our eLearning template files? YOu will know in a tid bit.
+
+Go to the `index.html` file of your eLearning template. From the `<head>` to `</head>` tags, replace the existing code with the following:
+
+```
+<meta charset="utf-8">
+    <!-- For leaflet and mobile compatibility -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>eLEARNING - eLearning HTML Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- For leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+        crossorigin=""/>
+    <link rel="stylesheet" href="Leaflet.Control.Opacity-master\Leaflet.Control.Opacity-master\dist\L.Control.Opacity.css">
+    <!-- For Leaflet marker clusters -->
+    <link rel="stylesheet" href="Leaflet.markercluster-master\Leaflet.markercluster-master\dist\MarkerCluster.Default.css">  
+
+    <!-- For leaflet scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+        crossorigin=""></script>
+    <script src="leaflet-ajax-gh-pages\dist\leaflet.ajax.js"></script>
+    <script src="leaflet-ajax-gh-pages\dist\leaflet.ajax.min.js"></script>
+    <script src="leaflet-ajax-gh-pages\example\leaflet.spin.js"></script>
+    <script src="leaflet-ajax-gh-pages\example\spin.js"></script> 
+    <script src="Leaflet.heat-gh-pages\Leaflet.heat-gh-pages\dist\leaflet-heat.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- For leaflet cluster markers -->
+    <script src="Leaflet.markercluster-1.4.1\Leaflet.markercluster-1.4.1\dist\leaflet.markercluster.js"></script>
+    <script src="Leaflet.markercluster-1.4.1\Leaflet.markercluster-1.4.1\dist\leaflet.markercluster-src.js"></script>
+    
+```
+
+We have just retained the existing code and added the leaflet `<link>` and `<script>` tags we have experienced so far -- from good old `map.html` of course. Before I forget, here's why the leaflet plugin folders have to be together with the eLearning files. When we copied our `<link>` and `<script>` tags from `map.html` they were referring to certain paths. When you paste them to the `index.html` of your eLearning template, the path's are no longer correct. They have just been placed in a destination/directory! However, if you paste the Leaflet folders you have worked with so far so that they are within the same directory, you don't have to (painfully) change the paths because they will remain *correct*.
+
+Didn't get me? Take the following `<script>` tag.
+
+```
+<script src="Leaflet.markercluster-1.4.1\Leaflet.markercluster-1.4.1\dist\leaflet.markercluster.js"></script>
+
+```
+
+It still remains correct within the `index.html` of our eLearning template because we have pasted the same `Leaflet.markercluster-1.4.1` folder in the same directory as other eLearning template file. ie. the path still refers to the same place. No adventuring to other folder inside or outside the same eLearning template directory!
+
+Another small favour. Copy and past the `cluster_markers.js` file into the eLearning template directory.
+
+Alright.
+
+A glass of water.
+
+Back to the screen.
+
+Time to add the leaflet map. Where? At the gallery section.
+
+As a reminder, it looks like this:
+
+
+```
+<div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">Gallery</h4>
+                    <div class="row g-2 pt-2">
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/course-1.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/course-2.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/course-3.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/course-2.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/course-3.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/course-1.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+
+```
+
+You may have to scroll *really* down to locate it. Right under the `<h4 class="text-white mb-3">Gallery</h4>` tag, replace it with the following code, all the to the `<div>` tag after `<img class="img-fluid bg-light p-1" src="img/course-1.jpg" alt="">`.
+
+```
+<div id="myMap"> 
+                        <script src="cluster-markers.js">
+
+                        </script>
+                    </div>
+
+```
+
+Perhaps an image will clarify matters a bit. This is how it should look:
+
+```{r}
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/div_replace.jpg'))
+
+```
+
+Also as a heads up, remember to replace the `<h4>` tags with the statement `Our Location`. It's no longer a gallery!
+
+As if that was not enough, going easy on our fingers and all, we have to set the CSS properties for our leaflet map. 
+
+## Editing the CSS
+
+Open the `style.css` file of your eLearning template in your text editor (such as VS code). The path to the CSS file is as follows:
+
+```
+elearning-template\css\style.css
+```
+
+Scroll down to the very bottom of `style.css` and paste the following CSS properites for our Leaflet map.
+
+```
+#myMap { 
+    height: 400px;
+    width: auto; 
+}
+```
+
+Remember the `#` and the text that follows references the specifically named `id` attribute in the tags of our html element. In the above case, it references the `<div>` with the ID `#myMap`.
+
+After reloading `index.html`, this is how our leaflet map looks inside the eLearning template.
+
+```{r}
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/location_elearning.jpg'))
+
+```
+
+Good.
+
+## Adding leaflet to every webpage
+
+Now click the **About**, **Courses**, **Pages/Our Team**, **Pages/Testimonial** and **Contact** web pages. Is the leaflet map there? No. It's the gallery. Imagine you will have to replace the `<head>` and Gallery `<div>` elements here as well! 
+
+"How and I don't have the time?!!" If you look at the eLearning template directory, you will see the **about**, **courses**, **contact**, **team** and **testimonial** html files. Replace their `<head>` elements and Gallery `<div>`s just as you did for `index.html`. Luckily I am your hero. This was done for you and the files are available [here](https://github.com/sammigachuhi/elearning_template_demo.git).
+
+
+## Posting the Html website to the world
+
+This chapter will leave out the details of saving your files to Github. However, here's a clue. In order to automatically render a file in Github online, make sure the root html file is named `index.html`. These are taken as the default root html files by Github. 
+
+Yours truly already saved the file to Github. Here's the link to the file [live and online](https://sammigachuhi.github.io/elearning_template_demo/). 
+
+
+
+
+
+
+
+
+
+
+
+

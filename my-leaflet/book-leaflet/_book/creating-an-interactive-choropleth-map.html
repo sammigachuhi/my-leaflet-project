@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Samuel Gachuhi Ngugi" />
 
 
-<meta name="date" content="2023-06-25" />
+<meta name="date" content="2023-06-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -218,6 +218,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.3" data-path="layer-groups-and-controls.html"><a href="layer-groups-and-controls.html#creating-the-controls"><i class="fa fa-check"></i><b>8.3</b> Creating the controls</a></li>
 <li class="chapter" data-level="8.4" data-path="layer-groups-and-controls.html"><a href="layer-groups-and-controls.html#adding-overlay-maps"><i class="fa fa-check"></i><b>8.4</b> Adding overlay maps</a></li>
 <li class="chapter" data-level="8.5" data-path="layer-groups-and-controls.html"><a href="layer-groups-and-controls.html#add-a-scale-bar"><i class="fa fa-check"></i><b>8.5</b> Add a scale bar</a></li>
+<li class="chapter" data-level="8.6" data-path="layer-groups-and-controls.html"><a href="layer-groups-and-controls.html#summary-7"><i class="fa fa-check"></i><b>8.6</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="heatmaps.html"><a href="heatmaps.html"><i class="fa fa-check"></i><b>9</b> Heatmaps</a>
 <ul>
@@ -287,12 +288,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 7</span> Creating an interactive choropleth map<a href="creating-an-interactive-choropleth-map.html#creating-an-interactive-choropleth-map" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="what-is-a-choropleth-map" class="section level2 hasAnchor" number="7.1">
 <h2><span class="header-section-number">7.1</span> What is a choropleth map?<a href="creating-an-interactive-choropleth-map.html#what-is-a-choropleth-map" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We will now move from markers to something larger than life –choropleth maps. <em>What the heck are choropleth maps?</em> You may ask. Geographers will roll their eyes over this term because they have come across it innumerable times throughout their career. For the sake new readers, however, a <a href="https://datavizcatalogue.com/methods/choropleth.html">choropleth map</a> is a map whose geographical areas or regions are colored, shaded or patterned in relation to a data variable. If during election time you have seen a map that has drapped the winning candidate in (a) particular state(s) with their party theme colors, then that’s a choropleth map. You have also most probably seen the population map of your country with various administrative units distinguished from each other by a color scheme relating to population size. Now that’s a choropleth map. In this chapter, we will create a choropleth map of Kenyan counties, and make it interactive by leveraging the area and population characteristics of each county.</p>
+<p>We will now move from markers to something larger than life –choropleth maps. <em>What the heck are choropleth maps?</em> You may ask. Geographers will roll their eyes over this term because they have come across it innumerable times throughout their career. However, for the sake of new readers, a <a href="https://datavizcatalogue.com/methods/choropleth.html">choropleth map</a> is a map whose geographical areas or regions are colored, shaded or patterned in relation to a data variable. If during election time you have seen a map that has drapped the winning candidate in (a) particular state(s) with their party theme colors, then that’s a choropleth map. Most population maps are also choropleth maps. In this chapter, we will create a choropleth map of Kenyan counties, and make it interactive by leveraging the area and population characteristics of each county.</p>
 </div>
 <div id="creating-a-choropleth-map-the-start" class="section level2 hasAnchor" number="7.2">
 <h2><span class="header-section-number">7.2</span> Creating a choropleth map: the start<a href="creating-an-interactive-choropleth-map.html#creating-a-choropleth-map-the-start" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Obviously by now, without going into much details, you can now create a basic Leaflet map blindfolded. Anyway, seeing is believing, so lets start what we have done several times over. Create another new JavaScript file called <code>interactive-choropleth.js</code>.</p>
-<p>In order to cheer you up with the monotonous opening statement in our many JavaScript files, we shall use a new tile layer.</p>
+<p>Obviously by now, without going into much details, you can now create a basic Leaflet map blindfolded. Anyway, seeing is believing, so lets start what we have done several times over. Create another new JavaScript file called <code>interactive-choropleth.js</code>. To break the monotony, we shall use a different tile layer. Remember that Leaflet has several <a href="https://leaflet-extras.github.io/leaflet-providers/preview/">tile layer servers</a>, and CyclOSM, used in this chapter is just one among many.</p>
 <pre><code>var map = L.map(&#39;myMap&#39;).setView([0.3556, 37.5833], 6.5);
 
 L.tileLayer(&#39;https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png&#39;, {
@@ -300,8 +300,7 @@ L.tileLayer(&#39;https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.p
     attribution: &#39;&lt;a href=&quot;https://github.com/cyclosm/cyclosm-cartocss-style/releases&quot; title=&quot;CyclOSM - Open Bicycle render&quot;&gt;CyclOSM&lt;/a&gt; | Map data: &amp;copy; &lt;a href=&quot;https://www.openstreetmap.org/copyright&quot;&gt;OpenStreetMap&lt;/a&gt; contributors&#39;
 }).addTo(map); // the CyclOSM tile layer available from Leaflet servers
 </code></pre>
-<p>Remember us mentioning that Leaflet has other <a href="https://leaflet-extras.github.io/leaflet-providers/preview/">tile layer servers</a>? Here we have just used another, specifically CyclOSM tile layers.</p>
-<p>Now to the big part. The GeoJSON files. We would like to mention it was quite a hustle to set up the GeoJSON file in a manner accessible with JavaScript’s Fetch API. Only when we converted the GeoJSON to json, we were able to successfully view it using <code>fetch</code>. The raw json file for our Kenyan counties which we shall use in creating a choropleth map is available from <a href="https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/counties_json.json">here</a> or <a href="https://raw.githubusercontent.com/sammigachuhi/my-leaflet-project/main/geojson_files_updated/counties_json.json">here</a>.</p>
+<p>Now to the big part –the GeoJSON files. We would like to mention it was quite a hustle to set up the GeoJSON file to be in a format accessible with JavaScript’s Fetch API. Only when we converted the GeoJSON to json were we able to successfully view it using <code>fetch</code>. The raw json file for our Kenyan counties which we shall use in creating a choropleth map is available from <a href="https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/counties_json.json">here</a> or <a href="https://raw.githubusercontent.com/sammigachuhi/my-leaflet-project/main/geojson_files_updated/counties_json.json">here</a>.</p>
 <p>Let’s fetch the counties json file.</p>
 <pre><code>fetch(&quot;https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/counties_json.json&quot;)
     .then((response) =&gt;{
@@ -334,9 +333,9 @@ function getColor(d) {
                        &#39;#ffffd4&#39;;
 }
 </code></pre>
-<p>The above function uses a question mark <code>?</code> to act as the <code>if...else</code> statement. In JavaScript terms, it is known as a <a href="https://www.freecodecamp.org/news/how-the-question-mark-works-in-javascript/">ternary operator</a>. What’s that? How does it work?</p>
+<p>The above function uses a question mark <code>?</code> to act as the <code>if...else</code> statement. In JavaScript, this is known as a <a href="https://www.freecodecamp.org/news/how-the-question-mark-works-in-javascript/">ternary operator</a>. A ternary operator? What’s that? How does it work?</p>
 <p>For a ternary operator, any statement to the right of the <code>?</code> is returned as true if it agrees with the value to the left of the <code>?</code>. Reread that last statement. If the value to the right of the <code>?</code> is false, then the value to the right of the colon <code>:</code> is returned. Also reread that last statement.</p>
-<p>If it still sounds fuzzy, the below image should help (adapted from <a href="https://www.freecodecamp.org/news/how-the-question-mark-works-in-javascript/">FreeCodeCamp</a>).</p>
+<p>If it still sounds fuzzy, the below image adapted from <a href="https://www.freecodecamp.org/news/how-the-question-mark-works-in-javascript/">FreeCodeCamp</a> should help.</p>
 <div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="creating-an-interactive-choropleth-map.html#cb89-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/ternary.png&quot;</span>))</span></code></pre></div>
 <p><img src="../images/ternary.png" width="800" /></p>
 <p>In other words, the ternary operator is a short form of writing the <code>if...else</code> statement over several lines. Look at the below code which is simply the <code>if...else</code> version of the ternary operator we’ve used above. Definitely, the ternary operator wins the day in terms of brevity.</p>
@@ -358,7 +357,7 @@ function getColor(d) {
   }
 }
 </code></pre>
-<p>Now that we’ve created the function of setting colors to our json file on Leaflet, we next also have to <em>create</em> a function that applies the color designation to the locations in the GeoJSON file itself. Luckily, we have the <strong>style</strong> <a href="https://leafletjs.com/reference.html#geojson-style">option from Leaflet</a> which is a function for styling precisely GeoJSON lines and polygons alone. We saw it in <a href="using-geojson-in-leaflet.html#using-geojson-in-leaflet">Chapter 5</a> and we shall also use it here.</p>
+<p>Now that we’ve created the function of setting colors to our json file on Leaflet, we next also have to <em>create</em> a function that applies the color designation to the locations in the GeoJSON file itself. Luckily, we have the <strong>style</strong> <a href="https://leafletjs.com/reference.html#geojson-style">option from Leaflet</a> which is a function for precisely styling GeoJSON lines and polygons alone. We saw it in <a href="using-geojson-in-leaflet.html#using-geojson-in-leaflet">Chapter 5</a> and we shall also use it here.</p>
 <pre><code>var style = ((feature)=&gt; {
     return {
         fillColor: getColor(feature.properties.Pop_Density),
@@ -391,10 +390,10 @@ function getColor(d) {
 </div>
 <div id="highlight-features" class="section level2 hasAnchor" number="7.4">
 <h2><span class="header-section-number">7.4</span> Highlight features<a href="creating-an-interactive-choropleth-map.html#highlight-features" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Going on from where we last left, we would like the choropleth map to highlight counties upon mouse hover. Additionally, upon clicking, the map should zoom the clicked county as well as display its attributes! The counties should also be reset to their default characteristics when the screen pointer hovers out.</p>
+<p>Going on from where we last left, we would like the choropleth map to highlight any county that the screen pointer (or mouse) hovers over. Additionally, upon clicking, the map should zoom to the clicked county as well as display its attributes. The counties should also be reset to their default characteristics when the screen pointer hovers out.</p>
 <p>Alright. It seems like we have our hands full.</p>
-<p>Let’s start simple.</p>
-<p>Remember the <code>fetch</code> API we had used in retrieving our json file? We will tweak it a bit by adding the <code>var geojson</code> just before calling the <code>L.geoJson</code> class. We shall parse the variable <code>var geojson</code> to the <code>L.geoJson</code> class. We shall explain why we are assigning <code>L.geoJson</code> to a variable (<code>var geojson</code>) when we know very well it can work alone, as seen in a previous chapter.</p>
+<p>Let’s start simple, and scale upwards in terms of complexity.</p>
+<p>Remember the <code>fetch</code> API we had used in retrieving our json file? We will tweak it a bit by adding the <code>var geojson</code> just before calling the <code>L.geoJson</code> class. We shall parse the variable <code>var geojson</code> to the <code>L.geoJson</code> class. We shall explain why we are assigning <code>L.geoJson</code> to a variable (<code>var geojson</code>) when we know very well it can work alone, as seen in the last two previous chapters.</p>
 <pre><code>fetch(&quot;https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/counties_json.json&quot;)
     .then((response) =&gt;{
         return response.json()
@@ -406,7 +405,7 @@ function getColor(d) {
             --snip--
     })
 </code></pre>
-<p>We had initially mentioned that we wanted the county hovered over to be highlighted. The following code will highlight with a white hue the county hovered over while also seemingly popping out above the rest.</p>
+<p>We had initially mentioned that we wanted the county hovered over to be highlighted. The following code will highlight with a white hue the county hovered over while also seemingly popping it out above the rest.</p>
 <pre><code>
         geojson = L.geoJson(data, {
             style: style,
@@ -425,15 +424,15 @@ function getColor(d) {
                 }))
                 
                 </code></pre>
-<p>The purpose of <code>on</code> method is to add an event listener. Event listeners in JavaScript are functions that run a code when the browser user interacts with the browser in a specific way. Now what <code>on</code> method does is that triggers the event listener <code>mouseover</code> for each county in our GeoJSON layer. The <code>mouseover</code> event is what makes our counties be highlighted and ‘pop’ out when a screen pointer is <em>over</em> them.</p>
-<p>Since the change in state of an element in HTML is known as an event (denoted as <code>e</code> in our case), the <code>e.target</code> property returns the element on which the event is occurring on. Since it’s a particular county in our case, we proceed to change its symbology through the parameters in <code>setStyle</code> function. Thereafter we use the <code>bringToFront</code> method to make the element in which the event has happened on to ‘pop’ out above the rest.</p>
+<p>The purpose of <code>on</code> method is to add an event listener. Event listeners in JavaScript are functions that run a code when the browser user interacts with the browser in a specific way. Now what <code>on</code> method does is that it triggers the event listener <code>mouseover</code> for each county in our GeoJSON layer. The <code>mouseover</code> event is what makes our counties be highlighted and ‘pop’ out when a screen pointer is <em>over</em> them.</p>
+<p>Since the change in state of an element in HTML is known as an event (denoted as <code>e</code> in our case), the <code>e.target</code> property returns the element on which the event is occurring on. Since it’s a particular county in our case, we proceed to change its symbology through the parameters in the <code>setStyle</code> function. Thereafter we use the <code>bringToFront</code> method to make the element in which the event has happened on to ‘pop’ out above the rest.</p>
 <p>Remember we had mentioned we also want the counties to be reset to their default status when one hovers out to some other county or outside the map altogether. The following code does the job.</p>
 <pre><code>layer.on(&#39;mouseout&#39;, function() {
                     geojson.resetStyle(this);
                 })
 </code></pre>
 <p>We use the <code>resetStyle</code> function to return the layer to default settings but there is a twist. In the <code>resetStyle</code> case, we add the argument <code>this</code> in parenthesis to refer to the element that was received. In other words, when the mouse ‘hovers out’ of a county, the element will revert to its original symbology.</p>
-<p>Before, we end this monologue, we ensure we pass the variable <code>geojson</code> to <code>resetStyle</code> function or else it won’t work. This is how it is explained in the leaflet documentation as well being the <em>modus operandi</em> for resetting styles in Leaflet as shown in this <a href="https://stackoverflow.com/questions/35072630/why-doesnt-resetstyle-of-leaflet-work-for-me">Stack Overflow question</a> and <a href="https://stackoverflow.com/questions/21029533/reset-style-on-leaflet-polygon-on-click">here</a>.</p>
+<p>Before, we end this monologue, we ensure we pass the variable <code>geojson</code> to <code>resetStyle</code> function or else it won’t work. This appears to be the <em>modus operandi</em> for resetting styles in Leaflet as shown in this <a href="https://stackoverflow.com/questions/35072630/why-doesnt-resetstyle-of-leaflet-work-for-me">Stack Overflow question</a> and <a href="https://stackoverflow.com/questions/21029533/reset-style-on-leaflet-polygon-on-click">here</a>.</p>
 <p>Finally, we mentioned we want to zoom to a particular county upon clicking it. The following code fits our map to the bounds of the particular county that was clicked. Note that <code>fitBounds</code> is parsed <code>getBounds</code> which gets the boundaries of the county clicked upon. The browser is able to identify the county clicked upon through the help of the <code>e</code> parameter and <code>e.target</code>.</p>
 <pre><code>layer.on(&#39;click&#39;, ((e) =&gt; {
                     map.fitBounds(e.target.getBounds())
@@ -482,7 +481,7 @@ function getColor(d) {
 </div>
 <div id="creating-a-custom-info" class="section level2 hasAnchor" number="7.5">
 <h2><span class="header-section-number">7.5</span> Creating a custom info<a href="creating-an-interactive-choropleth-map.html#creating-a-custom-info" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Our choropleth map works perfectly but lacks some interactivity. How about an information interface next to it? That would make our choropleth map superbly informative. Custom info controls are one way to do that. Think of a control as an UI element that allows interactivity with the map. For our choropleth map, we want the custom control info to provide details of the name, total population and population density of each county.</p>
+<p>Our choropleth map works perfectly but lacks some interactivity. How about complementing it with an information interface next to it? That would make our choropleth map both cute and informative. Custom info controls are one way to do that. Think of a control as an UI element that allows interactivity with the map. For our choropleth map, we want the custom control info to provide details of the name, total population and population density of each county.</p>
 <pre><code>// Add control
 var info = L.control();
 
@@ -502,7 +501,7 @@ info.update = function (props) {
 info.addTo(map);</code></pre>
 <p>Okay. Let’s go through the above code bit by bit as best as we (hopefully!) can.</p>
 <p><code>var info = L.control();</code></p>
-<p>The above creates a variable <code>info</code> that holds the base class <code>L.control()</code> for all map controls. For example, <code>L.control</code> class of <code>L.control.zoom</code> creates a zoom control in the map.</p>
+<p>The above creates a variable <code>info</code> that holds the base class <code>L.control()</code> for all map controls. For example, in <code>L.control.zoom</code>, the <code>L.control</code> class creates a zoom control in the map.</p>
 <pre><code>info.onAdd = function (map) {
     this.div = L.DomUtil.create(&#39;div&#39;, &#39;info&#39;);
     this.update();
@@ -511,7 +510,7 @@ info.addTo(map);</code></pre>
 <p>The above code returns the DOM element for the control and creates a <code>&lt;div&gt;</code> of class <code>info</code>. This is done through the help of <code>L.DomUtil</code> which, according to the Leaflet website, provides utility functions to work with the DOM<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. Actually, this new <code>&lt;div&gt;</code> of class <code>info</code> is created when you fire up your browser but will only exist in your browser. Don’t expect it to magically appear in your static <code>map.html</code> file.</p>
 <div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="creating-an-interactive-choropleth-map.html#cb102-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/div-info-element.jpg&#39;</span>))</span></code></pre></div>
 <p><img src="../images/div-info-element.jpg" width="541" /></p>
-<p>Trust me it wasn’t there before introducing the function containing <code>L.DomUtil</code>. What <code>this.update()</code> does is simply update the content of the custom info control with the attributes of every newly clicked county.</p>
+<p>Trust me it wasn’t there before introducing the function containing <code>L.DomUtil</code>. Moving on forward, <code>this.update()</code> simply updates the content of the custom info control with the attributes of every newly clicked county.</p>
 <pre><code>// Method that we will use to update the control based on feature properties passed
 info.update = function (props) {
     this.div.innerHTML = &#39;&lt;h4&gt;Kenya Population Density&lt;/h4&gt;&#39; + (props ? 
@@ -520,11 +519,10 @@ info.update = function (props) {
 };
 
 info.addTo(map);</code></pre>
-<p>The above function updates the Leaflet map with the name, population and population density for each county. This function is passed to the variable <code>info.update</code> and thereafter added to the map using the method <code>addTo</code>.</p>
-<p>But there is a monster called the <code>this.div.innerHTML</code>. The purpose of <code>innerHtml</code> is to return the HTML content of an element. Since our map is rendered in a HTML page, the features are returned as HTML.</p>
+<p>The above function updates the Leaflet map with the name, population and population density for each county. This function is passed to the variable <code>info.update</code> and thereafter added to the map using the method <code>addTo</code>. Inside this function exists the <code>this.div.innerHTML</code>. The purpose of <code>innerHtml</code> is to return the HTML content of an element. Since our map is rendered in a HTML page, the features are returned as HTML.</p>
 <p>Because the custom control info is a UI element, we need to set up its symbology in our CSS file. Paste the following to your <code>styles.css</code> file.</p>
 <p>You may ask, “I thought I don’t have to put CSS styles to Leaflet because it seems to come with all batteries included, style ’n all”.</p>
-<p>I get your point, but remember we created a new <code>&lt;div&gt;</code> called <code>info</code> that appears when our browser is powered up, right? And since this <code>&lt;div class="info ..."&gt;</code> must appear when the browser is powered up, CSS styles must be used to define its looks.</p>
+<p>I get your point, but remember we created a new <code>&lt;div&gt;</code> called <code>info</code> that appears when our browser is powered up. And since this <code>&lt;div class="info ..."&gt;</code> must appear when the browser is powered up, CSS styles must be used to define its looks.</p>
 <pre><code>.info {
     padding: 6px 8px;
     font: 14px/16px Arial, Helvetica, sans-serif;
@@ -563,8 +561,8 @@ legend.addTo(map);
 </code></pre>
 <p>Obviously the position of our legend is set using the <code>position</code> option in <code>L.control({position: 'bottomright'});</code>.</p>
 <p>Apart from the other elements we discussed in our custom control info, we set the color interval of our legend through the <code>grades</code> array. The <code>for</code> loop that follows iterates through the grades array creating a color box for each interval.</p>
-<p>Honestly, the for loop looks quite complicated and has been pasted as is from the leaflet choropleth tutorial. What <code>&amp;ndash</code> brings back is a hyphen (-). That’s how a hyphen is written in HTML. But anyway, getting back to the <code>for</code> loop, it essentially creates a range within each interval, such as 0 - 25, 25 - 50 and so on. This takes place after the <code>?</code> ternary operator which was discussed earlier. Once it reaches the end of the loop, that is, it goes out of the range, the <code>+</code> is appended to the last value from our <code>grades</code> array. This last bit is made possible due to the <code>:</code> which returns values that are false in JavaScript.</p>
-<p>The legend also needs some CSS properties or else it will not appear. The <code>&lt;div&gt;</code> class of <code>info legend</code> is also created when the browser fires up. You may be wondering why <code>info legend</code> and not just <code>legend</code>. Well Mr/Mrs/Miss Golden Eye, the properties of <code>.info</code> class, such as background color and others are also inherited by those of the legend. We also specify the CSS properties for the color intervals and text through the <code>.legend i</code> class.</p>
+<p>Honestly, the for loop looks quite complicated and has been pasted as is from the Leaflet choropleth tutorial. The strangely looking <code>&amp;ndash</code> within the <code>for</code> loop of creating colors is simply how a hyphen (-) is written in HTML. But anyway, getting back to the <code>for</code> loop, it essentially creates a range within each interval, such as 0 - 25, 25 - 50 and so on. This takes place after the <code>?</code> ternary operator which was discussed earlier. Once it reaches the end of the loop, that is, it goes out of the range, the <code>+</code> is appended to the last value from our <code>grades</code> array. This last bit is made possible due to the <code>:</code> which returns values that are false in JavaScript.</p>
+<p>The legend also needs its CSS properties or else it will not appear in the browser. The <code>&lt;div&gt;</code> class of <code>info legend</code> is also created when the browser fires up. You may be wondering why <code>info legend</code> and not just <code>legend</code>. Well, Golden Eye, the properties of <code>.info</code> class, such as background color and others are also inherited by the <code>legend</code> class by virtue of the browser reading the CSS in a top-down format. The <code>legend</code> class will only override those properties that also appear in the <code>info legend</code> class. We also specify the CSS properties for the color intervals and text through the <code>.legend i</code> class.</p>
 <p>Here’s the CSS anyway.</p>
 <pre><code>.legend {
     line-height: 18px;
@@ -589,14 +587,14 @@ legend.addTo(map);
 <h2><span class="header-section-number">7.7</span> Summary<a href="creating-an-interactive-choropleth-map.html#summary-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This chapter was long and hard if not confusing. Nevertheless, here’s our take home from this chapter:</p>
 <ul>
-<li><p>Choropleth maps are maps whose whose geographical areas or regions are colored, shaded or patterned in relation to a data variable. An example is a map categrozing population size of its administrative units by different color hues.</p></li>
-<li><p>Ternary operators are short forms of the <code>if...else</code> statements. In a ternary operator, any statement to the right of the <code>?</code> is returned as true if it agrees with the value to the left of the <code>?</code> whereas
-any value to the right of the colon <code>:</code> is return if the value after the <code>?</code> is false.</p></li>
-<li><p><code>style</code> is a special key in the <code>L.geoJson</code> class that applies custom styles to each layer in the geojson file.</p></li>
+<li><p>Choropleth maps are maps whose whose geographical areas or regions are colored, shaded or patterned in relation to a data variable.Good examples of choropleth maps are national population maps.</p></li>
+<li><p>Ternary operators are short forms of the <code>if...else</code> statement. In a ternary operator, any statement to the right of the <code>?</code> is returned as true if it agrees with the value to the left of the <code>?</code>. Conversely,
+any value to the right of the colon <code>:</code> is returned if the value after the <code>?</code> is false.</p></li>
+<li><p><code>style</code> is a special key in the <code>L.geoJson</code> class that applies custom styles to each layer in the GeoJSON file.</p></li>
 <li><p><code>mouseover</code> is an event listener that triggers a certain action when
 a screen pointer is over a certain feature.</p></li>
 <li><p>We can reset features back to their defaults using <code>resetStyle</code>.</p></li>
-<li><p>The <code>L.control()</code> class is the base class for enabling most Leaflet controls, such as zooming.</p></li>
+<li><p>The <code>L.control()</code> class is the base class for enabling most Leaflet controls. For example, the <code>L.control.zoom</code> creates the zoom controls.</p></li>
 <li><p><code>L.control()</code> can also be used to customize the appearance and information displayed by the legend.</p></li>
 </ul>
 

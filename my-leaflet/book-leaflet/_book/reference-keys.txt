@@ -51,6 +51,7 @@ set-up-the-basemaps
 creating-the-controls
 adding-overlay-maps
 add-a-scale-bar
+summary-7
 heatmaps
 what-are-heatmaps
 loading-the-heatmap-plugin
