@@ -56,6 +56,7 @@ heatmaps
 what-are-heatmaps
 loading-the-heatmap-plugin
 creating-the-leaflet-heatmap
+summary-8
 cluster-to-reduce-the-clutter
 a-map-full-of-clutter
 preparations
