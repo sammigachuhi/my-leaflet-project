@@ -62,6 +62,7 @@ a-map-full-of-clutter
 preparations
 behold-a-cluster-marker-map
 additional-features-of-cluster-marker-plugin
+summary-9
 mobile-friendly-webapps
 the-basemaps
 adding-the-features
