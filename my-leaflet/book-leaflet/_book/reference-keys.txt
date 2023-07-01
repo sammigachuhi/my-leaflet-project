@@ -64,11 +64,13 @@ behold-a-cluster-marker-map
 additional-features-of-cluster-marker-plugin
 summary-9
 mobile-friendly-webapps
+the-need-for-mobile-friendly-web-apps
 the-basemaps
 adding-the-features
 zooming-to-mobile-users-location
 add-marker-to-mobile-users-geolocation
 the-mobile-webmap-app-in-action
+summary-10
 web-map-service-layers
 what-are-web-map-service-wms-layers
 loading-a-wms-server
