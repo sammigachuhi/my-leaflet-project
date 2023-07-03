@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Samuel Gachuhi Ngugi" />
 
 
-<meta name="date" content="2023-07-01" />
+<meta name="date" content="2023-07-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -250,6 +250,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.1" data-path="web-map-service-layers.html"><a href="web-map-service-layers.html#what-are-web-map-service-wms-layers"><i class="fa fa-check"></i><b>12.1</b> What are Web Map Service (WMS) Layers?</a></li>
 <li class="chapter" data-level="12.2" data-path="web-map-service-layers.html"><a href="web-map-service-layers.html#loading-a-wms-server"><i class="fa fa-check"></i><b>12.2</b> Loading a WMS server</a></li>
 <li class="chapter" data-level="12.3" data-path="web-map-service-layers.html"><a href="web-map-service-layers.html#adding-wms-to-layer-control"><i class="fa fa-check"></i><b>12.3</b> Adding WMS to layer control</a></li>
+<li class="chapter" data-level="12.4" data-path="web-map-service-layers.html"><a href="web-map-service-layers.html#summary-11"><i class="fa fa-check"></i><b>12.4</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="standard-website-with-leaflet-project.html"><a href="standard-website-with-leaflet-project.html"><i class="fa fa-check"></i><b>13</b> Standard Website with Leaflet Project</a>
 <ul>
@@ -293,11 +294,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="what-are-web-map-service-wms-layers" class="section level2 hasAnchor" number="12.1">
 <h2><span class="header-section-number">12.1</span> What are Web Map Service (WMS) Layers?<a href="web-map-service-layers.html#what-are-web-map-service-wms-layers" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A <a href="https://gisgeography.com/web-mapping-services-wms/">Web Mapping Service (WMS)</a> consists of geospatial data hosted through the internet with standards set by the Open Geospatial Consortium (OGS).</p>
-<p>A WMS enables the exchange of spatial information and viewing over the web in the form of a map or image to your browser. The most common formats of WMS are WMS, WFS, WCS, WPS, WMTS, and WCPS. WMS is the most used. It offers basic panning, zooming and somewhat quick rendering speeds.</p>
+<p>A WMS enables the exchange of spatial information and viewing over the web in the form of a map or image to your browser. The most common formats of Web Mapping Services are Web Map Services (WMS), Web Feature Services (WFS), Web Coverage Services (WCS), Web Processing Services (WPS), Web Map Tile Services (WMTS), and Web Coverage Processing Services (WCPS). However, the Web Map Services (WMS) layer is the most used. It offers basic panning, zooming and somewhat quick rendering speeds.</p>
 </div>
 <div id="loading-a-wms-server" class="section level2 hasAnchor" number="12.2">
 <h2><span class="header-section-number">12.2</span> Loading a WMS server<a href="web-map-service-layers.html#loading-a-wms-server" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To load a WMS layer into leaflet, we use the <code>L.tileLayer.wms</code> class. As simple as that. So let’s set up our Leaflet map. Create a new JavaScript file named <code>wms_layers.js</code> and insert the following code.</p>
+<p>To load a WMS layer into leaflet, we use the <code>L.tileLayer.wms</code> class. As simple as that. So let’s set up our Leaflet map. Create a new JavaScript file named <code>wms_layers.js</code> and insert the following code:</p>
 <pre><code>let map = L.map(&#39;myMap&#39;).setView([-1.295287148, 36.81984753], 7);
 
 let tileLayer = L.tileLayer(&#39;https://tile.openstreetmap.org/{z}/{x}/{y}.png&#39;, {
@@ -305,7 +306,7 @@ let tileLayer = L.tileLayer(&#39;https://tile.openstreetmap.org/{z}/{x}/{y}.png&
     attribution: &#39;&amp;copy; &lt;a href=&quot;http://www.openstreetmap.org/copyright&quot;&gt;OpenStreetMap&lt;/a&gt;&#39;
 });
 </code></pre>
-<p>We have added an OSM layer because we want to create a layer control widget that also contains WMS layers so that you can switch between both for either spatial awareness or informational purposes (WMS layer). Without further ado, let’s add two WMS layers.</p>
+<p>We have added an OSM layer because we want to create a layer control widget that also contains WMS layers so that you can switch between an Open Street Map (OSM) layer and a WMS. For this exercise, we shall add two WMS layers.</p>
 <pre><code>let wmsLayerTopo = L.tileLayer.wms(&#39;https://www.gmrt.org/services/mapserver/wms_merc_mask?&#39;, {
     layers: &#39;topo&#39;,
     format: &#39;image/png&#39;
@@ -319,25 +320,35 @@ let wmsLayerTopomask = L.tileLayer.wms(&#39;https://www.gmrt.org/services/mapser
 </div>
 <div id="adding-wms-to-layer-control" class="section level2 hasAnchor" number="12.3">
 <h2><span class="header-section-number">12.3</span> Adding WMS to layer control<a href="web-map-service-layers.html#adding-wms-to-layer-control" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Let’s insert the above web map layers into a JavaScript object before passing it to a layer control.</p>
+<p>Let’s insert the above web map layers into a JavaScript object before parsing it to a layer control.</p>
 <pre><code>var basemaps = {
     OSM: tileLayer,
     Topo: wmsLayerTopo,
     Topo_mask: wmsLayerTopomask,
 }
 </code></pre>
-<p>Now let’s parse the object into a control. If you did <a href="layer-groups-and-controls.html#layer-groups-and-controls">Chapter 8</a> then this should be familiar.</p>
+<p>Now let’s parse the object into a control. If you did <a href="layer-groups-and-controls.html#layer-groups-and-controls">Chapter 8</a> then this should look familiar.</p>
 <pre><code>L.control.layers(basemaps).addTo(map);
 
 basemaps.Topo.addTo(map);  // To have the Topo as the default map layer
 </code></pre>
-<p>The last line <code>basemaps.Topo.addTo(map)</code> serves to set up the default layer that will appear when the map is loaded. In this case it is the variable set to <code>Topo</code> key in <code>var basemaps</code>. If this last line is omitted, the leaflet map will load alright, however, it will be blank canvas unless one of the radioitems is clicked.</p>
+<p>The last line <code>basemaps.Topo.addTo(map)</code> serves to set up the default layer that will appear when the map is loaded. In this case it is the <code>Topo</code> key in <code>var basemaps</code>. If this last line is omitted, Leaflet will only show a blank canvas unless one of the radioitems is selected.</p>
 <div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="web-map-service-layers.html#cb168-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/wms_layer.jpg&#39;</span>))</span></code></pre></div>
 <p><img src="../images/wms_layer.jpg" width="960" /></p>
 <p>And that’s it!</p>
-<p>We wanted to introduce some African-based WMS layers, of which <a href="https://training.digitalearthafrica.org/en/latest/OWS_tutorial.html">Digital Earth Africa</a> provides a couple, however, these WMS layers could only be loaded in Qgis. Subsequent attempts to load them in Leaflet even after carefully following the official documents yielded no fruits.</p>
+<p>Even though we wanted to work with African-based WMS layers, of which <a href="https://training.digitalearthafrica.org/en/latest/OWS_tutorial.html">Digital Earth Africa</a> provides plenty of them, despite all efforts, it was not possible to display them in Leaflet. This is despite these WMS layers being easily accessible in Qgis and following their documentation of viewing them using Leaflet.</p>
 <p>Interested in getting other WMS layers? Go to <a href="https://directory.spatineo.com/">Spartineo.com</a>.</p>
-<p>The files used in these very short chapter are available <a href="https://www.dropbox.com/scl/fo/n6oiyw21axiqxpdcfeqnp/h?dl=0&amp;rlkey=jr8f6g5mx5i83kpjofv56hk5g">here</a>.</p>
+<p>The files used in these very short chapter are available <a href="https://github.com/sammigachuhi/my-leaflet-project/tree/main/my-leaflet-code/chapter-12-Web_map_service_layers">here</a>.</p>
+</div>
+<div id="summary-11" class="section level2 hasAnchor" number="12.4">
+<h2><span class="header-section-number">12.4</span> Summary<a href="web-map-service-layers.html#summary-11" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A Web Mapping Service (WMS) layer in many respects looks and acts like a basemap. Just like Open Street Map and other similar servers, WMS layers host data through the internet. Here are the take homes from this chapter.</p>
+<ul>
+<li><p>A Web Mapping Service consists of geospatial data hosted through the internet with standards set by the Open Geospatial Consortium (OGS).</p></li>
+<li><p>The most common formats of Web Mapping Services are Web Map Services (WMS), Web Feature Services (WFS), Web Coverage Services (WCS), Web Processing Services (WPS), Web Map Tile Services (WMTS), and Web Coverage Processing Services (WCPS).</p></li>
+<li><p>The <code>L.tileLayer.wms</code> class is used to load WMS layers into Leaflet.</p></li>
+<li><p>Just like any other basemap, one can parse WMS layer into Leaflet controls, as seen with <code>wmsLayerTopo</code> and <code>wmsLayerTopomask</code>.</p></li>
+</ul>
 
 </div>
 </div>
