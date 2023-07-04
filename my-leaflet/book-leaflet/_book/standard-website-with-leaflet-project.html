@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Samuel Gachuhi Ngugi" />
 
 
-<meta name="date" content="2023-07-03" />
+<meta name="date" content="2023-07-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -255,10 +255,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13" data-path="standard-website-with-leaflet-project.html"><a href="standard-website-with-leaflet-project.html"><i class="fa fa-check"></i><b>13</b> Standard Website with Leaflet Project</a>
 <ul>
 <li class="chapter" data-level="13.1" data-path="standard-website-with-leaflet-project.html"><a href="standard-website-with-leaflet-project.html#get-the-html-template"><i class="fa fa-check"></i><b>13.1</b> Get the HTML Template</a></li>
-<li class="chapter" data-level="13.2" data-path="standard-website-with-leaflet-project.html"><a href="standard-website-with-leaflet-project.html#insert-leaflet-to-standard-html-website"><i class="fa fa-check"></i><b>13.2</b> Insert Leaflet to standard html website</a></li>
+<li class="chapter" data-level="13.2" data-path="standard-website-with-leaflet-project.html"><a href="standard-website-with-leaflet-project.html#embed-leaflet-to-standard-html-website"><i class="fa fa-check"></i><b>13.2</b> Embed Leaflet to standard html website</a></li>
 <li class="chapter" data-level="13.3" data-path="standard-website-with-leaflet-project.html"><a href="standard-website-with-leaflet-project.html#editing-the-css"><i class="fa fa-check"></i><b>13.3</b> Editing the CSS</a></li>
-<li class="chapter" data-level="13.4" data-path="standard-website-with-leaflet-project.html"><a href="standard-website-with-leaflet-project.html#adding-leaflet-to-every-webpage"><i class="fa fa-check"></i><b>13.4</b> Adding leaflet to every webpage</a></li>
+<li class="chapter" data-level="13.4" data-path="standard-website-with-leaflet-project.html"><a href="standard-website-with-leaflet-project.html#embedding-leaflet-to-every-webpage"><i class="fa fa-check"></i><b>13.4</b> Embedding Leaflet to every webpage</a></li>
 <li class="chapter" data-level="13.5" data-path="standard-website-with-leaflet-project.html"><a href="standard-website-with-leaflet-project.html#posting-the-html-website-to-the-world"><i class="fa fa-check"></i><b>13.5</b> Posting the Html website to the world</a></li>
+<li class="chapter" data-level="13.6" data-path="standard-website-with-leaflet-project.html"><a href="standard-website-with-leaflet-project.html#summary-12"><i class="fa fa-check"></i><b>13.6</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="leaflet-in-esri.html"><a href="leaflet-in-esri.html"><i class="fa fa-check"></i><b>14</b> Leaflet in ESRI</a>
 <ul>
@@ -293,8 +294,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 13</span> Standard Website with Leaflet Project<a href="standard-website-with-leaflet-project.html#standard-website-with-leaflet-project" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="get-the-html-template" class="section level2 hasAnchor" number="13.1">
 <h2><span class="header-section-number">13.1</span> Get the HTML Template<a href="standard-website-with-leaflet-project.html#get-the-html-template" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Remember me trying to insert a leaflet map into some lousy looking website to do with GMOs back in <a href="embedding-leaflet-map-to-an-external-website.html#embedding-leaflet-map-to-an-external-website">Chapter 4</a>? Well, there is a aphomism in my local lingo that says only the stay at home thinks that their household cooks well. It is until you challenge yourself with something new that you can prove your salt. In this chapter, we would like to demonstrate how leaflet can be added to a standard HTML website. The purpose of this chapter is to train you how you can insert a leaflet map to your company’s, client’s or even colleague’s website if called upon. They heard you are a web mapping master. So why not?</p>
-<p>The template used in this exercise was acquired from Free CSS.com and is available <a href="https://www.free-css.com/assets/files/free-css-templates/download/page291/elearning.zip">here</a>. Extract the files and take a look at the html documents. That is, the <code>index.html</code>, <code>about.html</code>, <code>contact.html</code>, <code>courses.html</code>, <code>team.html</code> and <code>testimonial.html</code>. Pay special attention to the <code>&lt;head&gt;</code> element and the <code>&lt;div&gt;</code> containing the Gallery section of the website. The Gallery <code>&lt;div&gt;</code> looks like so:</p>
+<p>Back in <a href="embedding-leaflet-map-to-an-external-website.html#embedding-leaflet-map-to-an-external-website">Chapter 4</a> we inserted a Leaflet map into a pale looking website. Taking that exercises a little further, we would like to demonstrate how Leaflet can be added to a standard, professional looking HTML website. This chapter will train you how to insert a Leaflet map into your company’s, client’s or even colleague’s website.</p>
+<p>The template used in this exercise was acquired from <a href="https://www.free-css.com/free-css-templates">Free CSS.com</a> and is available <a href="https://www.free-css.com/assets/files/free-css-templates/download/page291/elearning.zip">here</a>. Extract the files and take a look at the HTML documents. That is, the <code>index.html</code>, <code>about.html</code>, <code>contact.html</code>, <code>courses.html</code>, <code>team.html</code> and <code>testimonial.html</code>. Pay special attention to the <code>&lt;head&gt;</code> element and the <code>&lt;div&gt;</code> containing the Gallery section of the website. The Gallery <code>&lt;div&gt;</code> looks like so:</p>
 <pre><code>&lt;div class=&quot;col-lg-3 col-md-6&quot;&gt;
                     &lt;h4 class=&quot;text-white mb-3&quot;&gt;Gallery&lt;/h4&gt;
                     &lt;div class=&quot;row g-2 pt-2&quot;&gt;
@@ -319,19 +320,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
                     &lt;/div&gt;
                 &lt;/div&gt;
 </code></pre>
-<p>Here is where the Gallery in the elearning webpage is situated.</p>
+<p>Here is where the Gallery in the eLearning webpage is situated.</p>
 <div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="standard-website-with-leaflet-project.html#cb170-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/gallery.jpg&#39;</span>))</span></code></pre></div>
 <p><img src="../images/gallery.jpg" width="941" /></p>
-<p>Why do we want to change the gallery, or rather, to insert a leaflet map in its place? Well, I decided to be mean on it. Sorry, that wasn’t supposed to come out of my mouth. Candidly speaking, the Gallery section only contained some pretty pictures and personally I felt replacing them with a leaflet map would serve as the best demonstration for this chapter.</p>
+<p>Why do we want to change the gallery, or rather, to insert a Leaflet map in its place? It seemed a good idea to replace the pretty looking pictures with a webmap since this website is for demonstration purposes only.</p>
 </div>
-<div id="insert-leaflet-to-standard-html-website" class="section level2 hasAnchor" number="13.2">
-<h2><span class="header-section-number">13.2</span> Insert Leaflet to standard html website<a href="standard-website-with-leaflet-project.html#insert-leaflet-to-standard-html-website" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Since we want to insert a leaflet to the eLearning website, we will have to load the requisite Leaflet links and scripts to the websites <code>&lt;head&gt;</code> element, just like we used to do to our <code>map.html</code>. Thereafter, we shall replace the entire gallery section with just one <code>&lt;div&gt;</code> that references one of our many Leaflet JavaScript files.</p>
+<div id="embed-leaflet-to-standard-html-website" class="section level2 hasAnchor" number="13.2">
+<h2><span class="header-section-number">13.2</span> Embed Leaflet to standard html website<a href="standard-website-with-leaflet-project.html#embed-leaflet-to-standard-html-website" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Since we want to integrate a Leaflet map to the eLearning website, we will have to load the requisite Leaflet links and scripts to the eLearning dummy website’s <code>&lt;head&gt;</code> element, just like we used to do to our <code>map.html</code>. Thereafter, we shall replace the entire gallery section with just one <code>&lt;div&gt;</code> that references one of our many Leaflet JavaScript files.</p>
 <p>Ready? Let’s go.</p>
-<p>Assuming you are working on VSCode, copy all the plugin files for leaflet, such as <code>Leaflet.markercluster-master</code> folder and others you had extracted prior to parsing them to your javascript files. Perhaps an image will make the instructions clearer. The below files should be in your eLearning template folder.</p>
+<p>Assuming you are working on VSCode, copy all the plugin files for Leaflet, such as the <code>Leaflet.markercluster-master</code> folder and others you have extracted at one point or another in previous chapters. The names of these folders are enclosed with a red border in the image below.</p>
 <div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="standard-website-with-leaflet-project.html#cb171-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/elearning-plugins.jpg&#39;</span>))</span></code></pre></div>
 <p><img src="../images/elearning-plugins.jpg" width="493" /></p>
-<p>Why are we ensuring that the leaflet plugin folders are in the same directory of our eLearning template files? YOu will know in a tid bit.</p>
+<p>Why are we ensuring that the Leaflet plugin folders are in the same directory as our eLearning template files? It is because we want to avoid the need of tinkering with the relative path, which has to change if the (plugin) folders were located in a different directory from our eLearning website’s HTML files.</p>
 <p>Go to the <code>index.html</code> file of your eLearning template. From the <code>&lt;head&gt;</code> to <code>&lt;/head&gt;</code> tags, replace the existing code with the following:</p>
 <pre><code>&lt;meta charset=&quot;utf-8&quot;&gt;
     &lt;!-- For leaflet and mobile compatibility --&gt;
@@ -386,15 +387,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     &lt;script src=&quot;Leaflet.markercluster-1.4.1\Leaflet.markercluster-1.4.1\dist\leaflet.markercluster.js&quot;&gt;&lt;/script&gt;
     &lt;script src=&quot;Leaflet.markercluster-1.4.1\Leaflet.markercluster-1.4.1\dist\leaflet.markercluster-src.js&quot;&gt;&lt;/script&gt;
     </code></pre>
-<p>We have just retained the existing code and added the leaflet <code>&lt;link&gt;</code> and <code>&lt;script&gt;</code> tags we have experienced so far – from good old <code>map.html</code> of course. Before I forget, here’s why the leaflet plugin folders have to be together with the eLearning files. When we copied our <code>&lt;link&gt;</code> and <code>&lt;script&gt;</code> tags from <code>map.html</code> they were referring to certain paths. When you paste them to the <code>index.html</code> of your eLearning template, the path’s are no longer correct. They have just been placed in a destination/directory! However, if you paste the Leaflet folders you have worked with so far so that they are within the same directory, you don’t have to (painfully) change the paths because they will remain <em>correct</em>.</p>
-<p>Didn’t get me? Take the following <code>&lt;script&gt;</code> tag.</p>
-<pre><code>&lt;script src=&quot;Leaflet.markercluster-1.4.1\Leaflet.markercluster-1.4.1\dist\leaflet.markercluster.js&quot;&gt;&lt;/script&gt;
-</code></pre>
-<p>It still remains correct within the <code>index.html</code> of our eLearning template because we have pasted the same <code>Leaflet.markercluster-1.4.1</code> folder in the same directory as other eLearning template file. ie. the path still refers to the same place. No adventuring to other folder inside or outside the same eLearning template directory!</p>
-<p>Another small favour. Copy and past the <code>cluster_markers.js</code> file into the eLearning template directory.</p>
+<p>The first alteration we will do to our eLearning website’s HTML folder is to add the relevant Leaflet <code>&lt;link&gt;</code> and <code>&lt;script&gt;</code> tags. These <code>&lt;link&gt;</code> and <code>&lt;script&gt;</code> tags have just been copy pasted from the <code>map.html</code> file we have been dealing with so far.</p>
+<p>Now that we have the requisite <code>&lt;link&gt;</code> and <code>&lt;script&gt;</code> tags to embed Leaflet into our eLeaflet demo website, we only need to insert the path to our JavaScript file containing the Leaflet code. The JavaScript is of course responsible for firing up the Leaflet map in our eLearning website. For this exercise, we shall use the <code>cluster_markers.js</code> file we have had so much fun with. Copy paste this file into the same folder containing your eLeaflet website’s folders.</p>
 <p>Alright.</p>
-<p>A glass of water.</p>
-<p>Back to the screen.</p>
 <p>Time to add the leaflet map. Where? At the gallery section.</p>
 <p>As a reminder, it looks like this:</p>
 <pre><code>&lt;div class=&quot;col-lg-3 col-md-6&quot;&gt;
@@ -428,36 +423,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
                         &lt;/script&gt;
                     &lt;/div&gt;
 </code></pre>
-<p>Perhaps an image will clarify matters a bit. This is how it should look:</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="standard-website-with-leaflet-project.html#cb176-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/div_replace.jpg&#39;</span>))</span></code></pre></div>
+<p>Perhaps an image will clarify matters a bit. This is where you are to insert the path to your <code>cluster-markers.js</code> file.</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="standard-website-with-leaflet-project.html#cb175-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/div_replace.jpg&#39;</span>))</span></code></pre></div>
 <p><img src="../images/div_replace.jpg" width="756" /></p>
-<p>Also as a heads up, remember to replace the <code>&lt;h4&gt;</code> tags with the statement <code>Our Location</code>. It’s no longer a gallery!</p>
-<p>As if that was not enough, going easy on our fingers and all, we have to set the CSS properties for our leaflet map.</p>
+<p>Also as a heads up, remember to replace the <code>&lt;h4&gt;</code> tags with the statement <code>Our Location</code>. It’s no longer a gallery but a webmap!</p>
+<p>As if that was not enough, we also have to set the CSS properties for our leaflet map.</p>
 </div>
 <div id="editing-the-css" class="section level2 hasAnchor" number="13.3">
 <h2><span class="header-section-number">13.3</span> Editing the CSS<a href="standard-website-with-leaflet-project.html#editing-the-css" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Open the <code>style.css</code> file of your eLearning template in your text editor (such as VS code). The path to the CSS file is as follows:</p>
 <pre><code>elearning-template\css\style.css</code></pre>
-<p>Scroll down to the very bottom of <code>style.css</code> and paste the following CSS properites for our Leaflet map.</p>
+<p>Scroll down to the very bottom of <code>style.css</code> and paste the following CSS properties for our Leaflet map.</p>
 <pre><code>#myMap { 
     height: 400px;
     width: auto; 
 }</code></pre>
-<p>Remember the <code>#</code> and the text that follows references the specifically named <code>id</code> attribute in the tags of our html element. In the above case, it references the <code>&lt;div&gt;</code> with the ID <code>#myMap</code>.</p>
+<p>Remember the <code>#</code> and the text that follows references the specific name of that <code>ID</code> attribute from the countless HTML tags in <code>index.html</code>. The above CSS selector references the <code>&lt;div&gt;</code> with the ID <code>#myMap</code>.</p>
 <p>After reloading <code>index.html</code>, this is how our leaflet map looks inside the eLearning template.</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="standard-website-with-leaflet-project.html#cb179-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/location_elearning.jpg&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="standard-website-with-leaflet-project.html#cb178-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/location_elearning.jpg&#39;</span>))</span></code></pre></div>
 <p><img src="../images/location_elearning.jpg" width="946" /></p>
 <p>Good.</p>
 </div>
-<div id="adding-leaflet-to-every-webpage" class="section level2 hasAnchor" number="13.4">
-<h2><span class="header-section-number">13.4</span> Adding leaflet to every webpage<a href="standard-website-with-leaflet-project.html#adding-leaflet-to-every-webpage" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Now click the <strong>About</strong>, <strong>Courses</strong>, <strong>Pages/Our Team</strong>, <strong>Pages/Testimonial</strong> and <strong>Contact</strong> web pages. Is the leaflet map there? No. It’s the gallery. Imagine you will have to replace the <code>&lt;head&gt;</code> and Gallery <code>&lt;div&gt;</code> elements here as well!</p>
-<p>“How and I don’t have the time?!!” If you look at the eLearning template directory, you will see the <strong>about</strong>, <strong>courses</strong>, <strong>contact</strong>, <strong>team</strong> and <strong>testimonial</strong> html files. Replace their <code>&lt;head&gt;</code> elements and Gallery <code>&lt;div&gt;</code>s just as you did for <code>index.html</code>. Luckily I am your hero. This was done for you and the files are available <a href="https://github.com/sammigachuhi/elearning_template_demo.git">here</a>.</p>
+<div id="embedding-leaflet-to-every-webpage" class="section level2 hasAnchor" number="13.4">
+<h2><span class="header-section-number">13.4</span> Embedding Leaflet to every webpage<a href="standard-website-with-leaflet-project.html#embedding-leaflet-to-every-webpage" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now click the <strong>About</strong>, <strong>Courses</strong>, <strong>Pages/Our Team</strong>, <strong>Pages/Testimonial</strong> and <strong>Contact</strong> web pages. Is the Leaflet map there in each case? No. It’s the gallery. Imagine you will have to replace the <code>&lt;head&gt;</code> and Gallery <code>&lt;div&gt;</code> elements of the respective <code>about.html</code>, <code>courses.html</code>, <code>team.html</code>, <code>testimonial.html</code> and <code>contact.html</code> webpages here as well with the relevant Leaflet paths! Luckily, since you have hopefully got the gist of it, the follow link contains the eLearning folder with Leaflet map embedded in all the aforementioned webpages.</p>
+<p><a href="https://github.com/sammigachuhi/my-leaflet-project/tree/main/elearning-template">elearning_template_demo</a></p>
 </div>
 <div id="posting-the-html-website-to-the-world" class="section level2 hasAnchor" number="13.5">
 <h2><span class="header-section-number">13.5</span> Posting the Html website to the world<a href="standard-website-with-leaflet-project.html#posting-the-html-website-to-the-world" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This chapter will leave out the details of saving your files to Github. However, here’s a clue. In order to automatically render a file in Github online, make sure the root html file is named <code>index.html</code>. These are taken as the default root html files by Github.</p>
-<p>Yours truly already saved the file to Github. Here’s the link to the file <a href="https://sammigachuhi.github.io/elearning_template_demo/">live and online</a>.</p>
+<p>This chapter will leave out the details of saving your files to Github. Nevertheless, as mentioned in <a href="mobile-friendly-webapps.html#mobile-friendly-webapps">Chapter 11</a>, the name <code>index</code> in your HTML file is automatically considered the root HTML file by Github. Finally, here is the link to our eLearning website with a Leaflet webmap embedded therein.</p>
+<p><a href="https://sammigachuhi.github.io/elearning_template_demo/">eLearning website</a></p>
+</div>
+<div id="summary-12" class="section level2 hasAnchor" number="13.6">
+<h2><span class="header-section-number">13.6</span> Summary<a href="standard-website-with-leaflet-project.html#summary-12" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Having the necessary Leaflet folders in the same directory as your HTML website’s files reduces chances of the Leaflet map failing to load in your HTML website due to a broken path. Here are other lesson’s we have encountered.</p>
+<ul>
+<li><p>In order to embed a Leaflet map into your website, you have to load the requisite Leaflet <code>&lt;link&gt;</code> and <code>&lt;script&gt;</code> tags into your <code>&lt;head&gt;</code> and where necessary, <code>&lt;div&gt;</code> elements.</p></li>
+<li><p>Insert the JavaScript code that fires up your Leaflet using the <code>&lt;script&gt;</code> tags. This was the method used to insert the JavaScript file <code>cluster-markers.js</code> into the eLeaflet dummy website.</p></li>
+<li><p>It is also important to ensure your Leaflet map appears in the right place in all the child webpages. For example, Leaflet also had to be embedded in the webpages of <code>about.html</code>, <code>courses.html</code>, <code>team.html</code>, <code>testimonial.html</code> and <code>contact.html</code> at the Gallery section just as it was done for their parent file– <code>index.html</code>.</p></li>
+</ul>
 
 </div>
 </div>

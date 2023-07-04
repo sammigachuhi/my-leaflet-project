@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Samuel Gachuhi Ngugi" />
 
 
-<meta name="date" content="2023-07-03" />
+<meta name="date" content="2023-07-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -255,10 +255,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13" data-path="standard-website-with-leaflet-project.html"><a href="standard-website-with-leaflet-project.html"><i class="fa fa-check"></i><b>13</b> Standard Website with Leaflet Project</a>
 <ul>
 <li class="chapter" data-level="13.1" data-path="standard-website-with-leaflet-project.html"><a href="standard-website-with-leaflet-project.html#get-the-html-template"><i class="fa fa-check"></i><b>13.1</b> Get the HTML Template</a></li>
-<li class="chapter" data-level="13.2" data-path="standard-website-with-leaflet-project.html"><a href="standard-website-with-leaflet-project.html#insert-leaflet-to-standard-html-website"><i class="fa fa-check"></i><b>13.2</b> Insert Leaflet to standard html website</a></li>
+<li class="chapter" data-level="13.2" data-path="standard-website-with-leaflet-project.html"><a href="standard-website-with-leaflet-project.html#embed-leaflet-to-standard-html-website"><i class="fa fa-check"></i><b>13.2</b> Embed Leaflet to standard html website</a></li>
 <li class="chapter" data-level="13.3" data-path="standard-website-with-leaflet-project.html"><a href="standard-website-with-leaflet-project.html#editing-the-css"><i class="fa fa-check"></i><b>13.3</b> Editing the CSS</a></li>
-<li class="chapter" data-level="13.4" data-path="standard-website-with-leaflet-project.html"><a href="standard-website-with-leaflet-project.html#adding-leaflet-to-every-webpage"><i class="fa fa-check"></i><b>13.4</b> Adding leaflet to every webpage</a></li>
+<li class="chapter" data-level="13.4" data-path="standard-website-with-leaflet-project.html"><a href="standard-website-with-leaflet-project.html#embedding-leaflet-to-every-webpage"><i class="fa fa-check"></i><b>13.4</b> Embedding Leaflet to every webpage</a></li>
 <li class="chapter" data-level="13.5" data-path="standard-website-with-leaflet-project.html"><a href="standard-website-with-leaflet-project.html#posting-the-html-website-to-the-world"><i class="fa fa-check"></i><b>13.5</b> Posting the Html website to the world</a></li>
+<li class="chapter" data-level="13.6" data-path="standard-website-with-leaflet-project.html"><a href="standard-website-with-leaflet-project.html#summary-12"><i class="fa fa-check"></i><b>13.6</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="leaflet-in-esri.html"><a href="leaflet-in-esri.html"><i class="fa fa-check"></i><b>14</b> Leaflet in ESRI</a>
 <ul>
@@ -306,7 +307,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">14.2</span> Creating an ESRI Leaflet map<a href="leaflet-in-esri.html#creating-an-esri-leaflet-map" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>On your blank <code>esri_leaflet.js</code> file, create a variable to store your Application Programming Interface (API) Key. This key is important to access your ESRI benefits, much like the magic phrase “Open Sesame” opens the doorway to a cave full of treasures as in the legendary story of <em>Ali Baba and the Forty Thieves</em>. Of course I am no thief.</p>
 <p>Below is an example of how to access your API key from your ArcGIS Developer account.</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="leaflet-in-esri.html#cb181-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/esri_leaflet_api.jpg&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="leaflet-in-esri.html#cb180-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/esri_leaflet_api.jpg&#39;</span>))</span></code></pre></div>
 <p><img src="../images/esri_leaflet_api.jpg" width="944" /></p>
 <p>Copy paste that key to your <code>esri_leaflet.js</code> file.</p>
 <pre><code>const apiKey = &quot;Your key&quot;;
@@ -325,7 +326,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 }).addTo(map);
 </code></pre>
 <p>Now open your <code>map.html</code> file. What do you see?</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="leaflet-in-esri.html#cb186-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/esri_leaflet_basemap.jpg&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="leaflet-in-esri.html#cb185-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/esri_leaflet_basemap.jpg&#39;</span>))</span></code></pre></div>
 <p><img src="../images/esri_leaflet_basemap.jpg" width="956" /></p>
 <p>Now imagine there are other styles as shown in this <a href="https://developers.arcgis.com/documentation/mapping-apis-and-services/maps/services/basemap-layer-service/#default-basemap-styles">webpage</a>. Spoil yourself a bit.</p>
 </div>
@@ -353,7 +354,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Another small thing; change your <code>const basemapEnum</code> to read <code>ArcGis:Navigation</code>.</p>
 <pre><code>const basemapEnum = &quot;ArcGIS:Navigation&quot;;</code></pre>
 <p>If you refresh your <code>map.html</code> file, apart from having a new basemap style, you will see a new search bar at the top right. However, it is non-functional. It takes us nowhere.</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="leaflet-in-esri.html#cb190-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/search_bar.jpg&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="leaflet-in-esri.html#cb189-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/search_bar.jpg&#39;</span>))</span></code></pre></div>
 <p><img src="../images/search_bar.jpg" width="943" /></p>
 </div>
 <div id="make-the-search-bar-functional" class="section level2 hasAnchor" number="14.5">
@@ -378,7 +379,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }).addTo(map);
   </code></pre>
 <p>Now try your search bar again. Some location names appear as you type them in, and if you press <strong>Enter</strong> it takes you to the exact location but there is no marker to pinpoint that specific address. We will sort that latter.</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="leaflet-in-esri.html#cb192-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/searchable.jpg&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="leaflet-in-esri.html#cb191-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/searchable.jpg&#39;</span>))</span></code></pre></div>
 <p><img src="../images/searchable.jpg" width="932" /></p>
 <p>We will add a layer group to store the geocoding results.</p>
 <pre><code>const results = L.layerGroup().addTo(map);
@@ -426,7 +427,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   });
   </code></pre>
 <p>So now when you search for a particular place in the search bar and press <strong>Enter</strong>, a marker and with a pop up showcasing the address and longitude-latitude coordinates of the location should appear.</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="leaflet-in-esri.html#cb198-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/search_success.jpg&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="leaflet-in-esri.html#cb197-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/search_success.jpg&#39;</span>))</span></code></pre></div>
 <p><img src="../images/search_success.jpg" width="942" /></p>
 <p>There are many more tutorials on using ESRI Leaflet in the ArcGIS Developers website.</p>
 <p>Here are the <a href="https://www.dropbox.com/scl/fo/v5mqzkvpzz8um39c1810g/h?dl=0&amp;rlkey=2aptw30lln6s3hqxlay9al0y9">files</a> used in this exercise.</p>

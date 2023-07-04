@@ -78,10 +78,11 @@ adding-wms-to-layer-control
 summary-11
 standard-website-with-leaflet-project
 get-the-html-template
-insert-leaflet-to-standard-html-website
+embed-leaflet-to-standard-html-website
 editing-the-css
-adding-leaflet-to-every-webpage
+embedding-leaflet-to-every-webpage
 posting-the-html-website-to-the-world
+summary-12
 leaflet-in-esri
 esri-leaflet-plugins
 creating-an-esri-leaflet-map
