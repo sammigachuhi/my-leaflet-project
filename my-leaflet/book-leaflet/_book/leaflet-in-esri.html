@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Samuel Gachuhi Ngugi" />
 
 
-<meta name="date" content="2023-07-04" />
+<meta name="date" content="2023-07-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -263,11 +263,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="14" data-path="leaflet-in-esri.html"><a href="leaflet-in-esri.html"><i class="fa fa-check"></i><b>14</b> Leaflet in ESRI</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="leaflet-in-esri.html"><a href="leaflet-in-esri.html#esri-leaflet-plugins"><i class="fa fa-check"></i><b>14.1</b> ESRI Leaflet plugins</a></li>
-<li class="chapter" data-level="14.2" data-path="leaflet-in-esri.html"><a href="leaflet-in-esri.html#creating-an-esri-leaflet-map"><i class="fa fa-check"></i><b>14.2</b> Creating an ESRI Leaflet map</a></li>
-<li class="chapter" data-level="14.3" data-path="leaflet-in-esri.html"><a href="leaflet-in-esri.html#geocode-search"><i class="fa fa-check"></i><b>14.3</b> Geocode search</a></li>
-<li class="chapter" data-level="14.4" data-path="leaflet-in-esri.html"><a href="leaflet-in-esri.html#add-search-bar"><i class="fa fa-check"></i><b>14.4</b> Add search bar</a></li>
-<li class="chapter" data-level="14.5" data-path="leaflet-in-esri.html"><a href="leaflet-in-esri.html#make-the-search-bar-functional"><i class="fa fa-check"></i><b>14.5</b> Make the search bar functional</a></li>
+<li class="chapter" data-level="14.1" data-path="leaflet-in-esri.html"><a href="leaflet-in-esri.html#an-overview-of-esri"><i class="fa fa-check"></i><b>14.1</b> An overview of ESRI</a></li>
+<li class="chapter" data-level="14.2" data-path="leaflet-in-esri.html"><a href="leaflet-in-esri.html#esri-leaflet-plugins"><i class="fa fa-check"></i><b>14.2</b> ESRI Leaflet plugins</a></li>
+<li class="chapter" data-level="14.3" data-path="leaflet-in-esri.html"><a href="leaflet-in-esri.html#creating-an-esri-leaflet-map"><i class="fa fa-check"></i><b>14.3</b> Creating an ESRI Leaflet map</a></li>
+<li class="chapter" data-level="14.4" data-path="leaflet-in-esri.html"><a href="leaflet-in-esri.html#geocode-search"><i class="fa fa-check"></i><b>14.4</b> Geocode search</a></li>
+<li class="chapter" data-level="14.5" data-path="leaflet-in-esri.html"><a href="leaflet-in-esri.html#add-search-bar"><i class="fa fa-check"></i><b>14.5</b> Add search bar</a></li>
+<li class="chapter" data-level="14.6" data-path="leaflet-in-esri.html"><a href="leaflet-in-esri.html#make-the-search-bar-functional"><i class="fa fa-check"></i><b>14.6</b> Make the search bar functional</a></li>
+<li class="chapter" data-level="14.7" data-path="leaflet-in-esri.html"><a href="leaflet-in-esri.html#adding-an-auto-generated-location-pin"><i class="fa fa-check"></i><b>14.7</b> Adding an auto-generated location pin</a></li>
+<li class="chapter" data-level="14.8" data-path="leaflet-in-esri.html"><a href="leaflet-in-esri.html#summary-13"><i class="fa fa-check"></i><b>14.8</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>15</b> Conclusion</a></li>
 <li class="divider"></li>
@@ -292,57 +295,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="leaflet-in-esri" class="section level1 hasAnchor" number="14">
 <h1><span class="header-section-number">Chapter 14</span> Leaflet in ESRI<a href="leaflet-in-esri.html#leaflet-in-esri" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Alright. If you are a GIS practitioner, you have (most) probably heard about ESRI, one of the world’s leading geospatial software and services provider. You (might) have also come across various ESRI basemap servers, such as topographic, streets and imagery layers. They also have plugins that allow leaflet users to access the ArcGIS functionalities. For example, the ESRI plugins for leaflet allow you to access some ESRI basemaps and products, while also allowing you to become an ESRI ArcGIS JavaScript developer. Quite a mouthful of a career name.</p>
+<div id="an-overview-of-esri" class="section level2 hasAnchor" number="14.1">
+<h2><span class="header-section-number">14.1</span> An overview of ESRI<a href="leaflet-in-esri.html#an-overview-of-esri" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Alright. If you are a GIS practitioner, you have probably heard about ESRI, one of the world’s leading geospatial software and services provider. You (might) have also come across various ESRI basemap servers, such as ESRI topographic, ESRI streets and ESRI Imagery layers. They also have plugins that allow Leaflet users to access the ArcGIS functionalities. For example, the ESRI plugins for Leaflet allow you to access some ESRI basemaps and products, while also allowing you to become an ESRI ArcGIS JavaScript developer.</p>
 <p>To use ESRI Leaflet, you have to create an <a href="https://developers.arcgis.com/dashboard/">ArcGIS Developer account</a> and also get an <a href="https://developers.arcgis.com/esri-leaflet/authentication/create-an-api-key/">API key</a>. Kindly do so before proceeding.</p>
-<div id="esri-leaflet-plugins" class="section level2 hasAnchor" number="14.1">
-<h2><span class="header-section-number">14.1</span> ESRI Leaflet plugins<a href="leaflet-in-esri.html#esri-leaflet-plugins" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>As we had mentioned earlier, you need ESRI leaflet plugins to fire up ESRI power in your leaflet environment. Alright. Remember your <code>map.html</code> file? You have probably added a plethora of <code>&lt;link&gt;</code>s and <code>&lt;script&gt;</code>s to your <code>map.html</code> file but bear with us a little longer. Add the following <code>&lt;script&gt;</code>s to the <code>&lt;head&gt;</code> element of your <code>map.html</code>.</p>
+</div>
+<div id="esri-leaflet-plugins" class="section level2 hasAnchor" number="14.2">
+<h2><span class="header-section-number">14.2</span> ESRI Leaflet plugins<a href="leaflet-in-esri.html#esri-leaflet-plugins" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>As we had mentioned earlier, you need ESRI Leaflet plugins to experience all the ArcGIS functionalities possible with your Application Programming Interface (API) key. Remember your <code>map.html</code> file? To experience Leaflet in ESRI, add the following <code>&lt;script&gt;</code> tags to the <code>&lt;head&gt;</code> element of your <code>map.html</code> file.</p>
 <pre><code>&lt;!-- Load Esri Leaflet from CDN --&gt;
         &lt;script src=&quot;https://unpkg.com/esri-leaflet@3.0.10/dist/esri-leaflet.js&quot;&gt;&lt;/script&gt;
         &lt;script src=&quot;https://unpkg.com/esri-leaflet-vector@4.0.2/dist/esri-leaflet-vector.js&quot;&gt;&lt;/script&gt;
 </code></pre>
-<p>Create a new JavaScript file called <code>esri_leaflet.js</code> and get ready to enjoy ESRI services as though you made them!</p>
+<p>Create a new JavaScript file called <code>esri_leaflet.js</code> and get ready to enjoy ESRI services!</p>
 </div>
-<div id="creating-an-esri-leaflet-map" class="section level2 hasAnchor" number="14.2">
-<h2><span class="header-section-number">14.2</span> Creating an ESRI Leaflet map<a href="leaflet-in-esri.html#creating-an-esri-leaflet-map" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>On your blank <code>esri_leaflet.js</code> file, create a variable to store your Application Programming Interface (API) Key. This key is important to access your ESRI benefits, much like the magic phrase “Open Sesame” opens the doorway to a cave full of treasures as in the legendary story of <em>Ali Baba and the Forty Thieves</em>. Of course I am no thief.</p>
+<div id="creating-an-esri-leaflet-map" class="section level2 hasAnchor" number="14.3">
+<h2><span class="header-section-number">14.3</span> Creating an ESRI Leaflet map<a href="leaflet-in-esri.html#creating-an-esri-leaflet-map" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>On your blank <code>esri_leaflet.js</code> file, create a variable to store your API Key. This key is important to access your ESRI benefits, much like the magic phrase “Open Sesame” opens the doorway to a cave full of treasures as in the legendary story of <em>Ali Baba and the Forty Thieves</em>.</p>
 <p>Below is an example of how to access your API key from your ArcGIS Developer account.</p>
 <div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="leaflet-in-esri.html#cb180-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/esri_leaflet_api.jpg&#39;</span>))</span></code></pre></div>
 <p><img src="../images/esri_leaflet_api.jpg" width="944" /></p>
 <p>Copy paste that key to your <code>esri_leaflet.js</code> file.</p>
 <pre><code>const apiKey = &quot;Your key&quot;;
 </code></pre>
-<p>Of course, don’t expect me to showcase mine to the entire world.</p>
-<p>Anyways, let’s proceed to create a basemap. To create one, just create a variable called <code>basemapEnum</code> that stores the ESRI basemap identifier. What is that last thing? It is basically a basestyle map and in ESRI, at least when using Leaflet, it is accessed by parsing the provider name and the desired style, like so: <code>{Provider}:{Style name}</code> or
-<code>{Provider}:{Style name}:{Component}</code>.</p>
+<p>Let’s proceed to create a basemap. To create one, just create a variable called <code>basemapEnum</code> that stores the ESRI basemap identifier. In ESRI Leaflet, a basemap is called by parsing the provider name and the desired style, like so: <code>{Provider}:{Style name}</code> or
+<code>{Provider}:{Style name}:{Component}</code>. In our case, we want the ArcGIS streets basemap layer.</p>
 <pre><code>const basemapEnum = &quot;ArcGIS:Streets&quot;;</code></pre>
-<p>Alright. It’s about time we fired up our mapping power. Create an ESRI leaflet map instance much like we have always been doing.</p>
+<p>Alright. It’s about time we fired up our mapping power. Create an ESRI Leaflet map instance much like we have always been doing.</p>
 <pre><code>const map = L.map(&quot;myMap&quot;, {
     minZoom: 2
 }).setView([0.3556, 37.5833], 6.5);</code></pre>
-<p>We had created a basemap variable earlier, so we will parse it to the <code>L.esri.Vector.vectorBasemapLayer</code> class which is responsible for create basemaps. Actually one can also parse the <code>{Provider}:{Style name}</code> to the <code>L.esri.vector.vectorBasemapLayer()</code> class but our method of using variable names seems far much more cleaner.</p>
+<p>We had created a basemap variable earlier, so we will parse it to the <code>L.esri.Vector.vectorBasemapLayer</code> class which is responsible for creating basemaps. Actually one can also parse the <code>{Provider}:{Style name}</code> to the <code>L.esri.vector.vectorBasemapLayer()</code> class but our method of using variable names looks cleaner.</p>
 <pre><code>L.esri.Vector.vectorBasemapLayer(basemapEnum, {
     apiKey: apiKey,
 }).addTo(map);
 </code></pre>
-<p>Now open your <code>map.html</code> file. What do you see?</p>
+<p>Now open your <code>map.html</code> file. It should look like below.</p>
 <div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="leaflet-in-esri.html#cb185-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/esri_leaflet_basemap.jpg&#39;</span>))</span></code></pre></div>
 <p><img src="../images/esri_leaflet_basemap.jpg" width="956" /></p>
-<p>Now imagine there are other styles as shown in this <a href="https://developers.arcgis.com/documentation/mapping-apis-and-services/maps/services/basemap-layer-service/#default-basemap-styles">webpage</a>. Spoil yourself a bit.</p>
+<p>Now imagine there are other basemap styles as shown in this <a href="https://developers.arcgis.com/documentation/mapping-apis-and-services/maps/services/basemap-layer-service/#default-basemap-styles">webpage</a>.</p>
 </div>
-<div id="geocode-search" class="section level2 hasAnchor" number="14.3">
-<h2><span class="header-section-number">14.3</span> Geocode search<a href="leaflet-in-esri.html#geocode-search" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Of course there are other ESRI Leaflet functionalities. I must confess I wanted to know how to add a raster layer, such as <code>.tif</code> to either Leaflet or ESRI leaflet but they all seem to favour tiled layers. The <a href="https://github.com/GeoTIFF/georaster-layer-for-leaflet">former has a plugin</a> to do so, but was too complicated (still trying unsuccessfully). Nevertheless, there are other cool services that ESRI leaflet offers, such as geocode search<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p>
-<p>Let’s do that.</p>
+<div id="geocode-search" class="section level2 hasAnchor" number="14.4">
+<h2><span class="header-section-number">14.4</span> Geocode search<a href="leaflet-in-esri.html#geocode-search" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Of course there are other ESRI Leaflet functionalities. Out of curiousity, a brief search was made to find out a ESRI plugin that loads raster layers in the hope it would be simpler in operation compared to the <a href="https://github.com/GeoTIFF/georaster-layer-for-leaflet">georaster plugin of Leaflet</a>. Although both have a plugin for downloading <code>.jpeg</code> and <code>.png</code> image formats, none is good for geospatial raster files such as <code>.tiff</code>. Nevertheless, there are other cool services that ESRI leaflet offers, such as geocode search<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p>
+<p>For the rest of this chapter, we shall create a geocoding service using ESRI Leaflet.</p>
 </div>
-<div id="add-search-bar" class="section level2 hasAnchor" number="14.4">
-<h2><span class="header-section-number">14.4</span> Add search bar<a href="leaflet-in-esri.html#add-search-bar" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="add-search-bar" class="section level2 hasAnchor" number="14.5">
+<h2><span class="header-section-number">14.5</span> Add search bar<a href="leaflet-in-esri.html#add-search-bar" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Add the following <code>&lt;link&gt;</code> and <code>&lt;script&gt;</code> to your <code>&lt;head&gt;</code> element.</p>
 <pre><code>&lt;!-- Load Esri Leaflet Geocoder from CDN --&gt;
         &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/esri-leaflet-geocoder@3.1.4/dist/esri-leaflet-geocoder.css&quot;&gt;
         &lt;script src=&quot;https://unpkg.com/esri-leaflet-geocoder@3.1.4/dist/esri-leaflet-geocoder.js&quot;&gt;&lt;/script&gt;
 </code></pre>
-<p>Time to add a search control widget to the topright of our ESRI leaflet map. Search control widgets are created using the <code>L.esri.Geocoding.geosearch</code> class which we shall parse to a variable called <code>searchControl</code>.</p>
+<p>We will first add a search control widget to the topright of our ESRI leaflet map. Search control widgets are created using the <code>L.esri.Geocoding.geosearch</code> class. In the below code, we have parsed the <code>L.esri.Geocoding.geosearch</code> to the variable <code>searchControl</code>.</p>
 <pre><code>const searchControl = L.esri.Geocoding.geosearch({
         position: &quot;topright&quot;,
         placeholder: &quot;Enter an address or place e.g. 1 York St&quot;,
@@ -350,16 +355,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
       }).addTo(map);
 </code></pre>
-<p>Just like in leaflet ESRI leaflet constructors have their options. Please refer the options for this specific constructor <a href="https://developers.arcgis.com/esri-leaflet/api-reference/controls/geosearch/">here</a>.</p>
+<p>Just like in Leaflet, ESRI leaflet constructors have their options. Please refer to the options for this specific constructor <a href="https://developers.arcgis.com/esri-leaflet/api-reference/controls/geosearch/">here</a>.</p>
 <p>Another small thing; change your <code>const basemapEnum</code> to read <code>ArcGis:Navigation</code>.</p>
 <pre><code>const basemapEnum = &quot;ArcGIS:Navigation&quot;;</code></pre>
-<p>If you refresh your <code>map.html</code> file, apart from having a new basemap style, you will see a new search bar at the top right. However, it is non-functional. It takes us nowhere.</p>
+<p>Upon refreshing your <code>map.html</code> file, apart from having a new basemap style, you will see a new search bar at the top right. However, it is non-functional. It takes us nowhere.</p>
 <div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="leaflet-in-esri.html#cb189-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/search_bar.jpg&#39;</span>))</span></code></pre></div>
 <p><img src="../images/search_bar.jpg" width="943" /></p>
 </div>
-<div id="make-the-search-bar-functional" class="section level2 hasAnchor" number="14.5">
-<h2><span class="header-section-number">14.5</span> Make the search bar functional<a href="leaflet-in-esri.html#make-the-search-bar-functional" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In order to make the search bar do what it says, we will set the value of the <code>providers</code> key to a <code>arcgisOnlineProvider</code>. The latter is instantiated with the constructor <code>L.esri.Geocoding.arcgisOnlineProvider</code>. Okay where did you get it from? Well ESRI has various open source tutorials on its <a href="https://developers.arcgis.com/esri-leaflet/geocode-and-search/search-for-an-address/?utm_source=pocket_saves">platform</a>.</p>
+<div id="make-the-search-bar-functional" class="section level2 hasAnchor" number="14.6">
+<h2><span class="header-section-number">14.6</span> Make the search bar functional<a href="leaflet-in-esri.html#make-the-search-bar-functional" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In order to make the search bar do what it says, we will set the value of the <code>providers</code> key to a <code>arcgisOnlineProvider</code>. The latter is instantiated with the constructor <code>L.esri.Geocoding.arcgisOnlineProvider</code>. ESRI has various open source tutorials on its <a href="https://developers.arcgis.com/esri-leaflet/geocode-and-search/search-for-an-address/?utm_source=pocket_saves">platform</a> that provide succinct and concise explanation for most of its tools.</p>
 <pre><code>const searchControl = L.esri.Geocoding.geosearch({
     position: &quot;topright&quot;,
     placeholder: &quot;Enter an address or place e.g. 1 York St&quot;,
@@ -378,19 +383,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
   }).addTo(map);
   </code></pre>
-<p>Now try your search bar again. Some location names appear as you type them in, and if you press <strong>Enter</strong> it takes you to the exact location but there is no marker to pinpoint that specific address. We will sort that latter.</p>
+<p>Now try your search bar again. Some location names appear as you type them in, and if you press <strong>Enter</strong> it takes you to the exact location but there is no marker to pinpoint that specific address. The following section outlines how to enable ESRI create a marker on the fly at any searched location name.</p>
 <div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="leaflet-in-esri.html#cb191-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/searchable.jpg&#39;</span>))</span></code></pre></div>
 <p><img src="../images/searchable.jpg" width="932" /></p>
-<p>We will add a layer group to store the geocoding results.</p>
+</div>
+<div id="adding-an-auto-generated-location-pin" class="section level2 hasAnchor" number="14.7">
+<h2><span class="header-section-number">14.7</span> Adding an auto-generated location pin<a href="leaflet-in-esri.html#adding-an-auto-generated-location-pin" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>First add a layer group to store the geocoding results.</p>
 <pre><code>const results = L.layerGroup().addTo(map);
 </code></pre>
-<p>We will create an event handler to access the <code>data</code> from the search results. We shall also add a <code>clearLayers</code> call to remove the previous data from the layer group. This is beginning to sound complicated, but I’m just following along the <a href="https://developers.arcgis.com/esri-leaflet/geocode-and-search/search-for-an-address/?utm_source=pocket_saves">ESRI Leaflet geocoding tutorial</a>.</p>
+<p>We will create an event handler to access the <code>data</code> from the search results. We shall also add a <code>clearLayers</code> call to remove the previous data from the layer group. This is beginning to sound complicated, but if the reader desires further clarity, they should refer to the <a href="https://developers.arcgis.com/esri-leaflet/geocode-and-search/search-for-an-address/?utm_source=pocket_saves">ESRI Leaflet geocoding tutorial</a>.</p>
 <pre><code>searchControl.on(&quot;results&quot;, (data) =&gt; {
         results.clearLayers();
 
       });
       </code></pre>
-<p>The following loop adds the coordinates of the searched location to the marker. This loop goes into the <code>searchControl</code>.</p>
+<p>The following loop adds the coordinates of the searched location to the marker. This loop goes into the <code>searchControl</code> code block.</p>
 <pre><code>for (let i = data.results.length - 1; i &gt;= 0; i--) {
           const marker = L.marker(data.results[i].latlng);
 
@@ -429,8 +437,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>So now when you search for a particular place in the search bar and press <strong>Enter</strong>, a marker and with a pop up showcasing the address and longitude-latitude coordinates of the location should appear.</p>
 <div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="leaflet-in-esri.html#cb197-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/search_success.jpg&#39;</span>))</span></code></pre></div>
 <p><img src="../images/search_success.jpg" width="942" /></p>
-<p>There are many more tutorials on using ESRI Leaflet in the ArcGIS Developers website.</p>
-<p>Here are the <a href="https://www.dropbox.com/scl/fo/v5mqzkvpzz8um39c1810g/h?dl=0&amp;rlkey=2aptw30lln6s3hqxlay9al0y9">files</a> used in this exercise.</p>
+<p>The ArcGIS Developers website provides several more tutorials on using ESRI Leaflet.</p>
+<p>Here are the <a href="https://github.com/sammigachuhi/my-leaflet-project/tree/main/my-leaflet-code/chapter-14-ESRI_Leaflet">files</a> used in this exercise.</p>
+</div>
+<div id="summary-13" class="section level2 hasAnchor" number="14.8">
+<h2><span class="header-section-number">14.8</span> Summary<a href="leaflet-in-esri.html#summary-13" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Using ESRI Leaflet brings many of the ArcGIS functionalities to the open source Leaflet plugin. If the user decides to purchase credits from the ArcGIS Developer account, they will gain access to more sophisticated ESRI Leaflet features.</p>
+<p>Here are the lessons learnt in this chapter.</p>
+<ul>
+<li><p>An ArcGIS Developer account is needed to use ESRI Leaflet features.</p></li>
+<li><p>An Application Programming Interface (API) key serves like a real life key in granting the user access to ESRI Leaflet functionalities and features.</p></li>
+<li><p>The standalone Leaflet and ESRI Leaflet are similar in many respects. ArcGIS features can be built on top of Leaflet via various ESRI Leaflet constructors such as <code>L.esri.Geocoding.arcgisOnlineProvider</code>.</p></li>
+</ul>
 
 </div>
 </div>

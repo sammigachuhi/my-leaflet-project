@@ -84,9 +84,12 @@ embedding-leaflet-to-every-webpage
 posting-the-html-website-to-the-world
 summary-12
 leaflet-in-esri
+an-overview-of-esri
 esri-leaflet-plugins
 creating-an-esri-leaflet-map
 geocode-search
 add-search-bar
 make-the-search-bar-functional
+adding-an-auto-generated-location-pin
+summary-13
 conclusion
