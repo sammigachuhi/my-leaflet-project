@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Using GeoJSON in Leaflet | Leaflet book</title>
+  <title>Chapter 5 Using GeoJSON in Leaflet | Practical Leaflet: Create webmaps using the JavaScript Leaflet library</title>
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
   <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Using GeoJSON in Leaflet | Leaflet book" />
+  <meta property="og:title" content="Chapter 5 Using GeoJSON in Leaflet | Practical Leaflet: Create webmaps using the JavaScript Leaflet library" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
@@ -19,7 +19,7 @@ set in the _output.yml file.</p>" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Using GeoJSON in Leaflet | Leaflet book" />
+  <meta name="twitter:title" content="Chapter 5 Using GeoJSON in Leaflet | Practical Leaflet: Create webmaps using the JavaScript Leaflet library" />
   
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Samuel Gachuhi Ngugi" />
 
 
-<meta name="date" content="2023-07-05" />
+<meta name="date" content="2023-07-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -142,11 +142,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">A Minimal Book Example</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
 <ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#usage"><i class="fa fa-check"></i>Usage</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#render-book"><i class="fa fa-check"></i>Render book</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#preview-book"><i class="fa fa-check"></i>Preview book</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#about-the-author"><i class="fa fa-check"></i>About the Author</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#copyright"><i class="fa fa-check"></i>Copyright</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
@@ -261,16 +261,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.5" data-path="standard-website-with-leaflet-project.html"><a href="standard-website-with-leaflet-project.html#posting-the-html-website-to-the-world"><i class="fa fa-check"></i><b>13.5</b> Posting the Html website to the world</a></li>
 <li class="chapter" data-level="13.6" data-path="standard-website-with-leaflet-project.html"><a href="standard-website-with-leaflet-project.html#summary-12"><i class="fa fa-check"></i><b>13.6</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="leaflet-in-esri.html"><a href="leaflet-in-esri.html"><i class="fa fa-check"></i><b>14</b> Leaflet in ESRI</a>
+<li class="chapter" data-level="14" data-path="esri-and-leaflet.html"><a href="esri-and-leaflet.html"><i class="fa fa-check"></i><b>14</b> ESRI and Leaflet</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="leaflet-in-esri.html"><a href="leaflet-in-esri.html#an-overview-of-esri"><i class="fa fa-check"></i><b>14.1</b> An overview of ESRI</a></li>
-<li class="chapter" data-level="14.2" data-path="leaflet-in-esri.html"><a href="leaflet-in-esri.html#esri-leaflet-plugins"><i class="fa fa-check"></i><b>14.2</b> ESRI Leaflet plugins</a></li>
-<li class="chapter" data-level="14.3" data-path="leaflet-in-esri.html"><a href="leaflet-in-esri.html#creating-an-esri-leaflet-map"><i class="fa fa-check"></i><b>14.3</b> Creating an ESRI Leaflet map</a></li>
-<li class="chapter" data-level="14.4" data-path="leaflet-in-esri.html"><a href="leaflet-in-esri.html#geocode-search"><i class="fa fa-check"></i><b>14.4</b> Geocode search</a></li>
-<li class="chapter" data-level="14.5" data-path="leaflet-in-esri.html"><a href="leaflet-in-esri.html#add-search-bar"><i class="fa fa-check"></i><b>14.5</b> Add search bar</a></li>
-<li class="chapter" data-level="14.6" data-path="leaflet-in-esri.html"><a href="leaflet-in-esri.html#make-the-search-bar-functional"><i class="fa fa-check"></i><b>14.6</b> Make the search bar functional</a></li>
-<li class="chapter" data-level="14.7" data-path="leaflet-in-esri.html"><a href="leaflet-in-esri.html#adding-an-auto-generated-location-pin"><i class="fa fa-check"></i><b>14.7</b> Adding an auto-generated location pin</a></li>
-<li class="chapter" data-level="14.8" data-path="leaflet-in-esri.html"><a href="leaflet-in-esri.html#summary-13"><i class="fa fa-check"></i><b>14.8</b> Summary</a></li>
+<li class="chapter" data-level="14.1" data-path="esri-and-leaflet.html"><a href="esri-and-leaflet.html#an-overview-of-esri"><i class="fa fa-check"></i><b>14.1</b> An overview of ESRI</a></li>
+<li class="chapter" data-level="14.2" data-path="esri-and-leaflet.html"><a href="esri-and-leaflet.html#esri-leaflet-plugins"><i class="fa fa-check"></i><b>14.2</b> ESRI Leaflet plugins</a></li>
+<li class="chapter" data-level="14.3" data-path="esri-and-leaflet.html"><a href="esri-and-leaflet.html#creating-an-esri-leaflet-map"><i class="fa fa-check"></i><b>14.3</b> Creating an ESRI Leaflet map</a></li>
+<li class="chapter" data-level="14.4" data-path="esri-and-leaflet.html"><a href="esri-and-leaflet.html#geocode-search"><i class="fa fa-check"></i><b>14.4</b> Geocode search</a></li>
+<li class="chapter" data-level="14.5" data-path="esri-and-leaflet.html"><a href="esri-and-leaflet.html#add-search-bar"><i class="fa fa-check"></i><b>14.5</b> Add search bar</a></li>
+<li class="chapter" data-level="14.6" data-path="esri-and-leaflet.html"><a href="esri-and-leaflet.html#make-the-search-bar-functional"><i class="fa fa-check"></i><b>14.6</b> Make the search bar functional</a></li>
+<li class="chapter" data-level="14.7" data-path="esri-and-leaflet.html"><a href="esri-and-leaflet.html#adding-an-auto-generated-location-pin"><i class="fa fa-check"></i><b>14.7</b> Adding an auto-generated location pin</a></li>
+<li class="chapter" data-level="14.8" data-path="esri-and-leaflet.html"><a href="esri-and-leaflet.html#summary-13"><i class="fa fa-check"></i><b>14.8</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>15</b> Conclusion</a></li>
 <li class="divider"></li>
@@ -285,7 +285,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Leaflet book</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Practical Leaflet: Create webmaps using the JavaScript Leaflet library</a>
           </h1>
         </div>
 
@@ -363,23 +363,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.4</span> Creating a geojson file<a href="using-geojson-in-leaflet.html#creating-a-geojson-file" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>“Creating a geojson file with several dictionaries in it looks very intimidating. How am I to create such a large dataset without errors? I will make an error somewhere…” You may think to yourself. Precisely, but luckily, we have the <a href="https://geojson.io/#map=2/0/20">geojson.io</a> website that does the heavylifting for us. We shall head over to it and create a <code>geojson</code> file of some cities and their population.</p>
 <p>First, of all, the website looks like below, a cool global map powered by Mapbox.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="using-geojson-in-leaflet.html#cb39-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/mapbox-front.jpg&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="using-geojson-in-leaflet.html#cb38-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/mapbox-front.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../images/mapbox-front.jpg" width="958" /></p>
 <p>On your right, under the <strong>&lt;/&gt;JSON</strong> tab, the Mapbox folks have already given you a head start by indicating what feature type and features will go into your <code>geojson</code> file. These are important as any website uses these keywords when parsing information from the GeoJSON file. Zoom to Kenya and click a point on top of the Nairobi dot pin, like shown below. Use the highlighted pin in the image below to create a marker over Nairobi.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="using-geojson-in-leaflet.html#cb40-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/nairobi-pin.jpg&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="using-geojson-in-leaflet.html#cb39-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/nairobi-pin.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../images/nairobi-pin.jpg" width="960" /></p>
 <p>By doing so, you will realize that a new dictionary of <code>type</code>, <code>properties</code> and <code>geometry</code> appears within the <strong>features</strong> list. These new keys provide the additional spatial and geometry data in their values which a website uses to place them at their appropriate locations on the webmap.</p>
 <p>Now move over to the <strong>Table</strong> tab and click new column as shown below.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="using-geojson-in-leaflet.html#cb41-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/table.jpg&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="using-geojson-in-leaflet.html#cb40-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/table.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../images/table.jpg" width="956" /></p>
 <p>Click on it and in the graphic that appears, give your column the name <strong>City</strong>. Click <strong>Ok</strong> and in the table cell that appears, type <strong>Nairobi</strong>.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="using-geojson-in-leaflet.html#cb42-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/nairobi-named.jpg&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="using-geojson-in-leaflet.html#cb41-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/nairobi-named.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../images/nairobi-named.jpg" width="960" /></p>
 <p>Now create a new pin over <em>Kisumu</em> and two things will happen: a new dictionary will appear below that of Nairobi and a new table row will appear in the <strong>Table</strong> tab. Create pins over the following cities: Mombasa, Nakuru, Nyeri, Machakos and Malindi. Legally speaking, only the first four are cities by law, the rest are just towns but for the sake of this tutorial, let’s corporately refer to them as cities.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="using-geojson-in-leaflet.html#cb43-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/cities-named.jpg&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="using-geojson-in-leaflet.html#cb42-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/cities-named.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../images/cities-named.jpg" width="958" /></p>
 <p>Alright, one process down, one more to go. We will fill these cities with their population statistics. Create a new column with the heading <strong>Population</strong>. Fill each of the cities with the following statistics.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="using-geojson-in-leaflet.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.csv</span>(<span class="st">&quot;D:/gachuhi/my-leaflet-vs/data/points.csv&quot;</span>)[ , <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="using-geojson-in-leaflet.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.csv</span>(<span class="st">&quot;D:/gachuhi/my-leaflet-vs/data/points.csv&quot;</span>)[ , <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code></pre></div>
 <pre><code>##       City  Population
 ## 1  Nairobi 4, 300, 000
 ## 2   Kisumu    610, 082
@@ -389,7 +389,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6 Machakos 1, 422, 000
 ## 7  Malindi    119, 859</code></pre>
 <p>Once done, head over to the top left of the <a href="http://geojson.io/">geojson.io</a> website, and click <strong>Save</strong>. A list of options will appear, click on save as <strong>geojson</strong>. It should appear somewhere in your <em>Downloads</em> directory.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="using-geojson-in-leaflet.html#cb46-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/geojson-save.jpg&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="using-geojson-in-leaflet.html#cb45-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/geojson-save.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../images/geojson-save.jpg" width="960" /></p>
 </div>
 <div id="saving-the-geojson-to-github" class="section level2 hasAnchor" number="5.5">
@@ -425,7 +425,7 @@ L.tileLayer(&#39;https://tile.openstreetmap.org/{z}/{x}/{y}.png&#39;, {
     attribution: &#39;&amp;copy; &lt;a href=&quot;http://www.openstreetmap.org/copyright&quot;&gt;OpenStreetMap&lt;/a&gt;&#39;
 }).addTo(map);</code></pre>
 <p>Okay. Head over to <a href="geojson.io">geojson.io</a> website and right under the <strong>&lt;/&gt;JSON</strong> you will see a copy icon.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="using-geojson-in-leaflet.html#cb49-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/geojson-copy.jpg&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="using-geojson-in-leaflet.html#cb48-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/geojson-copy.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../images/geojson-copy.jpg" width="370" />
 Click it and past the json code into your <code>geojson.js</code> file right above the other <code>L.map</code> and <code>L.tileLayer</code> classes. The contents of your <code>geojson.js</code> should look like below.</p>
 <pre><code>var cities = {
@@ -474,14 +474,14 @@ L.tileLayer(&#39;https://tile.openstreetmap.org/{z}/{x}/{y}.png&#39;, {
 <p>Refresh your <code>map.html</code>. It’s a map of Kenya alright, but none of our <code>.geojson</code> features appear yet. We are about to change that. Leaflet offers the <code>L.geoJSON</code> class to add GeoJSON data to a map. The class name speaks for itself and therefore let’s use it to add our GeoJSON features. Add the following code below the other leaflet map class layers.</p>
 <pre><code>L.geoJSON(cities).addTo(map);</code></pre>
 <p>Refresh your <code>map.html</code>. The GeoJSON features should now appear at their exact locations.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="using-geojson-in-leaflet.html#cb52-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/geojson-leaflet.jpg&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="using-geojson-in-leaflet.html#cb51-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/geojson-leaflet.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../images/geojson-leaflet.jpg" width="952" /></p>
 <p>How about if we made the markers more interactive? Say, like they display popups as we did in <a href="add-ons.html#a-marker-with-a-popup">Chapter 3</a>? We want the city names to appear when the user clicks on the markers. Easy. Just create a function that does so as in the logic provided <a href="https://leafletjs.com/reference.html#geojson">here</a>. We customized it to our case to make sure it references to the <code>City</code> key which is part of the dictionary attached to the <code>properties</code> key.</p>
 <pre><code>L.geoJSON(cities).bindPopup(function (layer) {
     return layer.feature.properties.City;
 }).addTo(map);
 </code></pre>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="using-geojson-in-leaflet.html#cb54-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/geojson-names.jpg&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="using-geojson-in-leaflet.html#cb53-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/geojson-names.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../images/geojson-names.jpg" width="504" /></p>
 <p>There is one issue with this method. If we have a very long GeoJSON data structure, it will clatter our JavaScript file. We only worked with seven cities, but it is very common to work with data holding hundreds and even thousands of dictionaries. That would make your JavaScript file stretch to <em>ad infitum</em>.</p>
 <p>This brings us to the other two methods, that of using the <strong>Ajax</strong> plugin and using the <strong>Fetch</strong> Application Programming Interface (API). Don’t let the words scare you. Take a break, grab a glass of water and come back.</p>
@@ -540,7 +540,7 @@ L.tileLayer(&#39;https://tile.openstreetmap.org/{z}/{x}/{y}.png&#39;, {
     })
 </code></pre>
 <p>To see the <code>catch()</code> in action, omit the last letter in our url so that it reads <code>cities-geojson.geojso</code>. Yeah, you read it right. Just omit the letter ‘n’ for now and reload your <code>map.html</code>. Right click the webmap page and click on <strong>Inspect</strong> in the small interface that appears. Head over to the console tab and see the error response. It should read like in the image below.</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="using-geojson-in-leaflet.html#cb62-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/catch-error.jpg&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="using-geojson-in-leaflet.html#cb61-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/catch-error.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../images/catch-error.jpg" width="956" /></p>
 <p>Restore the omitted letter ‘n’ and reload your <code>map.html</code>. Your leaflet map should have the city markers overlain just like in the case of using Ajax plugin or hardcoding the Geojson data into <code>var cities</code>. To stretch your Javascript skills further, we can shorten our code further by retaining the arguments <code>response</code>, <code>data</code> and <code>error</code> and using the arrow function <code>=&gt;</code> to pass on the return statements, like so:</p>
 <pre><code>fetch(&quot;https://raw.githubusercontent.com/sammigachuhi/geojson_files/main/cities-geojson.geojson&quot;)
@@ -569,7 +569,7 @@ L.tileLayer(&#39;https://tile.openstreetmap.org/{z}/{x}/{y}.png&#39;, {
 </code></pre>
 <p>In the <code>return</code> statement above, we added the HTML tag <code>&lt;br&gt;</code> to separate the <code>City</code> and <code>Population</code> keys from our GeoJSON. What we have are neat markers showing both the city name and population figures in two separate lines.</p>
 <p>Enough Javascript for a day!</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="using-geojson-in-leaflet.html#cb65-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/city-population.jpg&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="using-geojson-in-leaflet.html#cb64-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/city-population.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../images/city-population.jpg" width="928" /></p>
 <p>Here are the <a href="https://github.com/sammigachuhi/my-leaflet-project/tree/main/my-leaflet-code/chapter-5-geojson-leaflet">full files</a>.</p>
 </div>
@@ -649,20 +649,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

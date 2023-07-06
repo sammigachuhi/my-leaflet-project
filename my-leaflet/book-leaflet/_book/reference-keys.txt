@@ -83,7 +83,7 @@ editing-the-css
 embedding-leaflet-to-every-webpage
 posting-the-html-website-to-the-world
 summary-12
-leaflet-in-esri
+esri-and-leaflet
 an-overview-of-esri
 esri-leaflet-plugins
 creating-an-esri-leaflet-map
