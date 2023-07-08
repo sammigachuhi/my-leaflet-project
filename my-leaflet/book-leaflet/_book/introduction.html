@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 1 Introduction | Practical Leaflet: Create webmaps using the JavaScript Leaflet library</title>
+  <title>Chapter 1 Introduction | Leaflet in Practice: Create webmaps using the JavaScript Leaflet library</title>
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
   <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 1 Introduction | Practical Leaflet: Create webmaps using the JavaScript Leaflet library" />
+  <meta property="og:title" content="Chapter 1 Introduction | Leaflet in Practice: Create webmaps using the JavaScript Leaflet library" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
@@ -19,7 +19,7 @@ set in the _output.yml file.</p>" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 1 Introduction | Practical Leaflet: Create webmaps using the JavaScript Leaflet library" />
+  <meta name="twitter:title" content="Chapter 1 Introduction | Leaflet in Practice: Create webmaps using the JavaScript Leaflet library" />
   
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Samuel Gachuhi Ngugi" />
 
 
-<meta name="date" content="2023-07-06" />
+<meta name="date" content="2023-07-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -285,7 +285,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Practical Leaflet: Create webmaps using the JavaScript Leaflet library</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Leaflet in Practice: Create webmaps using the JavaScript Leaflet library</a>
           </h1>
         </div>
 
@@ -301,18 +301,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="how-does-it-work" class="section level2 hasAnchor" number="1.2">
 <h2><span class="header-section-number">1.2</span> How does it work?<a href="introduction.html#how-does-it-work" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Leaflet can work if every line of code is inside a <code>html</code> document, so long as the code appears under the <code>&lt;script&gt;</code> tag. However, for a neat work, especially working with complex maps, it is recommended you separate the <code>html</code> file from its other components of <code>main.js</code> and <code>style.css</code> files.</p>
+<p>Leaflet can work if every line of code is inside a <code>html</code> document so long as the code appears under the <code>&lt;script&gt;</code> tag. However, for a neat work, especially working with complex maps, it is recommended you separate the <code>html</code> file from its other components of <code>main.js</code> and <code>style.css</code> files.</p>
 <p>“HTML we know, but what are <code>main.js</code> and <code>style.css</code> files?”, you may ask.</p>
-<p>Well, beginning with <code>html</code>, which stands for <strong>Hypertext Markup Language</strong>, it is the language that is <a href="https://www.tutorialspoint.com/html/index.htm">used in creating webpages</a>. It is actually the standard of making static webmaps. I am yet to come across any webpage that is made up of everything apart from HTML. If you want to have a view of what HTML looks like, just right click any webpage and click <em>Inspect</em> in Google Chrome and Firefox. A toolbar will appear at the bottom or side of the webpage, depending on your settings.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="introduction.html#cb2-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/inspect.jpg&quot;</span>))</span></code></pre></div>
+<p>Well, beginning with <code>html</code>, which stands for <strong>Hypertext Markup Language</strong>, it is the language that is <a href="https://www.tutorialspoint.com/html/index.htm">used in creating webpages</a>. It is actually the standard of making static webmaps. I am yet to come across any webpage that is made up of anything apart from HTML. If you want to have a view of what HTML looks like, just right click any webpage and click <em>Inspect</em> in Google Chrome and Firefox. A toolbar will appear at the bottom or side of the webpage, depending on your settings.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="introduction.html#cb2-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-Leaflet/images/inspect.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../images/inspect.jpg" width="400" /></p>
 <p>Scroll over to the <strong>Element</strong> tab and you will have something that looks like this:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="introduction.html#cb3-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/elements.jpg&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="introduction.html#cb3-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-Leaflet/images/elements.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../images/elements.jpg" width="400" /></p>
 <p>The part encircled in red is the <code>html</code> that makes up the webpage for the <a href="https://sammigachuhi.github.io/pro-gmo-website/">ProGMO website</a> in this case.</p>
-<p>So, I am a GIS specialist, I want to learn how to make a html website so as to use leaflet and its functionalities. Whereas this document does not provide an indepth view of all the ins and outs of a html document, html websites are made up of elements known as <code>tags</code>. Tags, normally indicated by angle brackets (<code>&lt;&gt;</code>) are what introduce any form of content into a webpage, be it a paragraph <code>(&lt;p&gt;)</code>, an image <code>(&lt;img&gt;)</code>, video <code>(&lt;video&gt;)</code> and even an entire section (<code>&lt;div&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>). With this basic introduction, let’s create a basic html page.</p>
-<p>To create a html element along with many other programming files, such as <code>.js</code> and <code>.css</code> which we shall see later, we use a text editor. A good example of a text editor is VS code or Pycharm. Check their websites on their installation methods for your personal computer. For creating html and working with <code>.js</code> documents later, we shall use VS Code unless otherwise stated.</p>
-<p>Here is a basic html webpage.</p>
+<p>So, I am a GIS specialist, I want to learn how to make a HTML website so as to use Leaflet and its functionalities. Whereas this document does not provide an indepth view of all the ins and outs of a HTML document, HTML websites are made up of elements known as <code>tags</code>. Tags, normally indicated by angle brackets (<code>&lt;&gt;</code>) are what introduce any form of content into a webpage, be it a paragraph <code>(&lt;p&gt;)</code>, an image <code>(&lt;img&gt;)</code>, video <code>(&lt;video&gt;)</code> and even an entire section (<code>&lt;div&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>). With this basic introduction, let’s create a basic HTML page.</p>
+<p>To create a HTML element along with many other programming files, such as <code>.js</code> and <code>.css</code> which we shall see later, we use a text editor. A good example of a text editor is VS code or Pycharm. Check their websites on their installation methods for your personal computer. For creating HTML and working with <code>.js</code> documents later, we shall use VS Code unless otherwise stated.</p>
+<p>Here is a basic HTML webpage.</p>
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
     &lt;head&gt;
@@ -331,28 +331,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<p>Let’s go through the above tags one by one.</p>
+<p>Let’s go through each of the above tags one by one.</p>
 <ol style="list-style-type: decimal">
 <li><p><code>&lt;!DOCTYPE html&gt;</code> - It is an “information” to the browser about what document type to expect.</p></li>
 <li><p><code>&lt;html lang="en"&gt;</code> - It is the container for all other HTML elements (except for the <code>&lt;!DOCTYPE&gt;</code> tag). The <code>lang</code> attribute is used to assist web engines know which language the website uses.</p></li>
 <li><p><code>&lt;head&gt;</code> - It is not displayed on the webpage as other tags, but contains the metadata of the webpage.</p></li>
 <li><p><code>&lt;title&gt;</code> - Can you guess? You had it right. Defines the title of the document. In our case, if you open the webpage assuming you created it in VS Code, the webpage shall be titled <em>A basic html webpage</em> at the tab of your web-browser.</p></li>
-<li><p><code>&lt;meta charset="utf-8"&gt;</code> - This is one of the metadata hosted by the <code>&lt;head&gt;</code> tag. We had mentioned earlier that the <code>&lt;head&gt;</code> contains the metadata of the webpage. Now here we would like to add that the <code>&lt;meta&gt;</code> tag found <em>within</em> the <code>&lt;head&gt;</code> is what <em>defines</em> the metadata. You can think of it as <strong>README</strong> text file that comes with any software you download. The <code>&lt;meta&gt;</code> tag in our case defines the encoding of our HTML5 document with the attribute <code>charset="utf-8"</code>. Don’t think about this too much. HTML5 documents have <code>utf-8</code> as their encoding. You can try to look up what encoding is but it’s not useful for this tutorial!</p></li>
-<li><p><code>&lt;link&gt;</code> - Defines the relationship between a document and an external resource. It has various attributes but <code>rel</code> and <code>href</code> have been used. The former specifies the relationship between the current document and the linked document/resource. The <code>rel</code> here references the <code>styles.css</code> file as the style sheet for our html. That is, the styles for our html are found in the <code>styles.css</code> file. <code>href</code> on the other hand points the html document to the path of the stylesheet –the <code>styles.css</code> file.</p></li>
+<li><p><code>&lt;meta charset="utf-8"&gt;</code> - This is part of the metadata hosted by the <code>&lt;head&gt;</code> tag. We had mentioned earlier that the <code>&lt;head&gt;</code> contains the metadata of the webpage. Now here we would like to add that the <code>&lt;meta&gt;</code> tag found <em>within</em> the <code>&lt;head&gt;</code> is what <em>defines</em> the metadata. You can think of it as <strong>README</strong> text file that comes with any software you download. The <code>&lt;meta&gt;</code> tag in our case defines the encoding of our HTML5 document with the attribute <code>charset="utf-8"</code>. Don’t think about this too much. HTML5 documents have <code>utf-8</code> as their encoding. You can try to look up what encoding is but it’s not useful for this tutorial!</p></li>
+<li><p><code>&lt;link&gt;</code> - Defines the relationship between a document and an external resource. It has various attributes but <code>rel</code> and <code>href</code> have been used. The former specifies the relationship between the current document and the linked document/resource. The <code>rel</code> here references the <code>styles.css</code> file as the style sheet for our HTML. That is, the styles for our HTML are found in the <code>styles.css</code> file. <code>href</code> on the other hand points the HTML document to the path of the stylesheet –the <code>styles.css</code> file.</p></li>
 <li><p><code>&lt;body&gt;</code> - This is the crux of your webpage. If nothing is within the <code>&lt;body&gt;</code> tags, your webpage will be as empty as a blank sheet of paper. This tag is the home for all the other contents of the webpage such as headings, paragraphs, images, tables etc.</p></li>
-<li><p><code>&lt;div&gt;</code> - This is a special element that lets you group similar sets of content together on a web page. You can use it as a generic container for associating similar content. In the above html script, we have included an <code>&lt;id&gt;</code> attribute that is in other words, a unique identifier for this section of the webpage. <code>&lt;id&gt;s</code> are useful if you want to customize the appearance of a certain part of the webpage. <code>&lt;class&gt;</code>es behave in a similar way, but the difference between <code>&lt;id&gt;</code> and <code>&lt;class&gt;</code> is that <code>&lt;id&gt;</code> has to be unique, while <code>&lt;class&gt;</code>es can be used more than once.</p></li>
+<li><p><code>&lt;div&gt;</code> - This is a special element that lets you group similar sets of content together on a web page. You can use it as a generic container for associating similar content. In the above HTML script, we have included an <code>&lt;id&gt;</code> attribute that is in other words, a unique identifier for this section of the webpage. <code>&lt;id&gt;s</code> are useful if you want to customize the appearance of a certain part of the webpage. <code>&lt;class&gt;</code>es behave in a similar way, but the difference between <code>&lt;id&gt;</code> and <code>&lt;class&gt;</code> is that <code>&lt;id&gt;</code> has to be unique, while <code>&lt;class&gt;</code>es can be used more than once.</p></li>
 </ol>
 <p>9.<code>&lt;script&gt;</code> - It is used to embed executable code or data. In most cases it refers to JavaScript, which enhances interactivity.</p>
 <p>If you may have noticed above, most HTML tags end with <code>&lt;/name-of-tag&gt;</code>. With a few exceptions such as <code>&lt;img&gt;</code>, almost all HTML tags end this way.</p>
 </div>
 <div id="javascript" class="section level2 hasAnchor" number="1.3">
 <h2><span class="header-section-number">1.3</span> JavaScript<a href="introduction.html#javascript" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>JavaScript, shortened to <code>.js</code> is the language of the web. It introduces interactivity to HTML files. Without it our HTML files would just remain static. Have you ever clicked a link or a shiny button on a website and some visual or menu popped up? JavaScript was the engine behind all that. Think of <code>.js</code> as the life of the party while HTML is just the setting. Without <code>.js</code> creating webmaps would not be possible since adding JavaScript code to a html file using <code>&lt;script&gt;</code> is what makes the map appear on any website!</p>
+<p>JavaScript, shortened to <code>.js</code> is the language of the web. It introduces interactivity to HTML files. Without it our HTML files would just remain static. Have you ever clicked a link or a shiny button on a website and some visual or menu popped up? JavaScript was the engine behind all that. Think of <code>.js</code> as the life of the party while HTML is just the setting. Without <code>.js</code>, creating webmaps would not be possible since adding JavaScript code to a HTML file using <code>&lt;script&gt;</code> is what makes the map appear on any website!</p>
 </div>
 <div id="css-files" class="section level2 hasAnchor" number="1.4">
 <h2><span class="header-section-number">1.4</span> CSS files<a href="introduction.html#css-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>CSS stands for <em>Cascading Style Sheet</em>. The CSS defines how your HTML is to appear, such as color and size of text, background color of the HTML as well as the structure of your HTML page.</p>
-<p>CSS is quite a huge field despite being simple. However, the html elements of a webpage are accompanied by a curly bracket containing the specified properties and values.</p>
+<p>CSS is quite a huge field despite appearing simple to the novice’s eye. However, the html elements of a webpage are accompanied by a curly bracket containing the specified properties and values. The CSS terms ‘Properties’ and ‘Values’ are described below.</p>
 <ul>
 <li><p>Properties: These are human-readable identifiers that indicate which stylistic features you want to modify. For example, font-size, width, background-color.</p></li>
 <li><p>Values: Each property is assigned a value. This value indicates how to style the property.</p></li>
@@ -362,13 +362,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   font-family: &quot;Open Sans&quot;, sans-serif;
   color: #444444;
 }</code></pre>
-<p>The <code>body</code> in the CSS file is known as the selector. Selectors in CSS are what tags are in HTML files. However, selectors can be more specific, such as specifying the exact <code>&lt;div&gt;</code> that should be displayed in a particular way. Using our html file example, if there were other <code>&lt;div&gt;</code>s apart from the <code>&lt;div id="division-1"&gt;</code> above, we would specify our first one in a CSS document like so:</p>
+<p>The <code>body</code> in the CSS file is known as the selector. Selectors in CSS are what tags are to HTML files. However, selectors can be more specific, such as specifying the exact <code>&lt;div&gt;</code> that should be displayed in a particular way. Using our HTML file example, if there were other <code>&lt;div&gt;</code>s apart from the <code>&lt;div id="division-1"&gt;</code> above, we would specify the one with ID <code>division-1</code> in a CSS document like so:</p>
 <pre><code>#division-1 {
   font-family: &quot;Open Sans&quot;, sans-serif;
   color: #343a40;
 }
 </code></pre>
-<p>We would specify other property values for our <code>&lt;div&gt;</code>s by their names following a <code>#</code> like so. Suppose there was a <code>&lt;div id="division-2"&gt;</code> somewhere in the HTML we could define some properties specific to it in the manner below:</p>
+<p>We specify all specific IDs in a HTML file with a prefix of <code>#</code>. Suppose there was a <code>&lt;div id="division-2"&gt;</code> somewhere in the HTML. We would similarly define some properties specific to it in the manner below:</p>
 <pre><code>#division-2 {
   font-family: helvetica;
   color: #000000;
@@ -378,8 +378,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>.class_name {
 property: value
 prperty2: value2}</code></pre>
-<p>You can view the style of a particular HTML element using the styles tab found in the inspect console. It is shown in yellow bounds for a chrome webpage. Firefox should have a similar one.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="introduction.html#cb9-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/elements2.jpg&quot;</span>))</span></code></pre></div>
+<p>You can view the style of a particular HTML element using the styles tab found in <strong>Element</strong> tab of the inspect console. To get to the <strong>Inspect</strong> tab of your browser, right click the webpage and select <strong>Inspect</strong> from the list of options provided.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="introduction.html#cb9-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-Leaflet/images/elements2.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../images/elements2.jpg" width="400" /></p>
 <p>The <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/How_CSS_is_structured">MDN website</a> provides a lot of information on HTML and CSS.</p>
 </div>
@@ -387,7 +387,7 @@ prperty2: value2}</code></pre>
 <h2><span class="header-section-number">1.5</span> Summary<a href="introduction.html#summary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This chapter was an introduction to Hyper Text Markup Language (HTML), JavaScript and Cascading Style Sheets (CSS) languages. You learnt the following:</p>
 <ul>
-<li><p>You can work with leaflet in either a html or JavaScript file. In html,
+<li><p>You can work with Leaflet in either a HTML or JavaScript file. In HTML,
 the JavaScript code must appear under the <code>&lt;script&gt;</code> tag.</p></li>
 <li><p>HTML files are made up of elements called tags. Tags are features that introduce any form of content into a webpage.</p></li>
 <li><p>JavaScript is the main language of the web. It is the language responsible for the interactivity in most websites.</p></li>

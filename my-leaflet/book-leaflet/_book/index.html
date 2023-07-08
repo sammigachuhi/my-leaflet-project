@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Practical Leaflet: Create webmaps using the JavaScript Leaflet library</title>
+  <title>Leaflet in Practice: Create webmaps using the JavaScript Leaflet library</title>
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
   <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Practical Leaflet: Create webmaps using the JavaScript Leaflet library" />
+  <meta property="og:title" content="Leaflet in Practice: Create webmaps using the JavaScript Leaflet library" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
@@ -19,7 +19,7 @@ set in the _output.yml file.</p>" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Practical Leaflet: Create webmaps using the JavaScript Leaflet library" />
+  <meta name="twitter:title" content="Leaflet in Practice: Create webmaps using the JavaScript Leaflet library" />
   
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Samuel Gachuhi Ngugi" />
 
 
-<meta name="date" content="2023-07-06" />
+<meta name="date" content="2023-07-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -285,7 +285,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Practical Leaflet: Create webmaps using the JavaScript Leaflet library</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Leaflet in Practice: Create webmaps using the JavaScript Leaflet library</a>
           </h1>
         </div>
 
@@ -294,16 +294,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="header">
-<h1 class="title">Practical Leaflet: Create webmaps using the JavaScript Leaflet library</h1>
+<h1 class="title">Leaflet in Practice: Create webmaps using the JavaScript Leaflet library</h1>
 <p class="author"><em>Samuel Gachuhi Ngugi</em></p>
-<p class="date"><em>2023-07-06</em></p>
+<p class="date"><em>2023-07-08</em></p>
 </div>
 <div id="preface" class="section level1 unnumbered hasAnchor">
 <h1>Preface<a href="index.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This book was written to assist the budding GIS specialist, geographer or even cartographer who has an interest in quickly learning how to create webmaps with minimal knowledge of JavaScript. The aim of this book is to bring the learner up to speed on how to create almost any kind of webmap using Leaflet. Written from the point of a self-taught programmer, this is more of a guide book on how to navigate the Leaflet JavaScript syntax at intermediate level. Nevertheless, it is the wish of this writer that the book appetize you to go deeper in using programming for not only Geographical Information Systems (GIS) purposes, but for any other purpose that fascinates your mind.</p>
+<p>This book was written to assist the budding GIS specialist, geographer or cartographer who has an interest in quickly learning how to create webmaps with minimal knowledge of JavaScript. The aim of this book is to bring the learner up to speed on how to create almost any kind of webmap using Leaflet. Written from the point of a self-taught programmer, this is more of a guide book on how to navigate the Leaflet JavaScript syntax at intermediate level. Nevertheless, it is the wish of this writer that the book appetites you to go deeper in using programming for not only Geographical Information Systems (GIS) purposes, but for any other purpose that fascinates your mind.</p>
 <div id="usage" class="section level2 unnumbered hasAnchor">
 <h2>Usage<a href="index.html#usage" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Although the author would highly recommend the reader to sequentially go through the entire book, for the impatient learner, each chapter from Chapter 3 onwards is a stand alone exercise with a link to the source code at the end of every chapter. The link can be found just before the Summary subsection. Only in Chapter 6 does the link to the source code appear at the beginning of the chapter. Finally, the book is also available as a Portable Document File here.</p>
+<p>Although the author would highly recommend the reader to sequentially go through the entire book, for the hasty learner, each chapter from Chapter 3 onwards is a stand alone exercise with a link to the source code at the end of every chapter. The link can be found just before the <strong>Summary</strong> subsection. Finally, the book is also available as a Portable Document File (PDF) here.</p>
 </div>
 <div id="about-the-author" class="section level2 unnumbered hasAnchor">
 <h2>About the Author<a href="index.html#about-the-author" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -311,7 +311,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="copyright" class="section level2 unnumbered hasAnchor">
 <h2>Copyright<a href="index.html#copyright" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This document, <em>Practical Leaflet: Create webmaps using the JavaScript Leaflet library</em> has been created under the Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0).</p>
+<p>This book, <em>Leaflet in Practice: Create webmaps using the JavaScript Leaflet library</em> has been created under the Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0).</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/copyright_image.png&#39;</span>))</span></code></pre></div>
 <p><img src="../images/copyright_image.png" width="190" /></p>
 <p>This is a human-readable summary of (and not a substitute for) the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode">license</a>. <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/#">Disclaimer</a>.</p>

@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Create your own custom markers | Practical Leaflet: Create webmaps using the JavaScript Leaflet library</title>
+  <title>Chapter 6 Create your own custom markers | Leaflet in Practice: Create webmaps using the JavaScript Leaflet library</title>
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
   <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Create your own custom markers | Practical Leaflet: Create webmaps using the JavaScript Leaflet library" />
+  <meta property="og:title" content="Chapter 6 Create your own custom markers | Leaflet in Practice: Create webmaps using the JavaScript Leaflet library" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
@@ -19,7 +19,7 @@ set in the _output.yml file.</p>" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Create your own custom markers | Practical Leaflet: Create webmaps using the JavaScript Leaflet library" />
+  <meta name="twitter:title" content="Chapter 6 Create your own custom markers | Leaflet in Practice: Create webmaps using the JavaScript Leaflet library" />
   
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Samuel Gachuhi Ngugi" />
 
 
-<meta name="date" content="2023-07-06" />
+<meta name="date" content="2023-07-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -285,7 +285,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Practical Leaflet: Create webmaps using the JavaScript Leaflet library</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Leaflet in Practice: Create webmaps using the JavaScript Leaflet library</a>
           </h1>
         </div>
 
@@ -297,7 +297,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 6</span> Create your own custom markers<a href="create-your-own-custom-markers.html#create-your-own-custom-markers" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="setting-the-base" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> Setting the base<a href="create-your-own-custom-markers.html#setting-the-base" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Full codes and files are <a href="https://github.com/sammigachuhi/my-leaflet-project/tree/main/my-leaflet-code/chapter-6-custom-markers">here</a>.</p>
 <p>Hope you didn’t trash away the cities we created in the last <a href="using-geojson-in-leaflet.html#using-geojson-in-leaflet">chapter</a>. In this chapter, we shall focus on creating your own custom markers. We love a clean job, so we will create a new JavaScript file and name it <code>custom-markers.js</code>. We understand the previous <a href="using-geojson-in-leaflet.html#using-geojson-in-leaflet">chapter</a> was quite long but believe you me, although creating custom markers sounds easier, it took us way longer to get the hang around it. Sounds ironic but its the truth. Good news, we received enough punches on the face to teach you how to dodge the pain points.</p>
 <p>The very first thing is to create a basemap.</p>
 <pre><code>var map = L.map(&#39;myMap&#39;).setView([-1.295287148, 36.81984753], 7);
@@ -643,6 +642,7 @@ map.fitBounds(latLngBounds);
 <li><p><code>alt</code> - sets the HTML alt attribute to provide an alternative text description of the image. It is quite helpful in describing an image in text form in case it fails to load due to poor network connectivity. Moreover, it can improve the Search Engine Optimization (SEO) of the website it is hosted in.</p></li>
 <li><p><code>interactive</code> - is false by default. If true, the image overlay will emit mouse events when clicked or hovered.</p></li>
 </ol>
+<p>Full codes and files are <a href="https://github.com/sammigachuhi/my-leaflet-project/tree/main/my-leaflet-code/chapter-6-custom-markers">here</a>.</p>
 </div>
 <div id="summary-5" class="section level2 hasAnchor" number="6.7">
 <h2><span class="header-section-number">6.7</span> Summary<a href="create-your-own-custom-markers.html#summary-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
