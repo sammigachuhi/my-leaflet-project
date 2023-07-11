@@ -9,6 +9,7 @@ setting-the-superstructure
 beautifying-the-house
 summary-1
 add-ons
+not-just-a-plain-map
 a-marker
 a-marker-with-a-popup
 different-markers-and-popups

@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Samuel Gachuhi Ngugi" />
 
 
-<meta name="date" content="2023-07-10" />
+<meta name="date" content="2023-07-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -164,10 +164,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="add-ons.html"><a href="add-ons.html"><i class="fa fa-check"></i><b>3</b> Add ons</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="add-ons.html"><a href="add-ons.html#a-marker"><i class="fa fa-check"></i><b>3.1</b> A marker</a></li>
-<li class="chapter" data-level="3.2" data-path="add-ons.html"><a href="add-ons.html#a-marker-with-a-popup"><i class="fa fa-check"></i><b>3.2</b> A marker with a popup</a></li>
-<li class="chapter" data-level="3.3" data-path="add-ons.html"><a href="add-ons.html#different-markers-and-popups"><i class="fa fa-check"></i><b>3.3</b> Different markers and popups</a></li>
-<li class="chapter" data-level="3.4" data-path="add-ons.html"><a href="add-ons.html#summary-2"><i class="fa fa-check"></i><b>3.4</b> Summary</a></li>
+<li class="chapter" data-level="3.1" data-path="add-ons.html"><a href="add-ons.html#not-just-a-plain-map"><i class="fa fa-check"></i><b>3.1</b> Not just a plain map</a></li>
+<li class="chapter" data-level="3.2" data-path="add-ons.html"><a href="add-ons.html#a-marker"><i class="fa fa-check"></i><b>3.2</b> A marker</a></li>
+<li class="chapter" data-level="3.3" data-path="add-ons.html"><a href="add-ons.html#a-marker-with-a-popup"><i class="fa fa-check"></i><b>3.3</b> A marker with a popup</a></li>
+<li class="chapter" data-level="3.4" data-path="add-ons.html"><a href="add-ons.html#different-markers-and-popups"><i class="fa fa-check"></i><b>3.4</b> Different markers and popups</a></li>
+<li class="chapter" data-level="3.5" data-path="add-ons.html"><a href="add-ons.html#summary-2"><i class="fa fa-check"></i><b>3.5</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="embedding-leaflet-map-to-an-external-website.html"><a href="embedding-leaflet-map-to-an-external-website.html"><i class="fa fa-check"></i><b>4</b> Embedding leaflet map to an external website</a>
 <ul>
@@ -295,45 +296,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="add-ons" class="section level1 hasAnchor" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Add ons<a href="add-ons.html#add-ons" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Like in the ultimate finale of a series where the episode begins with “Previously on…”, this chapter shall be a continuation of <a href="first-leaflet-map.html#first-leaflet-map">Chapter 2</a>.</p>
+<div id="not-just-a-plain-map" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Not just a plain map<a href="add-ons.html#not-just-a-plain-map" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Like in the ultimate finale of a series where the episode begins with the statement- “Previously on…”, this chapter shall be a continuation of <a href="first-leaflet-map.html#first-leaflet-map">Chapter 2</a>.</p>
 <p>So we have a plain looking webmap like the one shown below.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="add-ons.html#cb15-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/kisumu-leaflet.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../images/kisumu-leaflet.jpg" width="400" /></p>
-<p>However, despite being a cool looking webmap, it offers no sort of information to the viewer except that it is an interactive map interface. In order to pass some information, such as showing the location of Kisumu and <em>inter alia</em>, markers are one way of displaying content.</p>
-<p>In the last chapter we had last left our <code>main.js</code> file looking like in the image above. Ensure yours is also the same, but we encourage you to explore with other leaflet layers available from <a href="https://leaflet-extras.github.io/leaflet-providers/preview/">here</a>.</p>
-<div id="a-marker" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> A marker<a href="add-ons.html#a-marker" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>However, despite being a cool looking webmap, it offers no other additional information to the user. In order to pass some information, such as showing the location of Kisumu and <em>inter alia</em>, markers are one way of displaying such content. As a side note, there are other basemap layer servers compatible with Leaflet available <a href="https://leaflet-extras.github.io/leaflet-providers/preview/">here</a>.</p>
+</div>
+<div id="a-marker" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> A marker<a href="add-ons.html#a-marker" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Many people could possibly hardly know where Kisumu, is, so lets indicate its location with a simple pin marker. To be more specific, let’s pinpoint Kisumu International Airport.</p>
 <pre><code>// Location of Kisumu International Airport
 var marker = L.marker([-0.0819301, 34.7260167]).addTo(map);</code></pre>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="add-ons.html#cb17-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/kisumu-international-airport.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../images/kisumu-international-airport.jpg" width="958" /></p>
-<p>As a simple exercise, can you try creating a marker for your home location, not forgetting to change the <code>setView</code> method you had initially started with in this map creating journey?</p>
-<p>Alright, we have a marker. But what’s so special about it as a lone pin in the middle of somewhere? Let’s try to make this marker have some information, otherwise called attributes in GIS. Let’s say the attributes we want to add are the name of the airport and other auxillary data.</p>
+<p>As a simple exercise, can you try creating a marker for your home location using the <code>setView</code> method you have learned about so far?</p>
+<p>Alright, we have a marker. But what’s so special about it apart from it being a lone pin in the middle of somewhere? Let’s try to make this marker have some information, otherwise called attributes in GIS. Let’s say the attributes we want to add are the name of the airport and other auxillary data.</p>
 </div>
-<div id="a-marker-with-a-popup" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> A marker with a popup<a href="add-ons.html#a-marker-with-a-popup" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To create popups, leaflet provides the <code>bindPopup</code> method. It is especially easy if you already have a marker variable in place, as in our case.</p>
+<div id="a-marker-with-a-popup" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> A marker with a popup<a href="add-ons.html#a-marker-with-a-popup" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To create popups, Leaflet provides the <code>bindPopup</code> method. You just <em>chain</em> it to the variable, more like how you would add an extension to a browser to perform new functions but now in this case, these extra functions are added to the variable. In the below code, <code>bindPopup</code> is chained to the <code>marker</code> variable using a dot <code>.</code>.</p>
 <pre><code>// Create popup of Kisumu international Airport
 marker.bindPopup(&quot;Kisumu International Airport.&quot;).openPopup();</code></pre>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="add-ons.html#cb19-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/kisumu-airport-popup.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../images/kisumu-airport-popup.jpg" width="952" /></p>
-<p>What has just happened is that <code>bindPopup</code> binds the popup content– “Kisumu International Airport” to the marker. The following <code>openPopup</code> method chained to the method <em>opens</em> the popup at that specified latitude longitude. If you remove, or comment <code>//</code> out the <code>popUp</code> method, you will have to click the marker to see the popup content. Try it out.</p>
-<p>Markers can also work with HTML elements, such as when you want to display additional metadata, say the owner of the place, size of land et cetera. In the below case, we have added the lat-lon coordinates of Kisumu airport location. I would advise not to include lengthy information in an HTML marker element.</p>
+<p>What has just happened is that <code>bindPopup</code> binds the popup content– “Kisumu International Airport” to the marker. In the below code, we have added another method, <code>openPopup</code> which <em>open</em> the popup at that specified latitude longitude. If you remove, or comment <code>//</code> out the <code>popUp</code> method, you will have to click the marker to see the popup content. Try it out.</p>
+<p>Markers can also work with HTML elements, such as when you want to display additional metadata, say the owner of the place, size of land et cetera. In the below case, we have added the lat-lon coordinates of Kisumu airport location. It is highly advised not to include lengthy information in an HTML marker element.</p>
 <pre><code>// With html content
 marker.bindPopup(&quot;&lt;br&gt;Name: Kisumu International Airport&lt;/br&gt;&lt;br&gt;Latitude: -0.0819301&lt;/br&gt;&lt;br&gt;Longitude: 34.7260167&lt;/br&gt;&quot;).openPopup();</code></pre>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="add-ons.html#cb21-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/marker-html.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../images/marker-html.jpg" width="958" /></p>
 </div>
-<div id="different-markers-and-popups" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> Different markers and popups<a href="add-ons.html#different-markers-and-popups" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>So far you have seen pin markers, but there are also other kinds of markers, such as circles and rectangles. Unlike the pin markers we have been experimenting with, these other markers require additional options, such as radius for circle and lat-long coordinates for rectangles. Let’s have a go with each type.</p>
-<p>Starting with a circle, let’s start by inserting a circle to show the location of Kisumu Museum.</p>
+<div id="different-markers-and-popups" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Different markers and popups<a href="add-ons.html#different-markers-and-popups" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>So far you have seen pin markers, but there are also other kinds of markers, such as circles and rectangles. Unlike the pin markers we have been experimenting with, these other markers require additional options, such as radius value for circle and lat-long coordinates for rectangles. Let’s have a go with each type.</p>
+<p>Starting with a circle, let’s start by drawing a radius around the location of Kisumu Museum.</p>
 <pre><code>// Circle over Kisumu Museum
 var circle = L.circle([-0.107637, 34.7435975]).setRadius(2000).addTo(map);</code></pre>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="add-ons.html#cb23-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/kisumu-museum-circle.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../images/kisumu-museum-circle.jpg" width="954" /></p>
-<p>The below code will also create a slightly similar circle marker, the only difference is that in the preceding one we didn’t insert <code>{options}</code> and we set radius using the <code>setRadius</code> method. In the second one below, we have been very specific in what we want –our specifications going into the curly brackets {} before eventually adding the circle marker to our map. Brackets in JavaScript denote <a href="https://flexiple.com/javascript/javascript-dictionary/">dictionaries</a>. Dictionaries in JavaScript and even in python are used to denote key-value pairs.</p>
+<p>The below code will also create a slightly similar circle marker, the only difference is that in the preceding one we didn’t insert <code>{options}</code> and we set radius using the <code>setRadius</code> method. In the second one below, we have been very specific in what we want –our specifications going into the curly brackets {} before eventually adding the circle marker to our map. Brackets in JavaScript indicate you are dealing with a <a href="https://flexiple.com/javascript/javascript-dictionary/">dictionary</a>. A dictionary in JavaScript and even in Python is used to denote key-value pairs.</p>
 <pre><code>var circle = L.circle([-0.107637, 34.7435975], {
     color: &#39;blue&#39;,
     fillColor: &#39;blue&#39;,
@@ -347,7 +350,7 @@ circle.bindPopup(&quot;Radius is: &quot; + getRadius.toString() + &quot; metres&
 <p>In our above code, <code>getRadius</code> gets the radius of our circle marker. <code>bindPopup</code> as has already been explained before <em>binds</em> the popup content to our circle marker. But there is a catch. The variable <code>getRadius</code> is used to print out the results, which is 2000 of course. However, <code>bindPopup</code> only understands strings so we convert our variable result to a string using <code>toString()</code>. We also added other strings to give the popup a wholesome result that is understandable to every Tom, Dick, Harry and Harriet.</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="add-ons.html#cb26-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/circle-radius.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../images/circle-radius.jpg" width="956" /></p>
-<p>Finally, let’s try with a rectangle. Actually, leaflet allows us to create polygons, and with a polygon –at least in leaflet, you can also create rectangles. Let’s work with the polygon class instead.</p>
+<p>Finally, let’s try with a rectangle. Actually, Leaflet allows us to create polygons. Let’s work with the polygon class to create a rectangle bounding a given location.</p>
 <p>Copy the following coordinates.</p>
 <pre><code>// Draw rectangle around Kisumu Wildlife Impala Park
 var impalaParkCoordinates = [
@@ -366,27 +369,27 @@ var impalaParkPolygon = L.polygon(impalaParkCoordinates, {
     color: &#39;brown&#39;,
     fillOpacity: 0.4
 }).addTo(map);</code></pre>
-<p>You will notice that the Kisumu Museum circle overlaps the location of the Kisumu Impala Park but that is no problem. We will make our popup content appear by default as soon as you load the map. Just like we did for the circle marker, we will make our popup content rely on another variable, in this case <code>getCenter</code> which gets the centroid coordinates of our polygon. We were looking for something cooler such as <code>getArea</code> in Leaflet, one that automatically prints out the area of a polygon in a popup. Unfortunately, we were unable to find it.</p>
+<p>Just like we did for the circle marker, we will make our popup content rely on another variable, in this case <code>getCenter</code> which gets the centroid coordinates of our polygon. We were looking for something cooler such as <code>getArea</code> in Leaflet, one that automatically prints out the area of a polygon in a popup. Unfortunately, we were unable to find it.</p>
 <pre><code>// Add popup to the polygon of Kisumu Impala Park
 var getCenter = impalaParkPolygon.getCenter();
 impalaParkPolygon.bindPopup(&quot;Centre is at Lat-Lon: &quot; + getCenter.toString()).openPopup();
 </code></pre>
-<p>If you find the circle marker radius as an obstraction you can comment out it and its dependancies using <code>//</code>.</p>
+<p>If you find the circle marker too much of an obstraction to the rectangle marker, feel free to comment it out using <code>//</code>.</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="add-ons.html#cb30-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/polygon-marker.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../images/polygon-marker.jpg" width="960" /></p>
 <p>You can get the files used in this exercise <a href="https://github.com/sammigachuhi/my-leaflet-project/tree/main/my-leaflet-code/chapter-3-markers">here</a>.</p>
 </div>
-<div id="summary-2" class="section level2 hasAnchor" number="3.4">
-<h2><span class="header-section-number">3.4</span> Summary<a href="add-ons.html#summary-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="summary-2" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Summary<a href="add-ons.html#summary-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This chapter took you further in enriching the content that can be displayed in a webmap. You have seen that a webmap can offer far more useful information than just mere markers and symbols on a web canvas. Popups are one way of displaying information, and they too can be customized further. Through the practicals in this chapter, you have learnt the following:</p>
 <ul>
-<li><p>To create popups in leaflet, we use the <code>bindPopup</code> method.</p></li>
-<li><p><code>openPopup</code> automatically opens the popups once the leaflet map is loaded. They only disappear once you close them.</p></li>
+<li><p>To create popups in Leaflet, we use the <code>bindPopup</code> method.</p></li>
+<li><p><code>openPopup</code> automatically opens the popups once the Leaflet map is loaded. They only disappear once you close them.</p></li>
 <li><p>Markers can also work with HTML elements.</p></li>
 <li><p>Apart from location pins, markers can also be circles and rectangles.</p></li>
-<li><p>There exist methods in leaflet that can automatically parse out information in popups without requiring any hardcoding from the programmer. For example, we used <code>getRadius</code> to display the circle radius in the popup without necessarily typing it out in the <code>bindPopup</code> method.</p></li>
+<li><p>There exist methods in Leaflet that can automatically parse out information in popups without requiring any hardcoding from the programmer. For example, we used <code>getRadius</code> to display the circle radius in the popup without necessarily typing it out in the <code>bindPopup</code> method.</p></li>
+<li><p>You comment out JavaScript code with <code>//</code>!</p></li>
 </ul>
-<p>You comment out JavaScript code with <code>//</code>!</p>
 
 </div>
 </div>
