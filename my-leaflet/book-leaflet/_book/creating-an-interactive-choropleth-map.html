@@ -517,7 +517,7 @@ info.addTo(map);</code></pre>
     this.update();
     return this.div;
 };</code></pre>
-<p>The above code returns the DOM element for the control and creates a <code>&lt;div&gt;</code> of class <code>info</code>. This is done through the help of <code>L.DomUtil</code> which, according to the Leaflet website, provides utility functions to work with the DOM<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. Actually, this new <code>&lt;div&gt;</code> of class <code>info</code> is created when you fire up your browser but will only exist in your browser. Don’t expect it to magically appear in your static <code>map.html</code> file.</p>
+<p>The above code returns the DOM element for the control and creates a <code>&lt;div&gt;</code> of class <code>info</code>. This is done through the help of <code>L.DomUtil</code> which, according to the Leaflet website, provides utility functions to work with the DOM<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>. Actually, this new <code>&lt;div&gt;</code> of class <code>info</code> is created when you fire up your browser but will only exist in your browser. Don’t expect it to magically appear in your static <code>map.html</code> file.</p>
 <div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="creating-an-interactive-choropleth-map.html#cb101-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/div-info-element.jpg&#39;</span>))</span></code></pre></div>
 <p><img src="../images/div-info-element.jpg" width="541" /></p>
 <p>Trust me it wasn’t there before introducing the function containing <code>L.DomUtil</code>. Moving on forward, <code>this.update()</code> simply updates the content of the custom info control with the attributes of every newly clicked county.</p>
@@ -612,8 +612,8 @@ a screen pointer is over a certain feature.</p></li>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="1">
-<li id="fn1"><p>The Document Object Model (DOM) is the data representation of the objects that comprise the structure and content of a document on the web.<a href="creating-an-interactive-choropleth-map.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<ol start="2">
+<li id="fn2"><p>The Document Object Model (DOM) is the data representation of the objects that comprise the structure and content of a document on the web.<a href="creating-an-interactive-choropleth-map.html#fnref2" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
