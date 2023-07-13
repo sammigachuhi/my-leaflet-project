@@ -17,7 +17,7 @@ summary-2
 embedding-leaflet-map-to-an-external-website
 a-website-with-a-sense-of-direction
 the-html-webpage
-the-leaflet-javascript-code-for-our-website
+a-simple-for-loop-for-webmap-display
 summary-3
 using-geojson-in-leaflet
 creating-a-.geojson-file

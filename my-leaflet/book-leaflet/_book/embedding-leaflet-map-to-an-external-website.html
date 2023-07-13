@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Samuel Gachuhi Ngugi" />
 
 
-<meta name="date" content="2023-07-11" />
+<meta name="date" content="2023-07-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -174,7 +174,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.1" data-path="embedding-leaflet-map-to-an-external-website.html"><a href="embedding-leaflet-map-to-an-external-website.html#a-website-with-a-sense-of-direction"><i class="fa fa-check"></i><b>4.1</b> A website with a sense of direction</a></li>
 <li class="chapter" data-level="4.2" data-path="embedding-leaflet-map-to-an-external-website.html"><a href="embedding-leaflet-map-to-an-external-website.html#the-html-webpage"><i class="fa fa-check"></i><b>4.2</b> The HTML webpage</a></li>
-<li class="chapter" data-level="4.3" data-path="embedding-leaflet-map-to-an-external-website.html"><a href="embedding-leaflet-map-to-an-external-website.html#the-leaflet-javascript-code-for-our-website"><i class="fa fa-check"></i><b>4.3</b> The leaflet JavaScript code for our website</a></li>
+<li class="chapter" data-level="4.3" data-path="embedding-leaflet-map-to-an-external-website.html"><a href="embedding-leaflet-map-to-an-external-website.html#a-simple-for-loop-for-webmap-display"><i class="fa fa-check"></i><b>4.3</b> A simple <code>for</code> loop for webmap display</a></li>
 <li class="chapter" data-level="4.4" data-path="embedding-leaflet-map-to-an-external-website.html"><a href="embedding-leaflet-map-to-an-external-website.html#summary-3"><i class="fa fa-check"></i><b>4.4</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="using-geojson-in-leaflet.html"><a href="using-geojson-in-leaflet.html"><i class="fa fa-check"></i><b>5</b> Using GeoJSON in Leaflet</a>
@@ -298,7 +298,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 4</span> Embedding leaflet map to an external website<a href="embedding-leaflet-map-to-an-external-website.html#embedding-leaflet-map-to-an-external-website" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="a-website-with-a-sense-of-direction" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> A website with a sense of direction<a href="embedding-leaflet-map-to-an-external-website.html#a-website-with-a-sense-of-direction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Now, we have succeeded in making a stand alone leaflet map. However, we want to do something that will quickly upscale you from a novice to a pro. That is, placing the leaflet map into a website.</p>
+<p>Now, we have succeeded in making a stand alone leaflet map. However, we want to do something that will quickly upscale you from a novice to a pro. That is, embeding a Leaflet map into a website.</p>
 <p>An example of what we want is shown below, which is a snapshot from the <a href="https://data.humdata.org/dataset/cod-ab-ken">HDX website</a>.</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="embedding-leaflet-map-to-an-external-website.html#cb31-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/webmap-in-web.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../images/webmap-in-web.jpg" width="938" /></p>
@@ -373,7 +373,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       &lt;/div&gt;
     &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-<p>Since this is a geospatial book, we shall not go through every line of the HTML code above. It just a webpage containing some text, some pictures and a webmap. The webmap is the centre of our interest in this chapter. How do we create a Leaflet map, of which we know how to do, and fit it inside an existing webpage?</p>
+<p>Since this is a geospatial book, we shall not go through every line of the HTML script above. It just a webpage containing some text, some pictures and a webmap. The webmap is the centre of our interest in this chapter. We at least do know how to create a Leaflet map, but how do we fit it inside a webpage?</p>
 <p>Before we head there, let’s insert the CSS file, which looks like this.</p>
 <pre><code>/* Three image containers (use 25% for four, and 50% for two, etc) */
 .column {
@@ -407,9 +407,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     padding-left: 20px;
 }</code></pre>
 </div>
-<div id="the-leaflet-javascript-code-for-our-website" class="section level2 hasAnchor" number="4.3">
-<h2><span class="header-section-number">4.3</span> The leaflet JavaScript code for our website<a href="embedding-leaflet-map-to-an-external-website.html#the-leaflet-javascript-code-for-our-website" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Back to the leaflet map of our dummy Pro-GMO Alliance webpage. How did we put the leaflet in there? Nothing complicated, just inserting the same leaflet code, with some additional JavaScript and calling it within the HTML file with <code>&lt;script src="example-main.js"&gt;&lt;/script&gt;</code>. The Javascript file used is shown below.</p>
+<div id="a-simple-for-loop-for-webmap-display" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> A simple <code>for</code> loop for webmap display<a href="embedding-leaflet-map-to-an-external-website.html#a-simple-for-loop-for-webmap-display" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Back to the Leaflet map of our dummy Pro-GMO Alliance webpage. How did we put the Leaflet in there? In just under a minute, parsing the JavaScript Leaflet file to the <code>&lt;script&gt;</code> tag and referencing it using the <code>src</code> attribute makes our webmap appear at its placed position in the HTML file. The JavaScript file we parsed to our HTML file is called <code>example-main.js</code>. It contains the following code:</p>
 <pre><code>var map = L.map(&#39;map&#39;).setView([-0.302765, 36.146147], 12);
 
 L.tileLayer(&#39;https://tile.openstreetmap.org/{z}/{x}/{y}.png&#39;, {
@@ -430,23 +430,23 @@ for (var i = 0; i &lt; branches.length; i++) {
         .addTo(map);
 }
 </code></pre>
-<p>The only new thing in the above script is the <code>for</code> loop. In JavaScript, the <code>for</code> loop is used to iterate over items. In this case, and remembering that indexing in arrays begins from 0, the marker popups will read the latitudes and longitudes which are at index 1 and 2 respectively. The lat-lon are indicated by <code>([branches[i][1], branches[i][2]])</code>. The popup strings, which appear as the first elements in the <code>branches</code> array, are at index 0. The popup strings are indicated by <code>branches[i][0]</code>. At the end of the chain the markers are added to the map with <code>.addTo</code>.</p>
+<p>For the first time in this book, we are introducing the <code>for</code> loop. As is the case in other languages such as R and Python, JavaScript also uses the <code>for</code> loop to iterate over items. In our case, and remembering that indexing in arrays begins from 0, the marker popups will read the latitudes and longitudes which are at index 1 and 2 respectively. The lat-lon are indicated by <code>([branches[i][1], branches[i][2]])</code>. The popup strings, which appear as the first elements in the <code>branches</code> array, are at index 0. The popup strings are indicated by <code>branches[i][0]</code>. At the end of the chain the markers are added to the map with <code>.addTo</code>.</p>
 <p>Alright. How about the keyword <code>new</code>?</p>
-<p>The <code>new</code> keyword is a constructor. That is, it creates an empty object. Many instances of the variable <code>marker</code> can be created from the instance of <code>new</code> object. For more information on the <code>new</code> keyword constructor, see this <a href="https://www.programiz.com/javascript/constructor-function">website</a>. Be rest assured that the <code>new</code> keyword isn’t mandatory to make the webmap to work in our case but its helpful to add another JavaScript trick to your hat.</p>
+<p>The <code>new</code> keyword is a constructor. That is, it creates an empty object. Many instances of the variable <code>marker</code> can be created from the instance of <code>new</code> object. For more information on the <code>new</code> keyword constructor, see this <a href="https://www.programiz.com/javascript/constructor-function">website</a>. Be rest assured that the <code>new</code> keyword isn’t mandatory to make the webmap to work in our case but its helpful to learn another JavaScript trick to add to your hat.</p>
 <p>Below is a snapshot of how the dummy Pro-GMO website looks like with our newly embedded webmap.</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="embedding-leaflet-map-to-an-external-website.html#cb35-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;D:/gachuhi/my-leaflet/images/embedded.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="../images/embedded.jpg" width="944" /></p>
-<p>“How are we able to align the webmap to the left and also make other text stand aside to it?” This is all thanks to the CSS property <code>display: flex</code>. <code>display</code> is a CSS property that deals with how HTML elements are displayed.
-This property aligns the element to fill or shrink according to the space available within its assigned portion in the webpage. On the other hand, the CSS property <code>padding-left</code> just creates space all around the element, thus creating a neat space between the leaflet map and the address text. Removing this will just make the address text and the leaflet map touch each other edge to edge. The inspiration to use all these CSS properties and values in placing HTML elements side-by-side enamated from this <a href="https://www.w3docs.com/snippets/css/how-to-vertically-align-text-next-to-an-image.html?utm_source=pocket_saves">example</a>.</p>
-<p>Having done the above, you can consider you are as good a Leaflet mapper to undertake any task!</p>
+<p>“How are we able to align the webmap to the left and also make other text stand aside to it?” This is all thanks to the CSS property <code>display: flex</code>. <code>display</code> is a CSS property that deals with how HTML elements are displayed.</p>
+<p>The <code>display</code> property aligns a HTML element to fill or shrink according to the space available within its assigned portion in the webpage. On the other hand, the CSS property <code>padding-left</code> just creates space all around the element, thus creating a neat space between the Leaflet map and the address text. Removing this will just make the address text and the Leaflet map touch each other edge to edge. The inspiration to use all these CSS properties and values in placing HTML elements side-by-side emanated from this <a href="https://www.w3docs.com/snippets/css/how-to-vertically-align-text-next-to-an-image.html?utm_source=pocket_saves">example</a>.</p>
+<p>Having done the above, you can consider you are as good a Leaflet mapper to undertake any task! Later on, in <a href="standard-website-with-leaflet-project.html#standard-website-with-leaflet-project">Chapter 13</a>, we shall see how to insert a Leaflet map in a more sophisticated website. This was just a gentle introduction.</p>
 </div>
 <div id="summary-3" class="section level2 hasAnchor" number="4.4">
 <h2><span class="header-section-number">4.4</span> Summary<a href="embedding-leaflet-map-to-an-external-website.html#summary-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This chapter has introduced you on how you can use CSS to customize the appearance and positioning of your webmap. You have also encountered the use of <code>for</code> loop in JavaScript code to retrieve geospatial information, particularly from arrays. Here are brief notes of your take aways from this chapter.</p>
+<p>This chapter has introduced you on how you can use CSS to customize the appearance and positioning of your webmap. You have also encountered the use of <code>for</code> loop in JavaScript code to retrieve geospatial information, particularly from arrays. Here are some of the take aways from this chapter.</p>
 <ul>
 <li><p>Leaflet maps can be embedded inside a website as demonstrated in the dummy Pro-GMO webpage.</p></li>
 <li><p>One can use <code>for</code> loops to iterate over elements from an array and retrieve geospatial information. In this chapter, the <code>for</code> loop was used to retrieve both latitude-longitude coordinates and text from the <code>branches</code> array variable.</p></li>
-<li><p>We can use CSS elements, such as <code>display</code> and <code>padding-left</code> to position and define how webmap shall be displayed on our webpage.</p></li>
+<li><p>We can use CSS elements, such as <code>display</code> and <code>padding-left</code> to position and define how a webmap shall be displayed on our webpage.</p></li>
 </ul>
 
 </div>
