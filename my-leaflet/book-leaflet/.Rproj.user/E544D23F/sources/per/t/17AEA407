@@ -3,7 +3,7 @@
     "path": "D:/gachuhi/my-leaflet/book-leaflet/14-ESRI_Leaflet.Rmd",
     "project_path": "14-ESRI_Leaflet.Rmd",
     "type": "r_markdown",
-    "hash": "2961986760",
+    "hash": "2985206209",
     "contents": "",
     "dirty": false,
     "created": 1687011222322.0,
@@ -13,15 +13,15 @@
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "229,0",
+        "cursorPosition": "27,0",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1687025228,
+    "lastKnownWriteTime": 1688588697,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1687025228546,
+    "last_content_update": 1688588697655,
     "read_only": false,
     "read_only_alternatives": []
 }

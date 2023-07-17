@@ -2,7 +2,7 @@
 
 ## A website with a sense of direction
 
-Now, we have succeeded in making a stand alone leaflet map. However, we want to do something that will quickly upscale you from a novice to a pro. That is, placing the leaflet map into a website. 
+Now, we have succeeded in making a stand alone leaflet map. However, we want to do something that will quickly upscale you from a novice to a pro. That is, embeding a Leaflet map into a website. 
 
 An example of what we want is shown below, which is a snapshot from the [HDX website](https://data.humdata.org/dataset/cod-ab-ken).
 
@@ -85,7 +85,7 @@ Create a HTML page with the following code.
 </html>
 ```
 
-Since this is a geospatial book, we shall not go through every line of the HTML code above. It just a webpage containing some text, some pictures and a webmap. The webmap is the centre of our interest in this chapter. How do we create a Leaflet map, of which we know how to do, and fit it inside an existing webpage?
+Since this is a geospatial book, we shall not go through every line of the HTML script above. It just a webpage containing some text, some pictures and a webmap. The webmap is the centre of our interest in this chapter. We at least do know how to create a Leaflet map, but how do we fit it inside a webpage?
 
 Before we head there, let's insert the CSS file, which looks like this.
 
@@ -123,9 +123,9 @@ Before we head there, let's insert the CSS file, which looks like this.
 }
 ```
 
-## The leaflet JavaScript code for our website
+## A simple `for` loop for webmap display
 
-Back to the leaflet map of our dummy Pro-GMO Alliance webpage. How did we put the leaflet in there? Nothing complicated, just inserting the same leaflet code, with some additional JavaScript and calling it within the HTML file with `<script src="example-main.js"></script>`. The Javascript file used is shown below.
+Back to the Leaflet map of our dummy Pro-GMO Alliance webpage. How did we put the Leaflet in there? In just under a minute, parsing the JavaScript Leaflet file to the `<script>` tag and referencing it using the `src` attribute makes our webmap appear at its placed position in the HTML file. The JavaScript file we parsed to our HTML file is called `example-main.js`. It contains the following code:
 
 ```
 var map = L.map('map').setView([-0.302765, 36.146147], 12);
@@ -150,11 +150,11 @@ for (var i = 0; i < branches.length; i++) {
 
 ```
 
-The only new thing in the above script is the `for` loop. In JavaScript, the `for` loop is used to iterate over items. In this case, and remembering that indexing in arrays begins from 0, the marker popups will read the latitudes and longitudes which are at index 1 and 2 respectively. The lat-lon are indicated by `([branches[i][1], branches[i][2]])`. The popup strings, which appear as the first elements in the `branches` array, are at index 0. The popup strings are indicated by `branches[i][0]`. At the end of the chain the markers are added to the map with `.addTo`. 
+For the first time in this book, we are introducing the `for` loop. As is the case in other languages such as R and Python, JavaScript also uses the `for` loop to iterate over items. In our case, and remembering that indexing in arrays begins from 0, the marker popups will read the latitudes and longitudes which are at index 1 and 2 respectively. The lat-lon are indicated by `([branches[i][1], branches[i][2]])`. The popup strings, which appear as the first elements in the `branches` array, are at index 0. The popup strings are indicated by `branches[i][0]`. At the end of the chain the markers are added to the map with `.addTo`. 
 
 Alright. How about the keyword `new`?
 
-The `new` keyword is a constructor. That is, it creates an empty object. Many instances of the variable `marker` can be created from the instance of `new` object. For more information on the `new` keyword constructor, see this [website](https://www.programiz.com/javascript/constructor-function). Be rest assured that the `new` keyword isn't mandatory to make the webmap to work in our case but its helpful to add another JavaScript trick to your hat.
+The `new` keyword is a constructor. That is, it creates an empty object. Many instances of the variable `marker` can be created from the instance of `new` object. For more information on the `new` keyword constructor, see this [website](https://www.programiz.com/javascript/constructor-function). Be rest assured that the `new` keyword isn't mandatory to make the webmap to work in our case but its helpful to learn another JavaScript trick to add to your hat.
 
 Below is a snapshot of how the dummy Pro-GMO website looks like with our newly embedded webmap. 
 
@@ -163,19 +163,20 @@ knitr::include_graphics(rep("D:/gachuhi/my-leaflet/images/embedded.jpg"))
 ```
 
 "How are we able to align the webmap to the left and also make other text stand aside to it?" This is all thanks to the CSS property `display: flex`. `display` is a CSS property that deals with how HTML elements are displayed.
-This property aligns the element to fill or shrink according to the space available within its assigned portion in the webpage. On the other hand, the CSS property `padding-left` just creates space all around the element, thus creating a neat space between the leaflet map and the address text. Removing this will just make the address text and the leaflet map touch each other edge to edge. The inspiration to use all these CSS properties and values in placing HTML elements side-by-side enamated from this [example](https://www.w3docs.com/snippets/css/how-to-vertically-align-text-next-to-an-image.html?utm_source=pocket_saves).
 
-Having done the above, you can consider you are as good a Leaflet mapper to undertake any task!
+The `display` property aligns a HTML element to fill or shrink according to the space available within its assigned portion in the webpage. On the other hand, the CSS property `padding-left` just creates space all around the element, thus creating a neat space between the Leaflet map and the address text. Removing this will just make the address text and the Leaflet map touch each other edge to edge. The inspiration to use all these CSS properties and values in placing HTML elements side-by-side emanated from this [example](https://www.w3docs.com/snippets/css/how-to-vertically-align-text-next-to-an-image.html?utm_source=pocket_saves).
+
+Having done the above, you can consider you are as good a Leaflet mapper to undertake any task! Later on, in [Chapter 13][Standard Website with Leaflet Project], we shall see how to insert a Leaflet map in a more sophisticated website. This was just a gentle introduction.
 
 ## Summary
 
-This chapter has introduced you on how you can use CSS to customize the appearance and positioning of your webmap. You have also encountered the use of `for` loop in JavaScript code to retrieve geospatial information, particularly from arrays. Here are brief notes of your take aways from this chapter.
+This chapter has introduced you on how you can use CSS to customize the appearance and positioning of your webmap. You have also encountered the use of `for` loop in JavaScript code to retrieve geospatial information, particularly from arrays. Here are some of the take aways from this chapter.
 
 - Leaflet maps can be embedded inside a website as demonstrated in the dummy Pro-GMO webpage.
 
 - One can use `for` loops to iterate over elements from an array and retrieve geospatial information. In this chapter, the `for` loop was used to retrieve both latitude-longitude coordinates and text from the `branches` array variable.
 
-- We can use CSS elements, such as `display` and `padding-left` to position and define how webmap shall be displayed on our webpage.
+- We can use CSS elements, such as `display` and `padding-left` to position and define how a webmap shall be displayed on our webpage.
 
 
 

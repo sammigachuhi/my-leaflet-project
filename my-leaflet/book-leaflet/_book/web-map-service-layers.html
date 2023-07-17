@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Samuel Gachuhi Ngugi" />
 
 
-<meta name="date" content="2023-07-13" />
+<meta name="date" content="2023-07-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -338,7 +338,7 @@ let wmsLayerTopomask = L.tileLayer.wms(&#39;https://www.gmrt.org/services/mapser
 basemaps.Topo.addTo(map);  // To have the Topo as the default map layer
 </code></pre>
 <p>The last line <code>basemaps.Topo.addTo(map)</code> serves to set up the default layer that will appear when the map is loaded. In this case it is the <code>Topo</code> key in <code>var basemaps</code>. If this last line is omitted, Leaflet will only show a blank canvas unless one of the radioitems is selected.</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="web-map-service-layers.html#cb167-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/wms_layer.jpg&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="web-map-service-layers.html#cb168-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&#39;D:/gachuhi/my-leaflet/images/wms_layer.jpg&#39;</span>))</span></code></pre></div>
 <p><img src="../images/wms_layer.jpg" width="960" /></p>
 <p>And that’s it!</p>
 <p>Even though we wanted to work with African-based WMS layers, of which <a href="https://training.digitalearthafrica.org/en/latest/OWS_tutorial.html">Digital Earth Africa</a> provides plenty of them, despite all efforts, it was not possible to display them in Leaflet. This is despite these WMS layers being easily accessible in Qgis and following their documentation of viewing them using Leaflet.</p>

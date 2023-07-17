@@ -4,11 +4,11 @@
 
 A [Web Mapping Service (WMS)](https://gisgeography.com/web-mapping-services-wms/) consists of geospatial data hosted through the internet with standards set by the Open Geospatial Consortium (OGS).
 
-A WMS enables the exchange of spatial information and viewing over the web in the form of a map or image to your browser. The most common formats of WMS are WMS, WFS, WCS, WPS, WMTS, and WCPS. WMS is the most used. It offers basic panning, zooming and somewhat quick rendering speeds.
+A WMS enables the exchange of spatial information and viewing over the web in the form of a map or image to your browser. The most common formats of Web Mapping Services are Web Map Services (WMS), Web Feature Services (WFS), Web Coverage Services (WCS), Web Processing Services (WPS), Web Map Tile Services (WMTS), and Web Coverage Processing Services (WCPS). However, the Web Map Services (WMS) layer is the most used. It offers basic panning, zooming and somewhat quick rendering speeds.
 
 ## Loading a WMS server
 
-To load a WMS layer into leaflet, we use the `L.tileLayer.wms` class. As simple as that. So let's set up our Leaflet map. Create a new JavaScript file named `wms_layers.js` and insert the following code.
+To load a WMS layer into leaflet, we use the `L.tileLayer.wms` class. As simple as that. So let's set up our Leaflet map. Create a new JavaScript file named `wms_layers.js` and insert the following code:
 
 ```
 let map = L.map('myMap').setView([-1.295287148, 36.81984753], 7);
@@ -20,7 +20,7 @@ let tileLayer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 ```
 
-We have added an OSM layer because we want to create a layer control widget that also contains WMS layers so that you can switch between both for either spatial awareness or informational purposes (WMS layer). Without further ado, let's add two WMS layers.
+We have added an OSM layer because we want to create a layer control widget that also contains WMS layers so that you can switch between an Open Street Map (OSM) layer and a WMS. For this exercise, we shall add two WMS layers.
 
 ```
 let wmsLayerTopo = L.tileLayer.wms('https://www.gmrt.org/services/mapserver/wms_merc_mask?', {
@@ -37,7 +37,7 @@ let wmsLayerTopomask = L.tileLayer.wms('https://www.gmrt.org/services/mapserver/
 
 ## Adding WMS to layer control
 
-Let's insert the above web map layers into a JavaScript object before passing it to a layer control.
+Let's insert the above web map layers into a JavaScript object before parsing it to a layer control.
 
 ```
 var basemaps = {
@@ -48,7 +48,7 @@ var basemaps = {
 
 ```
 
-Now let's parse the object into a control. If you did [Chapter 8][Layer groups and controls] then this should be familiar.
+Now let's parse the object into a control. If you did [Chapter 8][Layer groups and controls] then this should look familiar.
 
 ```
 L.control.layers(basemaps).addTo(map);
@@ -57,8 +57,7 @@ basemaps.Topo.addTo(map);  // To have the Topo as the default map layer
 
 ```
 
-The last line `basemaps.Topo.addTo(map)` serves to set up the default layer that will appear when the map is loaded. In this case it is the variable set to `Topo` key in `var basemaps`. If this last line is omitted, the leaflet map will load alright, however, it will be blank canvas unless one of the radioitems is clicked.
-
+The last line `basemaps.Topo.addTo(map)` serves to set up the default layer that will appear when the map is loaded. In this case it is the  `Topo` key in `var basemaps`. If this last line is omitted, Leaflet will only show a blank canvas unless one of the radioitems is selected.
 
 ```{r}
 knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/wms_layer.jpg'))
@@ -67,13 +66,23 @@ knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/wms_layer.jpg'))
 
 And that's it!
 
-We wanted to introduce some African-based WMS layers, of which [Digital Earth Africa](https://training.digitalearthafrica.org/en/latest/OWS_tutorial.html) provides a couple, however, these WMS layers could only be loaded in Qgis. Subsequent attempts to load them in Leaflet even after carefully following the official documents yielded no fruits.
+Even though we wanted to work with African-based WMS layers, of which [Digital Earth Africa](https://training.digitalearthafrica.org/en/latest/OWS_tutorial.html) provides plenty of them, despite all efforts, it was not possible to display them in Leaflet. This is despite these WMS layers being easily accessible in Qgis and following their documentation of viewing them using Leaflet. 
 
 Interested in getting other WMS layers? Go to [Spartineo.com](https://directory.spatineo.com/).
 
-The files used in these very short chapter are available [here](https://www.dropbox.com/scl/fo/n6oiyw21axiqxpdcfeqnp/h?dl=0&rlkey=jr8f6g5mx5i83kpjofv56hk5g).
+The files used in these very short chapter are available [here](https://github.com/sammigachuhi/my-leaflet-project/tree/main/my-leaflet-code/chapter-12-Web_map_service_layers).
 
+## Summary
 
+A Web Mapping Service (WMS) layer in many respects looks and acts like a basemap. Just like Open Street Map and other similar servers, WMS layers host data through the internet. Here are the take homes from this chapter.
+
+- A Web Mapping Service consists of geospatial data hosted through the internet with standards set by the Open Geospatial Consortium (OGS).
+
+- The most common formats of Web Mapping Services are Web Map Services (WMS), Web Feature Services (WFS), Web Coverage Services (WCS), Web Processing Services (WPS), Web Map Tile Services (WMTS), and Web Coverage Processing Services (WCPS).
+
+- The `L.tileLayer.wms` class is used to load WMS layers into Leaflet.
+
+- Just like any other basemap, one can parse WMS layer into Leaflet controls, as seen with `wmsLayerTopo` and `wmsLayerTopomask`.
 
 
 

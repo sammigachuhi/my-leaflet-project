@@ -3,7 +3,7 @@
     "path": "D:/gachuhi/my-leaflet/book-leaflet/01-Introduction.Rmd",
     "project_path": "01-Introduction.Rmd",
     "type": "r_markdown",
-    "hash": "1616084664",
+    "hash": "138663433",
     "contents": "",
     "dirty": false,
     "created": 1680957672043.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "150,129",
+        "cursorPosition": "129,147",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1687206019,
+    "lastKnownWriteTime": 1688848344,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1687206020020,
+    "last_content_update": 1688848344149,
     "read_only": false,
     "read_only_alternatives": []
 }

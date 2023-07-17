@@ -2,9 +2,9 @@
 
 ## Get the HTML Template
 
-Remember me trying to insert a leaflet map into some lousy looking website to do with GMOs back in [Chapter 4][Embedding leaflet map to an external website]? Well, there is a aphomism in my local lingo that says only the stay at home thinks that their household cooks well. It is until you challenge yourself with something new that you can prove your salt. In this chapter, we would like to demonstrate how leaflet can be added to a standard HTML website. The purpose of this chapter is to train you how you can insert a leaflet map to your company's, client's or even colleague's website if called upon. They heard you are a web mapping master. So why not?
+Back in [Chapter 4][Embedding leaflet map to an external website] we inserted a Leaflet map into a pale looking website. Taking that exercises a little further, we would like to demonstrate how Leaflet can be added to a standard, professional looking HTML website. This chapter will train you how to insert a Leaflet map into your company's, client's or even colleague's website.
 
-The template used in this exercise was acquired from Free CSS.com and is available [here](https://www.free-css.com/assets/files/free-css-templates/download/page291/elearning.zip). Extract the files and take a look at the html documents. That is, the `index.html`, `about.html`, `contact.html`, `courses.html`, `team.html` and `testimonial.html`. Pay special attention to the `<head>` element and the `<div>` containing the Gallery section of the website. The Gallery `<div>` looks like so:
+The template used in this exercise was acquired from [Free CSS.com](https://www.free-css.com/free-css-templates) and is available [here](https://www.free-css.com/assets/files/free-css-templates/download/page291/elearning.zip). Extract the files and take a look at the HTML documents. That is, the `index.html`, `about.html`, `contact.html`, `courses.html`, `team.html` and `testimonial.html`. Pay special attention to the `<head>` element and the `<div>` containing the Gallery section of the website. The Gallery `<div>` looks like so:
 
 ```
 <div class="col-lg-3 col-md-6">
@@ -33,29 +33,29 @@ The template used in this exercise was acquired from Free CSS.com and is availab
 
 ```
 
-Here is where the Gallery in the elearning webpage is situated.
+Here is where the Gallery in the eLearning webpage is situated.
 
 ```{r}
 knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/gallery.jpg'))
 
 ```
 
-Why do we want to change the gallery, or rather, to insert a leaflet map in its place? Well, I decided to be mean on it. Sorry, that wasn't supposed to come out of my mouth. Candidly speaking, the Gallery section only contained some pretty pictures and personally I felt replacing them with a leaflet map would serve as the best demonstration for this chapter.
+Why do we want to change the gallery, or rather, to insert a Leaflet map in its place? It seemed a good idea to replace the pretty looking pictures with a webmap since this website is for demonstration purposes only.
 
-## Insert Leaflet to standard html website
+## Embed Leaflet to standard html website
 
-Since we want to insert a leaflet to the eLearning website, we will have to load the requisite Leaflet links and scripts to the websites `<head>` element, just like we used to do to our `map.html`. Thereafter, we shall replace the entire gallery section with just one `<div>` that references one of our many Leaflet JavaScript files. 
+Since we want to integrate a Leaflet map to the eLearning website, we will have to load the requisite Leaflet links and scripts to the eLearning dummy website's `<head>` element, just like we used to do to our `map.html`. Thereafter, we shall replace the entire gallery section with just one `<div>` that references one of our many Leaflet JavaScript files. 
 
 Ready? Let's go.
 
-Assuming you are working on VSCode, copy all the plugin files for leaflet, such as `Leaflet.markercluster-master` folder and others you had extracted prior to parsing them to your javascript files. Perhaps an image will make the instructions clearer. The below files should be in your eLearning template folder.
+Assuming you are working on VSCode, copy all the plugin files for Leaflet, such as the `Leaflet.markercluster-master` folder and others you have extracted at one point or another in previous chapters. The names of these folders are enclosed with a red border in the image below. 
 
 ```{r}
 knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/elearning-plugins.jpg'))
 
 ```
 
-Why are we ensuring that the leaflet plugin folders are in the same directory of our eLearning template files? YOu will know in a tid bit.
+Why are we ensuring that the Leaflet plugin folders are in the same directory as our eLearning template files? It is because we want to avoid the need of tinkering with the relative path, which has to change if the  (plugin) folders were located in a different directory from our eLearning website's HTML files.
 
 Go to the `index.html` file of your eLearning template. From the `<head>` to `</head>` tags, replace the existing code with the following:
 
@@ -115,24 +115,11 @@ Go to the `index.html` file of your eLearning template. From the `<head>` to `</
     
 ```
 
-We have just retained the existing code and added the leaflet `<link>` and `<script>` tags we have experienced so far -- from good old `map.html` of course. Before I forget, here's why the leaflet plugin folders have to be together with the eLearning files. When we copied our `<link>` and `<script>` tags from `map.html` they were referring to certain paths. When you paste them to the `index.html` of your eLearning template, the path's are no longer correct. They have just been placed in a destination/directory! However, if you paste the Leaflet folders you have worked with so far so that they are within the same directory, you don't have to (painfully) change the paths because they will remain *correct*.
+The first alteration we will do to our eLearning website's HTML folder is to add the relevant Leaflet `<link>` and `<script>` tags. These `<link>` and `<script>` tags have just been copy pasted from the `map.html` file we have been dealing with so far.
 
-Didn't get me? Take the following `<script>` tag.
-
-```
-<script src="Leaflet.markercluster-1.4.1\Leaflet.markercluster-1.4.1\dist\leaflet.markercluster.js"></script>
-
-```
-
-It still remains correct within the `index.html` of our eLearning template because we have pasted the same `Leaflet.markercluster-1.4.1` folder in the same directory as other eLearning template file. ie. the path still refers to the same place. No adventuring to other folder inside or outside the same eLearning template directory!
-
-Another small favour. Copy and past the `cluster_markers.js` file into the eLearning template directory.
+Now that we have the requisite `<link>` and `<script>` tags to embed Leaflet into our eLeaflet demo website, we only need to insert the path to our JavaScript file containing the Leaflet code. The JavaScript is of course responsible for firing up the Leaflet map in our eLearning website. For this exercise, we shall use the `cluster_markers.js` file we have had so much fun with. Copy paste this file into the same folder containing your eLeaflet website's folders.
 
 Alright.
-
-A glass of water.
-
-Back to the screen.
 
 Time to add the leaflet map. Where? At the gallery section.
 
@@ -177,16 +164,16 @@ You may have to scroll *really* down to locate it. Right under the `<h4 class="t
 
 ```
 
-Perhaps an image will clarify matters a bit. This is how it should look:
+Perhaps an image will clarify matters a bit. This is where you are to insert the path to your `cluster-markers.js` file. 
 
 ```{r}
 knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/div_replace.jpg'))
 
 ```
 
-Also as a heads up, remember to replace the `<h4>` tags with the statement `Our Location`. It's no longer a gallery!
+Also as a heads up, remember to replace the `<h4>` tags with the statement `Our Location`. It's no longer a gallery but a webmap!
 
-As if that was not enough, going easy on our fingers and all, we have to set the CSS properties for our leaflet map. 
+As if that was not enough, we also have to set the CSS properties for our leaflet map. 
 
 ## Editing the CSS
 
@@ -196,7 +183,7 @@ Open the `style.css` file of your eLearning template in your text editor (such a
 elearning-template\css\style.css
 ```
 
-Scroll down to the very bottom of `style.css` and paste the following CSS properites for our Leaflet map.
+Scroll down to the very bottom of `style.css` and paste the following CSS properties for our Leaflet map.
 
 ```
 #myMap { 
@@ -205,7 +192,7 @@ Scroll down to the very bottom of `style.css` and paste the following CSS proper
 }
 ```
 
-Remember the `#` and the text that follows references the specifically named `id` attribute in the tags of our html element. In the above case, it references the `<div>` with the ID `#myMap`.
+Remember the `#` and the text that follows references the specific name of that `ID` attribute from the countless HTML tags in `index.html`. The above CSS selector references the `<div>` with the ID `#myMap`.
 
 After reloading `index.html`, this is how our leaflet map looks inside the eLearning template.
 
@@ -216,19 +203,27 @@ knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/location_elearning.jpg
 
 Good.
 
-## Adding leaflet to every webpage
+## Embedding Leaflet to every webpage
 
-Now click the **About**, **Courses**, **Pages/Our Team**, **Pages/Testimonial** and **Contact** web pages. Is the leaflet map there? No. It's the gallery. Imagine you will have to replace the `<head>` and Gallery `<div>` elements here as well! 
+Now click the **About**, **Courses**, **Pages/Our Team**, **Pages/Testimonial** and **Contact** web pages. Is the Leaflet map there in each case? No. It's the gallery. Imagine you will have to replace the `<head>` and Gallery `<div>` elements of the respective `about.html`, `courses.html`, `team.html`, `testimonial.html` and `contact.html` webpages here as well with the relevant Leaflet paths! Luckily, since you have hopefully got the gist of it, the follow link contains the eLearning folder with Leaflet map embedded in all the aforementioned webpages.
 
-"How and I don't have the time?!!" If you look at the eLearning template directory, you will see the **about**, **courses**, **contact**, **team** and **testimonial** html files. Replace their `<head>` elements and Gallery `<div>`s just as you did for `index.html`. Luckily I am your hero. This was done for you and the files are available [here](https://github.com/sammigachuhi/elearning_template_demo.git).
-
+[elearning_template_demo](https://github.com/sammigachuhi/my-leaflet-project/tree/main/elearning-template)
 
 ## Posting the Html website to the world
 
-This chapter will leave out the details of saving your files to Github. However, here's a clue. In order to automatically render a file in Github online, make sure the root html file is named `index.html`. These are taken as the default root html files by Github. 
+This chapter will leave out the details of saving your files to Github. Nevertheless, as mentioned in [Chapter 11][Mobile Friendly Webapps], the name `index` in your HTML file is automatically considered the root HTML file by Github. Finally, here is the link to our eLearning website with a Leaflet webmap embedded therein.
 
-Yours truly already saved the file to Github. Here's the link to the file [live and online](https://sammigachuhi.github.io/elearning_template_demo/). 
+[eLearning website](https://sammigachuhi.github.io/elearning_template_demo/)
 
+## Summary
+
+Having the necessary Leaflet folders in the same directory as your HTML website's files reduces chances of the Leaflet map failing to load in your HTML website due to a broken path. Here are other lesson's we have encountered.
+
+- In order to embed a Leaflet map into your website, you have to load the requisite Leaflet `<link>` and `<script>` tags into your `<head>` and where necessary, `<div>` elements.
+
+- Insert the JavaScript code that fires up your Leaflet using the `<script>` tags. This was the method used to insert the JavaScript file `cluster-markers.js` into the eLeaflet dummy website.
+
+- It is also important to ensure your Leaflet map appears in the right place in all the child webpages. For example, Leaflet also had to be embedded in the webpages of `about.html`, `courses.html`, `team.html`, `testimonial.html` and `contact.html` at the Gallery section just as it was done for their parent file-- `index.html`.
 
 
 

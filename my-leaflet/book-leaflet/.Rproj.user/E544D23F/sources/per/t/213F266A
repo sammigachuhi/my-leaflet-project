@@ -3,7 +3,7 @@
     "path": "D:/gachuhi/my-leaflet/book-leaflet/Conclusion.Rmd",
     "project_path": "Conclusion.Rmd",
     "type": "r_markdown",
-    "hash": "3760694562",
+    "hash": "1361993565",
     "contents": "",
     "dirty": false,
     "created": 1687024593884.0,
@@ -13,15 +13,15 @@
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "5,6",
+        "cursorPosition": "4,106",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1687024855,
+    "lastKnownWriteTime": 1688671399,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1687024855162,
+    "last_content_update": 1688671399400,
     "read_only": false,
     "read_only_alternatives": []
 }
