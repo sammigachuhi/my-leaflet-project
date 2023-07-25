@@ -67,9 +67,9 @@ mobile-friendly-webapps
 the-need-for-mobile-friendly-web-apps
 the-basemaps
 adding-the-features
-zooming-to-mobile-users-location
+zooming-to-the-mobile-users-location
 add-marker-to-mobile-users-geolocation
-the-mobile-webmap-app-in-action
+the-mobile-webmap-app
 summary-9
 web-map-service-layers
 what-are-web-map-service-wms-layers

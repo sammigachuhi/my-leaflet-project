@@ -1,0 +1,82 @@
+--- 
+title: "Leaflet in Practice: Create webmaps using the JavaScript Leaflet library"
+author: "Samuel Gachuhi Ngugi"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+# url: your book url like https://bookdown.org/yihui/bookdown
+# cover-image: path to the social sharing image like images/cover.jpg
+description: |
+  This is a minimal example of using the bookdown package to write a book.
+  The HTML output format for this example is bookdown::gitbook,
+  set in the _output.yml file.
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+---
+
+# Preface {-}
+
+This book was written to assist the budding GIS specialist, geographer or cartographer who has an interest in quickly learning how to create webmaps with minimal knowledge of JavaScript. The aim of this book is to bring the learner up to speed on how to create almost any kind of webmap using Leaflet. Written from the point of a self-taught programmer, this is more of a guide book on how to navigate the Leaflet JavaScript syntax at intermediate level. Nevertheless, it is the wish of this writer that the book appetites you to go deeper in using programming for not only Geographical Information Systems (GIS) purposes, but for any other purpose that fascinates your mind. 
+
+## Usage{-}
+
+Although the author would highly recommend the reader to sequentially go through the entire book, for the hasty learner, each chapter from Chapter 3 onwards is a stand alone exercise with a link to the source code at the end of every chapter. The link can be found just before the **Summary** subsection. Finally, the book is also available as a Portable Document File (PDF) here.
+
+## About the Author {-}
+
+Samuel Gachuhi Ngugi is a graduate of the University of Nairobi holding a Bachelor of Arts degree in Geography and Environmental Studies. He also holds a certificate in Environmental Impact Assessment (EIA) in addition to certifications in Google Earth Engine, Site Planning and Machine Learning for Weather and Climate from the European Commission for Medium Range Weather Forecasting (ECMWF) among others. He began to gain an interest in programming in 2021. His first programming book was [*A Beginner Friendly Introduction to GIS Operations in R: A practical guide*](https://www.researchgate.net/publication/365301997_A_Beginner_Friendly_Introduction_to_GIS_Operations_in_R_A_practical_guide) published in 2022. Prior to this he had also published a GIS tutorial book entitled [*Basic Raster and Vector Operations using Qgis: A tutorial*](https://www.researchgate.net/publication/341343109_BASIC_RASTER_AND_VECTOR_OPERATIONS_USING_QGIS_A_TUTORIAL) in 2020. Both have been warmly received by the academic community.
+
+## Copyright {-}
+
+This book, *Leaflet in Practice: Create webmaps using the JavaScript Leaflet library* has been created under the Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0).
+
+```{r}
+knitr::include_graphics(rep('D:/gachuhi/my-leaflet/images/copyright_image.png'))
+
+```
+
+This is a human-readable summary of (and not a substitute for) the [license](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode). [Disclaimer](https://creativecommons.org/licenses/by-nc-sa/4.0/#).
+
+**You are free to:**
+
+Share — copy and redistribute the material in any medium or format
+
+Adapt — remix, transform, and build upon the material
+
+The licensor cannot revoke these freedoms as long as you follow the license terms.
+
+**Under the following terms:**
+
+Attribution — You must give [appropriate credit](https://creativecommons.org/licenses/by-nc-sa/4.0/#), provide a link to the license, and [indicate if changes were made](https://creativecommons.org/licenses/by-nc-sa/4.0/#). You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+
+NonCommercial — You may not use the material for [commercial purposes](https://creativecommons.org/licenses/by-nc-sa/4.0/#).
+
+ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the [same license](https://creativecommons.org/licenses/by-nc-sa/4.0/#) as the original.
+
+No additional restrictions — You may not apply legal terms or [technological measures](https://creativecommons.org/licenses/by-nc-sa/4.0/#) that legally restrict others from doing anything the license permits.
+
+**Notices:**
+
+You do not have to comply with the license for elements of the material in the public domain or where your use is permitted by an applicable [exception or limitation](https://creativecommons.org/licenses/by-nc-sa/4.0/#).
+
+No warranties are given. The license may not give you all of the permissions necessary for your intended use. For example, other rights such as [publicity, privacy, or moral rights](https://creativecommons.org/licenses/by-nc-sa/4.0/#) may limit how you use the material.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
